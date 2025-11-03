@@ -5,6 +5,7 @@ import axios from "axios";
 import { FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import { HiMenu, HiX } from "react-icons/hi";
+import "./mycss.css"
 
 const Header2 = ({ cartCount = 1 }) => {
   const [menuOpen, setMenuOpen] = useState(false); // mobile menu
@@ -71,7 +72,7 @@ const Header2 = ({ cartCount = 1 }) => {
                 <h4 style={{color: "black", fontWeight: "800"}}>Fa Clothing</h4>
                 </a></div>
               
-                <nav class="site-navigation site-navigation-dropdown justify-content-center flex-auto d-flex"><ul id="mastmenu" class="cms-primary-menu cms-primary-menu-dropdown"><li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-49">
+                <nav class="site-navigation site-navigation-dropdown justify-content-center flex-auto d-flex" ><ul id="mastmenu" class="cms-primary-menu cms-primary-menu-dropdown"><li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-49">
               
               <a href="index.html" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home</span><span class="main-menu-toggle"></span></a>
 <ul class="sub-menu">
