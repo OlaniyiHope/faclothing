@@ -89,19 +89,7 @@ const Header = ({ cartCount = 1 }) => {
                 <nav class="site-navigation site-navigation-dropdown justify-content-center flex-auto d-flex"><ul id="mastmenu" class="cms-primary-menu cms-primary-menu-dropdown"><li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-49">
               
               <a href="index.html" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home</span><span class="main-menu-toggle"></span></a>
-<ul class="sub-menu">
-	<li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-119"><a href="index.html" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home Main</span></a></li>
-	<li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102"><a href="home-fashion/index.html" class="cms-menu-link"><span class="menu-title title">Home Fashion</span></a></li>
-	<li id="menu-item-103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-103"><a href="home-store/index.html" class="cms-menu-link"><span class="menu-title title">Home Store</span></a></li>
-	<li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104"><a href="home-creative/index.html" class="cms-menu-link"><span class="menu-title title">Home Creative</span></a></li>
-	<li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-105"><a href="home-modern/index.html" class="cms-menu-link"><span class="menu-title title">Home Modern</span></a></li>
-	<li id="menu-item-106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a href="home-simple/index.html" class="cms-menu-link"><span class="menu-title title">Home Simple</span></a></li>
-	<li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a href="home-trendy/index.html" class="cms-menu-link"><span class="menu-title title">Home Trendy</span></a></li>
-	<li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="home-divided-showcase/index.html" class="cms-menu-link"><span class="menu-title title">Divided Showcase</span></a></li>
-	<li id="menu-item-109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a href="home-split-screen/index.html" class="cms-menu-link"><span class="menu-title title">Split Screen</span></a></li>
-	<li id="menu-item-120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-120"><a href="landing/index.html" class="cms-menu-link"><span class="menu-title title">Landing</span></a></li>
-	<li id="menu-item-112" class="trp-language-switcher-container menu-item menu-item-type-post_type menu-item-object-language_switcher menu-item-112"><a href="ar/index.html" class="cms-menu-link"><span class="menu-title title"><span data-no-translation><img class="trp-flag-image" src="wp-content/themes/trevox/assets/images/language-flags/ar.png" width="18" height="12" alt="ar" title="Arabic" /><span class="trp-ls-language-name">Arabic</span></span></span></a></li>
-</ul>
+
 </li>
 <li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page megamenu menu-item-has-children megamenu-full menu-item-197"><a href="shop/index.html" class="cms-menu-link"><span class="menu-title title">Shop</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="613" class="elementor elementor-613">
 				<div class="elementor-element elementor-element-878effc e-flex e-con-boxed e-con e-parent" data-id="878effc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
@@ -110,18 +98,7 @@ const Header = ({ cartCount = 1 }) => {
 				<div class="elementor-element elementor-element-5649f06 elementor-widget elementor-widget-cms_navigation_menu" data-id="5649f06" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
 				<div class="elementor-widget-container">
 						<div class="cms-emenu cms-emenu--mega">
-		<h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-			<a class="text-heading" href="#">Shop Lists</a>
-		</h2>
-		<ul id="menu-shop-lists" class="cms-menu cms-dropdown-mega"><li id="menu-item-492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492 cms-dropdown-mega-item"><a href="shop-left-sidebar/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Left Sidebar</span></a></li>
-<li id="menu-item-500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-500 cms-dropdown-mega-item"><a href="shop-right-sidebar/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Right Sidebar</span></a></li>
-<li id="menu-item-493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-493 cms-dropdown-mega-item"><a href="shop-no-sidebar/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">No Sidebar</span></a></li>
-<li id="menu-item-494" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-494 cms-dropdown-mega-item"><a href="shop-filter-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Filter List</span></a></li>
-<li id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-495 cms-dropdown-mega-item"><a href="shop-custom/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Custom List</span></a></li>
-<li id="menu-item-496" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-496 cms-dropdown-mega-item"><a href="shop-masonry/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Masonry List</span></a></li>
-<li id="menu-item-497" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-497 cms-dropdown-mega-item"><a href="shop-gallery-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Gallery List</span></a></li>
-<li id="menu-item-498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-498 cms-dropdown-mega-item"><a href="shop-category-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Category List</span></a></li>
-</ul>	</div>
+	</div>
 				</div>
 				</div>
 				</div>
@@ -384,108 +361,11 @@ const Header = ({ cartCount = 1 }) => {
 				</div>
 				</div>
 		</div></li>
-<li id="menu-item-130" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-130"><a href="#" class="cms-menu-link"><span class="menu-title title">Pages</span><span class="main-menu-toggle"></span></a>
-<ul class="sub-menu">
-	<li id="menu-item-132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-132"><a href="about-us/index.html" class="cms-menu-link"><span class="menu-title title">About Us</span></a></li>
-	<li id="menu-item-133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-133"><a href="store-locations/index.html" class="cms-menu-link"><span class="menu-title title">Store Locations</span></a></li>
-	<li id="menu-item-134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134"><a href="shipping-returns/index.html" class="cms-menu-link"><span class="menu-title title">Shipping &#038; Return</span></a></li>
-	<li id="menu-item-135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135"><a href="sustainability/index.html" class="cms-menu-link"><span class="menu-title title">Sustainability</span></a></li>
-	<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="faqs/index.html" class="cms-menu-link"><span class="menu-title title">Help &#038; FAQs</span></a></li>
-	<li id="menu-item-137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137"><a href="contacts/index.html" class="cms-menu-link"><span class="menu-title title">Contacts</span></a></li>
-</ul>
-</li>
+
 <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-51"><a href="blog-grid/index.html" class="cms-menu-link"><span class="menu-title title">Blog</span><span class="main-menu-toggle"></span></a>
-<ul class="sub-menu">
-	<li id="menu-item-131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131"><a href="blog-grid/index.html" class="cms-menu-link"><span class="menu-title title">Blog Grid</span></a></li>
-	<li id="menu-item-50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="blog-standard/index.html" class="cms-menu-link"><span class="menu-title title">Blog Standard</span></a></li>
-	<li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-138"><a href="our-journey-towards-a-more-conscious-fashion-industry/index.html" class="cms-menu-link"><span class="menu-title title">Single Post</span></a></li>
-</ul>
+
 </li>
-<li id="menu-item-139" class="menu-item menu-item-type-custom menu-item-object-custom megamenu menu-item-has-children megamenu-full menu-item-139"><a href="#" class="cms-menu-link"><span class="menu-title title">Features</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="622" class="elementor elementor-622">
-				<div class="elementor-element elementor-element-24234ff e-flex e-con-boxed e-con e-parent" data-id="24234ff" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
-					<div class="e-con-inner">
-		<div class="elementor-element elementor-element-a86b13b e-con-full e-flex e-con e-child" data-id="a86b13b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-				<div class="elementor-element elementor-element-fc97e77 elementor-widget elementor-widget-cms_navigation_menu" data-id="fc97e77" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-				<div class="elementor-widget-container">
-						<div class="cms-emenu cms-emenu--mega">
-		<h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-			<a class="text-heading" href="#">Features List</a>
-		</h2>
-		<ul id="menu-features-list-1" class="cms-menu cms-dropdown-mega"><li id="menu-item-587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-587 cms-dropdown-mega-item"><a href="features/header-01-transparent/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 01 – Transparent</span></a></li>
-<li id="menu-item-586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-586 cms-dropdown-mega-item"><a href="features/header-01-white/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 01 – White</span></a></li>
-<li id="menu-item-585" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-585 cms-dropdown-mega-item"><a href="features/header-02-transparent/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 02 – Transparent</span></a></li>
-<li id="menu-item-584" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-584 cms-dropdown-mega-item"><a href="features/header-02-white/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 02 – White</span></a></li>
-<li id="menu-item-583" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-583 cms-dropdown-mega-item"><a href="features/header-03/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 03</span></a></li>
-<li id="menu-item-582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-582 cms-dropdown-mega-item"><a href="features/header-04/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 04</span></a></li>
-<li id="menu-item-581" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-581 cms-dropdown-mega-item"><a href="features/header-05/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 05</span></a></li>
-<li id="menu-item-580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-580 cms-dropdown-mega-item"><a href="features/header-06/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 06</span></a></li>
-<li id="menu-item-579" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-579 cms-dropdown-mega-item"><a href="features/header-07/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 07</span></a></li>
-</ul>	</div>
-				</div>
-				</div>
-				</div>
-		<div class="elementor-element elementor-element-625337d e-con-full e-flex e-con e-child" data-id="625337d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-				<div class="elementor-element elementor-element-0a64a55 elementor-widget elementor-widget-cms_navigation_menu" data-id="0a64a55" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-				<div class="elementor-widget-container">
-						<div class="cms-emenu cms-emenu--mega">
-		<h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-			<a class="text-heading" href="#">Features List</a>
-		</h2>
-		<ul id="menu-features-list-2" class="cms-menu cms-dropdown-mega"><li id="menu-item-592" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-592 cms-dropdown-mega-item"><a href="features/collection-big-cards/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Big Cards</span></a></li>
-<li id="menu-item-591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-591 cms-dropdown-mega-item"><a href="features/collection-divided/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Divided</span></a></li>
-<li id="menu-item-590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-590 cms-dropdown-mega-item"><a href="features/collection-carousel/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Carousel</span></a></li>
-<li id="menu-item-589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-589 cms-dropdown-mega-item"><a href="features/collection-grid/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Grid</span></a></li>
-<li id="menu-item-588" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-588 cms-dropdown-mega-item"><a href="features/collection-text/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Text</span></a></li>
-<li id="menu-item-594" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-594 cms-dropdown-mega-item"><a href="features/testimonials-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Testimonials 1</span></a></li>
-<li id="menu-item-593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-593 cms-dropdown-mega-item"><a href="features/testimonials-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Testimonials 2</span></a></li>
-<li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595 cms-dropdown-mega-item"><a href="features/custom-content/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Custom content</span></a></li>
-<li id="menu-item-596" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-596 cms-dropdown-mega-item"><a href="features/lookbook/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Lookbook</span></a></li>
-</ul>	</div>
-				</div>
-				</div>
-				</div>
-		<div class="elementor-element elementor-element-6345f15 e-con-full e-flex e-con e-child" data-id="6345f15" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-				<div class="elementor-element elementor-element-47fcf4e elementor-widget elementor-widget-cms_navigation_menu" data-id="47fcf4e" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-				<div class="elementor-widget-container">
-						<div class="cms-emenu cms-emenu--mega">
-		<h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-			<a class="text-heading" href="#">Features List</a>
-		</h2>
-		<ul id="menu-features-list-3" class="cms-menu cms-dropdown-mega"><li id="menu-item-597" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-597 cms-dropdown-mega-item"><a href="features/image-cards/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Image cards</span></a></li>
-<li id="menu-item-598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-598 cms-dropdown-mega-item"><a href="features/video-banner/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Video Banner</span></a></li>
-<li id="menu-item-600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-600 cms-dropdown-mega-item"><a href="features/instagram-widget-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Instagram Widget 1</span></a></li>
-<li id="menu-item-599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-599 cms-dropdown-mega-item"><a href="features/instagram-widget-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Instagram Widget 2</span></a></li>
-<li id="menu-item-603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-603 cms-dropdown-mega-item"><a href="features/announcement-bar-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Announcement bar 1</span></a></li>
-<li id="menu-item-602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-602 cms-dropdown-mega-item"><a href="features/announcement-bar-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Announcement bar 2</span></a></li>
-<li id="menu-item-601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-601 cms-dropdown-mega-item"><a href="features/announcement-bar-3/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Announcement bar 3</span></a></li>
-<li id="menu-item-604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-604 cms-dropdown-mega-item"><a href="features/newsletter/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Newsletter</span></a></li>
-<li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605 cms-dropdown-mega-item"><a href="features/blog-posts/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Blog posts</span></a></li>
-</ul>	</div>
-				</div>
-				</div>
-				</div>
-		<div class="elementor-element elementor-element-6067a2c e-con-full e-flex e-con e-child" data-id="6067a2c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-				<div class="elementor-element elementor-element-652dfea elementor-widget elementor-widget-cms_navigation_menu" data-id="652dfea" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-				<div class="elementor-widget-container">
-						<div class="cms-emenu cms-emenu--mega">
-		<h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-			<a class="text-heading" href="#">Features List</a>
-		</h2>
-		<ul id="menu-features-list-4" class="cms-menu cms-dropdown-mega"><li id="menu-item-606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-606 cms-dropdown-mega-item"><a href="features/notification-popup/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Notification popup</span></a></li>
-<li id="menu-item-607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-607 cms-dropdown-mega-item"><a href="features/countdown-timer/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Countdown timer</span></a></li>
-<li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608 cms-dropdown-mega-item"><a href="features/product-tabs/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Product tabs</span></a></li>
-<li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609 cms-dropdown-mega-item"><a href="features/brands-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Brands list</span></a></li>
-<li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610 cms-dropdown-mega-item"><a href="features/slideshow/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Slideshow</span></a></li>
-<li id="menu-item-612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612 cms-dropdown-mega-item"><a href="features/footer-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Footer 1</span></a></li>
-<li id="menu-item-611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611 cms-dropdown-mega-item"><a href="features/footer-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Footer 2</span></a></li>
-</ul>	</div>
-				</div>
-				</div>
-				</div>
-					</div>
-				</div>
-				</div>
-		</div></li>
+
 </ul></nav> 
 
 
