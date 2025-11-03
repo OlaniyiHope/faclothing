@@ -44,7 +44,7 @@ const Header = ({ cartCount = 1 }) => {
     <div > 
 
       	<header id="cms-header-wrap" class="site-header">
-       <div id="cms-header"   className={`cms-header header-layout-3 sticky-on sticky-scrollup transparent-on header-transparent header-divider ${
+       <div id="cms-header"   className={`cms-header header-layout-3  transparent-on header-transparent header-divider ${
             scrolled ? "scrolled-header" : ""
           }`}>
              <div id="cms-header-top" class="cms-header-top header-top-default" style={{backgroundColor: "#fff"}}>		<div data-elementor-type="wp-post" data-elementor-id="142"  style={{backgroundColor: "#8b023a;"}} class="elementor elementor-142">
