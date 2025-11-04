@@ -47,7 +47,7 @@ const availableColors = [
 
         ">Refund & Return Policies</h1>			<ul class="cms-breadcrumb unstyled justify-content-center"><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/">Home</a></li><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/shop/">Shop</a></li><li><span class="breadcrumb-entry">Privacy Policies</span></li></ul>        </div>
     </div>
-    <main id="cms-main" class="cms-main container no-sidebar" style={{color: "black"}}><h2>Who we are</h2>
+    <main id="cms-main" class="cms-main container no-sidebar" style={{color: "black"}}>
 <p class="privacy-policy-tutorial">Returns is not accepted</p>
 <p class="privacy-policy-tutorial">Exchanges is accepted</p>
 
