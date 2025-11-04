@@ -46,7 +46,7 @@ const availableColors = [
 
         ">Privacy Policies</h1>			<ul class="cms-breadcrumb unstyled justify-content-center"><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/">Home</a></li><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/shop/">Shop</a></li><li><span class="breadcrumb-entry">Privacy Policies</span></li></ul>        </div>
     </div>
-    <main id="cms-main" class="cms-main container no-sidebar" ><h2>Who we are</h2>
+    <main id="cms-main" class="cms-main container no-sidebar" style={{color: "black"}} ><h2>Who we are</h2>
 <p class="privacy-policy-tutorial">In this section you should note your site URL, as well as the name of the company, organization, or individual behind it, and some accurate contact information.</p>
 <p class="privacy-policy-tutorial">The amount of information you may be required to show will vary depending on your local or national business regulations. You may, for example, be required to display a physical address, a registered address, or your company registration number.</p>
 <h2>What personal data we collect and why we collect it</h2>
