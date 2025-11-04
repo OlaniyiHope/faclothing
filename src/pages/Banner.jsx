@@ -234,7 +234,7 @@ const Banner = () => {
 				<div class="elementor-widget-container">
 					<div class="cms-eheading cms-eheading-5 text-center">
 	<div class="cms-smallheading text-heading-lighten pb-10 ls-06 empty-none"></div>
-	<h2 class="cms-heading text-28 lh-1357 ls--112 font-400 text-heading empty-none">Our collections are characterized by being fashionable at an affordable price without compromising quality, always in style and with a global outlook on latest fashion trends in all collections.</h2>
+	<h2 class="cms-heading text-28 lh-1357 ls--112 font-400 text-heading empty-none">Welcome to Fa & A Africa Print Everyday Wear. FA & A designs empowers women to embrace cultural pride and beauty with Afro-centric fashion that is modest, modern and majestic. Each piece in the store is carefully hand-patterned and made. </h2>
 </div>				</div>
 				</div>
 				<div class="elementor-element elementor-element-24a00bf elementor-invisible elementor-widget elementor-widget-egrid-products" data-id="24a00bf" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="egrid-products.default">
@@ -427,7 +427,7 @@ const Banner = () => {
 		<div class="cms-fancybox cms-fancybox-3 hover-icon-bounce cms-transition d-flex gap-30 flex-nowrap">
 			<div class="cms-icon text-heading text-48 text-heading  trevoxicon- trevox-icon-box" aria-hidden="true"></div>			<div class="flex-basic">
 				<div class="cms-title text-22 text-heading">Free Shipping </div>
-			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>A free trackable two days delivery service on all orders over $90. </p>
+			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>Free shipping when you purchase an item from $150 + within the united state. </p>
 </div>
 							</div>
 		</div>
@@ -454,7 +454,7 @@ const Banner = () => {
 		<div class="cms-fancybox cms-fancybox-3 hover-icon-bounce cms-transition d-flex gap-30 flex-nowrap">
 			<div class="cms-icon text-heading text-48 text-heading  trevoxicon- trevox-icon-exchange" aria-hidden="true"></div>			<div class="flex-basic">
 				<div class="cms-title text-22 text-heading">Exchanges & Returns </div>
-			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>You have 30 days from the shiping date to return your purchase.</p>
+			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>You have 14 days from the shipping or delivery date to return your purchase for exchange and it must be in original condition</p>
 </div>
 							</div>
 		</div>
