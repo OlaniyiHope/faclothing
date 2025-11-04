@@ -11,7 +11,7 @@ import "./style.css"
 import a5 from "./a5.jpg";
 import a3 from "./a3.jpg";
 import Featured from "./Featured";
-import DealsoftheDay from "./DealsoftheDay";
+import  "./Banner.css";
 
 // Custom Arrow Components
 const NextArrow = ({ onClick }) => (
@@ -190,10 +190,10 @@ const Banner = () => {
                             <h2 class="cms-slider-title heading text-white text-75 text-tablet-60 text-mobile-55 mt-n10 empty-none " data-cms-animation="title_animation" data-cms-animation-delay="title_animation_delay">Stunning, Joyful<br />
 & Captivating!</h2>
                             <div class="cms-slider-desc text-line-3 empty-none text-17 lh-147 text-white" data-cms-animation="description_animation" data-cms-animation-delay="description_animation_delay">Our values are upheld within high quality tailoring, fabric insight and innovative design alongside the desire for innovative and the natural beauty with a unique versatility and top of mind allowing the investment in masterpieces.</div>
-                            <div class="cms-slider-buttons d-flex gap-30 justify-content-start pt-30 empty-none">                                <a href="shop-category-list/index.html" class="cms-slider-btn btn btn-white text-primary btn-hover-accent text-hover-white " data-cms-animation="button_primary_animation" data-cms-animation-delay="button_primary_animation_delay">
+                            <div class="cms-slider-buttons d-flex gap-30 justify-content-start pt-30 empty-none" >                                <a href="shop-category-list/index.html"  style={{ backgroundColor: "#8b023a", color: "#fff" }}  class="cms-slider-btn btn btn-white text-primary btn-hover-accent text-hover-white " data-cms-animation="button_primary_animation" data-cms-animation-delay="button_primary_animation_delay">
                                     Explore Collection                                </a>
                                                                                         <a href="shop-filter-list/index.html" class="cms-slider-btn btn btn-outline-white text-white btn-hover-white text-hover-primary " data-cms-animation="button_secondary_animation" data-cms-animation-delay="button_secondary_animation_delay">
-                                    Shop Now                                </a>
+                                    Shop This                                </a>
                             </div>
                         </div>
                     </div>
@@ -207,10 +207,10 @@ const Banner = () => {
                             <h2 class="cms-slider-title heading text-white text-75 text-tablet-60 text-mobile-55 mt-n10 empty-none " data-cms-animation="title_animation" data-cms-animation-delay="title_animation_delay">An Unobtrusive<br />
 & True Beauty!</h2>
                             <div class="cms-slider-desc text-line-3 empty-none text-17 lh-147 text-white" data-cms-animation="description_animation" data-cms-animation-delay="description_animation_delay">Our values are upheld within high quality tailoring, fabric insight and innovative design alongside the desire for innovative and the natural beauty with a unique versatility and top of mind allowing the investment in masterpieces.</div>
-                            <div class="cms-slider-buttons d-flex gap-30 justify-content-start pt-30 empty-none">                                <a href="shop-category-list/index.html" class="cms-slider-btn btn btn-white text-primary btn-hover-accent text-hover-white " data-cms-animation="button_primary_animation" data-cms-animation-delay="button_primary_animation_delay">
+                            <div class="cms-slider-buttons d-flex gap-30 justify-content-start pt-30 empty-none">                                <a href="shop-category-list/index.html"  style={{ backgroundColor: "#8b023a", color: "#fff" }} class="cms-slider-btn btn btn-white text-primary btn-hover-accent text-hover-white " data-cms-animation="button_primary_animation" data-cms-animation-delay="button_primary_animation_delay">
                                     Explore Collection                                </a>
                                                                                         <a href="shop-filter-list/index.html" class="cms-slider-btn btn btn-outline-white text-white btn-hover-white text-hover-primary " data-cms-animation="button_secondary_animation" data-cms-animation-delay="button_secondary_animation_delay">
-                                    Shop Now                                </a>
+                                    Shop This                                </a>
                             </div>
                         </div>
                     </div>
@@ -542,23 +542,23 @@ const Banner = () => {
 				<div class="elementor-widget-container">
 					<div class="cms-swiper-container swiper-container cms-text-scroll text-primary text- text-95 text-tablet-80 text-smobile-40 cms-heading">
 	<div class="cms-swiper-wrapper swiper-wrapper">
-					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30">
-				<div class="text empty-none">Daring</div>
+					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30" style={{color: "#8b023a"}}>
+				<div class="text empty-none" style={{color: "#8b023a"}}>Daring</div>
 				<div class="banner"><img loading="lazy" decoding="async" width="106" height="106" src="wp-content/uploads/daring.png" class="cms-lazy lazy-loading" alt=""  data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/daring.png 106w, https://7oroofthemes.com/trevox/wp-content/uploads/daring-12x12.png 12w" sizes="auto, (max-width: 106px) 100vw, 106px" /></div>			</div>
-					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30">
-				<div class="text empty-none">Charming</div>
+					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30" style={{color: "#8b023a"}}>
+				<div class="text empty-none" style={{color: "#8b023a"}}>Charming</div>
 				<div class="banner"><img loading="lazy" decoding="async" width="160" height="106" src="wp-content/uploads/charming.webp" class="cms-lazy lazy-loading" alt=""  data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/charming.webp 160w, https://7oroofthemes.com/trevox/wp-content/uploads/charming-18x12.webp 18w" sizes="auto, (max-width: 160px) 100vw, 160px" /></div>			</div>
-					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30">
-				<div class="text empty-none">Vibrant</div>
+					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30" style={{color: "#8b023a"}}>
+				<div class="text empty-none" style={{color: "#8b023a"}}>Vibrant</div>
 				<div class="banner"><img loading="lazy" decoding="async" width="106" height="106" src="wp-content/uploads/Vibrant.webp" class="cms-lazy lazy-loading" alt=""  data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/Vibrant.webp 106w, https://7oroofthemes.com/trevox/wp-content/uploads/Vibrant-12x12.webp 12w" sizes="auto, (max-width: 106px) 100vw, 106px" /></div>			</div>
-					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30">
-				<div class="text empty-none">Captivating</div>
+					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30" style={{color: "#8b023a"}}>
+				<div class="text empty-none" style={{color: "#8b023a"}}>Captivating</div>
 				<div class="banner"><img loading="lazy" decoding="async" width="106" height="106" src="wp-content/uploads/banner-11.webp" class="cms-lazy lazy-loading" alt=""  data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/banner-11.webp 106w, https://7oroofthemes.com/trevox/wp-content/uploads/banner-11-12x12.webp 12w" sizes="auto, (max-width: 106px) 100vw, 106px" /></div>			</div>
-					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30">
-				<div class="text empty-none">Serene</div>
+					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30" style={{color: "#8b023a"}}>
+				<div class="text empty-none" style={{color: "#8b023a"}}>Serene</div>
 				<div class="banner"><img loading="lazy" decoding="async" width="160" height="106" src="wp-content/uploads/banner-12.webp" class="cms-lazy lazy-loading" alt=""  data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/banner-12.webp 160w, https://7oroofthemes.com/trevox/wp-content/uploads/banner-12-18x12.webp 18w" sizes="auto, (max-width: 160px) 100vw, 160px" /></div>			</div>
-					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30">
-				<div class="text empty-none">Stunning</div>
+					<div class="cms-swiper-slide swiper-slide d-flex gap-40 pr-30" style={{color: "#8b023a"}}>
+				<div class="text empty-none" style={{color: "#8b023a"}}>Stunning</div>
 				<div class="banner"><img loading="lazy" decoding="async" width="106" height="106" src="wp-content/uploads/banner-13.webp" class="cms-lazy lazy-loading" alt=""  data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/banner-13.webp 106w, https://7oroofthemes.com/trevox/wp-content/uploads/banner-13-12x12.webp 12w" sizes="auto, (max-width: 106px) 100vw, 106px" /></div>			</div>
 			</div>
 </div>				</div>
@@ -688,16 +688,16 @@ const Banner = () => {
   }}  data-as-background="yes"><img loading="lazy" decoding="async" width="930" height="720" src="wp-content/uploads/elementor/thumbs/banner-1-1-qyz0f11q6g0fx4dze4brfkkpgnm5s65j9l4q68y3z4.jpg" class="as-bg-fix cms-lazy" alt="banner-1-1"  /></div></div>		<div class="content flex-auto pt-90 pt-laptop-30 pt-tablet-extra-0 pb-tablet-30">
 			<h2 class="cms-heading empty-none text-heading text-55 lh-1182">An Unobtrusive, Innovative With A True Beauty!</h2>
 			<div class="cms-desc pt-20 empty-none text-body">We believe in creating unique products, so we use finest materials and stunning design to create special items.</div>
-			<a class="btn btn-outline-primary text-primary btn-hover-primary text-hover-white mt-30 empty-none" href="about-us/index.html">Learn More</a>
+			<a class="btn btn-outline-primary text-primary btn-hover-primary text-hover-white mt-30 empty-none" href="about-us/index.html" style={{backgroundColor: "#fff", color: "#8b023a"}}>Learn More</a>
 		</div>
 	</div>
 	<div class="cms-swiper-container swiper-container text-primary text- text-95 text-tablet-80 text-smobile-40 cms-heading">
 		<div class="cms-swiper-wrapper swiper-wrapper">
-							<div class="cms-swiper-slide swiper-slide d-flex gap-40">
-					<div class="text empty-none">Fashion Can Be Bought. </div>
+							<div class="cms-swiper-slide swiper-slide d-flex gap-40" style={{color: "#8b023a"}}>
+					<div class="text empty-none" style={{color: "#8b023a"}}>Fashion Can Be Bought. </div>
 									</div>
-							<div class="cms-swiper-slide swiper-slide d-flex gap-40">
-					<div class="text empty-none">Style One Must Possess!! </div>
+							<div class="cms-swiper-slide swiper-slide d-flex gap-40" style={{color: "#8b023a"}}>
+					<div class="text empty-none" style={{color: "#8b023a"}}>Style One Must Possess!! </div>
 									</div>
 					</div>
 	</div>

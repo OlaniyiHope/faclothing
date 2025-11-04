@@ -1,4 +1,4 @@
-
+/* 
     *, *::before, *::after {
   box-sizing: border-box; }
   .legacy-trustbuilding {
@@ -26,7 +26,7 @@
     border: none;
     border-bottom: 1px solid #e5e7ea;
   }
-  /* last item gets no border */
+
   .legacy-trustbuilding--body-item:last-of-type {
       border-bottom: none;
   }
@@ -45,12 +45,12 @@
         flex: 0 0 33%;
         padding: 2.5rem;
     }
-    /* border reset when flexed from column to row */
+  
     .legacy-trustbuilding--body-item {
         border: none;
         border-right: 1px solid  #e5e7ea;
     }
-    /* last item gets no border */
+
     .legacy-trustbuilding--body-item:last-of-type {
         border-right: none;
     }
@@ -84,4 +84,9 @@
   padding-right: 16px;
   padding-left: 16px;
   flex: 0 0 100%;
-  max-width: 100%; }
+  max-width: 100%; } */
+
+  .cms-ttmn-quote.trevox-icon-quotes {
+  color: #8b023a !important;  /* changes the icon color */
+  fill: #8b023a !important;   /* covers SVG-based icons */
+}
