@@ -90,3 +90,6 @@
   color: #8b023a !important;  /* changes the icon color */
   fill: #8b023a !important;   /* covers SVG-based icons */
 }
+.cms-ribbon-1 {
+  background-color: #8b023a !important;
+}
