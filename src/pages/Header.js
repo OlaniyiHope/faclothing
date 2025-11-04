@@ -54,9 +54,10 @@ useEffect(() => {
 					<div class="cms-headlines cms-headlines-1 text-center">
     <div class="cms-carousel swiper">
         <div class="swiper-wrapper"> 
-                            <div class="swiper-slide headline-item text-white text-hover-white">Free shipping on US orders $100+ &amp; Free exchanges</div>
+                            <div class="swiper-slide headline-item text-white text-hover-white">Free shipping on US orders $150+ &amp; Free exchange</div>
                             <div class="swiper-slide headline-item text-white text-hover-white"  style={{backgroundColor: "#8b023a"}}>Delivery time 2-3 working days</div>
                             <div class="swiper-slide headline-item text-white text-hover-white">Free exchanges &amp; free returns</div>
+                            <div class="swiper-slide headline-item text-white text-hover-white">Buy Now &amp; Pay Later</div>
                     </div>
     </div>
             <div class="cms-carousel-button-prev prev cms-carousel-button in arrow-icon hover ">

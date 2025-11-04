@@ -435,8 +435,8 @@ const Banner = () => {
 		<div class="fancy-box-item relative">
 		<div class="cms-fancybox cms-fancybox-3 hover-icon-bounce cms-transition d-flex gap-30 flex-nowrap">
 			<div class="cms-icon text-heading text-48 text-heading  trevoxicon- trevox-icon-transaction" aria-hidden="true"></div>			<div class="flex-basic">
-				<div class="cms-title text-22 text-heading">Money Back Guarantee</div>
-			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>We offer customers 100% money back guarantee on everything.</p>
+				<div class="cms-title text-22 text-heading">Buy Now Pay Later</div>
+			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>We offer customers the opportunity to buy now and pay later, pay 4 times or 3 times etc</p>
 </div>
 							</div>
 		</div>
@@ -445,7 +445,7 @@ const Banner = () => {
 		<div class="cms-fancybox cms-fancybox-3 hover-icon-bounce cms-transition d-flex gap-30 flex-nowrap">
 			<div class="cms-icon text-heading text-48 text-heading  trevoxicon- trevox-icon-cash" aria-hidden="true"></div>			<div class="flex-basic">
 				<div class="cms-title text-22 text-heading">Flexible Payment</div>
-			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>All orders placed before Sunday to Friday are dispatched same day.</p>
+			  <div class="cms-desc text-body lh-1-533 text-15 pt-5 mb-n10 empty-none"><p>We accept different payments method, paypal, stripe etc, our payment method is flexible.</p>
 </div>
 							</div>
 		</div>
