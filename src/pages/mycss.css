@@ -1,43 +1,113 @@
-/* Force hamburger (mobile menu) lines to black */
-.btn-nav-mobile span,
-.btn-nav-mobile span::before,
-.btn-nav-mobile span::after {
-  background-color: #000 !important; /* force black lines */
-}
-
-/* Optional: make sure the icon color also changes */
-#main-menu-mobile .btn-nav-mobile {
-  color: #000 !important;
-  fill: #000 !important;
-}
-.btn-nav-mobile span,
-.btn-nav-mobile span::before,
-.btn-nav-mobile span::after {
-  background-color: #000 !important;
-}
-[class*="btn-nav-mobile"] span,
-[class*="btn-nav-mobile"] span::before,
-[class*="btn-nav-mobile"] span::after {
-  background-color: #000 !important;
-}
-
-
+/* =======================================
+   GENERAL HEADER TRANSITION
+   ======================================= */
 #cms-header {
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, color 0.3s ease;
 }
 
+/* Header when scrolled (desktop + mobile) */
 #cms-header.scrolled-header {
   background-color: #ffffff !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999 !important;
 }
 
-/* Force ALL hamburger lines to white */
-header .btn-nav-mobile span,
-header .btn-nav-mobile span::before,
-header .btn-nav-mobile span::after {
-  background-color: #fff !important;
+/* =======================================
+   TRANSPARENT STATE (TOP OF HOME PAGE)
+   ======================================= */
+.header-transparent,
+.transparent-on {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
-/* Nuclear override (works 100%) */
-header #main-menu-mobile .btn-nav-mobile.open-menu > span {
+
+/* =======================================
+   ICONS (DESKTOP + MOBILE)
+   ======================================= */
+
+/* Default (before scroll): white icons for transparent header */
+.site-header .header-icon,
+.site-header .cms-wishlist .wishlist-icon,
+.site-header .cart-icon,
+.site-header .trevox-icon-user,
+.site-header .trevox-icon-search1 {
+  color: #fff !important;
+  fill: #fff !important;
+  transition: color 0.3s ease, fill 0.3s ease;
+}
+
+/* On scroll: black icons for visibility on white background */
+#cms-header.scrolled-header .header-icon,
+#cms-header.scrolled-header .cms-wishlist .wishlist-icon,
+#cms-header.scrolled-header .cart-icon,
+#cms-header.scrolled-header .trevox-icon-user,
+#cms-header.scrolled-header .trevox-icon-search1 {
+  color: #000 !important;
+  fill: #000 !important;
+}
+
+/* =======================================
+   LOGO TEXT COLOR
+   ======================================= */
+.site-logo h4 {
+  color: #fff !important;
+  transition: color 0.3s ease;
+}
+#cms-header.scrolled-header .site-logo h4 {
+  color: #000 !important;
+}
+
+/* =======================================
+   HAMBURGER MENU LINES
+   ======================================= */
+
+/* Default (transparent header): white lines */
+.btn-nav-mobile span,
+.btn-nav-mobile span::before,
+.btn-nav-mobile span::after {
   background-color: #fff !important;
+  transition: background-color 0.3s ease;
+}
+
+/* On scroll: black lines for visibility */
+#cms-header.scrolled-header .btn-nav-mobile span,
+#cms-header.scrolled-header .btn-nav-mobile span::before,
+#cms-header.scrolled-header .btn-nav-mobile span::after {
+  background-color: #000 !important;
+}
+
+/* =======================================
+   ABSOLUTE OVERRIDE — FORCE DESKTOP WHITE HEADER ON SCROLL
+   ======================================= */
+@media (min-width: 992px) {
+  body.home #cms-header.scrolled-header,
+  body.home header.site-header #cms-header.scrolled-header,
+  body.home .cms-header.header-layout-3.scrolled-header,
+  body.home #cms-header.scrolled-header.header-transparent,
+  body.home #cms-header.scrolled-header.transparent-on,
+  body.home .site-header #cms-header.scrolled-header {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+  }
+}
+
+
+
+/* =======================================
+   SAFETY RESET FOR STRANGE OVERLAYS
+   ======================================= */
+#cms-header.scrolled-header::before,
+#cms-header.scrolled-header::after {
+  background: none !important;
+  opacity: 1 !important;
+}
+/* Kill any transparent overlay or mask */
+#cms-header.scrolled-header::before,
+#cms-header.scrolled-header::after {
+  content: none !important;
+  background: none !important;
+  opacity: 1 !important;
+  display: none !important;
 }

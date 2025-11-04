@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Header2 from "./Header2";
 import Footer from "./Footer";
+import Header from "./Header";
 
 
 const Policy = () => {
@@ -37,7 +38,7 @@ const availableColors = [
 
   return (
     <div style={{backgroundColor: "white"}}>
-  <Header2 />
+  <Header />
 
 <div id="cms-ptitle" class="cms-ptitle text-center" data-stellar-background-ratio="0.5">
 		<div class="container-fluid relative z-top">
