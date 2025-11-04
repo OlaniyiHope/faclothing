@@ -78,7 +78,7 @@ const Header = ({ cartCount = 1 }) => {
 
 
         <div class="site-branding flex-basic d-flex justify-content-start">
-              <a class="site-logo" href="index.html" title="Trevox" rel="home">
+              <a class="site-logo" href="/" title="Trevox" rel="home">
                 
                 {/* <img width="83" height="19" alt="Trevox" src="wp-content/themes/trevox/assets/images/logo/logo-light.png" data-mobile="https://7oroofthemes.com/trevox/wp-content/themes/trevox/assets/images/logo/logo-light-mobile.png" data-sticky="https://7oroofthemes.com/trevox/wp-content/themes/trevox/assets/images/logo/logo.png" data-sticky-mobile="https://7oroofthemes.com/trevox/wp-content/themes/trevox/assets/images/logo/logo-mobile.png" />
                  */}
@@ -88,7 +88,7 @@ const Header = ({ cartCount = 1 }) => {
               
                 <nav class="site-navigation site-navigation-dropdown justify-content-center flex-auto d-flex"><ul id="mastmenu" class="cms-primary-menu cms-primary-menu-dropdown"><li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-49">
               
-              <a href="index.html" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home</span><span class="main-menu-toggle"></span></a>
+              <a href="/" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home</span><span class="main-menu-toggle"></span></a>
 
 </li>
 <li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page megamenu menu-item-has-children megamenu-full menu-item-197"><a href="shop/index.html" class="cms-menu-link"><span class="menu-title title">Shop</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="613" class="elementor elementor-613">
