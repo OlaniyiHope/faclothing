@@ -103,21 +103,19 @@ const { id } = useParams();
   const [open, setOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
-   
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
+    const [selectedCategory, setSelectedCategory] = useState("all");
   const [brands, setBrands] = useState([]);
-  const settings = {
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   autoplay: true,
+  //   autoplaySpeed: 4000,
+  //   speed: 800,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   nextArrow: <NextArrow />,
+  //   prevArrow: <PrevArrow />,
+  // };
 //   const settings = {
 //   dots: true,
 //   infinite: true,
@@ -129,6 +127,33 @@ const { id } = useParams();
 //   nextArrow: <TestArrow />,
 //   prevArrow: <TestArrow />,
 // };
+const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    prevArrow: (
+      <div className="cms-slider-button-arrow cms-carousel-button-prev">
+        <i className="cmsi-arrow-prev rtl-flip"></i>
+        <span className="arrow-text-prev">Prev</span>
+      </div>
+    ),
+    nextArrow: (
+      <div className="cms-slider-button-arrow cms-carousel-button-next">
+        <span className="arrow-text-next">Next</span>
+        <i className="cmsi-arrow-next rtl-flip"></i>
+      </div>
+    ),
+    appendDots: dots => (
+      <div className="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-in justify-content-center text-white cms-carousel-dots-white cms-carousel-dots-active-white">
+        <ul>{dots}</ul>
+      </div>
+    ),
+  };
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -145,8 +170,8 @@ const { id } = useParams();
   }, []);
 
   // Render submenu
-// Only keep children that are categories (ignore products)
-
+// Only keep children that are categories (ignore products).   
+ 
  const fetchBrands = async () => {
     try {
       const res = await axios.get( `${process.env.REACT_APP_API_URL}/api/db/brands`);
@@ -176,23 +201,7 @@ const { id } = useParams();
     fetchFeatured();
   }, []);
 
-// useEffect(() => {
-//   const fetchProducts = async () => {
-//     try {
-//       const { data } = await axios.get(
-//         `${process.env.REACT_APP_API_URL}/api/db/products/category/${id}`
-//       );
-//       setProducts(data);
-//     } catch (err) {
-//       console.error("Failed to fetch products:", err);
-//     }
-//   };
-
-//   fetchProducts();
-// }, [id]);
-
-  // Fetch products based on selected category
-  useEffect(() => {
+useEffect(() => {
     const fetchProducts = async () => {
       try {
         const url =
@@ -207,6 +216,8 @@ const { id } = useParams();
     };
     fetchProducts();
   }, [selectedCategory]);
+
+
 
 
 
@@ -230,13 +241,35 @@ const { id } = useParams();
     // You can replace with real logic, e.g.:
     // dispatch(addToCart(product));
   };
+    const [bestSellers, setBestSellers] = useState([]);
+
+  useEffect(() => {
+    const fetchBestSellers = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/db/products/best-sellers`
+        );
+        setBestSellers(res.data);
+      } catch (err) {
+        console.error("Error fetching best sellers:", err);
+      }
+    };
+    fetchBestSellers();
+  }, []);
+
+  // if (!bestSellers || bestSellers.length === 0) {
+  //   return <p>Loading best sellers...</p>;
+  // }
+
   return (
     <>
 <main id="cms-main" class="cms-main is-elementor" style={{backgroundColor: "white"}}>		<div data-elementor-type="wp-page" data-elementor-id="46" class="elementor elementor-46">
 				<div class="elementor-element elementor-element-7c32a94 e-con-full-no-space e-flex e-con e-parent" data-id="7c32a94" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full-no-space&quot;}">
 				<div class="elementor-element elementor-element-42cbe44 cms-eslider-header-transparent-yes cms-eslider-overlay-1 elementor-widget elementor-widget-cms_slider" data-id="42cbe44" data-element_type="widget" data-settings="{&quot;dots_type&quot;:&quot;circle&quot;,&quot;subtitle_animation&quot;:&quot;fadeInLeft&quot;,&quot;subtitle_animation_delay&quot;:500,&quot;title_animation&quot;:&quot;fadeInLeft&quot;,&quot;title_animation_delay&quot;:600,&quot;description_animation&quot;:&quot;fadeInLeft&quot;,&quot;description_animation_delay&quot;:700,&quot;button_primary_animation&quot;:&quot;fadeInLeft&quot;,&quot;button_primary_animation_delay&quot;:800,&quot;button_secondary_animation&quot;:&quot;fadeInLeft&quot;,&quot;button_secondary_animation_delay&quot;:900,&quot;button_video_animation&quot;:&quot;fadeInLeft&quot;,&quot;button_video_animation_delay&quot;:1000,&quot;product_animation&quot;:&quot;fadeInRight&quot;,&quot;product_animation_delay&quot;:1000,&quot;slides_to_show&quot;:&quot;1&quot;,&quot;slides_to_show_tablet&quot;:&quot;1&quot;,&quot;slides_to_show_mobile&quot;:&quot;1&quot;,&quot;arrows&quot;:&quot;yes&quot;,&quot;dots&quot;:&quot;yes&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;effect&quot;:&quot;slide&quot;,&quot;speed&quot;:500}" data-widget_type="cms_slider.default">
 				<div class="elementor-widget-container">
-					<div class="cms-eslider cms-eslider-2 cms-carousel swiper">
+
+
+					{/* <div class="cms-eslider cms-eslider-2 cms-carousel swiper">
     <div class="swiper-wrapper">
                     <div class="cms-slider-item swiper-slide relative ">
                 <img loading="lazy" decoding="async" width="1600" height="927" src="wp-content/uploads/2024/03/slider-2.webp" class="cms-lazy lazy-loading cms-slider-img img-cover" alt="" data-duration="" srcset="https://7oroofthemes.com/trevox/wp-content/uploads/2024/03/slider-2.webp 1600w, https://7oroofthemes.com/trevox/wp-content/uploads/2024/03/slider-2-1536x890.webp 1536w, https://7oroofthemes.com/trevox/wp-content/uploads/2024/03/slider-2-18x10.webp 18w" sizes="auto, (max-width: 1600px) 100vw, 1600px" />                <div class="cms-slider-content cms-overlay d-flex align-items-center">
@@ -282,7 +315,91 @@ const { id } = useParams();
             <i class="cmsi-arrow-next rtl-flip"></i>
         </div>
                 <div class="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-in justify-content-center text-white cms-carousel-dots-white cms-carousel-dots-active-white"></div>
-    </div>				</div>
+    </div>			 */}
+    
+    <div className="cms-eslider cms-eslider-2 cms-carousel">
+      <Slider {...settings}>
+        {bestSellers.length > 0 ? (
+          bestSellers.map((product, index) => (
+            <div key={product._id} className="cms-slider-item swiper-slide relative">
+              {/* ✅ Match old height & layout */}
+              <div
+                className="cms-slider-img-wrapper"
+                style={{
+                  position: "relative",
+                  width: "100%",
+            height: "90vh",             /* matches original look */
+  maxHeight: "950px" ,       /* similar to the 1600x927 ratio */
+  overflow: "hidden"
+                }}
+              >
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={product.images?.[0] || "https://via.placeholder.com/1600x900"}
+                  alt={product.name}
+                  className="cms-lazy lazy-loading cms-slider-img img-cover"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
+              </div>
+
+              {/* ✅ Keep same content structure */}
+              <div className="cms-slider-content cms-overlay d-flex align-items-center">
+                <div className="container d-flex justify-content-start text-start">
+                  <div className="cms-slider--content">
+                    <div
+                      className="cms-slider-subtitle text-white text-line-3 mt-n8 mb-25"
+                      data-cms-animation="subtitle_animation"
+                    >
+                      🔥 Best Seller #{index + 1}
+                    </div>
+
+                    <h2
+                      className="cms-slider-title heading text-white text-75 text-tablet-60 text-mobile-55 mt-n10"
+                      data-cms-animation="title_animation"
+                    >
+                      {product.name}
+                    </h2>
+
+                    <div
+                      className="cms-slider-desc text-17 lh-147 text-white"
+                      data-cms-animation="description_animation"
+                    >
+                      {product.shortDescription ||
+                        "A top-selling product loved by our customers."}
+                    </div>
+
+                    <div className="cms-slider-buttons d-flex gap-30 justify-content-start pt-30">
+                      <a
+                        href={`/product/${product._id}`}
+                        className="cms-slider-btn btn btn-white text-primary btn-hover-accent text-hover-white"
+                        style={{ backgroundColor: "#8b023a", color: "#fff" }}
+                      >
+                        View Product
+                      </a>
+                      <a
+                        href="/shop"
+                        className="cms-slider-btn btn btn-outline-white text-white btn-hover-white text-hover-primary"
+                      >
+                        Shop Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="text-center text-white py-10">Loading best sellers...</div>
+        )}
+      </Slider>
+    </div>
+    	</div>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-670981e pt-80 pt-tablet-30 e-con-boxed-wide e-flex e-con e-parent" data-id="670981e" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed-wide&quot;}">
@@ -333,6 +450,7 @@ const { id } = useParams();
                   {cat.icon} {cat.name}
                 </button>
               </li>
+
   ))}
 </ul>
 
