@@ -814,7 +814,7 @@ useEffect(() => {
 				</div>
 					</div>
 				</div>
-		<div class="elementor-element elementor-element-b49a0aa e-con-boxed-wide e-flex e-con e-parent" data-id="b49a0aa" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed-wide&quot;}">
+		{/* <div class="elementor-element elementor-element-b49a0aa e-con-boxed-wide e-flex e-con e-parent" data-id="b49a0aa" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed-wide&quot;}">
 		<div class="elementor-element elementor-element-9764b6d e-con-full e-flex elementor-invisible e-con e-child" data-id="9764b6d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;fadeInLeft&quot;}">
 				<div class="elementor-element elementor-element-1db42ed elementor-widget elementor-widget-cms_taxonomies" data-id="1db42ed" data-element_type="widget" data-widget_type="cms_taxonomies.default">
 				<div class="elementor-widget-container">
@@ -885,7 +885,7 @@ useEffect(() => {
 			</div></div>	</div>				</div>
 				</div>
 				</div>
-				</div>
+				</div> */}
 		<div class="elementor-element elementor-element-b0b142d pt-50 pb-70 pt-tablet-0 pb-tablet-20 bdr-b-1 e-flex e-con-boxed e-con e-parent" data-id="b0b142d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-e575248 text-uppercase elementor-invisible elementor-widget elementor-widget-cms_text_scroll" data-id="e575248" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;}" data-widget_type="cms_text_scroll.default">
