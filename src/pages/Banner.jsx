@@ -154,7 +154,33 @@ const settings = {
       </div>
     ),
   };
-
+const settingss = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    prevArrow: (
+      <div className="cms-slider-button-arrow cms-carousel-button-prev">
+        <i className="cmsi-arrow-prev rtl-flip"></i>
+        <span className="arrow-text-prev">Prev</span>
+      </div>
+    ),
+    nextArrow: (
+      <div className="cms-slider-button-arrow cms-carousel-button-next">
+        <span className="arrow-text-next">Next</span>
+        <i className="cmsi-arrow-next rtl-flip"></i>
+      </div>
+    ),
+    appendDots: dots => (
+      <div className="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-in justify-content-center text-white cms-carousel-dots-white cms-carousel-dots-active-white">
+        <ul>{dots}</ul>
+      </div>
+    ),
+  };
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -243,19 +269,33 @@ useEffect(() => {
   };
     const [bestSellers, setBestSellers] = useState([]);
 
-  useEffect(() => {
-    const fetchBestSellers = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/db/products/best-sellers`
-        );
-        setBestSellers(res.data);
-      } catch (err) {
-        console.error("Error fetching best sellers:", err);
-      }
-    };
-    fetchBestSellers();
-  }, []);
+  // useEffect(() => {
+  //   const fetchBestSellers = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `${process.env.REACT_APP_API_URL}/api/db/products/best-sellers`
+  //       );
+  //       setBestSellers(res.data);
+  //     } catch (err) {
+  //       console.error("Error fetching best sellers:", err);
+  //     }
+  //   };
+  //   fetchBestSellers();
+  // }, []);
+useEffect(() => {
+  const fetchBestSellers = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/db/products/best-sellers`
+      );
+      console.log("✅ BEST SELLER DATA:", res.data);
+      setBestSellers(res.data);
+    } catch (err) {
+      console.error("❌ Error fetching best sellers:", err);
+    }
+  };
+  fetchBestSellers();
+}, []);
 
   // if (!bestSellers || bestSellers.length === 0) {
   //   return <p>Loading best sellers...</p>;
@@ -878,7 +918,12 @@ useEffect(() => {
 		<div class="elementor-element elementor-element-dfad287 e-con-boxed-wide p-tb-100 p-tb-tablet-30 e-flex e-con e-parent" data-id="dfad287" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed-wide&quot;}">
 				<div class="elementor-element elementor-element-bb1a9aa cms-swiper-full-end-large cms-carousel-item-shadow-yes elementor-invisible elementor-widget elementor-widget-cms_products_carousel" data-id="bb1a9aa" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;5&quot;,&quot;slides_to_scroll&quot;:&quot;3&quot;,&quot;space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.01000000000000000020816681711721685132943093776702880859375,&quot;sizes&quot;:[]},&quot;slides_to_show_laptop&quot;:&quot;4&quot;,&quot;slides_to_show_tablet_extra&quot;:&quot;3&quot;,&quot;slides_to_show_tablet&quot;:&quot;2&quot;,&quot;slides_to_show_mobile_extra&quot;:&quot;2&quot;,&quot;slides_to_show_mobile&quot;:&quot;1&quot;,&quot;slides_to_scroll_laptop&quot;:&quot;4&quot;,&quot;slides_to_scroll_tablet_extra&quot;:&quot;3&quot;,&quot;slides_to_scroll_tablet&quot;:&quot;2&quot;,&quot;slides_to_scroll_mobile_extra&quot;:&quot;2&quot;,&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;space_between_laptop&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;dots&quot;:&quot;yes&quot;,&quot;dots_type&quot;:&quot;circle&quot;}" data-widget_type="cms_products_carousel.default">
 				<div class="elementor-widget-container">
-					<div id="cms_products_carousel-bb1a9aa" class="cms-eproducts-carousel cms-eproducts-carousel-1 cms-eproducts-1">
+
+
+
+
+
+					{/* <div id="cms_products_carousel-bb1a9aa" class="cms-eproducts-carousel cms-eproducts-carousel-1 cms-eproducts-1">
     <div class="d-flex gap-40 justify-content-between pb-40">
         <div class="cms-eproducts-heading text-start">
             <div class="cms-smallheading text-heading text-17 font-700 pb-10 mt-n7 empty-none"></div>
@@ -983,7 +1028,107 @@ useEffect(() => {
                         </div>
                                 <div class="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-primary-regular cms-carousel-dots-active-accent-regular justify-content-center "></div>
         </div>
-</div>				</div>
+</div>		 */}
+
+<div
+      id="cms_products_carousel-bb1a9aa"
+      className="cms-eproducts-carousel cms-eproducts-carousel-1 cms-eproducts-1"
+    >
+      {/* Header */}
+      <div className="d-flex gap-40 justify-content-between pb-40">
+        <div className="cms-eproducts-heading text-start">
+          <h2 className="cms-heading empty-none text-45 lh-1222 text-heading mb-n10">
+            Best Sellers
+          </h2>
+        </div>
+
+        <div className="d-flex gap-40 align-items-center align-self-end">
+          <div className="cms-eproducts-button text-start">
+            <a className="cms-link cms-hover-underline2" href="/shop">
+              Shop All
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Carousel */}
+      <div className="cms-eproducts-content">
+        <div className="cms-carousel swiper">
+          <Slider {...settingss}>
+            {bestSellers.length > 0 ? (
+              bestSellers.map((product) => (
+                <div
+                  key={product._id}
+                  className=" swiper-slide hover-second-img cms-product-1"
+                >
+                  <div className="cms-products-content relative">
+                    {/* Product image section */}
+                    <div className="cms-products-loop-thumbs relative">
+                      <div className="wpcbm-wrapper">
+                        <img
+                          src={
+                            product.images?.[0] ||
+                            "https://via.placeholder.com/400x524"
+                          }
+
+                          
+                          alt={product.name}
+                          // className="cms-second-image cms-transition"
+                          width="400"
+                          height="524"
+                        />
+                      </div>
+
+                      <a
+                        href={`/product/${product._id}`}
+                        // className="cms-overlay"
+                      ></a>
+
+                      {/* Optional icons/buttons can go here */}
+                    </div>
+
+                    {/* Product info */}
+                    <h2 className="cms-loop-title text-18 pt-20 pb-3">
+                      <a href={`/product/${product._id}`}>{product.name}</a>
+                    </h2>
+
+                    <span className="price">
+                      {product.oldPrice && (
+                        <del>
+                          <span className="woocommerce-Price-amount amount">
+                            <bdi>
+                              {product.oldPrice}
+                              <span className="woocommerce-Price-currencySymbol">
+                                $
+                              </span>
+                            </bdi>
+                          </span>
+                        </del>
+                      )}
+                      <ins>
+                        <span className="woocommerce-Price-amount amount">
+                          <bdi>
+                            {product.price}
+                            <span className="woocommerce-Price-currencySymbol">
+                              $
+                            </span>
+                          </bdi>
+                        </span>
+                      </ins>
+                    </span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-10 text-muted">
+                Loading best sellers...
+              </div>
+            )}
+          </Slider>
+        </div>
+      </div>
+    </div>
+		</div>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-1462b1a e-con-full-space-end e-flex elementor-invisible e-con e-parent" data-id="1462b1a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full-space-end&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;}">
