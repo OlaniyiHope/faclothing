@@ -99,7 +99,7 @@ useEffect(() => {
   </a>
 </li>
 
-<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page megamenu menu-item-has-children megamenu-full menu-item-197"><a href="shop/index.html" class="cms-menu-link"><span class="menu-title title">Shop</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="613" class="elementor elementor-613">
+{/* <li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page megamenu menu-item-has-children megamenu-full menu-item-197"><a href="shop/index.html" class="cms-menu-link"><span class="menu-title title">Shop</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="613" class="elementor elementor-613">
 				<div class="elementor-element elementor-element-878effc e-flex e-con-boxed e-con e-parent" data-id="878effc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
 					<div class="e-con-inner">
 		<div class="elementor-element elementor-element-e331b00 e-con-full e-flex e-con e-child" data-id="e331b00" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
@@ -178,7 +178,30 @@ useEffect(() => {
 					</div>
 				</div>
 				</div>
-		</div></li>
+		</div></li> */}
+<li id="menu-item-197" className="menu-item menu-item-type-post_type menu-item-object-page megamenu menu-item-has-children megamenu-full menu-item-197">
+  <a href="#" className="cms-menu-link">
+    <span className="menu-title title">Shop</span>
+    <span className="main-menu-toggle"></span>
+  </a>
+
+  <div className="sub-menu sub-megamenu cms-megamenu-full">
+    <div className="cms-emenu cms-emenu--mega">
+    
+      <ul id="menu-shop-categories" className="cms-menu cms-dropdown-mega">
+        {categories.map((cat) => (
+          <li key={cat._id} className="menu-item cms-dropdown-mega-item">
+            <a href={`/category/${cat._id}`} className="cms-menu-link text-link text-hover-link">
+              <span className="menu-title title">
+                {cat.icon ? `${cat.icon} ` : ""}{cat.name}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</li>
 
 
      <li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item">
