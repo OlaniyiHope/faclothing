@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 import axios from "axios";
-
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";import Popular from "./Policy";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -99,10 +99,13 @@ const TestArrow = ({ onClick }) => (
   </div>
 );
 const Banner = () => {
-
+const { id } = useParams();
   const [open, setOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
+   
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
   const [brands, setBrands] = useState([]);
   const settings = {
     dots: true,
@@ -173,7 +176,60 @@ const Banner = () => {
     fetchFeatured();
   }, []);
 
+// useEffect(() => {
+//   const fetchProducts = async () => {
+//     try {
+//       const { data } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/products/category/${id}`
+//       );
+//       setProducts(data);
+//     } catch (err) {
+//       console.error("Failed to fetch products:", err);
+//     }
+//   };
 
+//   fetchProducts();
+// }, [id]);
+
+  // Fetch products based on selected category
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const url =
+          selectedCategory === "all"
+            ? `${process.env.REACT_APP_API_URL}/api/db/products`
+            : `${process.env.REACT_APP_API_URL}/api/db/products/category/${selectedCategory}`;
+        const res = await axios.get(url);
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+    fetchProducts();
+  }, [selectedCategory]);
+
+
+
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/db/brands`
+        );
+        setBrands(res.data); // ✅ API should return [{ _id, name, image }]
+      } catch (error) {
+        console.error("Failed to fetch brands:", error);
+      }
+    };
+
+    fetchBrands();
+  }, []);
+
+  const handleAddToCart = (product) => {
+    console.log("Added to cart:", product);
+    // You can replace with real logic, e.g.:
+    // dispatch(addToCart(product));
+  };
   return (
     <>
 <main id="cms-main" class="cms-main is-elementor" style={{backgroundColor: "white"}}>		<div data-elementor-type="wp-page" data-elementor-id="46" class="elementor elementor-46">
@@ -240,26 +296,46 @@ const Banner = () => {
 				<div class="elementor-element elementor-element-24a00bf elementor-invisible elementor-widget elementor-widget-egrid-products" data-id="24a00bf" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="egrid-products.default">
 				<div class="elementor-widget-container">
 					<div class="egrid-products-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-<div class="row"><div class="egrid-products-content flex-basic flex-smobile-100 "><div class="egrid-products egrid-products-1">
+<div class="row"><div class="egrid-products-content flex-basic flex-smobile-100 ">
+  
+  
+  <div class="egrid-products egrid-products-1">
 	<div class="woocommerce-notices-wrapper"></div><div class="cms-result-order w-100 d-flex justify-content-between align-items-center"><div class="egrid-products-featured-status-filter widget_featured_status">
-    <ul class="egrid-products-featured-filter d-flex gap-15 text-15 text-uppercase ls-06">
-                            <li class="egrid-products-featured-filter-item chosen">
-                        <a rel="nofollow" href="#" class="chosen" egrid-products-featured-status-filter>
-                            All Products                        </a>
-                    </li>
-                                    <li class="egrid-products-featured-filter-item ">
-                        <a rel="nofollow" href="#featured" class="" egrid-products-featured-status-filter>
-                            Hot Items                        </a>
-                    </li>
-                                    <li class="egrid-products-featured-filter-item ">
-                        <a rel="nofollow" href="#newarrival" class="" egrid-products-featured-status-filter>
-                            New Arrivals                        </a>
-                    </li>
-                                    <li class="egrid-products-featured-filter-item ">
-                        <a rel="nofollow" href="#onsale" class="" egrid-products-featured-status-filter>
-                            On Sale                        </a>
-                    </li>
-                    </ul>
+ <ul className="egrid-products-featured-filter d-flex gap-15 text-15 text-uppercase ls-06">
+ <li
+              className={`egrid-products-featured-filter-item ${
+                selectedCategory === "all" ? "chosen" : ""
+              }`}
+            >
+              <button
+                onClick={() => setSelectedCategory("all")}
+                className={`bg-transparent border-0 ${
+                  selectedCategory === "all" ? "text-purple-600" : ""
+                }`}
+              >
+                All Products
+              </button>
+            </li>
+
+            {categories.map((cat) => (
+              <li
+                key={cat._id}
+                className={`egrid-products-featured-filter-item ${
+                  selectedCategory === cat._id ? "chosen" : ""
+                }`}
+              >
+                <button
+                  onClick={() => setSelectedCategory(cat._id)}
+                  className={`bg-transparent border-0 ${
+                    selectedCategory === cat._id ? "text-purple-600" : ""
+                  }`}
+                >
+                  {cat.icon} {cat.name}
+                </button>
+              </li>
+  ))}
+</ul>
+
 </div><form class="woocommerce-ordering" method="get">
 		<select
 		name="orderby"
@@ -277,7 +353,9 @@ const Banner = () => {
 			</select>
 	<input type="hidden" name="paged" value="1" />
 	</form>
-</div><div class="cms-eproducts-content cms-grid-content d-flex  flex-col-4 flex-col-tablet-3 flex-col-mobile-2 flex-col-smobile-1"><div class="cms-product-1 product type-product post-290 status-publish first instock product_cat-outerwear product_tag-casual product_tag-yellow has-post-thumbnail shipping-taxable purchasable product-type-variable has-default-attributes wooct-ended wpcvs-active wpcvs-single-replacement-enable">
+</div>
+{/* 
+<div class="cms-eproducts-content cms-grid-content d-flex  flex-col-4 flex-col-tablet-3 flex-col-mobile-2 flex-col-smobile-1"><div class="cms-product-1 product type-product post-290 status-publish first instock product_cat-outerwear product_tag-casual product_tag-yellow has-post-thumbnail shipping-taxable purchasable product-type-variable has-default-attributes wooct-ended wpcvs-active wpcvs-single-replacement-enable">
 	<div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
 <div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">    <span class="cms-wc-badge new">New</span>
     </div>
@@ -415,7 +493,121 @@ const Banner = () => {
 <h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="product/printed-cotton-t-shirt/index.html">Printed Cotton T-Shirt</a></h2>
 	<span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906b9aaeea44"  data-product-id="222"><span class="woocommerce-Price-amount amount"><bdi>40.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></span>
 </div></div>
-						</div></div></div></div></div>				</div>
+						</div> */}
+            <div className="cms-eproducts-content cms-grid-content d-flex flex-col-4 flex-col-tablet-3 flex-col-mobile-2 flex-col-smobile-1">
+  {products.length === 0 ? (
+    <p>No products found in this category.</p>
+  ) : (
+    products.map((product) => (
+      <div
+        key={product._id}
+        className="cms-product-1 product type-product instock has-post-thumbnail shipping-taxable purchasable product-type-simple"
+      >
+        <div className="cms-products-content relative">
+          <div className="cms-products-loop-thumbs relative">
+            <div className="wpcbm-wrapper">
+              <div className="cms-wc-badges absolute d-flex gap-5 empty-none">
+                {product.isNew && <span className="cms-wc-badge new">New</span>}
+                {product.discount > 0 && (
+                  <span className="cms-wc-badge sale">{product.discount}% OFF</span>
+                )}
+              </div>
+
+              {/* Product Images */}
+              <img
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="524"
+                src={product.images?.[0]}
+                className="cms-overlay cms-second-image cms-transition"
+                alt={product.name}
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="524"
+                src={product.images?.[1] || product.images?.[0]}
+                className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                alt={product.name}
+              />
+            </div>
+
+            {/* Overlay Link */}
+            <a href={`/product/${product._id}`} className="cms-overlay"></a>
+
+            {/* Wishlist / Quick View Icons */}
+            <div className="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 mt-10 mr-10 d-flex flex-column gap-4">
+              <a
+                href="#"
+                className="cms-loop-thumbs-icon hint--bounce hint--left"
+                data-hint="Add to wishlist"
+              >
+                <span className="trevox-icon-love"></span>
+              </a>
+              <a
+                href="#"
+                className="cms-loop-thumbs-icon hint--bounce hint--left"
+                data-hint="Quick view"
+              >
+                <span className="trevox-icon-eye"></span>
+              </a>
+            </div>
+
+            {/* Add to cart */}
+            <div className="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10">
+              <div className="cms-loop-addtocart">
+                <a
+                  href="#"
+                  data-quantity="1"
+                  className="cms-loop-atc add_to_cart_button"
+                  onClick={() => handleAddToCart(product)}
+                  rel="nofollow"
+                >
+                  Add to cart
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Title and Price */}
+          <h2 className="cms-loop-title text-18 pt-20 pb-3">
+            <a href={`/product/${product._id}`}>{product.name}</a>
+          </h2>
+
+          <span className="price">
+            {product.discount > 0 ? (
+              <>
+                <del>
+                  <bdi>
+                    {product.oldPrice}
+                    <span className="woocommerce-Price-currencySymbol">$</span>
+                  </bdi>
+                </del>
+                <ins>
+                  <bdi>
+                    {product.price}
+                    <span className="woocommerce-Price-currencySymbol">$</span>
+                  </bdi>
+                </ins>
+              </>
+            ) : (
+              <bdi>
+                {product.price}
+                <span className="woocommerce-Price-currencySymbol">$</span>
+              </bdi>
+            )}
+          </span>
+        </div>
+      </div>
+    ))
+  )}
+</div>
+
+            </div>
+            
+            </div></div></div>				</div>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-c1438ce p-tb-80 p-tb-tablet-30  xxxx xxxx e-flex e-con-boxed e-con e-parent" data-id="c1438ce" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
