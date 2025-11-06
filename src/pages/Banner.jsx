@@ -154,33 +154,87 @@ const settings = {
       </div>
     ),
   };
+// const settingss = {
+//     dots: true,
+//     infinite: true,
+//     speed: 800,
+//     slidesToShow: 4,
+//     slidesToScroll: 4,
+//     autoplay: true,
+//     autoplaySpeed: 4000,
+//     arrows: true,
+//     prevArrow: (
+//       <div className="cms-slider-button-arrow cms-carousel-button-prev">
+//         <i className="cmsi-arrow-prev rtl-flip"></i>
+//         <span className="arrow-text-prev">Prev</span>
+//       </div>
+//     ),
+//     nextArrow: (
+//       <div className="cms-slider-button-arrow cms-carousel-button-next">
+//         <span className="arrow-text-next">Next</span>
+//         <i className="cmsi-arrow-next rtl-flip"></i>
+//       </div>
+//     ),
+//     appendDots: dots => (
+//       <div className="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-in justify-content-center text-white cms-carousel-dots-white cms-carousel-dots-active-white">
+//         <ul>{dots}</ul>
+//       </div>
+//     ),
+//   };
+
 const settingss = {
-    dots: true,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: true,
-    prevArrow: (
-      <div className="cms-slider-button-arrow cms-carousel-button-prev">
-        <i className="cmsi-arrow-prev rtl-flip"></i>
-        <span className="arrow-text-prev">Prev</span>
-      </div>
-    ),
-    nextArrow: (
-      <div className="cms-slider-button-arrow cms-carousel-button-next">
-        <span className="arrow-text-next">Next</span>
-        <i className="cmsi-arrow-next rtl-flip"></i>
-      </div>
-    ),
-    appendDots: dots => (
-      <div className="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-in justify-content-center text-white cms-carousel-dots-white cms-carousel-dots-active-white">
-        <ul>{dots}</ul>
-      </div>
-    ),
-  };
+  dots: true,
+  infinite: true,
+  speed: 800,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  arrows: true,
+  prevArrow: (
+    <div className="cms-slider-button-arrow cms-carousel-button-prev">
+      <i className="cmsi-arrow-prev rtl-flip"></i>
+      <span className="arrow-text-prev">Prev</span>
+    </div>
+  ),
+  nextArrow: (
+    <div className="cms-slider-button-arrow cms-carousel-button-next">
+      <span className="arrow-text-next">Next</span>
+      <i className="cmsi-arrow-next rtl-flip"></i>
+    </div>
+  ),
+  appendDots: (dots) => (
+    <div className="cms-carousel-dots cms-carousel-dots-circle cms-carousel-dots-in justify-content-center text-white cms-carousel-dots-white cms-carousel-dots-active-white">
+      <ul>{dots}</ul>
+    </div>
+  ),
+  responsive: [
+    {
+      breakpoint: 1024, // tablet
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 768, // large mobile
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 480, // small mobile
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
