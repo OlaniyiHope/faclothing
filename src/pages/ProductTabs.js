@@ -148,13 +148,11 @@ const availableColors = [
   { name: "Orange", hex: "#FFA500" },
 ];
   return (
-    <div className="woocommerce-tabs wc-tabs-wrapper product-info-tabs">
-      <div className="prod-tabs tabs-box">
-    <ul
-  className="tabs wc-tabs tab-btns tab-buttons clearfix flex flex-row items-center justify-center gap-6 overflow-x-auto whitespace-nowrap"
-  role="tablist"
->
+<div class="woocommerce-tabs wc-tabs-wrapper">
+  
+    		<ul class="tabs wc-tabs" role="tablist">
   <li
+  
     className={`description_tab tab-btn ${
       activeTab === "description" ? "active-btn active" : ""
     }`}
@@ -555,7 +553,7 @@ const availableColors = [
             </div>
           </div>
         </div>
-      </div>
+
     </div>
   );
 };

@@ -357,7 +357,7 @@ const availableColors = [
 		</div>
 	</div>
 	
-	<div class="woocommerce-tabs wc-tabs-wrapper">
+	{/* <div class="woocommerce-tabs wc-tabs-wrapper">
 		<ul class="tabs wc-tabs" role="tablist">
 							<li role="presentation" class="description_tab" id="tab-title-description">
 					<a href="#tab-description" role="tab" aria-controls="tab-description">
@@ -427,8 +427,8 @@ const availableColors = [
 </div>
 			</div>
 		
-			</div>
-
+			</div> */}
+<ProductTabs />
 
 	<section class="related products">
 
