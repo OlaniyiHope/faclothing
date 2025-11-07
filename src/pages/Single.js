@@ -18,6 +18,7 @@ import ProductTabs from "./ProductTabs";
 import { FaChevronRight } from "react-icons/fa";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Header2 from "./Header2";
+import Header3 from "./Header3";
 
 const bgImage = `url("data:image/svg+xml;utf8,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'>
@@ -118,12 +119,12 @@ const availableColors = [
   { name: "Orange", hex: "#FFA500" },
 ];
   return (
-    <>
+    <div>
 
-  <Header2 />
- 	<main id="cms-main" class="cms-main cms-woo-content container-full single-product-full" style={{backgroundColor: "white", paddingTop: "300px"}}> <div class="woocommerce-notices-wrapper"></div><div id="product-222" class="product type-product post-222 status-publish first instock product_cat-knitwear product_cat-t-shirts product_tag-shirts product_tag-skirts has-post-thumbnail shipping-taxable purchasable product-type-simple cms-remove-msg-before-title cms-remove-msg-after-short-desc cms-remove-pickup-store cms-remove-stock-msg cms-remove-shipping-bar cms-remove-card-allowed wooct-ended wpcvs-active wpcvs-single-replacement-enable">
+  <Header3 />
+ 	<main id="cms-main" class="cms-main cms-woo-content container-full single-product-full" style={{backgroundColor: "white", }}> <div class="woocommerce-notices-wrapper"></div><div id="product-222" class="product type-product post-222 status-publish first instock product_cat-knitwear product_cat-t-shirts product_tag-shirts product_tag-skirts has-post-thumbnail shipping-taxable purchasable product-type-simple cms-remove-msg-before-title cms-remove-msg-after-short-desc cms-remove-pickup-store cms-remove-stock-msg cms-remove-shipping-bar cms-remove-card-allowed wooct-ended wpcvs-active wpcvs-single-replacement-enable">
 	<div class="cms-single-product-gal-content d-flex gutter gutter-grid">
-		<div class="cms-woocommerce-product-gallery single-product-full cms-gallery-grid-mixed">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none"></div>
+		{/* <div class="cms-woocommerce-product-gallery single-product-full cms-gallery-grid-mixed">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none"></div>
     <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-0 images cms-gallery-grid-mixed cms-sticky" data-columns="grid-mixed"  style={{
     opacity: 0,
     transition: "opacity 0.25s ease-in-out",
@@ -151,21 +152,147 @@ const availableColors = [
         </div>
     	</div>
 </div>
-</div>
+</div> */}
+
+
+{product && product.images?.length > 0 ? (
+  <div className="cms-woocommerce-product-gallery single-product-full cms-gallery-grid-mixed relative">
+    <div className="cms-wc-badges absolute d-flex gap-5 empty-none"></div>
+
+    <div
+      className="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-0 images cms-gallery-grid-mixed cms-sticky"
+      data-columns="grid-mixed"
+      style={{
+        opacity: 1,
+        transition: "opacity 0.25s ease-in-out",
+        display: "flex",
+        gap: "20px",
+      }}
+    >
+      {/* Thumbnails */}
+      <div className="flex flex-col gap-3">
+        {product.images.map((img, index) => (
+          <div
+            key={index}
+            className={`woocommerce-product-gallery__image cursor-pointer ${
+              index === currentImageIndex ? "border-2 border-blue-500" : ""
+            }`}
+            onClick={() => setCurrentImageIndex(index)}
+            style={{
+              borderRadius: "8px",
+              overflow: "hidden",
+              width: "90px",
+              height: "110px",
+            }}
+          >
+            <img
+              src={img}
+              alt={`Thumbnail ${index}`}
+              className="object-cover w-full h-full"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Main Image */}
+      <div className="woocommerce-product-gallery__wrapper flex-1">
+        <div className="woocommerce-product-gallery__image">
+          <a
+            className="cms-galleries-light-box"
+            data-elementor-open-lightbox="yes"
+            data-elementor-lightbox-slideshow={`cms-product-gal-${product?._id || "gallery"}`}
+            href={product.images[currentImageIndex]}
+          >
+            <img
+              loading="lazy"
+              width="600"
+              height="687"
+              src={product.images[currentImageIndex]}
+              alt={product.name}
+              title={product.name}
+              data-caption=""
+              data-src={product.images[currentImageIndex]}
+              data-large_image={product.images[currentImageIndex]}
+              data-large_image_width="600"
+              data-large_image_height="900"
+              decoding="async"
+              className="rounded-lg shadow-lg object-contain max-h-[700px] w-auto"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+) : (
+  <p className="text-center text-gray-400 py-8">Loading product...</p>
+)}
+
 		<div class="summary entry-summary">
 			<div class="summary-inner cms-sticky">
-				<ul class="cms-breadcrumb unstyled"><li><a class="breadcrumb-entry" href="../../index.html">Home</a></li><li><a class="breadcrumb-entry" href="../../shop/index.html">Products</a></li><li><span class="breadcrumb-entry" >Printed Cotton T-Shirt</span></li></ul><div class="wpcsm-message wpcsm-message-646 wpcsm-location-single_product_title_before cms-wpcsm-message-sold mb-15">928 sold in last 10 hours</div><h1 class="product_title text-45 text-tablet-40 text-mobile-30 mt-n8">Printed Cotton T-Shirt</h1><p class="cms-single-price price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906efca88bf4"  data-product-id="222"><span class="woocommerce-Price-amount amount"><bdi>40.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></p>
-            <div class="woocommerce-product-rating">
-                                                                        <a href="index.html#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count">0</span> customer reviews / Add review)</a>
+				<ul class="cms-breadcrumb unstyled"><li><a class="breadcrumb-entry" href="../../index.html">Home</a></li><li><a class="breadcrumb-entry" href="../../shop/index.html">Products</a></li><li><span class="breadcrumb-entry" > {product?.name || "Loading..."}</span></li></ul>
+        
+{/*         
+        <div class="wpcsm-message wpcsm-message-646 wpcsm-location-single_product_title_before cms-wpcsm-message-sold mb-15">928 sold in last 10 hours</div> */}
+        
+        <h1 class="product_title text-45 text-tablet-40 text-mobile-30 mt-n8"> {product?.name || "Loading..."}</h1><p class="cms-single-price price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906efca88bf4"  data-product-id="222"><span class="woocommerce-Price-amount amount"><bdi> {product?.discountPrice || "Loading..."}<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></p>
+           
+           
+           {/* 🧢 Size Selection */}
+{Array.isArray(product?.size) &&
+  product.size.length > 0 &&
+  product.size[0].split(",").length > 0 && (
+    <div className="product-size mt-6">
+      <h4 className="text-gray-800 font-semibold mb-3">Select Size:</h4>
+
+      <div className="flex flex-wrap gap-3">
+        {product.size[0]
+          .split(",")
+          .map((size) => size.trim())
+          .map((size) => (
+            <button
+              key={size}
+              type="button"
+              style={{backgroundColor: "#8b023a", color: "white"}}
+              onClick={() => setSelectedSize(size)}
+              className={`px-4 py-2 border rounded-md text-sm font-medium transition-all
+                ${
+                  selectedSize === size
+                    ? "bg-blue-600 text-white border-blue-600"
+                    : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                }`}
+            >
+              {size.toUpperCase()}
+            </button>
+          ))}
+      </div>
+
+      {/* Optional: Show selected size */}
+      {selectedSize && (
+        <p className="text-sm text-gray-600 mt-3">
+          Selected Size: <span className="font-semibold">{selectedSize}</span>
+        </p>
+      )}
+    </div>
+  )}
+
+           <div class="woocommerce-product-rating">
+                                                                        <a href="index.html#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count"></span> customer reviews / Add review)</a>
                                                 </div>
         <div class="woocommerce-product-details__short-description">
-	<p>Transformative colours, bold textiles and unique prints, natural fibres with high our quality craftsmanship design remains at forefront. We believe in creating unique products, so we use finest materials and stunning design to create special items.</p>
+	<p> {product?.description || "Loading..."}.</p>
 </div>
-<div class="wpcsm-message wpcsm-message-647 wpcsm-location-single_product_excerpt_after cms-wpcsm-message-viewing d-flex align-items-center gap-5"><span class="wpcsm-live-number" data-val="480" data-min="50" data-max="500" data-step="5" data-duration="10" data-text="%s"><span class="wpcsm-live-number-value">480</span></span> people are viewing this product right now.</div><div class="wooct-wrap-single" data-id="222"></div>            <div class="stock cms-product-stock stock-simple in-stock">
+{/* <div class="wpcsm-message wpcsm-message-647 wpcsm-location-single_product_excerpt_after cms-wpcsm-message-viewing d-flex align-items-center gap-5"><span class="wpcsm-live-number" data-val="480" data-min="50" data-max="500" data-step="5" data-duration="10" data-text="%s">
+  
+  <span class="wpcsm-live-number-value">480</span></span> people are viewing this product right now.</div> */}
+
+
+<div class="wooct-wrap-single" data-id="222"></div>            <div class="">
                 <div class="cms-product-stock-label text-primary text-15 pb-10">Stock:  In stock, ready to be shipped</div>
-                <div class="cms-product-stock-bar">
+                {/* <div class="cms-product-stock-bar">
                     <div class="cms-product-stock-percent in-stock" style={{width:"100%"}}></div>
-                </div>
+                </div> */}
             </div>
         
 	
@@ -204,14 +331,14 @@ const availableColors = [
 
 <div class="product_meta product-meta-simple">
 
-	
+{/* 	
 			<span class="sku_wrapper">
       <span class="title">SKU:</span>
       <span class="content sku">ED56900072</span>
-    </span>
+    </span> */}
 	
-	<span class="posted_in"><span class="title">Categories:</span><span class="content"><a href="../../product-category/knitwear/index.html" rel="tag">Knitwear</a>, <a href="../../product-category/t-shirts/index.html" rel="tag">T-shirts</a></span></span>
-	<span class="tagged_as"><span class="title">Tags:</span><span class="content"><a href="../../product-tag/shirts/index.html" rel="tag">Shirts</a>, <a href="../../product-tag/skirts/index.html" rel="tag">Skirts</a></span></span>
+	<span class="posted_in"><span class="title">Categories:</span><span class="content"><a href="../../product-category/knitwear/index.html" rel="tag">{product?.category?.name}</a></span></span>
+	<span class="tagged_as"><span class="title">Tags:</span><span class="content"><a href="../../product-tag/shirts/index.html" rel="tag">{product?.tag}</a></span></span>
 	
 </div>
     <div class="cms-product-share text-15">
@@ -395,7 +522,7 @@ const availableColors = [
 
 </main>
     <Footer />
-    </>
+    </div>
   );
 };
 

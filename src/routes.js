@@ -35,7 +35,7 @@ const routes = [
     element: <Selling />,
   },
   {
- path: "/single-product",
+ path: "/single-product/:id",
     element: <Single />,
   },
   {

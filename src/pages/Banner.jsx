@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";import Popular from "./Policy";
+import { useParams, Link } from "react-router-dom";
+
+import Popular from "./Policy";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -476,12 +477,12 @@ useEffect(() => {
                       >
                         View Product
                       </a>
-                      <a
-                        href="/shop"
+                      <Link
+                      to={`/single-product/${product._id}`}
                         className="cms-slider-btn btn btn-outline-white text-white btn-hover-white text-hover-primary"
                       >
                         Shop Now
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -747,7 +748,8 @@ useEffect(() => {
             </div>
 
             {/* Overlay Link */}
-            <a href={`/product/${product._id}`} className="cms-overlay"></a>
+          <Link
+                      to={`/single-product/${product._id}`} className="cms-overlay"></Link>
 
             {/* Wishlist / Quick View Icons */}
             <div className="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 mt-10 mr-10 d-flex flex-column gap-4">
@@ -785,7 +787,8 @@ useEffect(() => {
 
           {/* Product Title and Price */}
           <h2 className="cms-loop-title text-18 pt-20 pb-3">
-            <a href={`/product/${product._id}`}>{product.name}</a>
+              <Link
+                      to={`/single-product/${product._id}`}>{product.name}</Link>
           </h2>
 
           <span className="price">
@@ -1133,10 +1136,10 @@ useEffect(() => {
                         />
                       </div>
 
-                      <a
-                        href={`/product/${product._id}`}
+                      <Link
+                      to={`/single-product/${product._id}`}
                         // className="cms-overlay"
-                      ></a>
+                      ></Link>
 
                       {/* Optional icons/buttons can go here */}
                     </div>
