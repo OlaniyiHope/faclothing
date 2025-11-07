@@ -5,6 +5,7 @@ import axios from "axios";
 import { FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import "./mycss.css"
+import { Link } from "react-router-dom";
 
 const Header3 = ({ cartCount = 1 }) => {
   const [menuOpen, setMenuOpen] = useState(false); // mobile menu
@@ -229,12 +230,17 @@ useEffect(() => {
                 <span class="header-count wishlist-count cms-count">0</span>
             </a>
         </div>
-    <span class="cms-header-divider cms-hidden-mobile-menu"></span>    <div class="site-header-item site-header-cart menu-color cms-modal" data-modal="#cms-modal-cart" data-modal-mode="slide" data-modal-slide="right" data-modal-class="bg-white">
-                <div class="relative cms-cart-icon cms-counter-icon">
-            <i class="header-icon cart-icon trevox-icon-shopping-basket1"></i>
-            <span class="cart-counter cart_total cms-count" data-count="0">0</span>
-        </div>
-            </div>
+    <span class="cms-header-divider cms-hidden-mobile-menu"></span>  
+   <Link to="/cart" className="site-header-item site-header-cart menu-color">
+  <div className="relative cms-cart-icon cms-counter-icon">
+    <i className="header-icon cart-icon trevox-icon-shopping-basket1"></i>
+<span className="cart-counter cart_total cms-count" data-count={totalItems}>
+  {totalItems}
+</span>
+
+  </div>
+</Link>
+
         <div id="main-menu-mobile" class="main-menu-mobile cms-hidden-desktop-menu">
             <span class="btn-nav-mobile open-menu">
                 <span></span>

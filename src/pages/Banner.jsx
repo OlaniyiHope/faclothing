@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import Popular from "./Policy";
 import Slider from "react-slick";
@@ -11,8 +11,10 @@ import { FaShippingFast, FaLock, FaHeadset, FaWallet, FaShoppingCart } from "rea
 import "./style.css"
 import a5 from "./a5.jpg";
 import a3 from "./a3.jpg";
+
 import Featured from "./Featured";
 import  "./Banner.css";
+import { useCart } from "../context/CartContext";
 
 // Custom Arrow Components
 const NextArrow = ({ onClick }) => (
@@ -102,6 +104,8 @@ const TestArrow = ({ onClick }) => (
 const Banner = () => {
 const { id } = useParams();
   const [open, setOpen] = useState(false);
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -776,7 +780,11 @@ useEffect(() => {
                   href="#"
                   data-quantity="1"
                   className="cms-loop-atc add_to_cart_button"
-                  onClick={() => handleAddToCart(product)}
+   
+                    onClick={() => {
+    addToCart(product);
+    navigate("/cart"); // redirects to cart page
+  }}
                   rel="nofollow"
                 >
                   Add to cart

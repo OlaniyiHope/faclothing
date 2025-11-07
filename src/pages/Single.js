@@ -323,7 +323,10 @@ const availableColors = [
 </div>
 </div>
 
-		<button type="submit" name="add-to-cart" value="222" class="single_add_to_cart_button button alt">Add to cart</button>
+		<button type="submit" name="add-to-cart" value="222" class="single_add_to_cart_button button alt"          onClick={() => {
+    addToCart(product);
+    navigate("/cart"); // redirects to cart page
+  }} >Add to cart</button>
 
 			</form>
 
@@ -433,90 +436,144 @@ const availableColors = [
 	<section class="related products">
 
 					<h2>Related products</h2>
-				<ul class="products columns-4">
+		
 
-			
-					<li class="cms-product-default product type-product post-280 status-publish first instock product_cat-knitwear product_cat-outerwear product_tag-knitwear product_tag-outerwear has-post-thumbnail sale shipping-taxable purchasable product-type-simple cms-remove-msg-before-title cms-remove-msg-after-short-desc cms-remove-pickup-store cms-remove-stock-msg cms-remove-shipping-bar cms-remove-card-allowed wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-	<div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">
-	    <span class="cms-wc-badge sale">50% OFF</span>
+  <ul className="products columns-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    {products.length > 0 ? (
+      products.map((p, index) => (
+        <li
+          key={p._id}
+          className={`cms-product-default product type-product post-${p._id} status-publish ${
+            index === 0 ? "first" : index === products.length - 1 ? "last" : ""
+          } instock has-post-thumbnail sale shipping-taxable purchasable product-type-simple`}
+        >
+          <div className="cms-products-content relative">
+            {/* ---- Product Images ---- */}
+            <div className="cms-products-loop-thumbs relative">
+              <div className="wpcbm-wrapper">
+                {/* Sale badge */}
+                {p.discountPrice && (
+                  <div className="cms-wc-badges absolute d-flex gap-5 empty-none">
+                    <span className="cms-wc-badge sale">
+                      {Math.round(
+                        ((p.price - p.discountPrice) / p.price) * 100
+                      )}
+                      % OFF
+                    </span>
+                  </div>
+                )}
 
-	</div>
-    <img width="400" height="524" src="../../wp-content/uploads/Yellow-Knitwear-Sweater-400x524.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async" loading="lazy" /><img width="400" height="524" src="../../wp-content/uploads/Yellow-Knitwear-Sweater4-400x524.webp" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="Yellow Knitwear Sweater" decoding="async" loading="lazy" /></div>  
-                <a href="../yellow-knitwear-sweater/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="index3969.html?add-to-wishlist=280" class="cms-woosw-btn woosw-btn woosw-btn-280 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="280" data-product_name="Yellow Knitwear Sweater" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Yellow-Knitwear-Sweater4-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="indexaf03.html?quick-view=280" class="woosq-btn woosq-btn-280 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="280" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="index700a.html?add-to-cart=280" data-quantity="1" class="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart" data-product_id="280" data-product_sku="ED5690010-1" aria-label="Add to cart: &ldquo;Yellow Knitwear Sweater&rdquo;" rel="nofollow" data-success_message="&ldquo;Yellow Knitwear Sweater&rdquo; has been added to your cart" role="button">Add to cart</a>      <a href="../../shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_280" class="screen-reader-text">
-			</span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="../yellow-knitwear-sweater/index.html">Yellow Knitwear Sweater</a></h2>
-	<span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906efca90dc0"  data-product-id="280"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>90.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></del> <span class="screen-reader-text">Original price was: 90.00&#036;.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>45.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></ins><span class="screen-reader-text">Current price is: 45.00&#036;.</span></span></span>
-</div></li>
+                {/* Secondary and Primary images */}
+                {p.images?.[1] && (
+                  <img
+                    width="400"
+                    height="524"
+                    src={p.images[1]}
+                    className="cms-overlay cms-second-image cms-transition"
+                    alt={p.name}
+                    loading="lazy"
+                  />
+                )}
+                <img
+                  width="400"
+                  height="524"
+                  src={p.images?.[0]}
+                  className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                  alt={p.name}
+                  loading="lazy"
+                />
+              </div>
 
-			
-					<li class="cms-product-default product type-product post-303 status-publish instock product_cat-pants product_cat-t-shirts product_tag-pants product_tag-t-shirts has-post-thumbnail featured shipping-taxable product-type-grouped cms-remove-msg-before-title cms-remove-msg-after-short-desc cms-remove-pickup-store cms-remove-stock-msg cms-remove-shipping-bar cms-remove-card-allowed wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-	<div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none"></div>
-    <img width="400" height="524" src="../../wp-content/uploads/Wide-Leg-Trousers6-400x524.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async" loading="lazy" /><img width="400" height="524" src="../../wp-content/uploads/Wide-Leg-Trousers-400x524.webp" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="Wide Leg Trousers &amp; Navy Blue T-Shirt" decoding="async" loading="lazy" /></div>  
-                <a href="../wide-leg-trousers-navy-blue-t-shirt/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="indexab60.html?add-to-wishlist=303" class="cms-woosw-btn woosw-btn woosw-btn-303 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="303" data-product_name="Wide Leg Trousers &amp; Navy Blue T-Shirt" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Wide-Leg-Trousers-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="indexf349.html?quick-view=303" class="woosq-btn woosq-btn-303 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="303" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="../wide-leg-trousers-navy-blue-t-shirt/index.html" data-quantity="1" class="cms-loop-atc product_type_grouped in-stock" data-product_id="303" data-product_sku="ED5690015" aria-label="View products in the &ldquo;Wide Leg Trousers &amp; Navy Blue T-Shirt&rdquo; group" rel="nofollow">View products</a>      <a href="../../shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_303" class="screen-reader-text">
-			</span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="../wide-leg-trousers-navy-blue-t-shirt/index.html">Wide Leg Trousers &#038; Navy Blue T-Shirt</a></h2>
-	<span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906efca94ff6"  data-product-id="303"><span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi>25.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span> <span aria-hidden="true">&ndash;</span> <span class="woocommerce-Price-amount amount" aria-hidden="true"><bdi>55.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span><span class="screen-reader-text">Price range: 25.00&#36; through 55.00&#36;</span></span></span>
-</div></li>
+              {/* Overlay link */}
+              <a href={`/product/${p._id}`} className="cms-overlay"></a>
 
-			
-					<li class="cms-product-default product type-product post-198 status-publish instock product_cat-shirts product_cat-skirts product_tag-shirts product_tag-skirts has-post-thumbnail sale shipping-taxable purchasable product-type-simple cms-remove-msg-before-title cms-remove-msg-after-short-desc cms-remove-pickup-store cms-remove-shipping-bar cms-remove-card-allowed wooct-active wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-	<div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">
-	    <span class="cms-wc-badge sale">50% OFF</span>
+              {/* Wishlist and Quick View buttons */}
+              <div className="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4">
+                <a
+                  href="#"
+                  className="cms-woosw-btn woosw-btn woosw-btn-has-icon cms-loop-thumbs-icon hint--bounce hint--left"
+                  aria-label="Add to wishlist"
+                  data-hint="Add to wishlist"
+                >
+                  <span className="cms-woosw-btn-icon trevox-icon-love cms-normal"></span>
+                </a>
 
-	</div>
-    <img width="400" height="524" src="../../wp-content/uploads/Red-Pattern-Flowy-Shirt4-400x524.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async" loading="lazy" /><img width="400" height="524" src="../../wp-content/uploads/Red-Pattern-Flowy-Shirt-400x524.webp" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="Red Pattern Flowy Shirt" decoding="async" loading="lazy" /></div>  
-                <a href="../red-pattern-flowy-shirt/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="index07b8.html?add-to-wishlist=198" class="cms-woosw-btn woosw-btn woosw-btn-198 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="198" data-product_name="Red Pattern Flowy Shirt" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Red-Pattern-Flowy-Shirt-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="indexb467.html?quick-view=198" class="woosq-btn woosq-btn-198 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="198" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="index6f15.html?add-to-cart=198" data-quantity="1" class="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart" data-product_id="198" data-product_sku="ED5690006" aria-label="Add to cart: &ldquo;Red Pattern Flowy Shirt&rdquo;" rel="nofollow" data-success_message="&ldquo;Red Pattern Flowy Shirt&rdquo; has been added to your cart" role="button">Add to cart</a>      <a href="../../shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_198" class="screen-reader-text">
-			</span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="../red-pattern-flowy-shirt/index.html">Red Pattern Flowy Shirt</a></h2>
-	<span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906efca9685f"  data-product-id="198"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>100.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></del> <span class="screen-reader-text">Original price was: 100.00&#036;.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>50.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></ins><span class="screen-reader-text">Current price is: 50.00&#036;.</span></span></span>
-</div></li>
+                <a
+                  href={`/product/${p._id}`}
+                  className="woosq-btn woosq-btn-has-icon cms-loop-thumbs-icon hint--bounce hint--left"
+                  data-hint="Quick view"
+                >
+                  <span className="woosq-btn-icon trevox-icon-eye"></span>
+                </a>
+              </div>
 
-			
-					<li class="cms-product-default product type-product post-260 status-publish last instock product_cat-t-shirts product_tag-t-shirts has-post-thumbnail shipping-taxable purchasable product-type-simple cms-remove-msg-before-title cms-remove-msg-after-short-desc cms-remove-pickup-store cms-remove-stock-msg cms-remove-shipping-bar cms-remove-card-allowed wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-	<div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">    <span class="cms-wc-badge new">New</span>
-    </div>
-    <div class="wpcbm-badges wpcbm-badges-flat "><div class="wpcbm-badge wpcbm-badge-674 wpcbm-pid-260 wpcbm-badge-style-cms-new wpcbm-badge-group-102 hint--top" aria-label=""><div class="wpcbm-badge-inner">New</div></div></div><img width="400" height="524" src="../../wp-content/uploads/Boyfriend-Knitted-T-Shirt5-400x524.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async" loading="lazy" /><img width="400" height="524" src="../../wp-content/uploads/Boyfriend-Knitted-T-Shirt2-400x524.webp" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="Boyfriend Knitted T-Shirt" decoding="async" loading="lazy" /></div>  
-                <a href="../boyfriend-knitted-t-shirt/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="index16dc.html?add-to-wishlist=260" class="cms-woosw-btn woosw-btn woosw-btn-260 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="260" data-product_name="Boyfriend Knitted T-Shirt" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Boyfriend-Knitted-T-Shirt2-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="index4697.html?quick-view=260" class="woosq-btn woosq-btn-260 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="260" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="index84f3.html?add-to-cart=260" data-quantity="1" class="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart" data-product_id="260" data-product_sku="ED56900013" aria-label="Add to cart: &ldquo;Boyfriend Knitted T-Shirt&rdquo;" rel="nofollow" data-success_message="&ldquo;Boyfriend Knitted T-Shirt&rdquo; has been added to your cart" role="button">Add to cart</a>      <a href="../../shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_260" class="screen-reader-text">
-			</span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="../boyfriend-knitted-t-shirt/index.html">Boyfriend Knitted T-Shirt</a></h2>
-	<span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906efca97994"  data-product-id="260"><span class="woocommerce-Price-amount amount"><bdi>35.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></span>
-</div></li>
+              {/* Add to Cart button */}
+              <div className="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10">
+                <div className="cms-loop-addtocart">
+                  <a
+                    href={`/product/${p._id}`}
+                    data-quantity="1"
+                    className="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart"
+                    data-product_id={p._id}
+                    rel="nofollow"
+                  >
+                    Add to cart
+                  </a>
+                </div>
+              </div>
+            </div>
 
-			
-		</ul>
+            {/* ---- Product Title and Price ---- */}
+            <h2 className="cms-loop-title text-18 pt-20 pb-3">
+              <a href={`/product/${p._id}`}>{p.name}</a>
+            </h2>
 
+            <span className="price">
+              <span className="woocs_price_code">
+                {p.discountPrice ? (
+                  <>
+                    <del aria-hidden="true">
+                      <span className="woocommerce-Price-amount amount">
+                        <bdi>
+                          {p.price}
+                          <span className="woocommerce-Price-currencySymbol">
+                            &#36;
+                          </span>
+                        </bdi>
+                      </span>
+                    </del>{" "}
+                    <ins aria-hidden="true">
+                      <span className="woocommerce-Price-amount amount">
+                        <bdi>
+                          {p.discountPrice}
+                          <span className="woocommerce-Price-currencySymbol">
+                            &#36;
+                          </span>
+                        </bdi>
+                      </span>
+                    </ins>
+                  </>
+                ) : (
+                  <span className="woocommerce-Price-amount amount">
+                    <bdi>
+                      {p.price}
+                      <span className="woocommerce-Price-currencySymbol">
+                        &#36;
+                      </span>
+                    </bdi>
+                  </span>
+                )}
+              </span>
+            </span>
+          </div>
+        </li>
+      ))
+    ) : (
+      <p className="text-center text-gray-500 col-span-4">
+        No related products found.
+      </p>
+    )}
+  </ul>
 	</section>
 	</div>
 
