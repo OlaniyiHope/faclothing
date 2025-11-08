@@ -22,10 +22,7 @@ import Contact from "./pages/Contact";
 const routes = [
   { path: "/oauth-callback", element: <GoogleAuthHandler /> },
 
-  {
-    children: [...AdminRoute, ...SalesRoute, ...ManagerRoute],
-  },
-  ...sessionRoutes,
+
   {
     path: "/",
     element: <Home />,
