@@ -1,16 +1,14 @@
 import { React, useEffect, useState } from "react";
-
 import axios from "axios";
 import TopNav from "../TopNav";
 import SideNav from "../SideNav";
-import { Link } from "react-router-dom";
 import AddSale from "./AddSale";
 import useFetch from "../../../hooks/useFetch";
 import useAuth from "../../hooks/useAuth";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import "./all.css";
 const AllSale = () => {
-  const { data, loading, error, reFetch } = useFetch("/student/JS1");
+  
   const apiUrl = process.env.REACT_APP_API_URL.trim();
   const [anchorElMap, setAnchorElMap] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
