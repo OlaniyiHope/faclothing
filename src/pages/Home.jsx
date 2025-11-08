@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import Header from "./Header";
 import AppLoader from "./AppLoader";
+import Header3 from "./Header3";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header3 />
     <Banner />
      <Footer />
     </>
