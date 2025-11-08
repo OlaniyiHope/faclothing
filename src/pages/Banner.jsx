@@ -630,7 +630,9 @@ useEffect(() => {
 	<span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906b9aaeea44"  data-product-id="222"><span class="woocommerce-Price-amount amount"><bdi>40.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></span>
 </div></div>
 						</div> */}
-            <div className="cms-eproducts-content cms-grid-content d-flex flex-col-4 flex-col-tablet-3 flex-col-mobile-2 flex-col-smobile-1">
+    
+              <div className="cms-eproducts-content cms-grid-content grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+
   {products.length === 0 ? (
     <p>No products found in this category.</p>
   ) : (
@@ -649,25 +651,29 @@ useEffect(() => {
                 )}
               </div>
 
-              {/* Product Images */}
-              <img
-                loading="lazy"
-                decoding="async"
-                width="400"
-                height="524"
-                src={product.images?.[0]}
-                className="cms-overlay cms-second-image cms-transition"
-                alt={product.name}
-              />
-              <img
-                loading="lazy"
-                decoding="async"
-                width="400"
-                height="524"
-                src={product.images?.[1] || product.images?.[0]}
-                className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                alt={product.name}
-              />
+       {/* Product Images */}
+<div className="relative w-full h-80 overflow-hidden rounded-lg bg-gray-100">
+  <img
+    src={product.images?.[0]}
+    alt={product.name}
+    loading="lazy"
+    decoding="async"
+    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+  />
+
+  {/* Optional: show second image on hover */}
+  {product.images?.[1] && (
+    <img
+      src={product.images[1]}
+      alt={`${product.name} - alternate`}
+      loading="lazy"
+      decoding="async"
+      className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-500"
+    />
+  )}
+</div>
+
+
             </div>
 
             {/* Overlay Link */}
