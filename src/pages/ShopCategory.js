@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import white from "./home.png";
 import young from "./a1.jpeg";
 import old from "./a3.jpg";
-import Navbar from "../components/Navbar";
+
 import step from "./newsprint.png";
 import oil from "./safe.png";
 import hiab from "./ran.png";

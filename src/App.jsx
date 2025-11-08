@@ -21,8 +21,6 @@
 import React, { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
-import { AuthProvider } from "./components/contexts/JWTAuthContext";
-import { SidebarProvider } from "./components/admindashboard/SidebarProvider";
 import { GoogleOAuthProvider } from "@react-oauth/google"; // Import the provider
 import { useEffect } from "react";
 import "./app.css";
@@ -38,16 +36,16 @@ function App() {
 
   return (
     <div>
-      <SidebarProvider>
-        <AuthProvider>
+  
+
           <CartProvider>
           <GoogleOAuthProvider clientId="383086754449-8p3mg46a39tsepkgd47uof98qu32cmn5.apps.googleusercontent.com">
             {content} {/* Wrap routes with a single AuthProvider */}
           </GoogleOAuthProvider>
           </CartProvider>
            <ToastContainer position="top-right" autoClose={2000} />
-        </AuthProvider>
-      </SidebarProvider>
+
+   
     </div>
   );
 }
