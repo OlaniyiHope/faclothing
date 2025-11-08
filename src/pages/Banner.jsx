@@ -1044,84 +1044,100 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* Carousel */}
-      <div className="cms-eproducts-content">
-        <div className="cms-carousel swiper">
-          <Slider {...settingss}>
-            {bestSellers.length > 0 ? (
-              bestSellers.map((product) => (
-                <div
-                  key={product._id}
-                  className=" swiper-slide hover-second-img cms-product-1"
-                >
-                  <div className="cms-products-content relative">
-                    {/* Product image section */}
-                    <div className="cms-products-loop-thumbs relative">
-                      <div className="wpcbm-wrapper">
-                        <img
-                          src={
-                            product.images?.[0] ||
-                            "https://via.placeholder.com/400x524"
-                          }
+{/* Carousel */}
+<div className="cms-eproducts-content">
+  <div className="cms-carousel swiper">
+    <Slider
+      {...settingss}
+      className="!flex !gap-6 px-3" // ensures space between slides
+    >
+      {bestSellers.length > 0 ? (
+        bestSellers.map((product) => (
+          <div
+            key={product._id}
+            className="swiper-slide hover-second-img cms-product-1 flex-none bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md"
+            style={{
+              width: "260px", // fixed width for uniformity
+              minHeight: "450px", // equal height for all cards
+              marginRight: "20px", // adds clear space between slides
+            }}
+          >
+            <div className="cms-products-content relative flex flex-col justify-between h-full">
+              
+              {/* Product Images */}
+              <div className="cms-products-loop-thumbs relative w-full h-72 overflow-hidden bg-gray-100">
+                <img
+                  src={product.images?.[0] || "https://via.placeholder.com/400x524"}
+                  alt={product.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
 
-                          
-                          alt={product.name}
-                          // className="cms-second-image cms-transition"
-                          width="400"
-                          height="524"
-                        />
-                      </div>
+                {/* Optional: show second image on hover */}
+                {product.images?.[1] && (
+                  <img
+                    src={product.images[1]}
+                    alt={`${product.name} - alternate`}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-500"
+                  />
+                )}
 
-                      <Link
-                      to={`/single-product/${product._id}`}
-                        // className="cms-overlay"
-                      ></Link>
+                {/* Full overlay link */}
+                <Link
+                  to={`/single-product/${product._id}`}
+                  className="absolute inset-0"
+                ></Link>
+              </div>
 
-                      {/* Optional icons/buttons can go here */}
-                    </div>
+              {/* Product info */}
+              <div className="flex flex-col flex-grow justify-between text-center p-4">
+                <h2 className="cms-loop-title text-18 pb-2 line-clamp-2">
+                  <Link to={`/single-product/${product._id}`}>
+                    {product.name}
+                  </Link>
+                </h2>
 
-                    {/* Product info */}
-                    <h2 className="cms-loop-title text-18 pt-20 pb-3">
-                      <a href={`/product/${product._id}`}>{product.name}</a>
-                    </h2>
-
-                    <span className="price">
-                      {product.oldPrice && (
-                        <del>
-                          <span className="woocommerce-Price-amount amount">
-                            <bdi>
-                                  <span className="woocommerce-Price-currencySymbol">
-                                $
-                              </span>
-                              {product.oldPrice}
-                          
-                            </bdi>
-                          </span>
-                        </del>
-                      )}
-                      <ins>
+                <div>
+                  <span className="price">
+                    {product.oldPrice && (
+                      <del className="block text-gray-400">
                         <span className="woocommerce-Price-amount amount">
                           <bdi>
-                                 <span className="woocommerce-Price-currencySymbol">
-                              $
-                            </span>
-                            {product.price}
-                       
+                            <span className="woocommerce-Price-currencySymbol">$</span>
+                            {product.oldPrice}
                           </bdi>
                         </span>
-                      </ins>
-                    </span>
-                  </div>
+                      </del>
+                    )}
+                    <ins>
+                      <span className="woocommerce-Price-amount amount text-black font-semibold">
+                        <bdi>
+                          <span className="woocommerce-Price-currencySymbol">$</span>
+                          {product.price}
+                        </bdi>
+                      </span>
+                    </ins>
+                  </span>
                 </div>
-              ))
-            ) : (
-              <div className="text-center py-10 text-muted">
-                Loading best sellers...
               </div>
-            )}
-          </Slider>
+
+            </div>
+          </div>
+        ))
+      ) : (
+        <div className="text-center py-10 text-muted">
+          Loading best sellers...
         </div>
-      </div>
+      )}
+    </Slider>
+  </div>
+</div>
+
+
+
     </div>
 		</div>
 				</div>
