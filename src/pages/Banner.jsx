@@ -804,21 +804,24 @@ useEffect(() => {
               <>
                 <del>
                   <bdi>
+                      <span className="woocommerce-Price-currencySymbol">$</span>
                     {product.oldPrice}
-                    <span className="woocommerce-Price-currencySymbol">$</span>
+                  
                   </bdi>
                 </del>
                 <ins>
                   <bdi>
+                        <span className="woocommerce-Price-currencySymbol">$</span>
                     {product.price}
-                    <span className="woocommerce-Price-currencySymbol">$</span>
+                
                   </bdi>
                 </ins>
               </>
             ) : (
               <bdi>
+                   <span className="woocommerce-Price-currencySymbol">$</span>
                 {product.price}
-                <span className="woocommerce-Price-currencySymbol">$</span>
+             
               </bdi>
             )}
           </span>
@@ -1162,10 +1165,11 @@ useEffect(() => {
                         <del>
                           <span className="woocommerce-Price-amount amount">
                             <bdi>
-                              {product.oldPrice}
-                              <span className="woocommerce-Price-currencySymbol">
+                                  <span className="woocommerce-Price-currencySymbol">
                                 $
                               </span>
+                              {product.oldPrice}
+                          
                             </bdi>
                           </span>
                         </del>
@@ -1173,10 +1177,11 @@ useEffect(() => {
                       <ins>
                         <span className="woocommerce-Price-amount amount">
                           <bdi>
-                            {product.price}
-                            <span className="woocommerce-Price-currencySymbol">
+                                 <span className="woocommerce-Price-currencySymbol">
                               $
                             </span>
+                            {product.price}
+                       
                           </bdi>
                         </span>
                       </ins>

@@ -127,8 +127,9 @@ const Cart = () => {
                       <td className="product-price" data-title="Price">
                         <span className="woocommerce-Price-amount amount">
                           <bdi>
+							           <span className="woocommerce-Price-currencySymbol">$</span>
                             {item.price.toFixed(2)}
-                            <span className="woocommerce-Price-currencySymbol">$</span>
+                 
                           </bdi>
                         </span>
                       </td>
@@ -149,7 +150,7 @@ const Cart = () => {
                                   )
                                 }
                               >
-                                -
+                                
                               </span>
                               <input
                                 type="number"
@@ -176,7 +177,7 @@ const Cart = () => {
                                   )
                                 }
                               >
-                                +
+                                
                               </span>
                             </div>
                           </div>
@@ -186,8 +187,9 @@ const Cart = () => {
                       <td className="product-subtotal" data-title="Subtotal">
                         <span className="woocommerce-Price-amount amount">
                           <bdi>
+							              <span className="woocommerce-Price-currencySymbol">$</span>
                             {(item.price * item.quantity).toFixed(2)}
-                            <span className="woocommerce-Price-currencySymbol">$</span>
+              
                           </bdi>
                         </span>
                       </td>
@@ -231,14 +233,15 @@ const Cart = () => {
                       <td data-title="Subtotal">
                         <span className="woocommerce-Price-amount amount">
                           <bdi>
+							  <span className="woocommerce-Price-currencySymbol">$</span>
                             {subtotal.toFixed(2)}
-                            <span className="woocommerce-Price-currencySymbol">$</span>
+                          
                           </bdi>
                         </span>
                       </td>
                     </tr>
 
-                    <tr className="woocommerce-shipping-totals shipping">
+                    {/* <tr className="woocommerce-shipping-totals shipping">
                       <th>Shipping</th>
                       <td data-title="Shipping">
                         <ul id="shipping_method" className="woocommerce-shipping-methods">
@@ -255,7 +258,7 @@ const Cart = () => {
                               Flat rate:{" "}
                               <span className="woocommerce-Price-amount amount">
                                 <bdi>
-                                  15.00<span className="woocommerce-Price-currencySymbol">$</span>
+                              <span className="woocommerce-Price-currencySymbol">$</span>    15.00
                                 </bdi>
                               </span>
                             </label>
@@ -273,7 +276,7 @@ const Cart = () => {
                               Local pickup:{" "}
                               <span className="woocommerce-Price-amount amount">
                                 <bdi>
-                                  10.00<span className="woocommerce-Price-currencySymbol">$</span>
+                               <span className="woocommerce-Price-currencySymbol">$</span>   10.00
                                 </bdi>
                               </span>
                             </label>
@@ -283,7 +286,7 @@ const Cart = () => {
                           Shipping to <strong>NG</strong>.
                         </p>
                       </td>
-                    </tr>
+                    </tr> */}
 
                     <tr className="order-total">
                       <th>Total</th>
@@ -291,8 +294,9 @@ const Cart = () => {
                         <strong>
                           <span className="woocommerce-Price-amount amount">
                             <bdi>
+								  <span className="woocommerce-Price-currencySymbol">$</span>
                               {total.toFixed(2)}
-                              <span className="woocommerce-Price-currencySymbol">$</span>
+                            
                             </bdi>
                           </span>
                         </strong>
@@ -301,14 +305,15 @@ const Cart = () => {
                   </tbody>
                 </table>
 
-                <div className="wc-proceed-to-checkout">
-                  <button
-                    className="checkout-button btn btn-accent text-white btn-hover-primary text-hover-white"
-                    onClick={() => alert("Proceeding to checkout...")}
-                  >
-                    Proceed to checkout
-                  </button>
-                </div>
+             <div className="wc-proceed-to-checkout">
+  <Link
+    to="/checkout"
+    className="checkout-button btn btn-accent text-white btn-hover-primary text-hover-white"
+  >
+    Proceed to checkout
+  </Link>
+</div>
+
               </div>
             </div>
           </>

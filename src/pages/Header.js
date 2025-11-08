@@ -44,7 +44,7 @@ useEffect(() => {
   return (
     <div > 
 
-      	<header id="cms-header-wrap" class="site-header">
+      	<header id="cms-header-wrap" class="site-header" >
        <div id="cms-header"   className={`cms-header header-layout-3  transparent-on header-transparent header-divider ${
             scrolled ? "scrolled-header" : ""
           }`}>
