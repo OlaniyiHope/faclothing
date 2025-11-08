@@ -8,10 +8,11 @@ import Footer from "./Footer";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Header2 from "./Header2";
 import Header3 from "./Header3";
-
+import PaystackPop from "@paystack/inline-js";
 const Checkout = () => {
   const navigate = useNavigate();
   const { cartItems, clearCart } = useCart();
+  
 //   const stripe = useStripe();
 //   const elements = useElements();
   const [address, setAddress] = useState({
@@ -57,20 +58,20 @@ const getTotalPrice = () => {
   }, 0);
 };
 
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const res = await axios.get("https://restcountries.com/v3.1/all");
-        const countryNames = res.data
-          .map((c) => c.name.common)
-          .sort((a, b) => a.localeCompare(b));
-        setCountries(countryNames);
-      } catch (err) {
-        console.error("Error fetching countries:", err);
-      }
-    };
-    fetchCountries();
-  }, []);
+//   useEffect(() => {
+//     const fetchCountries = async () => {
+//       try {
+//         const res = await axios.get("https://restcountries.com/v3.1/all");
+//         const countryNames = res.data
+//           .map((c) => c.name.common)
+//           .sort((a, b) => a.localeCompare(b));
+//         setCountries(countryNames);
+//       } catch (err) {
+//         console.error("Error fetching countries:", err);
+//       }
+//     };
+//     fetchCountries();
+//   }, []);
 
 
   const handleChange = (e) => {
@@ -121,6 +122,37 @@ const getTotalPrice = () => {
 //       // onSuccess();
 //     }
 //   };
+
+const handlePaystackPayment = async () => {
+    try {
+      // 1️⃣ Call backend to initialize payment
+      const res = await axios.post("http://localhost:8000/api/db/initialize", {
+        email: "olaniyihoppee@gmail.com", // Replace with real customer email
+        amount: getTotalPrice(), // in Naira
+      });
+
+      const { authorization_url, access_code, reference } = res.data.data;
+
+      // 2️⃣ Open Paystack popup
+      const paystack = new PaystackPop();
+      paystack.newTransaction({
+        key: "pk_test_194fdfb63723f18c009d2d250c6ada3b3d447c77", // You can also get a public key from Paystack dashboard
+        email: "olaniyihoppee@gmail.com", // replace with real email
+        amount: getTotalPrice() * 100, // amount in kobo
+        reference, // optional
+        onSuccess: (transaction) => {
+          alert("Payment successful! Reference: " + transaction.reference);
+          // ✅ Optionally save order to backend here
+        },
+        onCancel: () => {
+          alert("Payment cancelled");
+        },
+      });
+    } catch (err) {
+      console.error("Paystack payment error:", err);
+      alert("Payment failed");
+    }
+  };
 
   return (
     <div  style={{backgroundColor: "white"}}>
@@ -230,23 +262,20 @@ const getTotalPrice = () => {
       </div>
 
       {/* Country */}
-      <div>
-        <label className="block text-gray-700 mb-1 font-medium">Country / Region</label>
-        <select
-          name="country"
-          value={form.country}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg px-5 py-3 bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none text-gray-800"
-          required
-        >
-          <option value="">Select a country...</option>
-          {countries.map((c, i) => (
-            <option key={i} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-      </div>
+   <label className="block text-gray-700 mb-1 font-medium">Country / Region</label>
+<select
+  name="country"
+  value={form.country}
+  onChange={handleChange}
+  className="w-full border border-gray-300 rounded-lg px-5 py-3 bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none text-gray-800"
+  required
+>
+  <option value="">Select a country...</option>
+  <option value="Nigeria">Nigeria</option>
+  <option value="United Kingdom">United Kingdom</option>
+  <option value="United States">United States</option>
+</select>
+
 
       {/* First + Last Name */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -424,7 +453,7 @@ const getTotalPrice = () => {
 </div>
 
 
-{/* 💳 Payment Section */}
+{/* Payment Section */}
 <div className="payment-method mt-6 p-4 border rounded-lg bg-gray-50">
   <h3 className="text-lg font-semibold mb-4">Payment Method</h3>
 
@@ -467,48 +496,28 @@ const getTotalPrice = () => {
     </label>
   </div>
 
-  {/* Stripe Card Form */}
+  {/* Paystack Button */}
   {payment === "card" && (
-    <div className="mt-5 border-t pt-4">
-      <h4 className="text-md font-semibold mb-3">Enter Card Details</h4>
-      <form onSubmit={handleSubmit}>
-        <div className="p-3 border rounded-lg bg-white">
-          <CardElement
-            options={{
-              style: {
-                base: {
-                  fontSize: "16px",
-                  color: "#424770",
-                  "::placeholder": { color: "#aab7c4" },
-                },
-                invalid: { color: "#9e2146" },
-              },
-            }}
-          />
-        </div>
-
-        <button
-          type="submit"
-        //   disabled={!stripe}
-          className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Pay Rs {getTotalPrice().toLocaleString()}
-        </button>
-      </form>
-    </div>
+    <button
+      type="button"
+      onClick={handlePaystackPayment}
+      className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+	  style={{backgroundColor: "#8b023a", color: "white"}}
+    >
+      Pay ₦{(
+        getTotalPrice() +
+        (delivery === "usps"
+          ? 8689.88
+          : delivery === "ups"
+          ? 9396.66
+          : delivery === "dhl"
+          ? 13417.18
+          : 0)
+      ).toLocaleString()}
+    </button>
   )}
 </div>
 
-      {/* Submit */}
-      <div className="pt-6">
-        <button
-          type="submit"
-		  style={{backgroundColor: "#8b023a", color: "white"}}
-          className="w-full bg-blue-600 text-white py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
-        >
-          Continue to Payment
-        </button>
-      </div>
     </form>
   </div>
 </div>

@@ -33,6 +33,7 @@ const Cart = () => {
   return (
     <div className="wp-singular page-template-default page page-id-85 page-child parent-pageid-84 wp-custom-logo wp-theme-trevox theme-trevox woocommerce-cart woocommerce-page woocommerce-js translatepress-en_US cms-heading-font-default elementor-default elementor-kit-8 currency-usd e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit" style={{backgroundColor: "white"}}>
       <Header3 />
+	  
 {/* 
     	<main id="cms-main" class="cms-main container cms-woo-content"><div class="woocommerce"><div class="woocommerce-notices-wrapper"></div><div class="wc-empty-cart-message">
 	<div class="cart-empty woocommerce-info" role="status">
@@ -47,11 +48,17 @@ const Cart = () => {
         <div class="container-fluid relative z-top">
 			<ul class="cms-breadcrumb unstyled cms-breadcrumb-1 justify-content-start"><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/">Home</a></li><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/shop/">Shop</a></li><li><span class="breadcrumb-entry">Cart</span></li></ul>        </div>
     </div> */}
+	    <div class="container-fluid relative z-top">
+			<ul class="cms-breadcrumb unstyled cms-breadcrumb-1 justify-content-start">
+				<li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/">Home</a>
+				</li><li><a class="breadcrumb-entry" href="https://7oroofthemes.com/trevox/shop/">Shop</a>
+				</li><li><span class="breadcrumb-entry">Cart</span></li></ul>        </div>
 <main
       id="cms-main"
       className="cms-main container cms-woo-content"
       style={{ width: "100%" }}
     >
+		
       <div className="woocommerce">
         <div className="woocommerce-notices-wrapper"></div>
 
@@ -62,6 +69,8 @@ const Cart = () => {
           </div>
         ) : (
           <>
+		
+
             <form className="woocommerce-cart-form" onSubmit={(e) => e.preventDefault()}>
               <table
                 className="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
