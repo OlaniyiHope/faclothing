@@ -4,7 +4,7 @@ import axios from "axios";
 import { useCart } from "../context/CartContext";
 import Header from "./Header";
 import Footer from "./Footer";
-// import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Header2 from "./Header2";
 import Header3 from "./Header3";
@@ -122,6 +122,25 @@ const getTotalPrice = () => {
 //       // onSuccess();
 //     }
 //   };
+const handleStripePayment = async () => {
+  try {
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY); // ✅ uses env key
+
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/db/create-checkout-session`,
+      { cartItems }
+    );
+
+    if (res.data.url) {
+      window.location.href = res.data.url; // Redirect to Stripe Checkout
+    } else {
+      alert("Unable to start payment session");
+    }
+  } catch (err) {
+    console.error("Stripe payment error:", err);
+    alert("Payment failed");
+  }
+};
 
 const handlePaystackPayment = async () => {
     try {
@@ -452,7 +471,6 @@ const handlePaystackPayment = async () => {
   </div>
 </div>
 
-
 {/* Payment Section */}
 <div className="payment-method mt-6 p-4 border rounded-lg bg-gray-50">
   <h3 className="text-lg font-semibold mb-4">Payment Method</h3>
@@ -468,7 +486,7 @@ const handlePaystackPayment = async () => {
         checked={payment === "card"}
         onChange={() => setPayment("card")}
       />
-      <span className="font-medium">Credit / Debit Card</span>
+      <span className="font-medium">Credit / Debit Card (Stripe)</span>
     </label>
 
     <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
@@ -496,13 +514,13 @@ const handlePaystackPayment = async () => {
     </label>
   </div>
 
-  {/* Paystack Button */}
+  {/* Stripe Payment Button */}
   {payment === "card" && (
     <button
       type="button"
-      onClick={handlePaystackPayment}
-      className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-	  style={{backgroundColor: "#8b023a", color: "white"}}
+      onClick={handleStripePayment}
+      className="mt-4 w-full py-2 rounded-lg transition"
+      style={{ backgroundColor: "#8b023a", color: "white" }}
     >
       Pay ₦{(
         getTotalPrice() +
@@ -517,6 +535,7 @@ const handlePaystackPayment = async () => {
     </button>
   )}
 </div>
+
 
     </form>
   </div>

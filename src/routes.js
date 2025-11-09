@@ -12,6 +12,8 @@ import ShipPolicy from "./pages/ShipPolicy";
 import RefPolicy from "./pages/RefPolicy";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
+import OrderSuccess from "./pages/OrderSuccess";
+import OrderFailed from "./pages/OrderFailed";
 
 
 const routes = [
@@ -61,6 +63,14 @@ const routes = [
   {
  path: "/category/:id",
     element: <ShopCategory />,
+  },
+  {
+ path: "/order-success",
+    element: <OrderSuccess />,
+  },
+  {
+ path: "/order-failure",
+    element: <OrderFailed />,
   },
 
 
