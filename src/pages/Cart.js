@@ -28,7 +28,8 @@ const Cart = () => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const total = subtotal + shipping;
+  // const total = subtotal + shipping;
+    const total = subtotal;
   return (
     <div className="wp-singular page-template-default page page-id-85 page-child parent-pageid-84 wp-custom-logo wp-theme-trevox theme-trevox woocommerce-cart woocommerce-page woocommerce-js translatepress-en_US cms-heading-font-default elementor-default elementor-kit-8 currency-usd e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit" style={{backgroundColor: "white"}}>
       <Header3 />
