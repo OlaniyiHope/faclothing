@@ -253,6 +253,22 @@ const settingss = {
     };
     fetchCategories();
   }, []);
+useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const url =
+          selectedCategory === "all"
+            ? `${process.env.REACT_APP_API_URL}/api/db/products`
+            : `${process.env.REACT_APP_API_URL}/api/db/products/category/${selectedCategory}`;
+        const res = await axios.get(url);
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+    fetchProducts();
+  }, [selectedCategory]);
+
 
   // Render submenu
 // Only keep children that are categories (ignore products).   
@@ -285,22 +301,6 @@ const settingss = {
 
     fetchFeatured();
   }, []);
-
-useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const url =
-          selectedCategory === "all"
-            ? `${process.env.REACT_APP_API_URL}/api/db/products`
-            : `${process.env.REACT_APP_API_URL}/api/db/products/category/${selectedCategory}`;
-        const res = await axios.get(url);
-        setProducts(res.data);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-      }
-    };
-    fetchProducts();
-  }, [selectedCategory]);
 
 
 
