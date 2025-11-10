@@ -122,17 +122,59 @@ const getTotalPrice = () => {
 //       // onSuccess();
 //     }
 //   };
+// const handleStripePayment = async () => {
+//   try {
+//     const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY); // ✅ uses env key
+
+//     const res = await axios.post(
+//       `${process.env.REACT_APP_API_URL}/api/db/create-checkout-session`,
+//       { cartItems }
+//     );
+
+//     if (res.data.url) {
+//       window.location.href = res.data.url; // Redirect to Stripe Checkout
+//     } else {
+//       alert("Unable to start payment session");
+//     }
+//   } catch (err) {
+//     console.error("Stripe payment error:", err);
+//     alert("Payment failed");
+//   }
+// };
+
+// const handleStripePayment = async () => {
+//   try {
+//     // ✅ load Stripe with public key
+//     const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+//     const res = await axios.post(
+//       `${process.env.REACT_APP_API_URL}/api/db/create-checkout-session`,
+//       { cartItems }
+//     );
+
+//     if (res.data.id) {
+//       // ✅ use Stripe's recommended redirect method
+//       await stripe.redirectToCheckout({ sessionId: res.data.id });
+//     } else {
+//       alert("Unable to start payment session");
+//     }
+//   } catch (err) {
+//     console.error("Stripe payment error:", err);
+//     alert("Payment failed");
+//   }
+// };
 const handleStripePayment = async () => {
   try {
-    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY); // ✅ uses env key
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
+    // send the selected payment method to backend
     const res = await axios.post(
       `${process.env.REACT_APP_API_URL}/api/db/create-checkout-session`,
-      { cartItems }
+      { cartItems, paymentMethod: payment } // <-- send payment method
     );
 
-    if (res.data.url) {
-      window.location.href = res.data.url; // Redirect to Stripe Checkout
+    if (res.data.id) {
+      await stripe.redirectToCheckout({ sessionId: res.data.id });
     } else {
       alert("Unable to start payment session");
     }
@@ -430,7 +472,7 @@ const handlePaystackPayment = async () => {
       />
       <div className="flex flex-col flex-1">
         <span className="font-medium">USPS International</span>
-        <span className="text-sm text-gray-600">Rs 8,689.88</span>
+        <span className="text-sm text-gray-600">$8,689.88</span>
       </div>
       <span className="text-sm text-gray-600">4 to 9 business days</span>
     </label>
@@ -447,7 +489,7 @@ const handlePaystackPayment = async () => {
       />
       <div className="flex flex-col flex-1">
         <span className="font-medium">UPS Worldwide Expedited®</span>
-        <span className="text-sm text-gray-600">Rs 9,396.66</span>
+        <span className="text-sm text-gray-600">$9,396.66</span>
       </div>
       <span className="text-sm text-gray-600">4 to 9 business days</span>
     </label>
@@ -464,7 +506,7 @@ const handlePaystackPayment = async () => {
       />
       <div className="flex flex-col flex-1">
         <span className="font-medium">DHL Express Worldwide</span>
-        <span className="text-sm text-gray-600">Rs 13,417.18</span>
+        <span className="text-sm text-gray-600">$13,417.18</span>
       </div>
       <span className="text-sm text-gray-600">4 to 5 business days</span>
     </label>
@@ -472,11 +514,14 @@ const handlePaystackPayment = async () => {
 </div>
 
 {/* Payment Section */}
+
+{/* Payment Section */}
 <div className="payment-method mt-6 p-4 border rounded-lg bg-gray-50">
   <h3 className="text-lg font-semibold mb-4">Payment Method</h3>
 
   {/* Payment Options */}
   <div className="grid gap-3">
+    {/* Credit / Debit Card */}
     <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
       <input
         type="radio"
@@ -486,9 +531,23 @@ const handlePaystackPayment = async () => {
         checked={payment === "card"}
         onChange={() => setPayment("card")}
       />
-      <span className="font-medium">Credit / Debit Card (Stripe)</span>
+      <span className="font-medium">Credit / Debit Card (Pay Now)</span>
     </label>
 
+    {/* Klarna */}
+    <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
+      <input
+        type="radio"
+        name="payment"
+        value="klarna"
+        className="mr-3"
+        checked={payment === "klarna"}
+        onChange={() => setPayment("klarna")}
+      />
+      <span className="font-medium">Klarna Pay Later (Pay in 4)</span>
+    </label>
+
+    {/* PayPal */}
     <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
       <input
         type="radio"
@@ -501,6 +560,7 @@ const handlePaystackPayment = async () => {
       <span className="font-medium">PayPal</span>
     </label>
 
+    {/* Cash on Delivery */}
     <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
       <input
         type="radio"
@@ -514,11 +574,11 @@ const handlePaystackPayment = async () => {
     </label>
   </div>
 
-  {/* Stripe Payment Button */}
-  {payment === "card" && (
+  {/* Stripe Payment Button (Card or Klarna) */}
+  {(payment === "card" || payment === "klarna") && (
     <button
       type="button"
-      onClick={handleStripePayment}
+      onClick={handleStripePayment} // pass payment method in this function
       className="mt-4 w-full py-2 rounded-lg transition"
       style={{ backgroundColor: "#8b023a", color: "white" }}
     >
@@ -534,7 +594,27 @@ const handlePaystackPayment = async () => {
       ).toLocaleString()}
     </button>
   )}
+
+  {/* PayPal Button */}
+  {payment === "paypal" && (
+    <button
+      type="button"
+    //   onClick={handlePayPalPayment} // implement your PayPal payment function
+      className="mt-4 w-full py-2 rounded-lg transition"
+      style={{ backgroundColor: "#0070ba", color: "white" }}
+    >
+      Pay with PayPal
+    </button>
+  )}
+
+  {/* Cash on Delivery Info */}
+  {payment === "cod" && (
+    <div className="mt-4 p-3 border rounded-lg bg-white text-gray-700">
+      You have selected Cash on Delivery. Please prepare the payment when your order arrives.
+    </div>
+  )}
 </div>
+
 
 
     </form>
@@ -668,7 +748,7 @@ const handlePaystackPayment = async () => {
       <th style={{fontSize: "17px"}}>Shipping ({delivery.toUpperCase()})</th>
       <td>
         <span className="woocommerce-Price-amount amount" style={{fontSize: "14px", fontWeight: "600"}}>
-			          <span className="woocommerce-Price-currencySymbol">Rs</span>
+			          <span className="woocommerce-Price-currencySymbol">$</span>
           <bdi>
             {delivery === "usps"
               ? "8689.88"
