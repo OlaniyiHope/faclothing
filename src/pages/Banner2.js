@@ -367,7 +367,7 @@ return (
         <div class="wt-display-flex-xs wt-justify-content-space-between wt-align-items-flex-end wt-mb-xs-3">
             <div class="wt-display-flex-xs">
                 <h2 class="wt-text-title-larger wt-text-primary daily-deals-carousel__label wt-mr-xs-2" id="daily-deals-y5d7ubb0qdg">
-                    Today's big deals
+                    Today's Popular Products
                 </h2>
                 <div class="daily-deals-countdown-clock-container wt-display-flex-xs wt-align-items-center wt-text-body wt-text-gray">
     <span class="etsy-icon wt-icon--small-xs wt-mr-xs-1"><svg xmlns="http://www.w3.org/2000/svg" class="spinnable-clock-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
