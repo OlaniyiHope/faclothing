@@ -1,21 +1,11 @@
 import React, {useState, useEffect} from "react";
-import white from "./home.png";
-import young from "./a1.jpeg";
-import old from "./a3.jpg";
-import Navbar from "../components/Navbar";
-import step from "./newsprint.png";
-import oil from "./safe.png";
-import hiab from "./ran.png";
-import "./home.css";
-import "./style.css";
-import Footer from "./Footer";
+
 import axios from "axios";
-import braImg from "./bus2.png";
-import BestSellers from "./BestSellers";
-import Trending from "./Trending";
-import Featured from "./Featured";
+
 import { Link } from "react-router-dom";
 
+import d2 from "./d2.jpeg"
+import d3 from "./d3.jpeg"
 const bgImage = `url("data:image/svg+xml;utf8,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'>
     <image href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACRUlEQVR4nLVTPWtVQRBNTCCKBhSTJiKJip8oVoqK+CoxTYyFMYUhj3ff3TMzuzu79yYxJKg8TSM2goqFIGKdxkIQrGwVwUZQK0Xx619E9uELL0UiERw4zNwtDuecO9PRsXZ1/kH73P62rupsNBobEpaWlpbn9rd1kZVluQlAn3Nue5ZlvdVq3ApM9dVq2p+6tXbL4uJi11rEy3bGxsa6nHMDIlohCmdhw2nmeA5SjEDiBXZFNXWReDARrxZBy063qvaIyE6yOko2GrLBMxfXwWGOJC6ILZ6zLV6yjbdhp89k2ZXeFaTJXpa5gTz3u4jCXua434gcg/hxSGBDOmOM3jCk8+B4BxJek8Sf1pXvrS/vEZXHq9XqxiZpUpXsGePOA45zCnUgTORwCvZzOXQqwRg/a4zOG+gjw+ENcfjEUny3rnxLtiiToGaeiZCo3EGkF5MCI8UM4AMQGs1v8mRMQvCAnwPpE1B8Zzh8A8cvZONX4uIx4I60bHemYPPc7TNGTuWko8aEMoe/1lRH3uTk60TBJuugcBccXoHDj0QI1l+Q+IxZTyRxzQzTMDysPWk9auSPgjVPdkG6YEivQgLA6gz5WZDeAocXkPCRJHyAhM9ki6dAPJm2Y8XapGBrIruN0QqgIzn5yaSuDj+ek14i0stEvg4ON3PWBxC9TxIeGtF5wB9YVtiqSqXSneyLyLaaan8KmoiG0t/PrB20mR0kikMpnhrpoYSM+fAksGdiYnrzX6+ldWbJSvvZ/estryBv66vh/9RvTxMh3UHKN/wAAAAASUVORK5CYII='/>
@@ -136,166 +126,4473 @@ return (
     <>
 
   
-                                            <main><div class="bg-slate-100"></div><div class="flex flex-col">
-                                              
-                                              
-                                              {/*<section>
-                                              <div class="text-slate-900 bg-white"><div class="mx-auto max-w-[1440px] px-6">
-                                                <div id="hero-wrapper" class="mx-auto flex flex-col md:flex-row">
-                                                  
-                                                  <img alt="" width="1250" height="900" decoding="async" data-nimg="1" class="object-cover md:hidden"
-  style={{
-    color: "transparent",
-    backgroundSize: "cover",
-    backgroundPosition: "50% 50%",
-    backgroundRepeat: "no-repeat",
-    backgroundImage:
-      "url(_data_image/svg%2bxml%3bcharset%3dutf-8%2c_svg%20xmlns%3d%27http_/www.w3.org/2000/svg%27%20viewBox%3d%270%200%201250%20900%27__filter%20id%3d%27b%27%20colo/__feColorMatrix%20values%3d%271%200%200%200%200%200%201%200%200%200%200/filter__image%20width%3d%2710);&#x27; href=&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAC4jAAAuIwF4pT92AAAEeUlEQVR4nAFuBJH7AA8vfxAWOJMtFjySUBpDll8fR5pZIk2bO3N/oizQvqxHwauhT2k9hkZGA3pTPhBzTRc+TkEAVDNeAE0tdgBJKVcvXks2fYWFQYaGhkppaWk1ABQ2jj0UPJKIGUCVvyFImc0lS5zHIUqcoVNpnne+saSKvaOdk3E2iZJQCYO1OR9tuhFHRq4CVTTCAlEw0gRQL7wVWT6OVXNncXZ7eGFjY2NFABw5g2EYP4+6JEqY8zdZn/00V6H3I0ma0T9Yk5iemJOOp42Pkm4vh6hXE4TeOCln6g9IP+QDUzPzBVMz/AZVNe8QVzu+P2VWhWx0b2BjZ2NAADVIcmkjQ4WyLU+W7UNio/08YKPvJEeQwTBEbopkZF9rd15jZGEleYBXGHuyPiZguxRCOsMEUC/qA1Iy/QRUM+McWkCqZnZuoYB+fqNsbGx1AFlfV3hFVWe3NlGB6zJSk/wtTpbrJUCAvTU/VZhlWjt5i2w2Y4FTU2h4R1qIakhIm0JPNLccUC3pB1Au/QFPL9kpXEWafYB+tYOBgtNmZGalAJuJJ4CPhTPHaG5R8jhMdvozNnfsQC5cwUc+R5x8ajWLqIIth6F3O56dcUHElms413pdLeVGUCX0Ekwo9wFKKtMpVD+UeXp6sYB+gNNiYGKpAMSoFZC6ox3XlIkw7VlTVeBeKE3jcxwxvl8uM31uYDhsk3M0eZlxPaubbjvVlWYy2oJXJdtbShzZNEcf2jJKHsldUyybjXRhqIh7dLNxamp8ALmjIoynlirQmH4t3YtROcSRLTjXmiMry40nLY10OTlrfGZUZJiHcJOagWSqkXVTn41nQ6qQWyu3nVsdxqpgHdO+ZiLJxm0wv7xvPJmwbUJUAJ2STHiRe0e8mVs536pCOOGwREjurkNJ76szO9aiKDCpmlVWgZ2TkZ+amZatnJiVrqyQfsjEeEXW13An4dZ3NfDTeTrz23Ms5t9rHLLYZRhqAHl7d4J7XlvIlD0+5K83POu6Uln5ultg/rM9RvSmKTHTiTY+rG9eYaR+gIOpoKGhzLChmum/hl/i0HIy5MZ0Pfe+dUP8zHAx6c1mIKavVx9gAFFdcYBjRVTCiy450qssNda4Q0ryuUlQ/K82PumLKzXSWS44y0E5QqxwdHeepKWn1ayrq+WykHvCym8vzMloJvHCZyf8xGUh4KFZJ5xbSD5qAERLbGxtPVamlis6t6wmLciwKjPwsCoz+6YmL+FyKTHNOi453zA1QL9rb3STpKeoyKmrrtOxkn2bzmkhuNhkFfDXZBX7yV8X4otRKLBGQT+QAGBEZlKPPVmAoixAf6oiKparICnDqh8nzaEeKLJkIyudLSoyuiUrNaNZW2NnoqSlj6iqraO1j3Zy0WYYkdpkE8TZYxPNyF4Vu4ZKIpQ6MzF7AH80UiKlM0w8qCY+NZ0aJUScGiJgnhkhZJYYIVVVHiVLJCQqYSEkLVVRUVYvm5ufSKGhpFexhXA7xV0UTMpdEmLKWxJiwVYTW4FEHEcxLCg57R7xDJgCrSoAAAAASUVORK5CYII=&#x27;/%3E%3C/svg%3E&quot;)"
-  }}
-  
- src={braImg}/><div class="flex flex-col py-4 md:w-3/5 md:py-24 lg:w-1/2"><div class="flex flex-col gap-6">
+                  <main id="content">
+            <div data-async-homepage-modules="">
+    <div class="hp-spacing-smaller">
     
-    <h1 class="text-center text-[2.75rem] font-extrabold leading-[3rem] md:text-left md:text-[3.5rem] md:leading-[3.6rem]">Custom Faith Based T-Shirts &amp; Mugs</h1><h2 class="text-center text-xl md:text-left">Personalize t-shirts, apparel,
-       or mugs for your group or business</h2><div class="flex flex-col gap-4 md:items-start lg:flex-row">
-                                              <a class="inline-flex items-center justify-center whitespace-nowrap font-bold ring-offset-background
-                                               transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
-                                               focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary
-                                                text-primary-foreground hover:bg-primary/90 rounded-2xl px-12 py-4 text-xl"
-                                                 href="/collections">Shop Collection</a></div></div>
-                                              
-                                              
-                                              <div class="mt-10"><div class="flex w-full"><div class="flex flex-1 flex-col items-center justify-center lg:items-start xl:flex-none"><h3 class="mb-2 whitespace-nowrap text-xl font-medium text-slate-950">Free Delivery</h3><p class="text-center leading-4 text-slate-600 lg:text-left">As soon as <span class="whitespace-nowrap blur-sm">Loading...</span></p></div><div data-orientation="vertical" role="none" class="shrink-0 w-[1px] mx-4 h-auto bg-primary"></div><div class="flex flex-1 flex-col items-center justify-center lg:items-start xl:flex-none"><h3 class="mb-2 whitespace-nowrap text-xl text-slate-950">Rush Delivery</h3><p class="text-center leading-4 text-slate-600 lg:text-left">Guaranteed by <span class="whitespace-nowrap blur-sm">Loading...</span></p></div><div data-orientation="vertical" role="none" class="shrink-0 w-[1px] mx-4 hidden h-auto bg-primary lg:block"></div><div class="hidden flex-1 flex-col items-center justify-center lg:flex lg:flex-col lg:items-start xl:flex-none"><h3 class="mb-2 text-xl text-slate-950">Need it Sooner?</h3><p class="leading-4 text-slate-600">Call<a href="tel:8006201233" class="whitespace-nowrap pl-1">1-800-620-1233</a><a href="#" class="pl-1">or Live Chat</a></p></div></div><div class="flex items-center justify-center gap-4 px-6 pb-6 pt-10 lg:hidden"><h3 class="text-slate-950">Need it Sooner?</h3><p class="leading-4 text-slate-600"><a href="tel:8006201233">Call Now</a> or <a href="#">Live Chat</a></p></div></div></div><div class="relative hidden overflow-y-clip md:flex md:w-2/5 lg:w-1/2"><img alt="" width="1250" height="900" decoding="async" data-nimg="1" class="overflow-visible object-cover object-left 2xl:object-none"
-                                              
-                          style={{
-    color: "transparent",
-    backgroundSize: "cover",
-    backgroundPosition: "50% 50%",
-    backgroundRepeat: "no-repeat",
-    backgroundImage:
-      "url(_data_image/svg%2bxml%3bcharset%3dutf-8%2c_svg%20xmlns%3d%27http_/www.w3.org/2000/svg%27%20viewBox%3d%270%200%20800%20900%27__filter%20id%3d%27b%27%20color/__feColorMatrix%20values%3d%271%200%200%200%200%200%201%200%200%200%200/filter__image%20width%3d%2710);' href='data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAXABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAUGBwMI/8QAIxAAAQMEAgIDAQAAAAAAAAAAAQIDBAAFBhESEyExFEFRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAED/8QAGxEAAwEAAwEAAAAAAAAAAAAAAAECEQNBYRL/2gAMAwEAAhEDEQA/APR0u+9GRxrWlgqDqSpTu/CP5UZec6tdruy4chaw40QlYCd+T6qLvJQjNlOBZLyAkpR6BrPc7jyHsmFxCkdcl1JDSVbJ4kVTklR8+onx073xm8QbnEmsB5h0KRvX5o/lKruN26V8J1xxrq7XVOJSr3ogUqZQ43/GJcq+OXOK+2Dw0EKH2KrcTCLtcJ8GTKXGjtxneRbT55DezSlN07a3oJlRudmrpHFIA+qUpQJ//9k='/%3E%3C/svg%3E\")"
-  }}
-  
-  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
-  
- src={braImg}/></div>
-   </div></div></div></section>*/}
-   
-   
-<section className="bg-slate-100 text-slate-900">
-  <div className="mx-auto max-w-[1440px] px-6">
-    <div className="flex flex-col items-center">
-      <h2 className="mt-8 text-2xl font-semibold">Shop Categories</h2>
-      <p className="mt-2 text-center text-lg font-light">
-        Christian shirts & mugs that speak your faith.
-      </p>
+        
+</div><div data-appears-component-name="hp_shoppable_hero" data-appears-event-data="{&quot;image_url&quot;:&quot;https:\/\/i.etsystatic.com\/ij\/6b6698\/7316241243\/ij_fullxfull.7316241243_3bsney2g.jpg?version=0&quot;,&quot;panels&quot;:[{&quot;title&quot;:&quot;Pieces that will start new traditions&quot;,&quot;entry_id&quot;:&quot;4RtraSdenNjYc5UT3RNiFT&quot;}]}">
+<div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
+    
+        <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+    
+        <section class="shoppable-hero shoppable-hero--two-column wt-display-flex-xs " aria-labelledby="shoppable-hero-title">
+        <div data-clg-id="WtCard" class="wt-card wt-card--contained shoppable-hero-headline shoppable-hero-headline--xs-portrait wt-display-flex-xs wt-width-full wt-flex-grow-xs-1">
+    <a class="wt-card__action-link" href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" aria-label="Gifts that show you care Shop original pieces"></a>
+<div class="wt-width-full">
+    <div class="shoppable-hero-headline__container  wt-display-flex-xs wt-overflow-hidden wt-height-full" style={{backgroundColor: "#384124"}}>
+        <div class="shoppable-hero-headline__content wt-p-xs-4 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-gap-xs-1 wt-align-items-center wt-justify-content-center wt-text-center-xs  wt-text-white">
+            <p id="shoppable-hero-title" class="wt-text-display">Wear Your Heritage Proudly</p>
+            <p class="wt-text-title-large">
+                
+            </p>
+            <a href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
+                Shop all products
+            </a>
+        </div>
+        <div class="shoppable-hero-headline__image shoppable-hero-headline__image--spotlighted wt-flex-grow-xs-1">
+            <img data-clg-id="WtImage" class="wt-height-full wt-object-fit-cover wt-image" src={d2} alt="wooden menorah on top of a gift wrapped in blue paper and a yellow gold ribbon"
+			
+			 style={{ aspectRatio: "1.25925925926" }} fetchpriority="high" sizes="(max-width: 639px) 100vw, (max-width: 899px) 45vw, (max-width: 1199px) 55vw, 33vw" srcset={d2} />
 
-      <ul className="my-8 w-full grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3">
-        {categories.map((cat) => (
-          <li key={cat._id} className="w-full">
-        <li key={cat._id} className="w-full">
-  <Link to={`/category/${cat._id}`} passHref>
-    <a className="block w-full overflow-hidden rounded-2xl border bg-white transition-shadow hover:shadow-md">
-      {/* FORCE reduced image height (180px) */}
-      <div className="w-full overflow-hidden" style={{ height: "180px" }}>
-        <img
-          alt={cat.name}
-          src={cat.image || "/default-image.jpg"}
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      <h3 className="px-3 py-2 text-center text-sm font-medium">
-        {cat.name}
-      </h3>
-    </a>
-  </Link>
-</li>
-
-          </li>
-        ))}
-      </ul>
+            <a href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" type="button" class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
+                Shop all products
+            </a>
+        </div>
     </div>
-  </div>
+</div>
+
+</div>
+        <div class="shoppable-hero-section wt-width-full wt-hide-xs wt-show-xl"><div class="shoppable-hero-page wt-flex-grow-xs-1 wt-flex-basis-xs-full">
+    <div class="shoppable-hero-page__container wt-height-full">
+        <div class="wt-card wt-card--contained shoppable-hero-page__item shoppable-hero-page__item--primary shoppable-hero-page__item--primary-gradient wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
+            <a class="wt-card__action-link" href="https://www.etsy.com/r/curated/best-of-family-traditions?sections=1410717528977&amp;ref=hp_shoppable_hero_secondary" aria-label="Pieces that will start new traditions Shop now"></a>
+            <img data-clg-id="WtImage" class="wt-height-full wt-object-fit-cover shoppable-hero-page__image wt-z-index-negative-1 wt-rounded-02 wt-image" src={d3} alt="Pieces that will start new traditions"  style={{ aspectRatio: "1" }} sizes="400px" srcset={d3} />
+
+            <div class="wt-position-absolute wt-width-full wt-pl-xs-3 wt-pr-xs-3 wt-pb-xs-3">
+                <p class="wt-text-white wt-text-title-larger">Authentic African Styles for Every Moment</p>
+                <span class="wt-text-white wt-text-title">
+                    Shop now
+                </span>
+            </div>
+        </div>
+    </div>
+</div></div>
 </section>
+</div>
+</div>
+</div>
 
+<div class="hp-spacing-reduced-default">
+    
+        
+</div><div data-appears-component-name="Etsy-Modules-Themes-ThemesIngress-ApiSpec" data-appears-event-data="{&quot;module_placement&quot;:&quot;hp_themes_ingress&quot;,&quot;datasets&quot;:[&quot;Bazaar_Listing_Spaces_V2&quot;],&quot;targets&quot;:[&quot;1368497667979&quot;,&quot;1368461677904&quot;,&quot;1368461671864&quot;,&quot;1368461662588&quot;],&quot;logging_class&quot;:&quot;Etsy\\Modules\\Themes\\ThemesIngress\\ApiSpec&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Bazaar_Listing_Spaces_V2&quot;:[0,1,2,3]},&quot;space_titles&quot;:[&quot;Dance Essentials&quot;,&quot;Chemistry Essentials&quot;,&quot;Board Games&quot;,&quot;History Essentials&quot;],&quot;has_recent_activity&quot;:false,&quot;space_ids&quot;:[&quot;1368497667979&quot;,&quot;1368461677904&quot;,&quot;1368461671864&quot;,&quot;1368461662588&quot;],&quot;listing_ids&quot;:[1542627936,1772270430,1604375963,1429878747],&quot;refTag&quot;:&quot;hp_themes_ingress&quot;,&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
+{/* <section class="wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 appears-ready">
+<h2 class="
+    wt-text-title-larger 
+    wt-text-primary 
+    wt-mb-xs-2 wt-mb-lg-3
+    ">Featured Product</h2>
+    
+    <ul class="themes-ingress-carousel wt-block-grid-xs-2 wt-block-grid-md-4 wt-p-xs-0 wt-align-items-flex-start">
+            <li class="themes-ingress-card wt-list-unstyled wt-block-grid__item  wt-mr-lg-0 ">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" target="_blank" href="https://www.etsy.com/r/themes/1368497667979?anchor_listings=1542627936&amp;ref=hp_themes_module-1">
+    <span class="wt-screen-reader-only">                            Dance Essentials
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <img data-clg-id="WtImage" class="themes-ingress-1 wt-height-full wt-object-fit-cover wt-rounded-02 wt-image" src="https://i.etsystatic.com/6148434/r/il/53e2d6/5244394020/il_fullxfull.5244394020_k6cg.jpg" alt="Dance Essentials"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 639px) 50vw, 25vw" srcset="https://i.etsystatic.com/6148434/r/il/53e2d6/5244394020/il_255x340.5244394020_k6cg.jpg 255w, https://i.etsystatic.com/6148434/r/il/53e2d6/5244394020/il_510x680.5244394020_k6cg.jpg 510w, https://i.etsystatic.com/6148434/r/il/53e2d6/5244394020/il_765x1020.5244394020_k6cg.jpg 765w" />
 
-                                                        
-                                                        
-                                                        
-                                                        <div class="bg-slate-100 text-slate-900 py-4">
-                                                          
-                                                          
-                                                          <div class="mx-auto max-w-[1440px] px-6">
-                                                            
-                                                            
-                      
-         
-         </div></div>
-         
-         
-         
-         <div class="bg-slate-100 text-slate-900 py-4">
-                                                                  <div class="mx-auto max-w-[1440px] px-6">
-                                                                    
-                                                                    
-                                                                    
-                                                                    
-                                                                    
-                                                                    
-                                                                    {/*<section class="flex flex-col gap-4 items-center justify-center"><div class="flex flex-col gap-1 text-center"><h2 class="text-3xl font-bold">Explore Best Sellers</h2><p>The most-loved products that customers can&#x27;t get enough of</p></div><div dir="ltr" data-orientation="horizontal" class="flex w-full flex-col items-center justify-center"><div role="tablist" aria-orientation="horizontal" class="inline-flex items-center justify-center rounded-md p-1 text-muted-foreground h-auto w-fit flex-wrap gap-4 bg-transparent" tabindex="-1" data-orientation="horizontal"   style={{outline:"none"}} ><button type="button" role="tab" aria-selected="true" aria-controls="radix-:R14j6m:-content-dd45dcf95853" data-state="active" id="radix-:R14j6m:-trigger-dd45dcf95853" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm rounded-[0.50rem] hover:bg-slate-50 hover:text-slate-700 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-slate-900" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">T-Shirts</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:R14j6m:-content-a529d82eafe3" data-state="inactive" id="radix-:R14j6m:-trigger-a529d82eafe3" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm rounded-[0.50rem] hover:bg-slate-50 hover:text-slate-700 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-slate-900" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Hoodies</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:R14j6m:-content-3a935ed51c79" data-state="inactive" id="radix-:R14j6m:-trigger-3a935ed51c79" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm rounded-[0.50rem] hover:bg-slate-50 hover:text-slate-700 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-slate-900" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Hats</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:R14j6m:-content-89f676a85180" data-state="inactive" id="radix-:R14j6m:-trigger-89f676a85180" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm rounded-[0.50rem] hover:bg-slate-50 hover:text-slate-700 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-slate-900" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Polos</button><button type="button" role="tab" aria-selected="false" aria-controls="radix-:R14j6m:-content-4e8e3cb29400" data-state="inactive" id="radix-:R14j6m:-trigger-4e8e3cb29400" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm rounded-[0.50rem] hover:bg-slate-50 hover:text-slate-700 data-[state=active]:bg-white data-[state=active]:font-bold data-[state=active]:text-slate-900" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Promo Products</button></div><div data-state="active" data-orientation="horizontal" role="tabpanel" aria-labelledby="radix-:R14j6m:-trigger-dd45dcf95853" id="radix-:R14j6m:-content-dd45dcf95853" tabindex="0" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" ><ul class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-8"><article class="flex h-full flex-col overflow-hidden rounded-2xl border bg-white hover:shadow-md"><a class="flex md:flex-grow md:flex-col" href="catalog/rt/classic-tee/index.html"><div class="relative flex basis-2/5 items-center md:w-full md:max-w-none"><div class="absolute left-0 top-0 md:left-auto md:right-0">
-                                                                    <div class="max-h-22px relative whitespace-nowrap text-sm font-semibold leading-4 tracking-[.25px] bg-rush-blue-900 text-white rounded-br-2xl px-4 py-2 md:rounded-bl-2xl md:rounded-br-none">Top Seller</div></div><div class="absolute bottom-0 left-0 md:left-auto md:right-0"></div><div class="absolute inset-0 z-10 flex h-full w-full items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle size-16 animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg></div><img alt="front with design" loading="lazy" width="550" height="550" decoding="async" data-nimg="1" class="absolute"   style={{color:"transparent"}} srcSet="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=RT2000&amp;colorCode=WHT&amp;hideProduct=true 1x, https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=RT2000&amp;colorCode=WHT&amp;hideProduct=true 2x" src="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=RT2000&amp;colorCode=WHT&amp;hideProduct=true"/><img alt="RT2000 WHT fr" loading="lazy" width="672" height="707" decoding="async" data-nimg="1" style={{color:"transparent"}} srcSet="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/rt2000_WHT_fr.jpg 1x, https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/rt2000_WHT_fr.jpg 2x" src="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/rt2000_WHT_fr.jpg"/></div><div class="flex basis-3/5 flex-col justify-center gap-2 px-2 py-3 md:w-full md:flex-grow md:justify-between"><h3 class="text-balance text-lg font-bold md:text-center">RushOrderTees Classic Tee</h3><div class="flex flex-col gap-1 md:items-center"><div class="flex flex-col md:items-center"><ul class="flex flex-wrap items-center gap-1 md:justify-center"><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="White"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#FFFFFF"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Black"><div class="flex h-full w-full">
-                                                                      <span class="h-full w-full"  style={{backgroundColor:"#131619"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Ash"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#F1F1F1"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Dark Heather Grey"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#606671"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Metro Blue"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#385499"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Natural"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#FDF5DF"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Dark Brown"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#2C1C0A"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Orange"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#EC592F"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Antique Cherry Red"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#871729"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Navy">
-                                                                        <div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#20304A"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Cornsilk"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#F8F393"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Irish Green"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#00802B"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Jade Dome"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#008065"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Safety Pink"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#ef5682"}}></span></div></button></li><li class="flex justify-end text-sm text-slate-500">+64 colors</li></ul></div><div class="flex items-center gap-2"><div class="relative inline-block overflow-hidden whitespace-nowrap font-sans text-lg leading-none tracking-wide text-transparent before:absolute before:left-0 before:top-0 before:whitespace-nowrap before:font-sans before:text-slate-300 before:content-[&#x27;★★★★★&#x27;] md:text-2xl" role="img" aria-label="4.9 out of 5 stars"><div class="absolute left-0 top-0 overflow-hidden whitespace-nowrap font-sans text-yellow-500" style={{width:"90%"}} aria-hidden="true">★★★★★</div>★★★★★</div><p class="text-sm">3,050 reviews</p></div><div class="flex items-center text-sm md:justify-center"><p>S - 5XL</p><div data-orientation="vertical" role="none" class="shrink-0 w-[1px] mx-2 h-3 bg-slate-400"></div><p>No Minimum</p></div><div data-test="pricing" class="flex items-center gap-1 md:justify-center"><div class="text-sm"><span class="font-semibold">$10.41</span> each for 50 items</div><button data-state="closed" aria-label="Quote Details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info hidden size-5 cursor-help text-slate-400 hover:text-slate-600 md:block"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R1p8kr4j6m:" data-state="closed" aria-label="Open quote pricing details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info size-5 text-slate-500 hover:text-rush-blue-600 md:hidden"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button></div></div></div></a></article><article class="flex h-full flex-col overflow-hidden rounded-2xl border bg-white hover:shadow-md"><a class="flex md:flex-grow md:flex-col" href="catalog/next-level/cvc-crew-neck-t-shirt/index.html"><div class="relative flex basis-2/5 items-center md:w-full md:max-w-none">
-                                                                          <div class="absolute left-0 top-0 md:left-auto md:right-0"><div class="max-h-22px relative whitespace-nowrap text-sm font-semibold leading-4 tracking-[.25px] bg-rush-blue-900 text-white rounded-br-2xl px-4 py-2 md:rounded-bl-2xl md:rounded-br-none">Staff Favorite</div></div><div class="absolute bottom-0 left-0 md:left-auto md:right-0"></div><div class="absolute inset-0 z-10 flex h-full w-full items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle size-16 animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg></div><img alt="front with design" loading="lazy" width="550" height="550" decoding="async" data-nimg="1" class="absolute"  style={{color:"transparent"}} srcSet="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTM5NjQwNA_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=N6210&amp;colorCode=48&amp;hideProduct=true 1x, https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTM5NjQwNA_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=N6210&amp;colorCode=48&amp;hideProduct=true 2x" src="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTM5NjQwNA_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=N6210&amp;colorCode=48&amp;hideProduct=true"/><img alt="N6210 48 fr" loading="lazy" width="672" height="707" decoding="async" data-nimg="1" style={{color:"transparent"}} srcSet="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/n6210_48_fr.jpg 1x, https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/n6210_48_fr.jpg 2x" src="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/n6210_48_fr.jpg"/></div><div class="flex basis-3/5 flex-col justify-center gap-2 px-2 py-3 md:w-full md:flex-grow md:justify-between"><h3 class="text-balance text-lg font-bold md:text-center">Next Level Cotton Blend T-Shirt</h3><div class="flex flex-col gap-1 md:items-center"><div class="flex flex-col md:items-center"><ul class="flex flex-wrap items-center gap-1 md:justify-center"><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Warm Gray"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#9c9689"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Dark Heather Grey (60/40)"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#9d9d9d"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Orange"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#ef8043"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Military Green"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#5c5f3f"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Light Olive"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#85846a"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Charcoal"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#565656"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Stone Grey"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#968e91"}}></span></div>
-                                                                          </button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Kelly Green"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#00ac60"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Ice Blue"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#d3f5f6"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Heather Columbia Blue"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#5E97D4"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Bondi Blue"><div class="flex h-full w-full"><span class="h-full w-full"
-                                                                          
-                                                                          
-                                                                          style={{backgroundColor:"#38acc3"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Red"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#bd0326"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Black"><div class="flex h-full w-full">
-                                                                            <span class="h-full w-full" style={{backgroundColor:"#000000"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Neon Yellow"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#e3ec39"}}></span></div></button></li><li class="flex justify-end text-sm text-slate-500">+27 colors</li></ul></div><div class="flex items-center gap-2"><div class="relative inline-block overflow-hidden whitespace-nowrap font-sans text-lg leading-none tracking-wide text-transparent before:absolute before:left-0 before:top-0 before:whitespace-nowrap before:font-sans before:text-slate-300 before:content-[&#x27;★★★★★&#x27;] md:text-2xl" role="img" aria-label="4.9 out of 5 stars"><div class="absolute left-0 top-0 overflow-hidden whitespace-nowrap font-sans text-yellow-500" style={{width:"90%"}} aria-hidden="true">★★★★★</div>★★★★★</div><p class="text-sm">552 reviews</p></div><div class="flex items-center text-sm md:justify-center"><p>XS - 3XL</p><div data-orientation="vertical" role="none" class="shrink-0 w-[1px] mx-2 h-3 bg-slate-400"></div><p>No Minimum</p></div><div data-test="pricing" class="flex items-center gap-1 md:justify-center"><div class="text-sm"><span class="font-semibold">$14.78</span>each for 50 items</div><button data-state="closed" aria-label="Quote Details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info hidden size-5 cursor-help text-slate-400 hover:text-slate-600 md:block"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R1p94r4j6m:" data-state="closed" aria-label="Open quote pricing details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info size-5 text-slate-500 hover:text-rush-blue-600 md:hidden"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button></div></div></div></a></article><article class="flex h-full flex-col overflow-hidden rounded-2xl border bg-white hover:shadow-md"><a class="flex md:flex-grow md:flex-col" href="catalog/bella-canvas/tri-blend-t-shirt/index.html"><div class="relative flex basis-2/5 items-center md:w-full md:max-w-none"><div class="absolute left-0 top-0 md:left-auto md:right-0"><div class="max-h-22px relative whitespace-nowrap text-sm font-semibold leading-4 tracking-[.25px] bg-rush-blue-900 text-white rounded-br-2xl px-4 py-2 md:rounded-bl-2xl md:rounded-br-none">Top Seller</div>
-                                                                            </div><div class="absolute bottom-0 left-0 md:left-auto md:right-0"></div><div class="absolute inset-0 z-10 flex h-full w-full items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle size-16 animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg></div><img alt="front with design" loading="lazy" width="550" height="550" decoding="async" data-nimg="1" class="absolute"   style={{color:"transparent"}} srcSet="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=3413C&amp;colorCode=cj&amp;hideProduct=true 1x, https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=3413C&amp;colorCode=cj&amp;hideProduct=true 2x" src="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=3413C&amp;colorCode=cj&amp;hideProduct=true"/><img alt="3413C cj fr" loading="lazy" width="672" height="707" decoding="async" data-nimg="1" style={{color:"transparent"}} srcSet="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/3413c_cj_fr.jpg 1x, https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/3413c_cj_fr.jpg 2x" src="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/3413c_cj_fr.jpg"/></div><div class="flex basis-3/5 flex-col justify-center gap-2 px-2 py-3 md:w-full md:flex-grow md:justify-between"><h3 class="text-balance text-lg font-bold md:text-center">Bella + Canvas Tri-Blend T-Shirt</h3><div class="flex flex-col gap-1 md:items-center"><div class="flex flex-col md:items-center"><ul class="flex flex-wrap items-center gap-1 md:justify-center"><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Lilac Triblend"><div class="flex h-full w-full">
-                                                                              <span class="h-full w-full"  style={{backgroundColor:"#E5B4D0"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Dusty Blue Triblend"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#A4BAB3"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="BROWN TRIBLEND"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#47322C"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Kelly Triblend"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#007c55"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Solid Maroon Triblend"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#48252C"}}></span></div></button></li>
-                                                                              <li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="BLK HTHR TRIBLND"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#000000"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="GRASS GRN TRBLND"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#5AA78B"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="OLIVE TRIBLEND"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#61714C"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Solid Silver Triblend"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#B8BCBF"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="MINT TRIBLEND"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#D8F0ED"}}></span></div></button></li><li>
-                                                                                <button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Pale Yellow Triblend"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#ffdc72"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Charity Pink Triblend"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#F04E98"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Solid Kelly Triblend"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#007c55"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="CARDINAL TRBLND"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#85293F"}}></span></div></button></li><li class="flex justify-end text-sm text-slate-500">+54 colors</li></ul></div><div class="flex items-center gap-2">
-                                                                                  <div class="relative inline-block overflow-hidden whitespace-nowrap font-sans text-lg leading-none tracking-wide text-transparent before:absolute before:left-0 before:top-0 before:whitespace-nowrap before:font-sans before:text-slate-300 before:content-[&#x27;★★★★★&#x27;] md:text-2xl" role="img" aria-label="4.9 out of 5 stars"><div class="absolute left-0 top-0 overflow-hidden whitespace-nowrap font-sans text-yellow-500" style={{width:"90%"}} aria-hidden="true">★★★★★</div>★★★★★</div><p class="text-sm">405 reviews</p></div><div class="flex items-center text-sm md:justify-center"><p>XS - 3XL</p><div data-orientation="vertical" role="none" class="shrink-0 w-[1px] mx-2 h-3 bg-slate-400"></div><p>No Minimum</p></div><div data-test="pricing" class="flex items-center gap-1 md:justify-center"><div class="text-sm"><span class="font-semibold">$17.32</span>each for 50 items</div><button data-state="closed" aria-label="Quote Details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info hidden size-5 cursor-help text-slate-400 hover:text-slate-600 md:block"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R1p9kr4j6m:" data-state="closed" aria-label="Open quote pricing details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info size-5 text-slate-500 hover:text-rush-blue-600 md:hidden"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button></div></div>
-                                                                                </div></a></article><article class="flex h-full flex-col overflow-hidden rounded-2xl border bg-white hover:shadow-md"><a class="flex md:flex-grow md:flex-col" href="catalog/comfort-colors/heavy-weight-t-shirt/index.html"><div class="relative flex basis-2/5 items-center md:w-full md:max-w-none"><div class="absolute left-0 top-0 md:left-auto md:right-0"></div><div class="absolute bottom-0 left-0 md:left-auto md:right-0"><div class="max-h-22px relative whitespace-nowrap text-sm font-semibold leading-4 tracking-[.25px] flex items-center gap-1 bg-green-200 text-green-900 rounded-tr-2xl px-4 py-2 md:rounded-tl-2xl md:rounded-tr-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf size-4"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>Eco-Friendly</div></div><div class="absolute inset-0 z-10 flex h-full w-full items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle size-16 animate-spin text-primary"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg></div><img alt="front with design" loading="lazy" width="550" height="550" decoding="async" data-nimg="1" class="absolute" style={{color:"transparent"}} srcSet="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=C1717&amp;colorCode=b6&amp;hideProduct=true 1x, https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=C1717&amp;colorCode=b6&amp;hideProduct=true 2x" src="https://cdn.rushordertees.com/design/resources/scripts/ZoomImage.php?src=NTUyMTM2Mw_f&amp;x=230&amp;y=300&amp;width=550&amp;height=550&amp;scale=1&amp;watermark=false&amp;autoInvertDesign=true&amp;style=C1717&amp;colorCode=b6&amp;hideProduct=true"/><img alt="C1717 b6 fr" loading="lazy" width="672" height="707" decoding="async" data-nimg="1" style={{color:"transparent"}} srcSet="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/c1717_b6_fr.jpg 1x, https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/c1717_b6_fr.jpg 2x" src="https://cdn.legacy.images.rushordertees.com/unsafe/672x707/eztees-catalogrebuild.s3.amazonaws.com/modelImages/c1717_b6_fr.jpg"/></div><div class="flex basis-3/5 flex-col justify-center gap-2 px-2 py-3 md:w-full md:flex-grow md:justify-between"><h3 class="text-balance text-lg font-bold md:text-center">Comfort Colors Heavyweight T-Shirt</h3><div class="flex flex-col gap-1 md:items-center"><div class="flex flex-col md:items-center"><ul class="flex flex-wrap items-center gap-1 md:justify-center"><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="BLACK"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#000000"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="GRANITE"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#b8b8bd"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="NEON PINK"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#ff7abf"}}></span></div></button>
-                                                                                </li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="GREY"><div class="flex h-full w-full"><span class="h-full w-full"   style={{backgroundColor:"#8c8c8c"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="ISLAND REEF"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#93e5ca"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="CHINA BLUE"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#354058"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="MOSS"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#51543f"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="CHILI">
-                                                                                  <div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#913a4d"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="Espresso"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#745d4d"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="MYSTIC BLUE"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#617ac7"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="YAM"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#a36a33"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="EMERALD"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#456969"}}></span></div></button></li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="BRIGHT SALMON"><div class="flex h-full w-full"><span class="h-full w-full" style={{backgroundColor:"#f48375"}}></span></div></button>
-                                                                                  </li><li><button type="button" class="relative flex items-center justify-center overflow-hidden rounded-md border border-black/15 bg-contain outline outline-2 outline-offset-2 hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-rush-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rush-blue-500 hover:disabled:outline-transparent outline-transparent m-0 h-6 w-6" aria-pressed="false" title="TERRACOTA"><div class="flex h-full w-full"><span class="h-full w-full"  style={{backgroundColor:"#E8927C"}}></span></div></button></li><li class="flex justify-end text-sm text-slate-500">+colors</li></ul></div><div class="flex items-center gap-2"><div class="relative inline-block overflow-hidden whitespace-nowrap font-sans text-lg leading-none tracking-wide text-transparent before:absolute before:left-0 before:top-0 before:whitespace-nowrap before:font-sans before:text-slate-300 before:content-[&#x27;★★★★★&#x27;] md:text-2xl" role="img" aria-label="4.9 out of 5 stars"><div class="absolute left-0 top-0 overflow-hidden whitespace-nowrap font-sans text-yellow-500" style={{width: "90%"}} aria-hidden="true">★★★★★</div>★★★★★</div><p class="text-sm">159 reviews</p></div><div class="flex items-center text-sm md:justify-center"><p>S - 4XL</p><div data-orientation="vertical" role="none" class="shrink-0 w-[1px] mx-2 h-3 bg-slate-400"></div><p>No Minimum</p></div><div data-test="pricing" class="flex items-center gap-1 md:justify-center"><div class="text-sm"><span class="font-semibold">$16.68</span> each for 50 items</div><button data-state="closed" aria-label="Quote Details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info hidden size-5 cursor-help text-slate-400 hover:text-slate-600 md:block"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R1pa4r4j6m:" data-state="closed" aria-label="Open quote pricing details"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info size-5 text-slate-500 hover:text-rush-blue-600 md:hidden"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button></div></div></div></a></article></ul><div class="flex pb-8 justify-center"><a class="inline-flex items-center justify-center whitespace-nowrap font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-12 rounded-2xl px-8 text-lg" href="t-shirts/index.html">Shop T-Shirts</a>
-                                                                                  </div></div><div data-state="inactive" data-orientation="horizontal" role="tabpanel" aria-labelledby="radix-:R14j6m:-trigger-a529d82eafe3" hidden="" id="radix-:R14j6m:-content-a529d82eafe3" tabindex="0" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"></div><div data-state="inactive" data-orientation="horizontal" role="tabpanel" aria-labelledby="radix-:R14j6m:-trigger-3a935ed51c79" hidden="" id="radix-:R14j6m:-content-3a935ed51c79" tabindex="0" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"></div><div data-state="inactive" data-orientation="horizontal" role="tabpanel" aria-labelledby="radix-:R14j6m:-trigger-89f676a85180" hidden="" id="radix-:R14j6m:-content-89f676a85180" tabindex="0" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"></div><div data-state="inactive" data-orientation="horizontal" role="tabpanel" aria-labelledby="radix-:R14j6m:-trigger-4e8e3cb29400" hidden="" id="radix-:R14j6m:-content-4e8e3cb29400" tabindex="0" class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"></div></div>
-                                                                                  
-                                                                                  
-                                                                                  
-                                                                                  </section>*/}
-                                                                                  
-                                                                                  <BestSellers />
-                                                                                  <Trending />
-                                                                                  <Featured />
-                                                                                  
-                                                                                  </div></div><div class="bg-slate-100 text-slate-900"><div class="mx-auto max-w-[1440px] px-6">
-                                                                                    
+                            <p class="wt-text-title wt-text-center-xs wt-justify-content-center wt-display-flex-xs wt-mt-xs-1 wt-mt-md-2">Dance Essentials</p>
+                            <p class="wt-hide-xs wt-show-lg wt-text-body-small wt-text-center-xs wt-mt-xs-1">Freestyle finds</p>
 
+</div>
+</div>
+            </li>
+            <li class="themes-ingress-card wt-list-unstyled wt-block-grid__item  wt-mr-lg-0 ">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" target="_blank" href="https://www.etsy.com/r/themes/1368461677904?anchor_listings=1772270430&amp;ref=hp_themes_module-2">
+    <span class="wt-screen-reader-only">                            Chemistry Essentials
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <img data-clg-id="WtImage" class="themes-ingress-2 wt-height-full wt-object-fit-cover wt-rounded-02 wt-image" src="https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_fullxfull.6235256128_lcnn.jpg" alt="Chemistry Essentials"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 639px) 50vw, 25vw" srcset="https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_255x340.6235256128_lcnn.jpg 255w, https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_510x680.6235256128_lcnn.jpg 510w, https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_765x1020.6235256128_lcnn.jpg 765w" />
 
+                            <p class="wt-text-title wt-text-center-xs wt-justify-content-center wt-display-flex-xs wt-mt-xs-1 wt-mt-md-2">Chemistry Essentials</p>
+                            <p class="wt-hide-xs wt-show-lg wt-text-body-small wt-text-center-xs wt-mt-xs-1">Let's nerd out</p>
 
+</div>
+</div>
+            </li>
+            <li class="themes-ingress-card wt-list-unstyled wt-block-grid__item  wt-mr-lg-0 ">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" target="_blank" href="https://www.etsy.com/r/themes/1368461671864?anchor_listings=1604375963&amp;ref=hp_themes_module-3">
+    <span class="wt-screen-reader-only">                            Board Games
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <img data-clg-id="WtImage" class="themes-ingress-3 wt-height-full wt-object-fit-cover wt-rounded-02 wt-image" src="https://i.etsystatic.com/47720678/r/il/5b4f19/5900597883/il_fullxfull.5900597883_oepn.jpg" alt="Board Games"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 639px) 50vw, 25vw" srcset="https://i.etsystatic.com/47720678/r/il/5b4f19/5900597883/il_255x340.5900597883_oepn.jpg 255w, https://i.etsystatic.com/47720678/r/il/5b4f19/5900597883/il_510x680.5900597883_oepn.jpg 510w, https://i.etsystatic.com/47720678/r/il/5b4f19/5900597883/il_765x1020.5900597883_oepn.jpg 765w" />
 
-                  
-           
-           
-           
-           
-           </div>
-           </div>
-           
-           
-          
-              
-              <div class="bg-slate-100 text-slate-900 py-6"><div class="mx-auto max-w-[1440px] px-6">
+                            <p class="wt-text-title wt-text-center-xs wt-justify-content-center wt-display-flex-xs wt-mt-xs-1 wt-mt-md-2">Board Games</p>
+                            <p class="wt-hide-xs wt-show-lg wt-text-body-small wt-text-center-xs wt-mt-xs-1">Game night ideas</p>
+
+</div>
+</div>
+            </li>
+            <li class="themes-ingress-card wt-list-unstyled wt-block-grid__item  wt-mr-lg-0 ">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" target="_blank" href="https://www.etsy.com/r/themes/1368461662588?anchor_listings=1429878747&amp;ref=hp_themes_module-4">
+    <span class="wt-screen-reader-only">                            History Essentials
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <img data-clg-id="WtImage" class="themes-ingress-4 wt-height-full wt-object-fit-cover wt-rounded-02 wt-image" src="https://i.etsystatic.com/31660228/r/il/3d786f/4683710962/il_fullxfull.4683710962_ovcr.jpg" alt="History Essentials"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 639px) 50vw, 25vw" srcset="https://i.etsystatic.com/31660228/r/il/3d786f/4683710962/il_255x340.4683710962_ovcr.jpg 255w, https://i.etsystatic.com/31660228/r/il/3d786f/4683710962/il_510x680.4683710962_ovcr.jpg 510w, https://i.etsystatic.com/31660228/r/il/3d786f/4683710962/il_765x1020.4683710962_ovcr.jpg 765w" />
+
+                            <p class="wt-text-title wt-text-center-xs wt-justify-content-center wt-display-flex-xs wt-mt-xs-1 wt-mt-md-2">History Essentials</p>
+                            <p class="wt-hide-xs wt-show-lg wt-text-body-small wt-text-center-xs wt-mt-xs-1">For the buffs</p>
+
+</div>
+</div>
+            </li>
+    </ul>
+</section> */}
+
+</div><div class="hp-spacing-reduced-default">
+    
+        
+</div><div data-appears-component-name="hp_curated_rlp">
+{/* <div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
+    
+        <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+    
+        <div>
+    <div class="simple-header wt-pb-xs-2 wt-pb-md-3 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between">
+    <div class="header-wrapper ">
+            <h2 class="wt-text-title-larger">
+                Discover our best of fall 2025
+            </h2>
+    </div>
+        
+    
+</div>
+    <ul class="shop-our-selections-module wt-block-grid-xs-2 wt-block-grid-md-5 wt-p-xs-0">
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/r/curated/best-of-family-traditions?sections=1410717528977&amp;ref=hp_g-1">
+    <span class="wt-screen-reader-only">                        Best of Family Traditions
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/ij/17657d/7294307243/ij_300x300.7294307243_oa8ve538.jpg?version=0" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Best of Family Traditions</p>
+                        
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/r/curated/fall-hosting-and-decor?sections=1407721696144&amp;ref=hp_g-2">
+    <span class="wt-screen-reader-only">                        Fall Hosting Favorites
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/ij/0a5885/7293154157/ij_300x300.7293154157_b63t9qn5.jpg?version=0" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Fall Hosting Favorites</p>
+                        
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/r/curated/best-of-cozy-finds?sections=1419863565948%2C1423332183977%2C1423570965718&amp;ref=hp_g-3">
+    <span class="wt-screen-reader-only">                        Best of Cozy Finds
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/ij/6e8e5a/7340774456/ij_300x300.7340774456_dhs07n0b.jpg?version=0" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Best of Cozy Finds</p>
+                        
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/r/curated/new-arrivals?sections=1412353280132%2C1412667487298&amp;ref=hp_g-4">
+    <span class="wt-screen-reader-only">                        New Arrivals
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/ij/5687ba/7358130618/ij_300x300.7358130618_bowyox7g.jpg?version=0" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">New Arrivals</p>
+                        
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/r/curated/top-100-gifts?sections=1412989769685&amp;ref=hp_g-5">
+    <span class="wt-screen-reader-only">                        Top 100 Gifts
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/ij/fd1258/7342458729/ij_300x300.7342458729_1vslfn44.jpg?version=0" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Top 100 Gifts</p>
+                        
+
+</div>
+</div>
+            </li>
+    </ul>
+</div>
+</div>
+</div> */}
+</div>
+<div data-appears-component-name="Homepage_Vesta_ApiSpec_DailyDeals" data-appears-event-data="{&quot;module_placement&quot;:&quot;home_daily_deals&quot;,&quot;datasets&quot;:[&quot;Common_Listing_DailyDealsListings&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Homepage_Vesta_ApiSpec_DailyDeals&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:{&quot;72d04706-5cbc-455d-a695-2909641aa8b4&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]},&quot;candidate_source_map&quot;:{&quot;arizona:daily_deals_listings_migrated&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]},&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Common_Listing_DailyDealsListings&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]},&quot;region_id&quot;:&quot;NG&quot;,&quot;user_id&quot;:0,&quot;limit&quot;:15,&quot;listing_ids&quot;:[1554579312,1558106140,1778630263,1275026920,1806681962,4333767364,1895313425,1490503424,1660348743,1811620349,1217354784,1639687880,1208309840,1693473321,1092702703,1859896209,1268615771,1579015837,4301825628,4370018901,1683201881,1786839649,887755550,1830883275,1799278658,1772191538,1801449863,1200489887,1806776138,4369183618,1706218238,1760174793,1803755127,1856983733,953599040,1687432605,1753668990,965245133,1754875706,1651487996,1817281685,1559634006,4344786926,1818897311,1813509350,1083414610,1564934453,889071937,1822499711,1021132911,1788449800,1775539641,1810659441,1782789165,768656512,4356479072,1623683213,1609802633,1804638172,1694868202,902970767,1624829479,1788140643,1820266638,1656546341,1480371199,4391684141,1687932493,1669644555,1540119376,4302947751,4356405095,1696621683,1855801765,1873355764,1652021866,1798894213,1337248891,1802967382,4362401182,1227735580,1504687221,1552380871,1420552889,1800616256,1256533541,4295011799,1906432319,1866444395,4378729147,1237647786,1544885822,1800764501,4321329650],&quot;dedupe_taxo_level&quot;:2,&quot;refTag&quot;:&quot;hp_daily_deals&quot;,&quot;listing_prices_usd&quot;:[8.9900000000000002131628207280300557613372802734375,3,14,5.5800000000000000710542735760100185871124267578125,21.980000000000000426325641456060111522674560546875,21,12.3699999999999992184029906638897955417633056640625,16.260000000000001563194018672220408916473388671875,10.7599999999999997868371792719699442386627197265625,13.9700000000000006394884621840901672840118408203125,6.6500000000000003552713678800500929355621337890625,12.3699999999999992184029906638897955417633056640625,5.13999999999999968025576890795491635799407958984375,26.699999999999999289457264239899814128875732421875,42.219999999999998863131622783839702606201171875,26.989999999999998436805981327779591083526611328125,9.03999999999999914734871708787977695465087890625,15.46000000000000085265128291212022304534912109375,9.0099999999999997868371792719699442386627197265625,6.82000000000000028421709430404007434844970703125,16.82000000000000028421709430404007434844970703125,18.989999999999998436805981327779591083526611328125,16.5,17.32000000000000028421709430404007434844970703125,24.39999999999999857891452847979962825775146484375,13.519999999999999573674358543939888477325439453125,29,32.8299999999999982946974341757595539093017578125,13.0600000000000004973799150320701301097869873046875,2,13.730000000000000426325641456060111522674560546875,21,19.89999999999999857891452847979962825775146484375,24.489999999999998436805981327779591083526611328125,44.93999999999999772626324556767940521240234375,10.2200000000000006394884621840901672840118408203125,10.1199999999999992184029906638897955417633056640625,11.25,39.96000000000000085265128291212022304534912109375,8.589999999999999857891452847979962825775146484375,23.35000000000000142108547152020037174224853515625,14.839999999999999857891452847979962825775146484375,23.14999999999999857891452847979962825775146484375,6.79999999999999982236431605997495353221893310546875,7.5999999999999996447286321199499070644378662109375,8.25,14.78999999999999914734871708787977695465087890625,2,22.160000000000000142108547152020037174224853515625,20.1700000000000017053025658242404460906982421875,36,1.20999999999999996447286321199499070644378662109375,1.4899999999999999911182158029987476766109466552734375,35.50999999999999801048033987171947956085205078125,7.53000000000000024868995751603506505489349365234375,3.9900000000000002131628207280300557613372802734375,17.96000000000000085265128291212022304534912109375,21.6700000000000017053025658242404460906982421875,3.720000000000000195399252334027551114559173583984375,8.589999999999999857891452847979962825775146484375,17.800000000000000710542735760100185871124267578125,22.809999999999998721023075631819665431976318359375,13.0600000000000004973799150320701301097869873046875,11.019999999999999573674358543939888477325439453125,18.370000000000000994759830064140260219573974609375,4.29000000000000003552713678800500929355621337890625,3.4900000000000002131628207280300557613372802734375,1.70999999999999996447286321199499070644378662109375,7.5,11,6.660000000000000142108547152020037174224853515625,16.17999999999999971578290569595992565155029296875,17.10000000000000142108547152020037174224853515625,6.79999999999999982236431605997495353221893310546875,9.949999999999999289457264239899814128875732421875,49.97999999999999687361196265555918216705322265625,9.6899999999999995026200849679298698902130126953125,23.910000000000000142108547152020037174224853515625,25.969999999999998863131622783839702606201171875,35.25,3.70999999999999996447286321199499070644378662109375,16.260000000000001563194018672220408916473388671875,9.17999999999999971578290569595992565155029296875,2.399999999999999911182158029987476766109466552734375,16.3599999999999994315658113919198513031005859375,3.45000000000000017763568394002504646778106689453125,6.79999999999999982236431605997495353221893310546875,26.190000000000001278976924368180334568023681640625,6.79999999999999982236431605997495353221893310546875,28,10.7599999999999997868371792719699442386627197265625,18.60000000000000142108547152020037174224853515625,4.839999999999999857891452847979962825775146484375,13.5],&quot;taxonomy_ids&quot;:[1017,1666,2844,2099,1197,328,175,1666,2078,1229,6343,175,367,347,197,1197,1858,11196,1026,12643,143,6102,1858,6365,12197,1166,2844,2353,6109,1858,1222,1222,12622,1167,1668,2078,1197,2844,2811,6343,1227,1023,469,6343,6343,173,2815,1857,6365,1229,338,1858,1349,6396,322,1671,2385,1226,173,6343,1671,2124,1093,1023,2078,1350,2078,328,326,6665,1668,1857,1020,6343,1029,114,25,326,338,2638,6343,1666,1349,12420,2124,6343,6343,2078,6343,1030,2078,326,6343,2202],&quot;taxo_paths&quot;:[&quot;home_and_living.home_decor.throw_pillows&quot;,&quot;weddings.gifts_and_mementos.bridesmaids_gifts&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings.signs&quot;,&quot;books_movies_and_music.music.picks_and_slides.picks&quot;,&quot;jewelry.bracelets.charm_bracelets&quot;,&quot;books_movies_and_music.books.book_accessories&quot;,&quot;bags_and_purses.luggage_and_travel.passport_covers&quot;,&quot;weddings.gifts_and_mementos.bridesmaids_gifts&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;jewelry.necklaces.pendant_necklaces&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;bags_and_purses.luggage_and_travel.passport_covers&quot;,&quot;books_movies_and_music.music.musical_instruments.tuning_and_accessories&quot;,&quot;books_movies_and_music.books.literature_and_fiction&quot;,&quot;bags_and_purses.wallets_and_money_clips.wallets&quot;,&quot;jewelry.bracelets.charm_bracelets&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;clothing.gender_neutral_adult_clothing.pajamas_and_robes.pajamas.sets&quot;,&quot;home_and_living.home_decor.home_accents.vases&quot;,&quot;accessories.aprons&quot;,&quot;bags_and_purses.cosmetic_and_toiletry_storage.cosmetic_bags&quot;,&quot;jewelry.jewelry_storage.jewelry_boxes&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;craft_supplies_and_tools.stamps_and_seals.stamps&quot;,&quot;electronics_and_accessories.video_games.stands_and_displays&quot;,&quot;home_and_living.storage_and_organization.baskets&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings.signs&quot;,&quot;toys_and_games.games_and_puzzles.puzzles.jigsaw_puzzles&quot;,&quot;home_and_living.home_decor.seasonal_decor.christmas_trees&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;jewelry.necklaces.charm_necklaces&quot;,&quot;jewelry.necklaces.charm_necklaces&quot;,&quot;toys_and_games.games_and_puzzles.puzzles.name_puzzles&quot;,&quot;home_and_living.storage_and_organization.boxes_and_bins&quot;,&quot;weddings.gifts_and_mementos.groomsmen_gifts&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;jewelry.bracelets.charm_bracelets&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings.signs&quot;,&quot;art_and_collectibles.glass_art.suncatchers&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;jewelry.necklaces.monogram_and_name_necklaces&quot;,&quot;home_and_living.home_decor.seasonal_decor&quot;,&quot;clothing.gender_neutral_adult_clothing.hoodies_and_sweatshirts&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;bags_and_purses.luggage_and_travel.luggage_tags&quot;,&quot;home_and_living.lighting.lamps_shades_and_bases.lamps.table_lamps&quot;,&quot;home_and_living.home_decor.seasonal_decor.ornaments&quot;,&quot;craft_supplies_and_tools.stamps_and_seals.stamps&quot;,&quot;jewelry.necklaces.pendant_necklaces&quot;,&quot;books_movies_and_music.books.childrens_books&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;paper_and_party_supplies.party_supplies.party_favors_and_games.party_favors&quot;,&quot;craft_supplies_and_tools.tools_and_equipment.tools&quot;,&quot;bath_and_beauty.spa_and_relaxation.spa_kits_and_gifts&quot;,&quot;weddings.gifts_and_mementos.wedding_favors&quot;,&quot;toys_and_games.games_and_puzzles.card_games.trading_card_games&quot;,&quot;jewelry.necklaces.lockets&quot;,&quot;bags_and_purses.luggage_and_travel.luggage_tags&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;weddings.gifts_and_mementos.wedding_favors&quot;,&quot;clothing.gender_neutral_kids_clothing.gender_neutral_baby_clothing.bodysuits&quot;,&quot;home_and_living.lighting.light_fixtures.wall_lights.night_lights&quot;,&quot;home_and_living.home_decor.seasonal_decor&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;paper_and_party_supplies.party_supplies.party_favors_and_games.party_games&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;books_movies_and_music.books.book_accessories&quot;,&quot;books_movies_and_music.books.blank_books.journals_and_notebooks&quot;,&quot;craft_supplies_and_tools.stamps_and_seals.seals.wax_seals&quot;,&quot;weddings.gifts_and_mementos.groomsmen_gifts&quot;,&quot;home_and_living.home_decor.seasonal_decor.ornaments&quot;,&quot;home_and_living.home_decor.flower_arrangements&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings&quot;,&quot;art_and_collectibles.painting.watercolor&quot;,&quot;accessories.hats_and_head_coverings.hats_and_caps&quot;,&quot;books_movies_and_music.books.blank_books.journals_and_notebooks&quot;,&quot;books_movies_and_music.books.childrens_books&quot;,&quot;pet_supplies.urns_and_memorials.pet_portraits&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;weddings.gifts_and_mementos.bridesmaids_gifts&quot;,&quot;paper_and_party_supplies.party_supplies.party_favors_and_games.party_favors&quot;,&quot;electronics_and_accessories.car_parts_and_accessories.car_accessories.car_charms&quot;,&quot;clothing.gender_neutral_kids_clothing.gender_neutral_baby_clothing.bodysuits&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;home_and_living.home_decor.wreaths_and_door_hangers&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;books_movies_and_music.books.blank_books.journals_and_notebooks&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;clothing.gender_neutral_adult_clothing.hoodies_and_sweatshirts.sweatshirts&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
+<section class="wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 daily-deals-carousel wt-hide-xs wt-show-lg daily-deals-carousel--initialized appears-ready">
+        <div class="wt-display-flex-xs wt-justify-content-space-between wt-align-items-flex-end wt-mb-xs-3">
+            <div class="wt-display-flex-xs">
+                <h2 class="wt-text-title-larger wt-text-primary daily-deals-carousel__label wt-mr-xs-2" id="daily-deals-y5d7ubb0qdg">
+                    Today's big deals
+                </h2>
+                <div class="daily-deals-countdown-clock-container wt-display-flex-xs wt-align-items-center wt-text-body wt-text-gray">
+    <span class="etsy-icon wt-icon--small-xs wt-mr-xs-1"><svg xmlns="http://www.w3.org/2000/svg" class="spinnable-clock-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="9" stroke="#595959" stroke-width="2"></circle>
+    <line class="big-hand" x1="12" y1="6.5" x2="12" y2="12" stroke="#595959" stroke-width="2" stroke-linecap="round"></line> 
+    <line class="small-hand" x1="12" y1="12" x2="16.5" y2="12" stroke="#595959" stroke-width="2" stroke-linecap="round"></line> 
+</svg></span> <div class="daily-deals-countdown-clock">Fresh deals in 05:38:14</div>
+</div>
+            </div>
+            <div class="daily-deals-carousel__arrows">
+<button data-clg-id="WtButton" class="wt-btn wt-btn--transparent wt-btn--icon wt-ml-xs-1 wt-shadow-elevation-3" data-daily-deals-prev="1" aria-label="Previous section" disabled="" aria-describedby="daily-deals-y5d7ubb0qdg">
+                        <span class="wt-icon wt-nudge-t-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21.002a1 1 0 0 1-.664-.253L5.5 12.002l9.841-8.748a1 1 0 0 1 1.328 1.494L8.5 12.002l8.159 7.252A1 1 0 0 1 16 21.002"></path></svg></span>
+
+</button>
+<button data-clg-id="WtButton" class="wt-btn wt-btn--transparent wt-btn--icon wt-ml-xs-1 wt-shadow-elevation-3" data-daily-deals-next="1" aria-label="Next section" aria-describedby="daily-deals-y5d7ubb0qdg">
+                        <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 21a1 1 0 0 1-.664-1.747l8.164-7.254-8.164-7.252a1 1 0 0 1 1.328-1.494L18.5 12l-9.836 8.747A1 1 0 0 1 8 21"></path></svg></span>
+
+</button>
+            </div>
+        </div>
+        <div class="daily-deals-carousel__scrollable wt-position-relative overflow-clip-respect-box-shadow default-module-padding no-tv-up-padding">
+            <div class="wt-grid wt-flex-nowrap wt-grid--block daily-deals-carousel__inner wt-pl-xs-3">
+                <div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1554579312" data-shop-id="46225130" data-listing-id="1554579312" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1554579312" data-palette-listing-image="" href="https://www.etsy.com/listing/1554579312/custom-embroidered-pillow-personalized?click_key=e0d62c31fc726b829df96472b1196e84f95ad95c%3A1554579312&amp;click_sum=e543049f&amp;ref=hp_daily_deals-1&amp;pro=1&amp;sts=1&amp;bs6=1&amp;sei=1" data-listing-link="" target="etsy.1554579312" title="Custom Embroidered Pillow Personalized Gift, Home Decor, Anniversary Gift, Boyfriend Gift Idea, Birthday Gift for Him, Custom Throw Pillow">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
                 
                 
-          
-                      
-                      </div></div>
-                      
-                   </div></main>
+                " style={{backgroundColor: "#1E2919"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-1" alt="Custom Embroidered Pillow Personalized Gift, Home Decor, Anniversary Gift, Boyfriend Gift Idea, Birthday Gift for Him, Custom Throw Pillow" src="https://i.etsystatic.com/46225130/r/il/70b696/5349101311/il_600x600.5349101311_9eus.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1554579312">
+                Custom Embroidered Pillow Personalized Gift, Home Decor, Anniversary Gift, Boyfriend Gift Idea, Birthday Gift for Him, Custom Throw Pillow
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.8
+                </span>
+            <div role="img" aria-label="4.8 star rating with 5,361 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 8.99
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">8.99</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">17.98</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 17.98
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                50% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1554579312" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1558106140" data-shop-id="23721895" data-listing-id="1558106140" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1558106140" data-palette-listing-image="" href="https://www.etsy.com/listing/1558106140/custom-fluffy-slipperscustom-bride?click_key=455144337b1d7185091e99c7ba03b08c1794f6ff%3A1558106140&amp;click_sum=6f779c92&amp;ref=hp_daily_deals-2&amp;pro=1&amp;sts=1&amp;bs6=1&amp;sei=1" data-listing-link="" target="etsy.1558106140" title="Custom Fluffy Slippers,Custom Bride Slippers,Fluffy Bridesmaid Slippers,Bride Slipper Personalized,Christmas party slippers,Fluffy Slippers">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#BC9379"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-2" alt="Custom Fluffy Slippers,Custom Bride Slippers,Fluffy Bridesmaid Slippers,Bride Slipper Personalized,Christmas party slippers,Fluffy Slippers" src="https://i.etsystatic.com/23721895/c/1429/1429/288/0/il/f61801/5328057210/il_600x600.5328057210_6yln.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1558106140">
+                Custom Fluffy Slippers,Custom Bride Slippers,Fluffy Bridesmaid Slippers,Bride Slipper Personalized,Christmas party slippers,Fluffy Slippers
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.7
+                </span>
+            <div role="img" aria-label="4.7 star rating with 7,586 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 3.00
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">3.00</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">10.73</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 10.73
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                72% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1558106140" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1275026920" data-shop-id="27231545" data-listing-id="1275026920" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1275026920" data-palette-listing-image="" href="https://www.etsy.com/listing/1275026920/personalized-wooden-guitar-picks-with?click_key=eccecad591389c698b5333c9b9a2202b6ca26fad%3A1275026920&amp;click_sum=1b5a49d8&amp;ref=hp_daily_deals-3&amp;pro=1&amp;sts=1&amp;bs6=1&amp;sei=1" data-listing-link="" target="etsy.1275026920" title="Personalized Wooden Guitar Picks with Case, Custom Guitar Pick Holder, Plectrum Box Guitar Player Gift, Father's Day, Gifts for Christmas">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#A16E54"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-3" alt="Personalized Wooden Guitar Picks with Case, Custom Guitar Pick Holder, Plectrum Box Guitar Player Gift, Father&amp;#39;s Day, Gifts for Christmas" src="https://i.etsystatic.com/27231545/c/1785/1785/137/160/il/031139/4140718095/il_600x600.4140718095_mc7l.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1275026920">
+                Personalized Wooden Guitar Picks with Case, Custom Guitar Pick Holder, Plectrum Box Guitar Player Gift, Father's Day, Gifts for Christmas
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 8,421 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 5.58
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">5.58</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">8.58</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 8.58
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                35% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1275026920" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1806681962" data-shop-id="34379934" data-listing-id="1806681962" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1806681962" data-palette-listing-image="" href="https://www.etsy.com/listing/1806681962/custom-heart-birthstone-bracelet-2?click_key=5b59e7f6da27831818139945282c9b96994775fa%3A1806681962&amp;click_sum=0303f3ed&amp;ref=hp_daily_deals-4&amp;pro=1&amp;sts=1&amp;bs6=1&amp;sei=1" data-listing-link="" target="etsy.1806681962" title="Custom Heart Birthstone Bracelet, 2 Birthstones Bracelet, Mother and Daughter Bracelet, Christmas Gift for Her, Anniversary Gift, Mom Gift">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#2F1A0E"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-4" alt="Custom Heart Birthstone Bracelet, 2 Birthstones Bracelet, Mother and Daughter Bracelet, Christmas Gift for Her, Anniversary Gift, Mom Gift" src="https://i.etsystatic.com/34379934/r/il/7e4e55/6452832105/il_600x600.6452832105_p0i2.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1806681962">
+                Custom Heart Birthstone Bracelet, 2 Birthstones Bracelet, Mother and Daughter Bracelet, Christmas Gift for Her, Anniversary Gift, Mom Gift
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 47,692 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 21.98
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">21.98</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">43.95</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 43.95
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                50% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1806681962" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="4333767364" data-shop-id="37864095" data-listing-id="4333767364" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="4333767364" data-palette-listing-image="" href="https://www.etsy.com/listing/4333767364/personalized-books-read-tracker-books?click_key=4afd6b96bc4304ef64f825d34104fa0abe73ba43%3A4333767364&amp;click_sum=119ba691&amp;ref=hp_daily_deals-5&amp;pro=1&amp;frs=1&amp;sts=1&amp;bs6=1" data-listing-link="" target="etsy.4333767364" title="Personalized Books Read Tracker - Books Read This Year, Bookshelf Counter, Bookish Decor, Bookish Gift, Gift for Readers, Book Lovers Gift">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#E2C8B7"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-5" alt="Personalized Books Read Tracker - Books Read This Year, Bookshelf Counter, Bookish Decor, Bookish Gift, Gift for Readers, Book Lovers Gift" src="https://i.etsystatic.com/37864095/r/il/eff33e/7059530939/il_600x600.7059530939_a8y6.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-4333767364">
+                Personalized Books Read Tracker - Books Read This Year, Bookshelf Counter, Bookish Decor, Bookish Gift, Gift for Readers, Book Lovers Gift
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 2,169 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 21.00
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">21.00</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">52.49</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 52.49
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                60% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    <div class="
+    promotion-badge-line wt-display-flex-xs
+    
+    ">
+    <p class="wt-text-truncate wt-text-caption-title streamline-reduce-line-height">
+            <span class="wt-text-black daily-deal-card__shipping-badge--loud wt-text-body-smaller">
+    Free shipping
+</span>
+    </p>
+</div>
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="4333767364" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1895313425" data-shop-id="26354470" data-listing-id="1895313425" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1895313425" data-palette-listing-image="" href="https://www.etsy.com/listing/1895313425/personalised-passport-holder-luggage-tag?click_key=eff2292476ccb0d4e12c2654588ec073fc59a961%3A1895313425&amp;click_sum=faea3fe5&amp;ref=hp_daily_deals-6&amp;pro=1&amp;sts=1&amp;bs6=1" data-listing-link="" target="etsy.1895313425" title="Personalised Passport Holder &amp; Luggage Tag ,Custom Passport Wallet ,Wedding Gift,Travel Gift for Her ,Groomsmen Proposal, Travel Accessories">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#2E1C16"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-6" alt="Personalised Passport Holder &amp; Luggage Tag ,Custom Passport Wallet ,Wedding Gift,Travel Gift for Her ,Groomsmen Proposal, Travel Accessories" src="https://i.etsystatic.com/26354470/c/1333/1333/213/0/il/a00782/6752562174/il_600x600.6752562174_8bkc.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1895313425">
+                Personalised Passport Holder &amp; Luggage Tag ,Custom Passport Wallet ,Wedding Gift,Travel Gift for Her ,Groomsmen Proposal, Travel Accessories
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.7
+                </span>
+            <div role="img" aria-label="4.7 star rating with 1,836 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 12.37
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">12.37</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">20.62</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 20.62
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                40% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info streamline-spacing-reduce-margin">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1895313425" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1660348743" data-shop-id="33188075" data-listing-id="1660348743" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1660348743" data-palette-listing-image="" href="https://www.etsy.com/listing/1660348743/couple-proposal-portrait-custom-portrait?click_key=d28945a58fbdc3a2ce7ad3ad80cb0fbc5ab3f581%3A1660348743&amp;click_sum=2a7736ac&amp;ref=hp_daily_deals-7&amp;pro=1&amp;frs=1&amp;sts=1&amp;sei=1" data-listing-link="" target="etsy.1660348743" title="Couple Proposal Portrait, Custom Portrait From Photo, Engagement Gift, Gift for Couples, Anniversary Gift for him, Watercolor Painting">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#E6E9EC"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-7" alt="Couple Proposal Portrait, Custom Portrait From Photo, Engagement Gift, Gift for Couples, Anniversary Gift for him, Watercolor Painting" src="https://i.etsystatic.com/33188075/c/1933/1933/58/58/il/522fc0/7349052156/il_600x600.7349052156_hgzn.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1660348743">
+                Couple Proposal Portrait, Custom Portrait From Photo, Engagement Gift, Gift for Couples, Anniversary Gift for him, Watercolor Painting
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 12,864 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 10.76
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">10.76</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">16.56</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 16.56
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                35% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            
+                    <div class="
+    promotion-badge-line wt-display-flex-xs
+    
+    ">
+    <p class="wt-text-truncate wt-text-caption-title streamline-reduce-line-height">
+            <span class="wt-text-black daily-deal-card__shipping-badge--loud wt-text-body-smaller">
+    Free shipping
+</span>
+    </p>
+</div>
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1660348743" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1811620349" data-shop-id="55368172" data-listing-id="1811620349" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1811620349" data-palette-listing-image="" href="https://www.etsy.com/listing/1811620349/gold-enamel-mini-cross-necklace-tiny?click_key=04e3b7c6353b4136ba91134056236f4fa31fd197%3A1811620349&amp;click_sum=7a0ca1f5&amp;ref=hp_daily_deals-8&amp;pro=1&amp;sts=1&amp;sei=1" data-listing-link="" target="etsy.1811620349" title="Gold Enamel Mini Cross Necklace, Tiny Cross Necklace, Religious Necklace, Enamel Necklace, Christian Gift for her, Christmas Gift">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                " style={{backgroundColor: "#683E29"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-8" alt="Gold Enamel Mini Cross Necklace, Tiny Cross Necklace, Religious Necklace, Enamel Necklace, Christian Gift for her, Christmas Gift" src="https://i.etsystatic.com/55368172/r/il/a3c6a8/6358770680/il_600x600.6358770680_cisx.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1811620349">
+                Gold Enamel Mini Cross Necklace, Tiny Cross Necklace, Religious Necklace, Enamel Necklace, Christian Gift for her, Christmas Gift
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 7,107 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 13.97
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">13.97</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">21.50</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 21.50
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                35% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1811620349" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1217354784" data-shop-id="17360651" data-listing-id="1217354784" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1217354784" data-palette-listing-image="" href="https://www.etsy.com/listing/1217354784/crochet-granny-hexagon-cardigan-pattern?click_key=f8a86cc17f61dd5d6149361c6ad093afd0e8ed6e%3A1217354784&amp;click_sum=f8b80195&amp;ref=hp_daily_deals-9&amp;pro=1&amp;sts=1&amp;bs6=1" data-listing-link="" target="etsy.1217354784" title="Crochet Granny Hexagon Cardigan Pattern">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                "style={{backgroundColor: "#372114"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-9" alt="Crochet Granny Hexagon Cardigan Pattern" src="https://i.etsystatic.com/17360651/r/il/478b36/3868104294/il_600x600.3868104294_c2n5.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1217354784">
+                Crochet Granny Hexagon Cardigan Pattern
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.8
+                </span>
+            <div role="img" aria-label="4.8 star rating with 1,715 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 6.65
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">6.65</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">8.87</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 8.87
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                25% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info streamline-spacing-reduce-margin">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1217354784" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1092702703" data-shop-id="28532187" data-listing-id="1092702703" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1092702703" data-palette-listing-image="" href="https://www.etsy.com/listing/1092702703/personalized-leather-wallet-rfid?click_key=c9b2ed325049a8d743bf1aae3f44153739c401d5%3A1092702703&amp;click_sum=2da29b3c&amp;ref=hp_daily_deals-10&amp;pro=1&amp;sts=1" data-listing-link="" target="etsy.1092702703" title="Personalized Leather Wallet: RFID, Engraved Christmas Gift Box">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                   "style={{backgroundColor: "#EEECE5"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-10" alt="Personalized Leather Wallet: RFID, Engraved Christmas Gift Box" src="https://i.etsystatic.com/28532187/r/il/ff856b/7318901663/il_600x600.7318901663_pjir.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1092702703">
+                Personalized Leather Wallet: RFID, Engraved Christmas Gift Box
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 4,930 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 42.22
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">42.22</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">131.93</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 131.93
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                68% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info streamline-spacing-reduce-margin">
+            
+            
+            
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1092702703" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1579015837" data-shop-id="27656345" data-listing-id="1579015837" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1579015837" data-palette-listing-image="" href="https://www.etsy.com/listing/1579015837/christmas-family-pyjamas-fair-isle?click_key=4942f51998104aac9d68ba06f388805fa2cacb5e%3A1579015837&amp;click_sum=68e8bbb5&amp;ref=hp_daily_deals-11&amp;pro=1&amp;sts=1&amp;bs6=1" data-listing-link="" target="etsy.1579015837" title="Christmas Family Pyjamas | Fair Isle | Christmas Matching Pajamas | Adult Kids Dogs Xmas Sets">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+           "style={{backgroundColor: "#990C13"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-11" alt="Christmas Family Pyjamas | Fair Isle | Christmas Matching Pajamas | Adult Kids Dogs Xmas Sets" src="https://i.etsystatic.com/27656345/r/il/54fa22/5400028943/il_600x600.5400028943_qhat.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1579015837">
+                Christmas Family Pyjamas | Fair Isle | Christmas Matching Pajamas | Adult Kids Dogs Xmas Sets
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.8
+                </span>
+            <div role="img" aria-label="4.8 star rating with 910 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 15.46
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">15.46</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">20.62</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 20.62
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                25% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info streamline-spacing-reduce-margin">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1579015837" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="4370018901" data-shop-id="37727711" data-listing-id="4370018901" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="4370018901" data-palette-listing-image="" href="https://www.etsy.com/listing/4370018901/personalized-kids-apron-custom-printed?click_key=a54f24fc50b6e2cc218e9567d7a63129d2e5fcac%3A4370018901&amp;click_sum=9b426aff&amp;ref=hp_daily_deals-12&amp;pro=1&amp;sts=1&amp;bs6=1&amp;sei=1" data-listing-link="" target="etsy.4370018901" title="Personalized Kids Apron – Custom Printed Toddler Apron – Little Baker &amp; Cooking Apron – Baking or Art Craft Apron – Unique Customized Gift">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+               "style={{backgroundColor: "#D5B8AC"}} >
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-12" alt="Personalized Kids Apron – Custom Printed Toddler Apron – Little Baker &amp; Cooking Apron – Baking or Art Craft Apron – Unique Customized Gift" src="https://i.etsystatic.com/37727711/r/il/4369cb/7249138849/il_600x600.7249138849_1noa.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-4370018901">
+                Personalized Kids Apron – Custom Printed Toddler Apron – Little Baker &amp; Cooking Apron – Baking or Art Craft Apron – Unique Customized Gift
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 1,293 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 6.82
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">6.82</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">19.49</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 19.49
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                65% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="4370018901" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1683201881" data-shop-id="48904376" data-listing-id="1683201881" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1683201881" data-palette-listing-image="" href="https://www.etsy.com/listing/1683201881/custom-makeup-bag-wedding-gift?click_key=c58b7a3b9b4b79900dc28b3963f6ab444aef83e7%3A1683201881&amp;click_sum=f8a40db1&amp;ref=hp_daily_deals-13&amp;pro=1&amp;sts=1&amp;sei=1" data-listing-link="" target="etsy.1683201881" title="Custom Makeup Bag, Wedding Gift, Personalized Cosmetic Bag, Travel Velvet Toiletry Bag, Bridesmaids Gifts, Best Mom, Christmas Gift">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+            "style={{backgroundColor: "#8C4C41"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-13" alt="Custom Makeup Bag, Wedding Gift, Personalized Cosmetic Bag, Travel Velvet Toiletry Bag, Bridesmaids Gifts, Best Mom, Christmas Gift" src="https://i.etsystatic.com/48904376/c/1869/1869/39/0/il/d03c82/5837140199/il_600x600.5837140199_3oja.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1683201881">
+                Custom Makeup Bag, Wedding Gift, Personalized Cosmetic Bag, Travel Velvet Toiletry Bag, Bridesmaids Gifts, Best Mom, Christmas Gift
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.9
+                </span>
+            <div role="img" aria-label="4.9 star rating with 3,656 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 16.82
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">16.82</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">30.59</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 30.59
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                45% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1683201881" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1786839649" data-shop-id="41938735" data-listing-id="1786839649" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1786839649" data-palette-listing-image="" href="https://www.etsy.com/listing/1786839649/personalised-velvet-jewellery-roll?click_key=bd8ae72a8a71b6cb67680e07b3d845c477f73a4d%3A1786839649&amp;click_sum=cc164c42&amp;ref=hp_daily_deals-14&amp;pro=1&amp;sts=1&amp;bs6=1&amp;sei=1" data-listing-link="" target="etsy.1786839649" title="Personalised Velvet Jewellery Roll • Travel Jewelry Roll • Wedding Favor • Birthday Gift • Gift for Her • Bridesmaid Gift • Christmas Gift">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+                "style={{backgroundColor: "#543E30"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-14" alt="Personalised Velvet Jewellery Roll • Travel Jewelry Roll • Wedding Favor • Birthday Gift • Gift for Her • Bridesmaid Gift • Christmas Gift" src="https://i.etsystatic.com/41938735/r/il/a005d3/6283844473/il_600x600.6283844473_qwbj.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1786839649">
+                Personalised Velvet Jewellery Roll • Travel Jewelry Roll • Wedding Favor • Birthday Gift • Gift for Her • Bridesmaid Gift • Christmas Gift
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    5.0
+                </span>
+            <div role="img" aria-label="5.0 star rating with 2,243 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 18.99
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">18.99</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">29.22</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 29.22
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                35% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info ">
+            
+            
+            <span class="wt-text-title-small wt-line-height-tight wt-sem-text-primary">
+    Biggest sale in 60+ days
+</span>
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1786839649" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
+           wt-position-relative
+           wt-mr-xs-0
+daily-deal-card daily-deal-card--loud disable-img-hover-wt-card wt-rounded-02 wt-b-xs wt-mr-xs-3 wt-mt-xs-2 
+            
+            listing-card-experimental-style" data-palette-listing-id="1830883275" data-shop-id="48316023" data-listing-id="1830883275" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+" data-listing-id="1830883275" data-palette-listing-image="" href="https://www.etsy.com/listing/1830883275/custom-embosser-book-stamp-library?click_key=4799333a96a3f0d1cd31419435ada08427301aa4%3A1830883275&amp;click_sum=7f3dc6a8&amp;ref=hp_daily_deals-15&amp;pro=1&amp;sts=1" data-listing-link="" target="etsy.1830883275" title="CUSTOM EMBOSSER / book stamp / library embosser /From the Library of embosser/Cat Lover Gifts/Book Lover Gifts">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01
+             placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                 wt-mb-xs-1 
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square daily-deal-card__placeholder--loud wt-overflow-hidden daily-deal-card__image-margin--loud  
+                
+                
+            "style={{backgroundColor: "#CCB797"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  daily-deal-card__placeholder--loud 
+         
+        
+        
+        hp_daily_deals-15" alt="CUSTOM EMBOSSER / book stamp / library embosser /From the Library of embosser/Cat Lover Gifts/Book Lover Gifts" src="https://i.etsystatic.com/48316023/c/1724/1724/137/137/il/ba690d/6501227153/il_600x600.6501227153_jmc9.jpg" loading="lazy" />
+
+
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-pt-xs-0 wt-pr-xs-2
+    
+    ">
+        
+    
+            <div class="wt-grid wt-align-items-baseline"><div class="wt-grid__item-xs-12 wt-grid__item-xl-8  wt-p-xs-0">
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                 " id="listing-title-1830883275">
+                CUSTOM EMBOSSER / book stamp / library embosser /From the Library of embosser/Cat Lover Gifts/Book Lover Gifts
+            </h3>
+
+            </div>
+            <div class="wt-grid__item-xs-12 wt-grid__item-xl-4  wt-p-xs-0">
+                <div class="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
+                    <span class="
+        
+        wt-display-flex-xs wt-flex-nowrap wt-align-items-center
+    
+    
+">
+                <span class="wt-text-title-small">
+                    4.8
+                </span>
+            <div role="img" aria-label="4.8 star rating with 1,961 reviews" class="wt-align-items-center wt-max-height-full wt-display-flex-xs flex-direction-row-xs wt-text-title-small wt-no-wrap ">
+                <span class="wt-icon wt-icon--smaller-xs single-star-rating-star-spacing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.828 9.154l-6.008-.528-2.36-5.545h-.92L9.18 8.626l-6.007.528-.284.876 4.548 3.954-1.353 5.871.744.541 5.172-3.1 5.172 3.1.744-.54-1.352-5.871 4.548-3.955-.284-.876z"></path>
+</svg></span>
+            </div>
+</span>
+                </div>
+            </div>
+        </div>
+                    <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
+             wt-text-title-large lc-price daily-deal-card__price
+             ">
+
+
+                    <p class="
+                              wt-text-slime
+                               wt-text-slime
+                              wt-text-title-large lc-price daily-deal-card__price">
+                        <span class="wt-screen-reader-only">
+                            Sale Price USD 17.32
+                        </span>
+                        <span aria-hidden="true">
+                            <span class="currency-symbol">USD </span><span class="currency-value">17.32</span>
+                        </span>
+                        </p><p class="wt-text-caption
+                            search-collage-promotion-price
+                            
+                            
+                            wt-text-red wt-text-truncate wt-no-wrap
+                            wt-text-truncate wt-no-wrap">
+                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">41.23</span></span>
+                            <span class="wt-screen-reader-only">
+                                Original Price USD 41.23
+                            </span>
+                            <span class="wt-text-grey ">
+                                <span class="wt-badge wt-nudge-r-1 wt-badge--statusValue wt-badge--small price-discount--larger wt-ml-xs-1">
+                                58% off
+                                </span>
+                            </span>
+                        </p>
+                    <p></p>
+
+</div>
+                    <div class="streamline-spacing-pricing-info streamline-spacing-reduce-margin">
+            
+            
+            
+                    
+                
+            </div>
+
+
+
+                <div class="wt-mb-xs-1">
+                    
+                </div>
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1830883275" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="hp-spacing-reduced-default">
+    
+        
+</div><div data-appears-component-name="hp_gifting_occasion_container">
+<div class="new-missions-gifting wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 appears-ready">
+    <div class="wt-pb-xs-3">
+        <div class="new-missions-gifting__hero_section wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-xl wt-flex-gap-xs-3">
+    <div class="wt-flex-xs-1 wt-flex-gap-xl-3 wt-display-flex-xs wt-align-items-center wt-flex-direction-row-xs wt-flex-direction-column-xl">
+        <h2 class="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-grow-xs-1 wt-flex-grow-xl-0">
+            <p class="wt-text-title-larger wt-show-md wt-hide-xs">Etsy-special gifts for Christmas</p>
+            <p class="wt-text-title-large wt-show-xs wt-hide-md">Etsy-special gifts for Christmas</p>
+        </h2>
+        <a href="https://www.etsy.com/gift-mode/occasion/christmas?ref=hp_gifting_occasion" type="button" class="wt-btn wt-btn--tertiary wt-align-self-flex-start">
+            Get inspired
+        </a>
+    </div>
+    <div data-appears-component-name="Etsy-Modules-NewMissions-Gifting-GiftIdeas-ApiSpec" data-appears-event-data="{&quot;module_placement&quot;:&quot;hp_gifting_occasion&quot;,&quot;datasets&quot;:[&quot;ORM&quot;],&quot;targets&quot;:[&quot;1262837003684&quot;,&quot;1262837112714&quot;,&quot;1262837145724&quot;,&quot;1262837167464&quot;,&quot;1262837362270&quot;,&quot;1262837458760&quot;,&quot;1262837543486&quot;,&quot;1262837621156&quot;,&quot;1262837658302&quot;,&quot;1262839504916&quot;],&quot;logging_class&quot;:&quot;Etsy\\Modules\\NewMissions\\Gifting\\GiftIdeas\\ApiSpec()&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;ORM&quot;:[0,1,2,3,4,5,6,7,8,9]},&quot;refTag&quot;:&quot;hp_gifting_occasion&quot;,&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger wt-flex-xl-3 wt-flex-lg-1">
+<ul data-clg-id="WtList" class="new-missions-gifting__gift_ideas wt-flex-gap-xs-3 wt-list wt-list-unstyled wt-display-flex-xs wt-align-items-flex-start appears-ready">
+    <li class="wt-flex-xs-1 ">
+    <div class="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
+        <a class="wt-card__action-link" href="https://www.etsy.com/gift-mode/gift-idea/1262837362270/festive-servingware?ref=hp_gifting_occasion" aria-label="Festive Servingware"></a>
+        <img data-clg-id="WtImage" class="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image wt-image--cover wt-image" src="https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_fullxfull.4329508554_q99v.jpg" alt="Festive Servingware"  style={{ aspectRatio: "1.25925925926" }} sizes="(max-width: 639px) 100vw, (max-width: 899px) 60vw, (max-width: 1199px) 55vw, 40vw" srcset="https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_680x540.4329508554_q99v.jpg 680w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_850x675.4329508554_q99v.jpg 850w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_1020x810.4329508554_q99v.jpg 1020w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_1190x945.4329508554_q99v.jpg 1190w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_1360x1080.4329508554_q99v.jpg 1360w" />
+
+
+        <div class="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2 wt-pl-lg-2 wt-pr-lg-2 wt-pb-lg-2">
+            <p class="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">Festive Servingware</p>
+        </div>
+    </div>
+</li><li class="wt-flex-xs-1 ">
+    <div class="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
+        <a class="wt-card__action-link" href="https://www.etsy.com/gift-mode/gift-idea/1262837003684/stocking-stuffers?ref=hp_gifting_occasion" aria-label="Stocking Stuffers"></a>
+        <img data-clg-id="WtImage" class="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image wt-image--cover wt-image" src="https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_fullxfull.6465633458_2afq.jpg" alt="Stocking Stuffers"  style={{ aspectRatio: "1.25925925926" }} sizes="(max-width: 639px) 100vw, (max-width: 899px) 60vw, (max-width: 1199px) 55vw, 40vw" srcset="https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_680x540.6465633458_2afq.jpg 680w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_850x675.6465633458_2afq.jpg 850w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_1020x810.6465633458_2afq.jpg 1020w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_1190x945.6465633458_2afq.jpg 1190w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_1360x1080.6465633458_2afq.jpg 1360w" />
+
+
+        <div class="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2 wt-pl-lg-2 wt-pr-lg-2 wt-pb-lg-2">
+            <p class="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">Stocking Stuffers</p>
+        </div>
+    </div>
+</li><li class="wt-flex-xs-1 ">
+    <div class="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
+        <a class="wt-card__action-link" href="https://www.etsy.com/gift-mode/gift-idea/1262837543486/christmas-cookie-making-supplies?ref=hp_gifting_occasion" aria-label="Christmas Cookie Making Supplies"></a>
+        <img data-clg-id="WtImage" class="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image wt-image--cover wt-image" src="https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_fullxfull.7339432191_i9gk.jpg" alt="Christmas Cookie Making Supplies"  style={{ aspectRatio: "1.25925925926" }} sizes="(max-width: 639px) 100vw, (max-width: 899px) 60vw, (max-width: 1199px) 55vw, 40vw" srcset="https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_680x540.7339432191_i9gk.jpg 680w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_850x675.7339432191_i9gk.jpg 850w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_1020x810.7339432191_i9gk.jpg 1020w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_1190x945.7339432191_i9gk.jpg 1190w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_1360x1080.7339432191_i9gk.jpg 1360w" />
+
+
+        <div class="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2 wt-pl-lg-2 wt-pr-lg-2 wt-pb-lg-2">
+            <p class="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">Christmas Cookie Making Supplies</p>
+        </div>
+    </div>
+</li>
+</ul>
+</div>
+</div>
+    </div>
+    <div class="wt-pb-md-4 wt-pb-xs-3">
+        <div class="consolidated-gifting__listing-picks">
+    <div>
+
+    <ul class="wt-block-grid wt-list-unstyled wt-block-grid-xs-2 wt-block-grid-md-4 wt-block-grid-lg-5 wt-block-grid-xl-6 ">
+        <li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
+           wt-position-relative
+           wt-mr-xs-0
+make-listing-link-display-block wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="250910361" data-shop-id="5801665" data-listing-id="250910361" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+                wt-height-full
+            " data-listing-id="250910361" data-palette-listing-image="" href="https://www.etsy.com/listing/250910361/gold-half-moon-tribal-hoop-earrings?click_key=dbeaf478afa222bb79ad85d194836b273601a975%3A250910361&amp;click_sum=6060165c&amp;external=1&amp;ref=hp_consolidated_gifting_listings-1" data-listing-link="" target="etsy.250910361" title="Gold Half Moon Tribal Hoop Earrings | Creole hoop earrings | Crescent moon hoop earrings | Brass Jewellery | Half hoop earring | Nickel free">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        wt-height-full
+">
+                    <div class="placeholder  wt-rounded-02
+             placeholder-landscape wt-rounded-02 
+                
+             wt-height-full 
+            
+">
+    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#CFB9A8"}}>
+            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_340x270.846259472_b35w.jpg" alt="Gold Half Moon Tribal Hoop Earrings | Creole hoop earrings | Crescent moon hoop earrings | Brass Jewellery | Half hoop earring | Nickel free"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_400xN.846259472_b35w.jpg 400w, https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_600xN.846259472_b35w.jpg 600w, https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_800xN.846259472_b35w.jpg 800w" />
+
+            
+            
+                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">23.36</span></span>
+
+</span>
+            </p>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-display-none
+    
+    ">
+        
+    
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                wt-display-none " id="listing-title-250910361">
+                Gold Half Moon Tribal Hoop Earrings | Creole hoop earrings | Crescent moon hoop earrings | Brass Jewellery | Half hoop earring | Nickel free
+            </h3>
+
+                    
+            
+                        
+            
+            
+                    
+                
+            
+
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="250910361" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div></li><li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
+           wt-position-relative
+           wt-mr-xs-0
+make-listing-link-display-block wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="87120891" data-shop-id="5570303" data-listing-id="87120891" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+                wt-height-full
+            " data-listing-id="87120891" data-palette-listing-image="" href="https://www.etsy.com/listing/87120891/santa-key-ornament-painted-santa-key?click_key=de73d3f3afbc0f36cbebc362c3f7a78a36cf7c92%3A87120891&amp;click_sum=569c6d4d&amp;external=1&amp;ref=hp_consolidated_gifting_listings-2" data-listing-link="" target="etsy.87120891" title="Santa Key Ornament, Painted Santa Key, Christmas Ornament, Handmade Christmas Ornament">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        wt-height-full
+">
+                    <div class="placeholder  wt-rounded-02
+             placeholder-landscape wt-rounded-02 
+                
+             wt-height-full 
+            
+">
+    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#948E89"}}>
+            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-2 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_340x270.3505245681_pr2t.jpg" alt="Santa Key Ornament, Painted Santa Key, Christmas Ornament, Handmade Christmas Ornament"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_400xN.3505245681_pr2t.jpg 400w, https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_600xN.3505245681_pr2t.jpg 600w, https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_800xN.3505245681_pr2t.jpg 800w" />
+
+            
+            
+                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">22.00</span></span>
+
+</span>
+            </p>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-display-none
+    
+    ">
+        
+    
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                wt-display-none " id="listing-title-87120891">
+                Santa Key Ornament, Painted Santa Key, Christmas Ornament, Handmade Christmas Ornament
+            </h3>
+
+                    
+            
+                        
+            
+            
+                    
+                
+            
+
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="87120891" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div></li><li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
+           wt-position-relative
+           wt-mr-xs-0
+make-listing-link-display-block wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="250614510" data-shop-id="10897104" data-listing-id="250614510" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+                wt-height-full
+            " data-listing-id="250614510" data-palette-listing-image="" href="https://www.etsy.com/listing/250614510/personalised-felt-christmas-bauble?click_key=56a9600474cc92999b3338e48d6e0d3f4220a93e%3A250614510&amp;click_sum=758589c4&amp;external=1&amp;ref=hp_consolidated_gifting_listings-3&amp;sts=1" data-listing-link="" target="etsy.250614510" title="Personalised Felt Christmas Bauble: Handmade Tree Ornament">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        wt-height-full
+">
+                    <div class="placeholder  wt-rounded-02
+             placeholder-landscape wt-rounded-02 
+                
+             wt-height-full 
+            
+">
+    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#748B79"}}>
+            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-3 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_340x270.1124244435_nuct.jpg" alt="Personalised Felt Christmas Bauble: Handmade Tree Ornament"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_400xN.1124244435_nuct.jpg 400w, https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_600xN.1124244435_nuct.jpg 600w, https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_800xN.1124244435_nuct.jpg 800w" />
+
+            
+            
+                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">20.62</span></span>
+
+</span>
+            </p>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-display-none
+    
+    ">
+        
+    
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                wt-display-none " id="listing-title-250614510">
+                Personalised Felt Christmas Bauble: Handmade Tree Ornament
+            </h3>
+
+                    
+            
+                        
+            
+            
+                    
+                
+            
+
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="250614510" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div></li><li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
+           wt-position-relative
+           wt-mr-xs-0
+make-listing-link-display-block wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="201256190" data-shop-id="5870358" data-listing-id="201256190" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+                wt-height-full
+            " data-listing-id="201256190" data-palette-listing-image="" href="https://www.etsy.com/listing/201256190/advent-calendar-kit-christmas-calendar?click_key=7659c30f4eff657032033a74b911d363b8dccad0%3A201256190&amp;click_sum=c595039d&amp;external=1&amp;ref=hp_consolidated_gifting_listings-4&amp;sts=1" data-listing-link="" target="etsy.201256190" title="advent calendar kit Christmas Calendar kit advent calendar 25 bags by renna deluxe">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        wt-height-full
+">
+                    <div class="placeholder  wt-rounded-02
+             placeholder-landscape wt-rounded-02 
+                
+             wt-height-full 
+            
+">
+    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full">
+            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-4 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_340x270.818852444_tsg4.jpg" alt="advent calendar kit Christmas Calendar kit advent calendar 25 bags by renna deluxe"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_400xN.818852444_tsg4.jpg 400w, https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_600xN.818852444_tsg4.jpg 600w, https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_800xN.818852444_tsg4.jpg 800w" />
+
+            
+            
+                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">20.39</span></span>
+
+</span>
+            </p>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-display-none
+    
+    ">
+        
+    
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                wt-display-none " id="listing-title-201256190">
+                advent calendar kit Christmas Calendar kit advent calendar 25 bags by renna deluxe
+            </h3>
+
+                    
+            
+                        
+            
+            
+                    
+                
+            
+
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="201256190" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div></li><li class="wt-block-grid__item wt-hide-xs wt-show-lg"><div class="js-merch-stash-check-listing v2-listing-card 
+           wt-position-relative
+           wt-mr-xs-0
+make-listing-link-display-block wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="208930046" data-shop-id="9997414" data-listing-id="208930046" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+                wt-height-full
+            " data-listing-id="208930046" data-palette-listing-image="" href="https://www.etsy.com/listing/208930046/barware-for-him-custom-gifts-for-dad?click_key=19193f8681c74fcd064d11ca46b5d8c12d50c875%3A208930046&amp;click_sum=0f008f42&amp;external=1&amp;ref=hp_consolidated_gifting_listings-5&amp;sts=1" data-listing-link="" target="etsy.208930046" title="Barware For Him - Custom Gifts for Dad - Christmas Gift - Barware Set – Personalized Whiskey Decanter Set – Boyfriend Gift, Groomsmen Gifts">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        wt-height-full
+">
+                    <div class="placeholder  wt-rounded-02
+             placeholder-landscape wt-rounded-02 
+                
+             wt-height-full 
+            
+">
+    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#9F806D"}}>
+            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-5 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_340x270.3117927256_564w.jpg" alt="Barware For Him - Custom Gifts for Dad - Christmas Gift - Barware Set – Personalized Whiskey Decanter Set – Boyfriend Gift, Groomsmen Gifts"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_400xN.3117927256_564w.jpg 400w, https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_600xN.3117927256_564w.jpg 600w, https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_800xN.3117927256_564w.jpg 800w" />
+
+            
+            
+                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">61.99</span></span>
+
+</span>
+            </p>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-display-none
+    
+    ">
+        
+    
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                wt-display-none " id="listing-title-208930046">
+                Barware For Him - Custom Gifts for Dad - Christmas Gift - Barware Set – Personalized Whiskey Decanter Set – Boyfriend Gift, Groomsmen Gifts
+            </h3>
+
+                    
+            
+                        
+            
+            
+                    
+                
+            
+
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="208930046" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div></li><li class="wt-block-grid__item wt-hide-xs wt-show-xl"><div class="js-merch-stash-check-listing v2-listing-card 
+           wt-position-relative
+           wt-mr-xs-0
+make-listing-link-display-block wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="113686407" data-shop-id="6595416" data-listing-id="113686407" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-inline-block
+            
+                wt-height-full
+            " data-listing-id="113686407" data-palette-listing-image="" href="https://www.etsy.com/listing/113686407/papyrus-origami-christmas-tree-topper?click_key=07ebe5282167a7d3cd77d640242cdc96168c06da%3A113686407&amp;click_sum=ced2460e&amp;external=1&amp;ref=hp_consolidated_gifting_listings-6" data-listing-link="" target="etsy.113686407" title="PAPYRUS Origami Christmas Tree Topper - Gold Star, Classic, XMas, Modern, Traditional, Classy, Timeless, Original">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        wt-height-full
+">
+                    <div class="placeholder  wt-rounded-02
+             placeholder-landscape wt-rounded-02 
+                
+             wt-height-full 
+            
+">
+    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#847D6C"}}>
+            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-6 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_340x270.1572044864_d7zv.jpg" alt="PAPYRUS Origami Christmas Tree Topper - Gold Star, Classic, XMas, Modern, Traditional, Classy, Timeless, Original"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_400xN.1572044864_d7zv.jpg 400w, https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_600xN.1572044864_d7zv.jpg 600w, https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_800xN.1572044864_d7zv.jpg 800w" />
+
+            
+            
+                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">59.50</span></span>
+
+</span>
+            </p>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+                <div class="v2-listing-card__info
+    wt-display-none
+    
+    ">
+        
+    
+            <h3 class="wt-text-caption v2-listing-card__title
+                wt-text-truncate
+                
+                wt-display-none " id="listing-title-113686407">
+                PAPYRUS Origami Christmas Tree Topper - Gold Star, Classic, XMas, Modern, Traditional, Classy, Timeless, Original
+            </h3>
+
+                    
+            
+                        
+            
+            
+                    
+                
+            
+
+
+
+            
+            
+                
+            
+            
+            
+</div>
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="113686407" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div></li>
+    </ul>
+</div>
+</div>
+    </div>
+    <div>
+        <div class="gifting-mission-search-bubbles">
+    <h2 class="wt-text-title wt-pb-xs-2"> Gifts as special as they are </h2>
+    <ul class="gifting-mission--tracked wt-block-grid-xs-2 wt-block-grid-md-3 wt-block-grid-lg-4 wt-block-grid-xl-5 wt-action-group wt-list-inline wt-justify-content-space-between">
+                <li class="wt-block-grid__item ">
+<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=personalized+toys&amp;anchor_listing_id=1757298107&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1422880675474&amp;is_merch_library=true">
+    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
+                                <div>
+                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_300x300.5659610211_g4x3.jpg" alt="Personalized Toys"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_100x100.5659610211_g4x3.jpg 100w, https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_200x200.5659610211_g4x3.jpg 200w, https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_300x300.5659610211_g4x3.jpg 300w" />
+
+                                </div>
+                                <div>
+                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Personalized Toys">
+                                    Personalized Toys
+                                </p>
+                                </div>
+                            </div>
+
+</div>
+</div>
+                </li>
+                <li class="wt-block-grid__item ">
+<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=gifts+for+him&amp;anchor_listing_id=4322955672&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1422880711300&amp;is_merch_library=true">
+    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
+                                <div>
+                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_300x300.6953060846_da75.jpg" alt="Gifts for Him"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_100x100.6953060846_da75.jpg 100w, https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_200x200.6953060846_da75.jpg 200w, https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_300x300.6953060846_da75.jpg 300w" />
+
+                                </div>
+                                <div>
+                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Gifts for Him">
+                                    Gifts for Him
+                                </p>
+                                </div>
+                            </div>
+
+</div>
+</div>
+                </li>
+                <li class="wt-block-grid__item ">
+<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=wedding+gifts&amp;anchor_listing_id=1729661664&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1423047299721&amp;is_merch_library=true">
+    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
+                                <div>
+                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_300x300.6203569120_2zh4.jpg" alt="Wedding Gifts"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_100x100.6203569120_2zh4.jpg 100w, https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_200x200.6203569120_2zh4.jpg 200w, https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_300x300.6203569120_2zh4.jpg 300w" />
+
+                                </div>
+                                <div>
+                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Wedding Gifts">
+                                    Wedding Gifts
+                                </p>
+                                </div>
+                            </div>
+
+</div>
+</div>
+                </li>
+                <li class="wt-block-grid__item wt-show-xs wt-hide-md wt-show-lg">
+<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=stocking+stuffers&amp;anchor_listing_id=1504641428&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1423047344265&amp;is_merch_library=true">
+    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
+                                <div>
+                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_300x300.6459908032_9vjh.jpg" alt="Stocking Stuffers"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_100x100.6459908032_9vjh.jpg 100w, https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_200x200.6459908032_9vjh.jpg 200w, https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_300x300.6459908032_9vjh.jpg 300w" />
+
+                                </div>
+                                <div>
+                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Stocking Stuffers">
+                                    Stocking Stuffers
+                                </p>
+                                </div>
+                            </div>
+
+</div>
+</div>
+                </li>
+                <li class="wt-block-grid__item wt-hide-xs wt-show-xl">
+<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=cozy+clothing+gift&amp;anchor_listing_id=4378499321&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1423047417625&amp;is_merch_library=true">
+    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
+                                <div>
+                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_300x300.7242550048_8226.jpg" alt="Cozy Style Gifts"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_100x100.7242550048_8226.jpg 100w, https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_200x200.7242550048_8226.jpg 200w, https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_300x300.7242550048_8226.jpg 300w" />
+
+                                </div>
+                                <div>
+                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Cozy Style Gifts">
+                                    Cozy Style Gifts
+                                </p>
+                                </div>
+                            </div>
+
+</div>
+</div>
+                </li>
+                <li class="wt-block-grid__item wt-hide-xs">
+<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=stockings&amp;anchor_listing_id=559159004&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1422880950836&amp;is_merch_library=true">
+    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
+                                <div>
+                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_300x300.6356436475_b135.jpg" alt="Stockings"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_100x100.6356436475_b135.jpg 100w, https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_200x200.6356436475_b135.jpg 200w, https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_300x300.6356436475_b135.jpg 300w" />
+
+                                </div>
+                                <div>
+                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Stockings">
+                                    Stockings
+                                </p>
+                                </div>
+                            </div>
+
+</div>
+</div>
+                </li>
+    </ul>
+</div>
+    </div>
+</div>
+</div><div class="hp-spacing-reduced-default">
+    
+        
+</div><div data-appears-component-name="Homepage_Vesta_ApiSpec_TopInTaxonomy" data-appears-event-data="{&quot;module_placement&quot;:&quot;home_top_in_taxo_categories&quot;,&quot;datasets&quot;:[&quot;Etsy\\Web\\Recsys\\ReactorRecs\\Registry\\Web\\Category\\RivuletTopSearchedTaxos&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Homepage_Vesta_ApiSpec_TopInTaxonomy&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Etsy\\Web\\Recsys\\ReactorRecs\\Registry\\Web\\Category\\RivuletTopSearchedTaxos&quot;:[0,1,2,3,4,5]},&quot;taxonomy_ids&quot;:[1229,2844,11371,77,7103,1857],&quot;refTag&quot;:&quot;hp_top_in_taxo_categories&quot;,&quot;queries&quot;:[&quot;pendant necklaces&quot;,&quot;signs&quot;,&quot;prints&quot;,&quot;digital drawings and illustrations&quot;,&quot;party and gifting&quot;,&quot;christmas ornaments&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
+<div class="wt-body-max-width wt-pr-xs-0 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
+    <div class="wt-pr-xs-0 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+        <h2 class="wt-text-title-larger wt-text-black">
+            Shop our most-loved categories
+        </h2>
+        <div class="updated-category-module wt-pt-xs-2 wt-pt-md-3 wt-pl-xs-1 wt-pb-xs-1 wt-mr-xs-2 wt-mr-md-0">
+    <div class="updated-category-module__container wt-display-flex-xs wt-align-items-flex-start wt-block-grid-md-3 wt-block-grid-lg-6">
+            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
+                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+                    <a href="https://www.etsy.com/c/jewelry/necklaces/pendant-necklaces?explicit=1&amp;ref=hp_top_in_taxo_categories-1" class="shopping-window-interior">
+                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_340x270.6362008945_fz31.jpg" alt="pendant necklaces"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_255x340.6362008945_fz31.jpg 255w, https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_510x680.6362008945_fz31.jpg 510w, https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_765x1020.6362008945_fz31.jpg 765w" />
+
+                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
+                            pendant necklaces
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
+                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+                    <a href="https://www.etsy.com/c/home-and-living/home-decor/wall-decor/wall-hangings/signs?explicit=1&amp;ref=hp_top_in_taxo_categories-2" class="shopping-window-interior">
+                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_340x270.3571682397_6tg9.jpg" alt="signs"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_255x340.3571682397_6tg9.jpg 255w, https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_510x680.3571682397_6tg9.jpg 510w, https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_765x1020.3571682397_6tg9.jpg 765w" />
+
+                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
+                            signs
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
+                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+                    <a href="https://www.etsy.com/c/home-and-living/home-decor/wall-decor/wall-hangings/prints?explicit=1&amp;ref=hp_top_in_taxo_categories-3" class="shopping-window-interior">
+                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_340x270.5729625769_3jbx.jpg" alt="prints"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_255x340.5729625769_3jbx.jpg 255w, https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_510x680.5729625769_3jbx.jpg 510w, https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_765x1020.5729625769_3jbx.jpg 765w" />
+
+                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
+                            prints
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
+                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+                    <a href="https://www.etsy.com/c/art-and-collectibles/drawing-and-illustration/digital?explicit=1&amp;ref=hp_top_in_taxo_categories-4" class="shopping-window-interior">
+                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_340x270.2796261612_g1nk.jpg" alt="digital drawings and illustrations"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_255x340.2796261612_g1nk.jpg 255w, https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_510x680.2796261612_g1nk.jpg 510w, https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_765x1020.2796261612_g1nk.jpg 765w" />
+
+                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
+                            digital drawings and illustrations
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
+                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+                    <a href="https://www.etsy.com/c/craft-supplies-and-tools/paper-party-and-kids/party-and-gifting?explicit=1&amp;ref=hp_top_in_taxo_categories-5" class="shopping-window-interior">
+                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_340x270.4309931155_7eik.jpg" alt="party and gifting"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_255x340.4309931155_7eik.jpg 255w, https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_510x680.4309931155_7eik.jpg 510w, https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_765x1020.4309931155_7eik.jpg 765w" />
+
+                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
+                            party and gifting
+                        </p>
+                    </a>
+                </div>
+            </li>
+            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
+                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+                    <a href="https://www.etsy.com/c/home-and-living/home-decor/seasonal-decor/ornaments?explicit=1&amp;ref=hp_top_in_taxo_categories-6" class="shopping-window-interior">
+                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_340x270.5537950255_5zri.jpg" alt="christmas ornaments"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_255x340.5537950255_5zri.jpg 255w, https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_510x680.5537950255_5zri.jpg 510w, https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_765x1020.5537950255_5zri.jpg 765w" />
+
+                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
+                            christmas ornaments
+                        </p>
+                    </a>
+                </div>
+            </li>
+    </div>
+</div>
+    </div>
+</div>
+</div><div class="hp-spacing-reduced-default">
+    
+        
+</div>
+
+
+
+<div class="hp-spacing-reduced-default" data-spacing-for-spec-name="Homepage_Vesta_ApiSpec_DailyDeals" data-spacing-for-spec-id="c8f326da2990ea5137ac795c163837b7">
+    
+        
+</div>
+
+<div data-appears-component-name="hp_editors_picks_primary" data-appears-event-data="{&quot;title&quot;:&quot;Etsy\u2019s Guide to Vintage&quot;}">
+<div class="wt-grid wt-body-max-width wt-pl-xs-1 wt-pl-md-2 wt-pl-lg-3 appears-ready">
+    
+        <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+    
+        <div class="wt-grid primary-editors-picks-grid--refresh wt-width-full" data-hp-editor-picks="">
+
+        <div class="primary-editors-picks-element wt-grid__item-md-6 wt-grid__item-xs-12 wt-display-flex-md wt-flex-direction-column-md wt-justify-content-flex-end wt-text-left-md wt-align-self-center wt-mb-md-3 wt-mb-lg-0 wt-pl-xs-3 wt-pl-lg-7">
+            <p class="wt-text-body--tight wt-sem-text-secondary">Editors’ Picks</p>
+            <h2 class="primary-editors-picks-title--refresh wt-text-title-larger wt-sem-text-primary wt-mt-xs-1 wt-mb-xs-2 wt-mb-md-1">Etsy’s Guide to Vintage</h2>
+            <p class="primary-editors-picks-subtitle--refresh wt-text-body--tight wt-sem-text-primary wt-pb-xs-4 wt-hide-xs wt-show-lg">Discover timeless denim, heirloom jewelry, antique decor, and more from small shops.</p>
+            <a href="https://www.etsy.com/featured/hub/the-vintage-edit?ref=hp_editors_picks_primary" class="wt-btn wt-btn--tertiary discover-more-button wt-hide-xs wt-show-md" title="Shop these unique finds"> Shop these unique finds </a>
+        </div>
+        <div class="primary-editors-picks-element wt-flex-shrink-xs-0 wt-grid__item-xs-6 wt-grid__item-lg-3 primary-editors-picks-listing--refresh">
+    
+        <div class="js-merch-stash-check-listing v2-listing-card 
+           
+           wt-mr-xs-0
+wt-position-relative wt-width-full wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="1403208898" data-shop-id="14364014" data-listing-id="1403208898" data-page-type="homepage_merch_collection" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-block
+            
+" data-listing-id="1403208898" data-palette-listing-image="" href="https://www.etsy.com/listing/1403208898/set-of-4-stacking-bubble-glasses?click_key=1db3288d39c9b0e9bb3253c01cd6a9f965bee037%3A1403208898&amp;click_sum=fb573d3b&amp;ref=hp_editors_picks_primary-1" data-listing-link="" target="etsy.1403208898" title="Set of 4 Stacking Bubble Glasses">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01 wt-height-full
+             placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+                
+              "style={{backgroundColor: "#D6D8DD"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  wt-rounded-02 listing-card--hp-refresh-2024
+         
+        
+        
+        hp_editors_picks_primary-1" alt="Set of 4 Stacking Bubble Glasses" src="https://i.etsystatic.com/14364014/r/il/cade29/4675471079/il_600x600.4675471079_8l2k.jpg" loading="lazy" />
+
+
+        <p class="listing-card-price-badge wt-animated wt-animated--appear-02 wt-mb-xs-2 wt-pl-xs-2 wt-pr-xs-2 wt-max-width-full wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">24.50</span></span>
+
+</span>
+            </p>
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1403208898" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="homepage_merch_collection" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+</div><div class="primary-editors-picks-element wt-flex-shrink-xs-0 wt-grid__item-xs-6 wt-grid__item-lg-3 primary-editors-picks-listing--refresh">
+    
+        <div class="js-merch-stash-check-listing v2-listing-card 
+           
+           wt-mr-xs-0
+wt-position-relative wt-width-full wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="4391746026" data-shop-id="50190921" data-listing-id="4391746026" data-page-type="homepage_merch_collection" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-block
+            
+" data-listing-id="4391746026" data-palette-listing-image="" href="https://www.etsy.com/listing/4391746026/vintage-coastal-studio-pottery-shell?click_key=4d279c29e40d7fd71bfd0e62f93784678f354a2a%3A4391746026&amp;click_sum=331daa8d&amp;ref=hp_editors_picks_primary-2&amp;sts=1" data-listing-link="" target="etsy.4391746026" title="Vintage Coastal Studio Pottery Shell Sculpture // Cream Toned Ceramic Sea Shell Art Object">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01 wt-height-full
+             placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+                
+                "style={{backgroundColor: "#E2E5E4"}} >
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  wt-rounded-02 listing-card--hp-refresh-2024
+         
+        
+        
+        hp_editors_picks_primary-2" alt="Vintage Coastal Studio Pottery Shell Sculpture // Cream Toned Ceramic Sea Shell Art Object" src="https://i.etsystatic.com/50190921/c/1678/1678/229/722/il/3e94f1/7363315901/il_600x600.7363315901_7pst.jpg" loading="lazy" />
+
+
+        <p class="listing-card-price-badge wt-animated wt-animated--appear-02 wt-mb-xs-2 wt-pl-xs-2 wt-pr-xs-2 wt-max-width-full wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">78.00</span></span>
+
+</span>
+            </p>
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="4391746026" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="homepage_merch_collection" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+</div><div class="primary-editors-picks-element wt-flex-shrink-xs-0 wt-grid__item-xs-6 wt-grid__item-lg-3 primary-editors-picks-listing--refresh">
+    
+        <div class="js-merch-stash-check-listing v2-listing-card 
+           
+           wt-mr-xs-0
+wt-position-relative wt-width-full wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="4340539349" data-shop-id="23954225" data-listing-id="4340539349" data-page-type="homepage_merch_collection" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-block
+            
+" data-listing-id="4340539349" data-palette-listing-image="" href="https://www.etsy.com/listing/4340539349/vintage-shell-shaped-sugar-bowl-for?click_key=e3c74848e20bba3bc072ad279dfcfa3e84a07fa5%3A4340539349&amp;click_sum=16c4c7ec&amp;ref=hp_editors_picks_primary-3" data-listing-link="" target="etsy.4340539349" title="Vintage Shell-Shaped Sugar Bowl - For Sugar, Sauces, Butter, or Jam - with Shell-Shaped Spoon - Italy 1960s - elegant Table Decor, Gift Idea">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01 wt-height-full
+             placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+                
+            "style={{backgroundColor: "#D7D6D5"}} >
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  wt-rounded-02 listing-card--hp-refresh-2024
+         
+        
+        
+        hp_editors_picks_primary-3" alt="Vintage Shell-Shaped Sugar Bowl - For Sugar, Sauces, Butter, or Jam - with Shell-Shaped Spoon - Italy 1960s - elegant Table Decor, Gift Idea" src="https://i.etsystatic.com/23954225/r/il/49c34c/7095837339/il_600x600.7095837339_ledv.jpg" loading="lazy" />
+
+
+        <p class="listing-card-price-badge wt-animated wt-animated--appear-02 wt-mb-xs-2 wt-pl-xs-2 wt-pr-xs-2 wt-max-width-full wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span class="">
+                                <span class="currency-symbol">USD </span><span class="currency-value">279.96</span>
+                            </span>
+                            <span class="wt-text-strikethrough 
+                            wt-text-body--small-tight font-weight-normal ">
+                                <span class="currency-symbol">USD </span><span class="currency-value">349.95</span>
+                            </span>
+
+</span>
+            </p>
+            </div>
+    </div>
+                <div data-clg-id="WtVideoPreview" class="wt-video wt-video--preview wt-display-flex-xs " data-listing-id="4340539349">
+            <div class="wt-video__spinner">
+                
+    <div data-clg-id="WtSpinner" class="wt-spinner wt-spinner--01" aria-live="assertive">
+        <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle fill="transparent" cx="12" cy="12" r="10"></circle></svg></span>
+        Loading
+    </div>
+
+            </div>
+
+            <video tabindex="-1" muted="" preload="none" class="wt-video__element wt-video__element--hidden" aria-label="Vintage Shell-Shaped Sugar Bowl - For Sugar, Sauces, Butter, or Jam - with Shell-Shaped Spoon - Italy 1960s - elegant Table Decor, Gift Idea">
+                    <source src="https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/IMG_5092_gzceno.mp4" type="video/mp4" />
+            </video>
+
+            <div class="wt-video__signal" aria-hidden="false">
+                <span class="wt-icon wt-icon--smaller-xs wt-nudge-l-2" data-wt-video-play-signal=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="4 4 4 20 20 12 4 4"></polygon></svg></span>
+                
+            </div>
+        </div>
+
+</div>
+                    
+                </div>
+        
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="4340539349" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="homepage_merch_collection" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+</div><div class="primary-editors-picks-element wt-flex-shrink-xs-0 wt-grid__item-xs-6 wt-grid__item-lg-3 primary-editors-picks-listing--refresh">
+    
+        <div class="js-merch-stash-check-listing v2-listing-card 
+           
+           wt-mr-xs-0
+wt-position-relative wt-width-full wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="1439547961" data-shop-id="6071918" data-listing-id="1439547961" data-page-type="homepage_merch_collection" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-block
+            
+" data-listing-id="1439547961" data-palette-listing-image="" href="https://www.etsy.com/listing/1439547961/vintage-john-galliano-handbag?click_key=c9b08835c06c5ade9abe872c33af4c21c37d4d3e%3A1439547961&amp;click_sum=53f3293f&amp;ref=hp_editors_picks_primary-4" data-listing-link="" target="etsy.1439547961" title="vintage John Galliano handbag">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01 wt-height-full
+             placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+                
+                "style={{backgroundColor: "#7E4B2E"}} >
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  wt-rounded-02 listing-card--hp-refresh-2024
+         
+        
+        
+        hp_editors_picks_primary-4" alt="vintage John Galliano handbag" src="https://i.etsystatic.com/6071918/r/il/2d943f/4725152760/il_600x600.4725152760_441t.jpg" loading="lazy" />
+
+
+        <p class="listing-card-price-badge wt-animated wt-animated--appear-02 wt-mb-xs-2 wt-pl-xs-2 wt-pr-xs-2 wt-max-width-full wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">540.00</span></span>
+
+</span>
+            </p>
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="1439547961" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="homepage_merch_collection" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+</div><div class="primary-editors-picks-element wt-flex-shrink-xs-0 wt-grid__item-xs-6 wt-grid__item-lg-3 primary-editors-picks-listing--refresh">
+    
+        <div class="js-merch-stash-check-listing v2-listing-card 
+           
+           wt-mr-xs-0
+wt-position-relative wt-width-full wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="4306194318" data-shop-id="14693778" data-listing-id="4306194318" data-page-type="homepage_merch_collection" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-block
+            
+" data-listing-id="4306194318" data-palette-listing-image="" href="https://www.etsy.com/listing/4306194318/very-beautiful-vintage-wall-lamp-with?click_key=4e7b3a1549d4b1a4dc2ebc037333c01f854f8339%3A4306194318&amp;click_sum=e271084e&amp;ref=hp_editors_picks_primary-5" data-listing-link="" target="etsy.4306194318" title="Very beautiful vintage wall lamp with fabric shade, 80s">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01 wt-height-full
+             placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+                
+             "style={{backgroundColor: "#D2CDCE"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  wt-rounded-02 listing-card--hp-refresh-2024
+         
+        
+        
+        hp_editors_picks_primary-5" alt="Very beautiful vintage wall lamp with fabric shade, 80s" src="https://i.etsystatic.com/14693778/r/il/512c22/6913951165/il_600x600.6913951165_10eq.jpg" loading="lazy" />
+
+
+        <p class="listing-card-price-badge wt-animated wt-animated--appear-02 wt-mb-xs-2 wt-pl-xs-2 wt-pr-xs-2 wt-max-width-full wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">114.64</span></span>
+
+</span>
+            </p>
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="4306194318" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="homepage_merch_collection" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+</div><div class="primary-editors-picks-element wt-flex-shrink-xs-0 wt-grid__item-xs-6 wt-grid__item-lg-3 primary-editors-picks-listing--refresh">
+    
+        <div class="js-merch-stash-check-listing v2-listing-card 
+           
+           wt-mr-xs-0
+wt-position-relative wt-width-full wt-rounded-02 
+            
+            listing-card-experimental-style" data-palette-listing-id="4369520150" data-shop-id="30836518" data-listing-id="4369520150" data-page-type="homepage_merch_collection" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
+    <a class="listing-link
+                wt-display-block
+            
+" data-listing-id="4369520150" data-palette-listing-image="" href="https://www.etsy.com/listing/4369520150/antique-french-large-terracotta-cheese?click_key=4c4f582c3eda714aed67bd947f1db1b1bd03b628%3A4369520150&amp;click_sum=62504a5a&amp;ref=hp_editors_picks_primary-6&amp;sts=1" data-listing-link="" target="etsy.4369520150" title="Antique French Large Terracotta Cheese Molds or Faisselle: Yellow Glazed Kitchenalia">
+            
+                <div class="v2-listing-card__img wt-position-relative
+                        listing-card-image-no-shadow
+">
+                    <div class="placeholder  wt-rounded-01 wt-height-full
+             placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+            
+            
+">
+    <div class="placeholder vertically-centered-placeholder
+                 placeholder-content placeholder-square wt-rounded-02 wt-overflow-hidden 
+                
+                
+              "style={{backgroundColor: "#D2CDCE"}}>
+            <div class="height-placeholder">
+                    <img data-listing-card-listing-image="" class="wt-width-full wt-height-full wt-display-block wt-position-absolute  wt-rounded-02 listing-card--hp-refresh-2024
+         
+        
+        
+        hp_editors_picks_primary-6" alt="Antique French Large Terracotta Cheese Molds or Faisselle: Yellow Glazed Kitchenalia" src="https://i.etsystatic.com/30836518/r/il/e6f7dc/7246740815/il_600x600.7246740815_tupe.jpg" loading="lazy" />
+
+
+        <p class="listing-card-price-badge wt-animated wt-animated--appear-02 wt-mb-xs-2 wt-pl-xs-2 wt-pr-xs-2 wt-max-width-full wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
+<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
+                                <span><span class="currency-symbol">USD </span><span class="currency-value">99.00</span></span>
+
+</span>
+            </p>
+            </div>
+    </div>
+        
+</div>
+                    
+                </div>
+        
+    </a>
+            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
+                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
+            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
+            " data-ui="favorite-listing-button" data-listing-id="4369520150" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
+            <div class="favorite-listing-button-icon-container should-animate " data-source="homepage_merch_collection" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
+                    
+                    
+                        
+                        
+                            wt-display-block
+                        
+                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
+                    
+                    
+                        
+                        
+                            wt-display-none
+                        
+                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+            </div>
+            <span aria-hidden="true" class="icon"></span>
+            <span class="wt-screen-reader-only" data-a11y-label="">
+                
+                Add to Favorites
+            </span>
+            </button>
+            </div>
+</div>
+</div>
+        <a href="https://www.etsy.com/featured/hub/the-vintage-edit?ref=hp_editors_picks_primary" class="wt-btn wt-btn--tertiary discover-more-button wt-hide-md wt-mt-xs-2 wt-ml-xs-3" title="Shop these unique finds"> Shop these unique finds </a>
+
+    </div>
+</div>
+</div>
+</div><div class="hp-spacing-reduced-default">
+    
+        
+</div><div data-appears-component-name="hp_shop_our_selections">
+<div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
+    
+        <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+    
+        <div>
+    <div class="simple-header wt-pb-xs-2 wt-pb-md-3 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between">
+    <div class="header-wrapper ">
+            <h2 class="wt-text-title-larger">
+                Save now on standout styles
+            </h2>
+    </div>
+        
+    
+</div>
+    <ul class="shop-our-selections-module wt-block-grid-xs-2 wt-block-grid-md-5 wt-p-xs-0">
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search/home-and-living?q=holiday+decor&amp;anchor_listing_id=654339441&amp;ref=hp_g_DealsRow_11_03_25-1&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1418664528913&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
+    <span class="wt-screen-reader-only">                        Personalized Holiday Decor
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/15873879/r/il/efa3d6/2001683148/il_300x300.2001683148_jkc9.jpg" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Personalized Holiday Decor</p>
+                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=winter+clothing+and+accessories&amp;anchor_listing_id=4369897730&amp;ref=hp_g_DealsRow_11_03_25-2&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1415631595990&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
+    <span class="wt-screen-reader-only">                        Winter Style
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/61781071/r/il/3f31be/7200963520/il_300x300.7200963520_2qjv.jpg" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Winter Style</p>
+                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=gift+for+her&amp;anchor_listing_id=1733993795&amp;ref=hp_g_DealsRow_11_03_25-3&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1415889842361&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
+    <span class="wt-screen-reader-only">                        Gifts for Her
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/19615202/c/2026/2026/517/161/il/77e918/7362204708/il_300x300.7362204708_mpr7.jpg" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Gifts for Her</p>
+                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=personalized+portraits&amp;anchor_listing_id=1884149669&amp;ref=hp_g_DealsRow_11_03_25-4&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1418664664487&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
+    <span class="wt-screen-reader-only">                        Custom Portraits
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/52061210/r/il/3f550c/6694397172/il_300x300.6694397172_ep41.jpg" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Custom Portraits</p>
+                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
+
+</div>
+</div>
+            </li>
+            <li class="wt-list-unstyled wt-block-grid__item">
+<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
+    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=jewelry&amp;anchor_listing_id=514354742&amp;ref=hp_g_DealsRow_11_03_25-5&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1417967106503&amp;min=100&amp;max=400&amp;is_merch_library=true&amp;is_star_seller=true&amp;infb=mt_9%2Cmt_8%2Cmt_7%2Cmt_6%2Cmt_4&amp;is_discounted=true&amp;pct_discount_max=30">
+    <span class="wt-screen-reader-only">                        Demi Fine Jewelry
+</span>
+</a>
+<div data-clg-id="WtCardContent" class="wt-card__inner">
+                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/13824738/c/1533/1533/312/373/il/63ae75/6786744374/il_300x300.6786744374_5kp9.jpg" alt="" />
+                        </div>
+                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Demi Fine Jewelry</p>
+                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
+
+</div>
+</div>
+            </li>
+    </ul>
+</div>
+</div>
+</div>
+</div><div class="hp-spacing-reduced-default">
+    
+        
+</div><div></div><div data-appears-component-name="Homepage_Vesta_ApiSpec_WhatIsEtsy">
+<div class="wt-grid wt-body-max-width appears-ready">
+    <div class="wt-grid__item-xs-12">
+        <div class="wt-bg-beeswax-tint vesta-hp-full-width-banner wt-position-relative wt-pb-xs-6 wt-overflow-hidden" data-selector="what-is-etsy-container">
+            <span class="wt-edge wt-fill-white wt-edge--smaller wt-edge--ratio-none" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1400" height="48" viewBox="0 0 1400 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<rect x="0" width="1400" height="24"></rect>
+</svg></span><span class="wt-edge wt-fill-white wt-edge--smaller wt-edge--ratio-slice" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1400" height="48" viewBox="0 0 1400 48" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<rect x="0" width="1400" height="24"></rect>
+</svg></span>
+            <div class="wt-text-center-xs wt-body-max-width wt-pb-xs-6 wt-pt-xs-6 wt-pl-xs-5 wt-pr-xs-5 wt-pl-md-10 wt-pr-md-10 wt-pl-lg-9 wt-pr-lg-9">
+                <h2 class="wt-text-heading-large wt-mb-xs-1 wt-text-center-xs"> What is Royofaa? </h2>
+                <a class="wt-text-link" href="/about"> Read our wonderfully weird story </a>
+
+                <div class="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-lg wt-pt-xs-6 wt-text-center-xs wt-text-left-lg wt-mb-lg-7 wt-mb-xs-1">
+                    <div class="wt-flex-xs-1 wt-mb-xs-5 wt-mb-lg-0">
+                        <div data-selector="what-is-etsy-community-impact-container" id="what-is-etsy-community-impact-container">
+    <h3 class="wt-text-title-larger wt-mb-xs-3"> A community doing good </h3>
+
+    <p class="wt-text-body-01 wt-display-inline">
+        Rayofaa is a global online marketplace, where people come together to make, sell, buy, and collect unique items. We’re also a community pushing for positive change for small businesses, people, and the planet.
+    </p>
+
+    <div class="wt-popover wt-popover--top wt-display-inline" data-wt-popover="">
+        <a data-wt-popover-trigger="" class="wt-popover__trigger wt-popover__trigger--underline wt-align-items-center" aria-describedby="what-is-etsy-community-impact-popover">
+            <span class="wt-text-body-01">Here are some of the ways we’re making a positive impact, together.</span>
+        </a>
+
+        <div id="what-is-etsy-community-impact-popover" role="tooltip" class="wt-text-left-xs">
+            <div data-appears-component-name="impact_message" data-appears-event-data="{&quot;impact_name&quot;:&quot;hp_whatisetsy_community&quot;,&quot;impact_themes&quot;:[&quot;general&quot;],&quot;impact_audiences&quot;:[&quot;buyers&quot;]}">
+<ul class="appears-ready"><li>Your purchases on Etsy in 2020 generated nearly $4 billion in income for small businesses.</li>
+<li>We advocate for policy—at the global and local level—that benefits creative entrepreneurs and helps small businesses grow and thrive.</li>
+<li>We are deepening our commitment to a sustainable future and are working towards a new goal to reach net zero emissions by 2030.</li>
+</ul>
+</div>
+        <span class="wt-popover__arrow"></span></div>
+    </div>
+</div>
+                    </div>
+                    <div class="wt-ml-lg-6 wt-mr-lg-6 wt-flex-xs-1 wt-mb-xs-5 wt-mb-lg-0">
+                        <h3 class="wt-text-title-larger wt-mb-xs-3"> Support independent creators </h3>
+                        <p class="wt-text-body-01"> There’s no Etsy warehouse – just millions of people selling the things they love. We make the
+            whole process easy, helping you connect directly with makers to find something extraordinary. </p>
+                    </div>
+                    <div class="wt-flex-xs-1 wt-mb-xs-5 wt-mb-lg-0">
+                        <h3 class="wt-text-title-larger wt-mb-xs-3"> Peace of mind </h3>
+                        <p class="wt-text-body-01"> Your privacy is the highest priority of our dedicated team. And if you ever need assistance,
+            we are always ready to step in for support. </p>
+                    </div>
+                </div>
+                <div class="wt-text-center-xs">
+                    <h4 class="wt-text-title-large"> Have a question? Well, we’ve got some answers. </h4>
+                    <a class="wt-mt-xs-2 button wt-btn wt-sem-text-primary wt-btn--outline" href="https://www.etsy.com/help?ref=hp_what_is_etsy_help_center">Go to Help Center</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div><div class="hp-spacing-none">
+    
+        
+</div><div id="google-one-tap-modal-div" class="google-one-tap-modal-div">
+</div><div class="hp-spacing-none">
+    
+        
+</div><div class="hp-spacing-none">
+    
+        
+</div><div data-wt-overlay="" id="user-lists-overlay" class="wt-overlay wt-display-none wt-position-fixed wt-position-bottom wt-overlay--has-close-icon collection-list-overlay " role="dialog" aria-hidden="true" aria-modal="false" aria-labelledby="collection-modal-title" data-animations="{ &quot;open&quot;: { &quot;mask&quot;: &quot;wt-animated wt-animated--appear-02&quot;, &quot;content&quot;: &quot;wt-animated wt-animated--appear-02&quot; }, &quot;close&quot;: { &quot;mask&quot;: &quot;wt-animated wt-animated--disappear-02&quot;, &quot;content&quot;: &quot;wt-animated wt-animated--disappear-02&quot; } }">
+    <div class="wt-overlay__modal collection-list-overlay-view wt-display-flex-xs wt-pb-xs-0 wt-pb-md-4 " data-overlay-modal="">
+        <div data-collection-list="" data-max-characters="50" class="wt-overflow-hidden favorites-modal-collection-list wt-width-full">
+    <button class="wt-btn wt-btn--icon wt-btn--tertiary wt-btn--light  wt-overlay__close-icon
+        " data-wt-overlay-close="" data-overlay-initial-focus="" aria-label="Close">
+        <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z"></path></svg></span>
+    </button>
+    <div data-collection-list-section="" class="favorites-modal--collection-list-section wt-position-relative wt-flex-direction-column-xs wt-height-full wt-align-items-center">
+        <div class="wt-overlay__header wt-display-flex-xs wt-align-items-center wt-justify-content-center ">
+
+            <img src="https://www.etsy.com/images/grey.gif" alt="An image of the listing you can save" class="wt-mr-xs-2 wt-mr-md-3 add-to-list-overlay--img" />
+
+            <h2 class="wt-text-heading" id="collection-modal-title">
+                <span data-collections-modal-title="" class="">
+                    Add to collection
+                </span>
+                <span data-registry-modal-title="" class="wt-display-none">
+                    Add to registry
+                </span>
+            </h2>
+        </div>
+        <div class="collection-list-loading-container" data-spinner-container="">
+            <div class="wt-spinner wt-spinner--02">
+                <div>Loading</div>
+            </div>
+        </div>
+        <div class="wt-display-none collection-list-loading-container" data-collection-list-fail-state="">
+            <div class="wt-vertical-center wt-text-center-xs wt-sem-text-secondary">
+                <p>Hmm, something went wrong.</p>
+                <p>Try that again.</p>
+            </div>
+        </div>
+        <fieldset class="wt-max-width-full wt-pr-xs-2 wt-overflow-scroll">
+            <div class="wt-display-none wt-width-full wt-action-group wt-action-group--image wt-list-inline wt-mb-xs-0" data-collection-list-content="">
+                <span class="wt-p-xs-0 wt-width-full wt-mb-xs-2">
+                    <input type="checkbox" id="create_new_list" hidden="" />
+                    <label role="button" tabindex="0" data-add-list-trigger="" class="add-to-list-overlay-row wt-width-full wt-display-flex-xs wt-align-items-center">
+                        <div class="add-list--trigger add-to-list-overlay-row--icon wt-sem-text-on-surface-dark wt-rounded-02 wt-overflow-hidden wt-display-flex-xs wt-justify-content-center wt-align-items-center">
+                            <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20,11H13V4a1,1,0,0,0-2,0v7H4a1,1,0,0,0,0,2h7v7a1,1,0,0,0,2,0V13h7A1,1,0,0,0,20,11Z"></path></svg></span>
+                        </div>
+                        <p class="wt-pl-xs-2 wt-text-title-01">
+                            Create new collection
+                        </p>
+                    </label>
+                </span>
+                
+                
+                
+            </div>
+        </fieldset>
+        <div class="wt-overlay__sticky-footer-container wt-bt-xs wt-width-full">
+            <div class="wt-overlay__footer wt-justify-content-flex-end wt-pt-md-4">
+                <div class="wt-overlay__footer__action">
+                    <button type="button" class="wt-btn wt-btn--primary wt-pr-md-7 wt-pl-md-7" data-wt-overlay-close="">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wt-display-none" data-add-collection-section="" data-listing-id="">
+        <div data-collection-list-add="">
+    <div class="wt-overlay__header">
+        <h3 class="wt-text-heading wt-text-center-xs">
+            Create new collection
+        </h3>
+    </div>
+    <div class="wt-display-flex-xs wt-flex-direction-row-xs wt-align-items-baseline">
+        <div class="wt-validation wt-width-full">
+            <label class="wt-label" for="edit-list">Name</label>
+            <input data-add-collection-input="" autofocus="" aria-invalid="false" type="text" class="wt-input" id="edit-list" placeholder="Gifts, Home, Wedding, etc." />
+            <div class="wt-display-flex-xs wt-justify-content-space-between">
+                <div>
+                    <div data-duplicated-name-alert="" data-error="duplicate_name" class="wt-validation__message wt-validation__message--is-hidden wt-sem-text-critical">You've already used that name</div>
+                    <div data-too-long-alert="" data-error="too_long" class="wt-validation__message wt-validation__message--is-hidden wt-sem-text-critical">
+                        Collection name is too long
+                    </div>
+                </div>
+                <p class="wt-text-right-xs wt-sem-text-secondary wt-mt-md-1" data-character-count="">50</p>
+            </div>
+        </div>
+    </div>
+    <div class="wt-display-flex-sm wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between wt-mt-xs-1">
+            <div class="wt-mb-xs-5 wt-mb-md-0">
+                <legend class="wt-text-title-01 wt-mt-xs-1">
+                    Set to private?
+                </legend>
+                <p class="wt-text-body-01 wt-max-width-sm wt-ml-xs-0">
+                    Keep collections to yourself or inspire other shoppers! Keep in mind that anyone can view public collections—they may also appear in recommendations and other places.
+                    <a href="https://www.etsy.com/legal/privacy/" target="_blank">View Etsy’s Privacy Policy</a></p>
+            </div>
+            <div>
+                    <div id="collection-privacy-control" class="wt-display-flex-md wt-flex-direction-column-xs wt-align-items-center" data-label-yes="Private" data-label-no="Public" data-selector="toggle-switch">
+                        <div data-clg-id="WtSwitchInput" class="wt-switch__wrapper" data-wt-props-small="true" data-wt-props-label-text="Set to private?" data-wt-props-label-type="hidden" data-wt-neu-rendered="">
+    
+    <div class="wt-switch__frame">
+        <input type="checkbox" class="wt-switch wt-switch--small" id="wt-switch-691314626a575" />
+        <label class="wt-switch__toggle" for="wt-switch-691314626a575">
+            <span class="wt-screen-reader-only">
+                Set to private? 
+            </span>
+        </label>
+    </div>
+    
+</div>
+
+                        <div class="wt-display-flex-xs wt-flex-direction-row-reverse-xs wt-align-items-center wt-justify-content-flex-end wt-nudge-t-2">
+                            <span data-toggle-private-text="" class="wt-text-body">
+                                Public
+                            </span>
+                            <span class="etsy-icon wt-icon--smaller-xs wt-mr-xs-1 wt-display-none" data-toggle-private-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 13v5h-2v-5z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M4 9.25A.25.25 0 0 1 4.25 9H7.5V6.5a4.5 4.5 0 0 1 9 0V9h3.25a.25.25 0 0 1 .25.25V18a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM9.5 6.5a2.5 2.5 0 0 1 5 0V9h-5zM8 20a2 2 0 0 1-2-2v-7h12v7a2 2 0 0 1-2 2z"></path></svg></span>
+                            <span class="etsy-icon wt-icon--smaller-xs wt-mr-xs-1" data-toggle-public-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2M9 18.883v.528a7.94 7.94 0 0 1-4.94-8.351l3.385 3.385a2.967 2.967 0 0 0 1.649 4.4zM17.5 15q.252 0 .5-.05V15a.99.99 0 0 0 .927.985A8 8 0 0 1 12 20c-.216 0-.427-.016-.639-.032l1.254-2.5-.015.006a2.97 2.97 0 0 0-.08-3.11A2.988 2.988 0 0 0 8 13.78V11h1a1 1 0 0 0 1-1V9a1 1 0 0 0 1-1 1 1 0 1 0 0-2H6.726A7.9 7.9 0 0 1 14 4.263V6a1 1 0 0 0 2 0v-.918a8 8 0 0 1 2 1.649V7h-1a1 1 0 1 0 0 2h2.411q.196.49.326 1H17a2.556 2.556 0 0 0-2 2.5 2.5 2.5 0 0 0 2.5 2.5"></path></svg></span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <div data-collection-list-add-footer="">
+        <div class="wt-overlay__footer">
+            <div class="wt-overlay__footer__cancel">
+                <button type="button" class="wt-btn wt-btn--transparent wt-btn--transparent-flush-left wt-btn--transparent-flush-right" data-overlay-back="">Cancel</button>
+            </div>
+            <div class="wt-overlay__footer__action">
+                <button type="button" class="wt-btn wt-btn--primary" data-add-collection-button="" disabled="true">
+                    Create collection
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wt-overlay wt-overlay--alert" id="make-public-list-modal" data-wt-overlay="" aria-hidden="true" role="alertdialog" aria-modal="false">
+    <div class="wt-overlay__modal" data-overlay-modal="">
+        <div class="wt-overlay__header">
+            <h2 class="wt-text-heading wt-text-center-xs">
+                Make your collection public?
+
+            </h2>
+        </div>
+        <div class="wt-display-flex-xs wt-justify-content-space-between">
+            <div>
+                <p>
+                    Public collections can be seen by the public, including other shoppers, and may show up in recommendations and other places.
+                </p>
+            </div>
+        </div>
+        <div class="wt-overlay__footer">
+            <div class="wt-overlay__footer__cancel">
+                <button type="button" data-selector="cancel-make-public-button" class="wt-btn wt-btn--transparent wt-btn--transparent-flush-left wt-btn--transparent-flush-right">Cancel</button>
+            </div>
+            <div class="wt-overlay__footer__action">
+                <button type="button" data-selector="make-public-button" class="wt-btn wt-btn--primary">Make Public</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+</div><div class="hp-spacing-none">
+    
+        
+</div><div class="hp-spacing-none">
+    
+        
+</div>
+</div>
+        </main>     
     
     
     

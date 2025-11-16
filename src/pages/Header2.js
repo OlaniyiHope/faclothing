@@ -5,7 +5,7 @@ import axios from "axios";
 import { FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import { HiMenu, HiX } from "react-icons/hi";
-import "./mycss2.css"
+
 
 const Header2 = ({ cartCount = 1 }) => {
   const [menuOpen, setMenuOpen] = useState(false); // mobile menu
@@ -31,482 +31,253 @@ const Header2 = ({ cartCount = 1 }) => {
   return (
     <div > 
 
-        <header id="cms-header-wrap" class="site-header">
-       <div id="cms-header" class="cms-header header-layout-3 sticky-on sticky-srollup transparent-on header-transparent header-divider">
-             <div id="cms-header-top" class="cms-header-top header-top-default">		<div data-elementor-type="wp-post" data-elementor-id="142"  style={{backgroundColor: "#8b023a"}} class="elementor elementor-142">
-                <div class="elementor-element elementor-element-bccac42 bg-primary text-white text-14 p-tb-10 e-con-boxed-wide e-flex e-con e-parent" data-id="bccac42" style={{backgroundColor: "#8b023a"}} data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed-wide&quot;}">
-                <div class="elementor-element elementor-element-797c274 elementor-widget__width-initial cms-carousel-item-shadow-no elementor-widget elementor-widget-cms_headline" style={{backgroundColor: "#8b023a"}} data-id="797c274" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;1&quot;,&quot;effect&quot;:&quot;fade&quot;,&quot;space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:40,&quot;sizes&quot;:[]},&quot;space_between_laptop&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;infinite&quot;:&quot;yes&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;arrows&quot;:&quot;yes&quot;}" data-widget_type="cms_headline.default">
-                <div class="elementor-widget-container">
-                    <div class="cms-headlines cms-headlines-1 text-center">
-    <div class="cms-carousel swiper">
-        <div class="swiper-wrapper">
-                            <div class="swiper-slide headline-item text-white text-hover-white">Free shipping on US orders $100+ &amp; Free exchanges</div>
-                            <div class="swiper-slide headline-item text-white text-hover-white">Delivery time 2-3 working days</div>
-                            <div class="swiper-slide headline-item text-white text-hover-white">Free exchanges &amp; free returns</div>
-                    </div>
-    </div>
-            <div class="cms-carousel-button-prev prev cms-carousel-button in arrow-icon hover " >
-            <i class="cms-carousel-button-icon rtl-flip text-12   cmsi-chevron-left" aria-hidden="true"></i><i class="cms-carousel-button-icon hover rtl-flip text-12   cmsi-long-arrow-left" aria-hidden="true" style={{color: "black"}}></i>        </div>
-        <div class="cms-carousel-button-next next cms-carousel-button in arrow-icon hover ">
-            <i class="cms-carousel-button-icon rtl-flip text-12   cmsi-chevron-right" aria-hidden="true"></i><i class="cms-carousel-button-icon hover rtl-flip text-12   cmsi-long-arrow-right" aria-hidden="true" style={{color: "black"}}></i>        </div>
-        </div>				</div>
-                </div>
-                </div>
-                </div>
+       <body class="ui-toolkit transitional-wide etsy-has-it-design is-responsive no-touch en-US USD NG bg-white guest wt-focus-visible" data-language="en-US" data-currency="USD" data-region="NG" data-hover-none="true" data-visual-focus-state="true" data-mobile-viewport-height="true">
+
+
+        <div data-above-header="" class="wt-z-index-5 wt-position-relative">
+            
+            
+
         </div>
 
+        <div data-selector="header-cat-nav-wrapper" data-menu-ui="menubar">
+<div id="gnav-header" class=" gnav-header global-nav v2-toolkit-gnav-header wt-z-index-6 wt-sem-bg-elevation-0 wt-position-relative " data-as-version="10_12672349415_19" data-count-ajax="" data-show-suggested-searches-in-as="" data-show-gift-card-cta-in-as="1" data-as-personalized="1" data-as-extras="{&amp;quot;expt&amp;quot;:&amp;quot;all_xml&amp;quot;,&amp;quot;lang&amp;quot;:&amp;quot;en-US&amp;quot;,&amp;quot;extras&amp;quot;:[]}" data-cheact="1" data-gnav-header="">
+    <header id="gnav-header-inner" class="global-enhancements-header wt-display-flex-xs wt-justify-content-space-between wt-align-items-center wt-width-full wt-body-max-width wt-pl-xs-2 wt-pr-xs-2 wt-pl-lg-6 wt-pr-lg-6 wt-bb-xs wt-bb-lg-none gnav-header-inner wt-pt-lg-2 
+        
+        " role="banner">
+     
+<div class="wt-pb-lg-0 wt-pt-sm-1 wt-pt-lg-0 wt-pr-xs-1 " data-header-logo-container="">
+    <a href="/?ref=lgo" elementtiming="ux-global-nav">
+        <span class="wt-screen-reader-only">Rayofaa</span>
+        <span class="etsy-icon wt-display-block wt-fill-orange wt-nudge-r-3 wt-nudge-t-1 logo-dimensions" id="logo" style={{fontSize: "23px", fontWeight: "800", color: "#8b023a"}}>
+        Rayofaa
+      </span>
+    </a>
+</div>
+            <nav class="wt-hide-xs wt-show-lg">
+                <div data-clg-id="WtMenu" class="wt-menu wt-tooltip ge-menu--body-below-trigger wt-tooltip--disabled-touch dropdown-category-menu wt-menu--bottom wt-menu--left" data-wt-menu="" data-wt-tooltip="true" data-menu-body-below-trigger="true" data-close-on-select="true" data-hide-trigger-on-open="false" data-animate-in="true" data-contain-focus="false" data-open-direction-vert="bottom" data-open-direction-horiz="left" data-open-direction-force="true" data-menu-type="action">
+        <button type="button" class="wt-menu__trigger wt-btn wt-btn--transparent header-button wt-mr-xs-1 wt-btn--small" aria-haspopup="true" aria-expanded="false" data-wt-menu-trigger="" data-level="0" data-overlay-trigger-selector="overlay-trigger-ele">
+          <span class="etsy-icon wt-mr-xs-1 wt-icon--smaller">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 18 18">
+              <rect x="2" y="8" width="14" height="2"></rect>
+              <rect x="2" y="13" width="14" height="2"></rect>
+              <rect x="2" y="3" width="14" height="2"></rect>
+            </svg>
+          </span>
+          Categories
+        </button>
+        <div data-clg-id="WtMenuBody" role="menu" class="wt-menu__body wt-pt-xs-2 wt-pb-xs-2 ge-you-menu-dimensions wt-z-index-10 dropdown-category-menu__body" data-wt-menu-body="" type="option">
+      <a href="/c/accessories?ref=catnav-1" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Accessories
+  </a><a href="/c/art-and-collectibles?ref=catnav-66" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Art &amp; Collectibles
+  </a><a href="/c/baby?ref=catnav-12545" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Baby
+  </a><a href="/c/bags-and-purses?ref=catnav-132" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Bags &amp; Purses
+  </a><a href="/c/bath-and-beauty?ref=catnav-199" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Bath &amp; Beauty
+  </a><a href="/c/books-movies-and-music?ref=catnav-323" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Books, Movies &amp; Music
+  </a><a href="/c/clothing?ref=catnav-374" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Clothing
+  </a><a href="/c/craft-supplies-and-tools?ref=catnav-562" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Craft Supplies &amp; Tools
+  </a><a href="/c/electronics-and-accessories?ref=catnav-825" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Electronics &amp; Accessories
+  </a><a href="/c/gifts?ref=catnav-12584" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Gifts
+  </a><a href="/c/home-and-living?ref=catnav-891" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Home &amp; Living
+  </a><a href="/c/jewelry?ref=catnav-1179" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Jewelry
+  </a><a href="/c/paper-and-party-supplies?ref=catnav-1250" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Paper &amp; Party Supplies
+  </a><a href="/c/pet-supplies?ref=catnav-1351" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Pet Supplies
+  </a><a href="/c/shoes?ref=catnav-1429" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Shoes
+  </a><a href="/c/toys-and-games?ref=catnav-1552" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Toys &amp; Games
+  </a><a href="/c/weddings?ref=catnav-1633" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
+          Weddings
+  </a>
 
+</div>
 
-    <div class="cms-header-main container-fluid d-flex gap-30 justify-content-between"  style={{backgroundColor: "white"}}>
+        <span class="ge-menu__body-caret wt-z-index-10 wt-sem-bg-elevation-0 wt-position-absolute wt-bl-xs wt-bt-xs wt-br-xs-none wt-bb-xs-none"></span>
 
+</div>
+            </nav>
 
+        <div class="wt-width-full wt-display-flex-xs wt-pr-lg-3 wt-flex-lg-1 order-mobile-tablet-2" data-hamburger-search-container="">
+            <button data-id="hamburger" class="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg
+               wt-btn--transparent-flush-left
+                         wt-mb-xs-2
+               
+               wt-mb-lg-0
+               header-button" aria-controls="mobile-catnav-overlay" tab-index="0">
+          <span class="wt-screen-reader-only">
+                    Browse
+          </span>
+          <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 7H3V5h18zm-5 6H3v-2h13zm5 6H3v-2h18z"></path></svg></span>
+     </button>
+            <div class="wt-display-inline-block wt-flex-xs-1 wt-pl-lg-0
+                wt-mb-xs-2
+        
+        wt-mb-lg-0">
+    <form id="gnav-search" class="global-enhancements-search-nav wt-position-relative wt-display-flex-xs" method="GET" action="/search.php" role="search" data-gnav-search="" data-ge-search-clearable="" data-trending-searches="1">
 
-
-
-        <div class="site-branding flex-basic d-flex justify-content-start">
-              <a class="site-logo" href="/" title="Trevox" rel="home">
+        <label for="global-enhancements-search-query" class="wt-label wt-screen-reader-only">
+   Search for items or shops
+</label>
+<div class="search-container" data-id="search-bar">
+    <div class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container" data-id="search-suggestions-trigger">
+        <input id="global-enhancements-search-query" data-id="search-query" data-search-input="" type="text" name="search_query" class="wt-input wt-input-btn-group__input global-enhancements-search-input-btn-group__input
+                    wt-pr-xs-7
+                                        
+                    " placeholder="Search for anything" value="" autocomplete="off" autocorrect="off" autocapitalize="off" role="combobox" aria-autocomplete="both" aria-controls="global-enhancements-search-suggestions" aria-expanded="false" />
+        <button type="button" class="wt-btn wt-btn--transparent wt-btn--icon wt-btn--small position-absolute-important wt-position-right wt-z-index-9 wt-animated  wt-animated--is-hidden
+            
+            search-close-btn-margin-right " data-search-close-btn="">
+            <span class="wt-screen-reader-only">Clear search</span>
+            <span class="wt-icon wt-icon--smaller wt-nudge-t-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z"></path></svg></span>
+        </button>
+        <button type="submit" class="wt-input-btn-group__btn global-enhancements-search-input-btn-group__btn
                 
-                {/* <img width="83" height="19" alt="Trevox" src="wp-content/themes/trevox/assets/images/logo/logo-light.png" data-mobile="https://7oroofthemes.com/trevox/wp-content/themes/trevox/assets/images/logo/logo-light-mobile.png" data-sticky="https://7oroofthemes.com/trevox/wp-content/themes/trevox/assets/images/logo/logo.png" data-sticky-mobile="https://7oroofthemes.com/trevox/wp-content/themes/trevox/assets/images/logo/logo-mobile.png" />
-                 */}
-                
-                <h4 style={{color: "black", fontWeight: "800"}}>Fa Clothing</h4>
-                </a></div>
-              
-                <nav class="site-navigation site-navigation-dropdown justify-content-center flex-auto d-flex" ><ul id="mastmenu" class="cms-primary-menu cms-primary-menu-dropdown"><li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-49">
-              
-              <a href="/" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home</span><span class="main-menu-toggle"></span></a>
-<ul class="sub-menu">
-    <li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-119"><a href="index.html" aria-current="page" class="cms-menu-link"><span class="menu-title title">Home Main</span></a></li>
-    <li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102"><a href="home-fashion/index.html" class="cms-menu-link"><span class="menu-title title">Home Fashion</span></a></li>
-    <li id="menu-item-103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-103"><a href="home-store/index.html" class="cms-menu-link"><span class="menu-title title">Home Store</span></a></li>
-    <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104"><a href="home-creative/index.html" class="cms-menu-link"><span class="menu-title title">Home Creative</span></a></li>
-    <li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-105"><a href="home-modern/index.html" class="cms-menu-link"><span class="menu-title title">Home Modern</span></a></li>
-    <li id="menu-item-106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a href="home-simple/index.html" class="cms-menu-link"><span class="menu-title title">Home Simple</span></a></li>
-    <li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a href="home-trendy/index.html" class="cms-menu-link"><span class="menu-title title">Home Trendy</span></a></li>
-    <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="home-divided-showcase/index.html" class="cms-menu-link"><span class="menu-title title">Divided Showcase</span></a></li>
-    <li id="menu-item-109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a href="home-split-screen/index.html" class="cms-menu-link"><span class="menu-title title">Split Screen</span></a></li>
-    <li id="menu-item-120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-120"><a href="landing/index.html" class="cms-menu-link"><span class="menu-title title">Landing</span></a></li>
-    <li id="menu-item-112" class="trp-language-switcher-container menu-item menu-item-type-post_type menu-item-object-language_switcher menu-item-112"><a href="ar/index.html" class="cms-menu-link"><span class="menu-title title"><span data-no-translation><img class="trp-flag-image" src="wp-content/themes/trevox/assets/images/language-flags/ar.png" width="18" height="12" alt="ar" title="Arabic" /><span class="trp-ls-language-name">Arabic</span></span></span></a></li>
-</ul>
-</li>
-<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page megamenu menu-item-has-children megamenu-full menu-item-197"><a href="shop/index.html" class="cms-menu-link"><span class="menu-title title">Shop</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="613" class="elementor elementor-613">
-                <div class="elementor-element elementor-element-878effc e-flex e-con-boxed e-con e-parent" data-id="878effc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
-                    <div class="e-con-inner">
-        <div class="elementor-element elementor-element-e331b00 e-con-full e-flex e-con e-child" data-id="e331b00" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-5649f06 elementor-widget elementor-widget-cms_navigation_menu" data-id="5649f06" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Shop Lists</a>
-        </h2>
-        <ul id="menu-shop-lists" class="cms-menu cms-dropdown-mega"><li id="menu-item-492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492 cms-dropdown-mega-item"><a href="shop-left-sidebar/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Left Sidebar</span></a></li>
-<li id="menu-item-500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-500 cms-dropdown-mega-item"><a href="shop-right-sidebar/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Right Sidebar</span></a></li>
-<li id="menu-item-493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-493 cms-dropdown-mega-item"><a href="shop-no-sidebar/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">No Sidebar</span></a></li>
-<li id="menu-item-494" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-494 cms-dropdown-mega-item"><a href="shop-filter-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Filter List</span></a></li>
-<li id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-495 cms-dropdown-mega-item"><a href="shop-custom/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Custom List</span></a></li>
-<li id="menu-item-496" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-496 cms-dropdown-mega-item"><a href="shop-masonry/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Masonry List</span></a></li>
-<li id="menu-item-497" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-497 cms-dropdown-mega-item"><a href="shop-gallery-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Gallery List</span></a></li>
-<li id="menu-item-498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-498 cms-dropdown-mega-item"><a href="shop-category-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Category List</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-1f8238f e-con-full e-flex e-con e-child" data-id="1f8238f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-48f5547 elementor-widget elementor-widget-cms_navigation_menu" data-id="48f5547" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Shop Layouts</a>
-        </h2>
-        <ul id="menu-shop-layouts" class="cms-menu cms-dropdown-mega"><li id="menu-item-509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-509 cms-dropdown-mega-item"><a href="shop/two-columns/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Two Columns</span></a></li>
-<li id="menu-item-510" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-510 cms-dropdown-mega-item"><a href="shop/three-columns/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Three Columns</span></a></li>
-<li id="menu-item-511" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-511 cms-dropdown-mega-item"><a href="shop/three-columns-wide/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Three Columns Wide</span></a></li>
-<li id="menu-item-512" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-512 cms-dropdown-mega-item"><a href="shop/four-columns/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Four Columns</span></a></li>
-<li id="menu-item-513" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-513 cms-dropdown-mega-item"><a href="shop/four-columns-wide/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Four Columns Wide</span></a></li>
-<li id="menu-item-514" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-514 cms-dropdown-mega-item"><a href="shop/five-columns-wide/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Five Columns Wide</span></a></li>
-<li id="menu-item-515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-515 cms-dropdown-mega-item"><a href="shop/six-columns-wide/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Six Columns Wide</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-a9af98a e-con-full e-flex e-con e-child" data-id="a9af98a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-d121596 elementor-widget elementor-widget-cms_navigation_menu" data-id="d121596" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Shop Pages</a>
-        </h2>
-        <ul id="menu-shop-pages" class="cms-menu cms-dropdown-mega"><li id="menu-item-519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-519 cms-dropdown-mega-item"><a href="shop/my-account/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">My Account</span></a></li>
-<li id="menu-item-517" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-517 cms-dropdown-mega-item"><a href="shop/cart/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Cart</span></a></li>
-<li id="menu-item-518" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-518 cms-dropdown-mega-item"><a href="shop/checkout/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Checkout</span></a></li>
-<li id="menu-item-638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-638 cms-dropdown-mega-item"><a href="wishlist/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Wishlist</span></a></li>
-<li id="menu-item-521" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-521 cms-dropdown-mega-item"><a href="shop/order-tracking/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Order Tracking</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-3868bb1 e-con-full e-flex e-con e-child" data-id="3868bb1" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-5244c34 cms-swiper-effect-scroll cms-carousel-item-shadow-no elementor-widget elementor-widget-cms_shop_collection" data-id="5244c34" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;2&quot;,&quot;effect_scroll&quot;:&quot;scroll&quot;,&quot;autoplay_speed&quot;:0,&quot;speed&quot;:3000,&quot;slides_to_show_tablet_extra&quot;:&quot;1&quot;,&quot;slides_to_show_tablet&quot;:&quot;1&quot;,&quot;space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:40,&quot;sizes&quot;:[]},&quot;space_between_laptop&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;infinite&quot;:&quot;yes&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;}" data-widget_type="cms_shop_collection.default">
-                <div class="elementor-widget-container">
-                    <h2 class="cms-ecollections-heading cms-heading empty-none text-18 text-heading mt-n5 mb-25">New Collections</h2>
-<div class="cms-ecollections cms-ecollections-4 text-center">
-    <div class="cms-carousel swiper">
-        <div class="swiper-wrapper">
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/Dress-460-qyz0f1zckltippm0cwy2z8no2lw8qn1od5rfqkxxz8.webp" alt="Dress-460" class="cms-lazy lazy-loading img-cover" style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/dresses/index.html">Dresses</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">1</span> item</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/T-Shirt-460-qyz0f1zckltippm0cwy2z8no2lw8qn1od5rfqkxxz8.webp" alt="T-Shirt-460" class="cms-lazy lazy-loading img-cover"  style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/t-shirts/index.html">T-Shirts</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">7</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/Outweater-460-qyz0f11idrs8e3ndiejgeqw7h80vixxy113y9azc5g.webp" alt="Outweater-460" class="cms-lazy lazy-loading img-cover" style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/blouses/index.html">Blouses</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">4</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/Knitwear-460-qyz0f11idrs8e3ndiejgeqw7h80vixxy113y9azc5g.webp" alt="Knitwear-460" class="cms-lazy lazy-loading img-cover"  style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/outerwear/index.html">Outerwear</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">9</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/Pants-460-qyz0f11idrs8e3ndiejgeqw7h80vixxy113y9azc5g.webp" alt="Pants-460" class="cms-lazy lazy-loading img-cover"  style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/knitwear/index.html">Knitwear</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">7</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/Pants-460-qyz0f11idrs8e3ndiejgeqw7h80vixxy113y9azc5g.webp" alt="Pants-460" class="cms-lazy lazy-loading img-cover"  style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/pants/index.html">Pants</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">4</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/dothing-that-make-happy-qyz0f11idrs8e3ndiejgeqw7h80vixxy113y9azc5g.webp" alt="dothing that make happy" class="cms-lazy lazy-loading img-cover" style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/hoodies/index.html">Hoodies</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">2</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/banner-6-qyz0f1zckltippm0cwy2z8no2lw8qn1od5rfqkxxz8.webp" alt="banner-6" class="cms-lazy lazy-loading img-cover"  style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/shirts/index.html">Shirts</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">3</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-            <div class="cms-clt-item relative hover-image-move swiper-slide">
-            <div class="relative overflow-hidden cms-gradient-black-bt2"><img loading="lazy" width="290" height="250" src="wp-content/uploads/elementor/thumbs/banner-video-2-qyz0f11idrs8e3ndiejgeqw7h80vixxy113y9azc5g.webp" alt="banner-video-2" class="cms-lazy lazy-loading img-cover" style={{maxHeight: "250px"}} /><div class="cms-gradient-render"></div>    		<div class="cms-overlay d-flex align-items-center justify-content-center p-40 p-lr-mobile-20">
-                <div class="banner-content text-white">
-                    <h2 class="text-32"><a class="text-white text-hover-white cms-hover-underline" href="product-category/skirts/index.html">Skirts</a></h2>
-                    <div class="count text-15 pt-8"><span class="count">2</span> items</div>
-                </div>
-            </div>
-        </div>        </div>
-                </div>         </div>            </div>				</div>
-                </div>
-                </div>
-                    </div>
-                </div>
-                </div>
-        </div></li>
-<li id="menu-item-129" class="menu-item menu-item-type-custom menu-item-object-custom megamenu menu-item-has-children megamenu-full menu-item-129"><a href="#" class="cms-menu-link"><span class="menu-title title">Products</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="617" class="elementor elementor-617">
-                <div class="elementor-element elementor-element-eac42de e-flex e-con-boxed e-con e-parent" data-id="eac42de" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
-                    <div class="e-con-inner">
-        <div class="elementor-element elementor-element-faa7b29 e-con-full e-flex e-con e-child" data-id="faa7b29" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-773a107 elementor-widget elementor-widget-cms_navigation_menu" data-id="773a107" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Product Types</a>
-        </h2>
-        <ul id="menu-product-types" class="cms-menu cms-dropdown-mega"><li id="menu-item-523" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-523 cms-dropdown-mega-item"><a href="product/polo-knitwear-sweater/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Detailed Product</span></a></li>
-<li id="menu-item-524" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-524 cms-dropdown-mega-item"><a href="product/yellow-knitwear-sweater/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Standard Product</span></a></li>
-<li id="menu-item-525" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-525 cms-dropdown-mega-item"><a href="product/multi-color-knitwear/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Big Images Product</span></a></li>
-<li id="menu-item-526" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-526 cms-dropdown-mega-item"><a href="product/wide-leg-trousers-navy-blue-t-shirt/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Grouped Product</span></a></li>
-<li id="menu-item-527" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-527 cms-dropdown-mega-item"><a href="product/emerald-turtleneck-sweater/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Full Width Product</span></a></li>
-<li id="menu-item-528" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-528 cms-dropdown-mega-item"><a href="product/printed-cotton-t-shirt/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Masonry Product</span></a></li>
-<li id="menu-item-529" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-529 cms-dropdown-mega-item"><a href="product/collar-zipper-fur-coat/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Variable Product</span></a></li>
-<li id="menu-item-670" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-670 cms-dropdown-mega-item"><a href="product/printed-semi-fitted-t-shirt/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Variable Colors</span></a></li>
-<li id="menu-item-671" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-671 cms-dropdown-mega-item"><a href="product/wide-leg-trousers/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Virtual Product</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-5b2c808 e-con-full e-flex e-con e-child" data-id="5b2c808" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-b8c082d elementor-widget elementor-widget-cms_navigation_menu" data-id="b8c082d" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Product Widgets</a>
-        </h2>
-        <ul id="menu-product-widgets" class="cms-menu cms-dropdown-mega"><li id="menu-item-672" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-672 cms-dropdown-mega-item"><a href="product/button-blazer-jacket/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">New Product</span></a></li>
-<li id="menu-item-533" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-533 cms-dropdown-mega-item"><a href="product/boyfriend-knitted-t-shirt/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Video Product</span></a></li>
-<li id="menu-item-679" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-679 cms-dropdown-mega-item"><a href="product/blue-knitwear-sweater/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">On Sale Product</span></a></li>
-<li id="menu-item-681" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-681 cms-dropdown-mega-item"><a href="product/double-sided-hat/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Out Of Stock Product</span></a></li>
-<li id="menu-item-536" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-536 cms-dropdown-mega-item"><a href="product/red-pattern-flowy-shirt/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Countdown Product</span></a></li>
-<li id="menu-item-537" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-537 cms-dropdown-mega-item"><a href="product/first/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">External Product</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-e1d991e e-con-full e-flex e-con e-child" data-id="e1d991e" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-8bb39f8 mb-n7 cms-carousel-item-shadow-no elementor-widget elementor-widget-cms_products_carousel" data-id="8bb39f8" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;2&quot;,&quot;slides_to_show_tablet&quot;:&quot;1&quot;,&quot;slides_to_show_mobile_extra&quot;:&quot;2&quot;,&quot;space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:40,&quot;sizes&quot;:[]},&quot;space_between_laptop&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile_extra&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;arrows&quot;:&quot;yes&quot;}" data-widget_type="cms_products_carousel.default">
-                <div class="elementor-widget-container">
-                    <div id="cms_products_carousel-8bb39f8" class="cms-products-carousel cms-products-5">
-    <div class="d-flex gap-40 justify-content-between pb-25">
-        <div class="cms-eproducts-heading text-start">
-            <div class="cms-smallheading text-heading text-15 pb-10 mt-n5 empty-none"></div>
-            <h2 class="cms-heading empty-none text-18 mt-n5 text-heading">Hot items</h2>
+                " value="Search" aria-label="Search" data-id="gnav-search-submit-button">
+            
+            <span class="wt-icon wt-nudge-b-2 wt-nudge-r-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 19a8.46 8.46 0 0 0 5.262-1.824l4.865 4.864 1.414-1.414-4.865-4.865A8.5 8.5 0 1 0 10.5 19m0-2a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13"></path></svg></span>
+        </button>
+    </div>
+    <div id="global-enhancements-search-suggestions" class="global-nav-menu__body
+            search-suggestions-container
+             wt-width-full wt-max-width-full
+            " data-id="search-suggestions">
+    </div>
+</div>
+
+<input id="search-js-router-enabled" type="hidden" value="true" />
+<input type="hidden" value="all" name="search_type" id="search-type" />
+    </form>
+</div>
         </div>
-        <div class="d-flex gap-40 align-items-center align-self-end mt-n10">
-                                    <div class="cms-carousel-buttons d-flex gap-10">
-                <div class="cms-carousel-button-prev prev cms-carousel-button relative arrow-button hover outline size-28 bg-white bg-hover-primary text-primary text-hover-white ">
-                    <i class="cms-carousel-button-icon rtl-flip text-12   cmsi-chevron-left" aria-hidden="true"></i><i class="cms-carousel-button-icon hover rtl-flip text-10   cmsi-long-arrow-left" aria-hidden="true"></i>                </div>
-                <div class="cms-carousel-button-next next cms-carousel-button relative arrow-button hover outline size-28 bg-white bg-hover-primary text-primary text-hover-white ">
-                    <i class="cms-carousel-button-icon rtl-flip text-12   cmsi-chevron-right" aria-hidden="true"></i><i class="cms-carousel-button-icon hover rtl-flip text-10   cmsi-long-arrow-right" aria-hidden="true"></i>                </div>
-            </div>
-                    </div>
-    </div>
-    <div class="cms-eproducts-content mb-n7">                        <div class="cms-carousel swiper">
-                            <div class="swiper-wrapper">
-                    <div class="cms-carousel-item swiper-slide hover-second-img cms-product-5 product type-product post-290 status-publish first instock product_cat-outerwear product_tag-casual product_tag-yellow has-post-thumbnail shipping-taxable purchasable product-type-variable has-default-attributes wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-    <div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">    <span class="cms-wc-badge new">New</span>
-    </div>
-    <img loading="lazy" width="600" height="517" src="wp-content/uploads/Polo-Knitwear-Sweater-600x517.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async"  /><img loading="lazy" width="600" height="517" src="wp-content/uploads/Polo-Knitwear-Sweater2-600x517.webp" class="attachment-woocommerce_thumbnail_rectangle size-woocommerce_thumbnail_rectangle" alt="Polo Knitwear Sweater" decoding="async"  /></div>  
-                <a href="product/polo-knitwear-sweater/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="indexc071.html?add-to-wishlist=290" class="cms-woosw-btn woosw-btn woosw-btn-290 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="290" data-product_name="Polo Knitwear Sweater" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Polo-Knitwear-Sweater2-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="indexf754.html?quick-view=290" class="woosq-btn woosq-btn-290 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="290" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="product/polo-knitwear-sweater/index.html" data-quantity="1" class="cms-loop-atc product_type_variable in-stock add_to_cart_button" data-product_id="290" data-product_sku="ED5690012" aria-label="Select options for &ldquo;Polo Knitwear Sweater&rdquo;" rel="nofollow">Select options</a>      <a href="shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_290" class="screen-reader-text">
-        This product has multiple variants. The options may be chosen on the product page	</span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="product/polo-knitwear-sweater/index.html">Polo Knitwear Sweater</a></h2>
-    <span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906b9aa8bb30"  data-product-id="290"><span class="woocommerce-Price-amount amount"><bdi>60.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></span>
-</div></div>
-<div class="cms-carousel-item swiper-slide hover-second-img cms-product-5 product type-product post-280 status-publish instock product_cat-knitwear product_cat-outerwear product_tag-knitwear product_tag-outerwear has-post-thumbnail sale shipping-taxable purchasable product-type-simple wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-    <div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">
-        <span class="cms-wc-badge sale">50% OFF</span>
 
+        <a data-selector="skip-to-content-marketplace" class="global-enhancements-skip-to-content wt-screen-reader-only wt-focusable" href="#content">
+    <div id="skip-to-content-wrapper" class="wt-display-flex-xs wt-align-items-center wt-justify-content-center wt-body-max-width wt-width-full wt-height-full wt-position-absolute wt-position-top wt-position-left wt-position-right wt-bg-denim wt-z-index-10">
+        <label class="wt-btn wt-btn--transparent wt-btn--light">
+            Skip to Content
+        </label>
     </div>
-    <img loading="lazy" width="600" height="517" src="wp-content/uploads/Yellow-Knitwear-Sweater-600x517.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async"  /><img loading="lazy" width="600" height="517" src="wp-content/uploads/Yellow-Knitwear-Sweater4-600x517.webp" class="attachment-woocommerce_thumbnail_rectangle size-woocommerce_thumbnail_rectangle" alt="Yellow Knitwear Sweater" decoding="async"  /></div>  
-                <a href="product/yellow-knitwear-sweater/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="index3969.html?add-to-wishlist=280" class="cms-woosw-btn woosw-btn woosw-btn-280 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="280" data-product_name="Yellow Knitwear Sweater" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Yellow-Knitwear-Sweater4-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="indexaf03.html?quick-view=280" class="woosq-btn woosq-btn-280 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="280" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="index700a.html?add-to-cart=280" data-quantity="1" class="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart" data-product_id="280" data-product_sku="ED5690010-1" aria-label="Add to cart: &ldquo;Yellow Knitwear Sweater&rdquo;" rel="nofollow" data-success_message="&ldquo;Yellow Knitwear Sweater&rdquo; has been added to your cart" role="button">Add to cart</a>      <a href="shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_280" class="screen-reader-text">
-            </span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="product/yellow-knitwear-sweater/index.html">Yellow Knitwear Sweater</a></h2>
-    <span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906b9aa8cfaa"  data-product-id="280"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>90.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></del> <span class="screen-reader-text">Original price was: 90.00&#036;.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>45.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></ins><span class="screen-reader-text">Current price is: 45.00&#036;.</span></span></span>
-</div></div>
-<div class="cms-carousel-item swiper-slide hover-second-img cms-product-5 product type-product post-268 status-publish instock product_cat-knitwear product_cat-outerwear product_tag-knitwear product_tag-outerwear has-post-thumbnail shipping-taxable purchasable product-type-simple wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-    <div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none"></div>
-    <img loading="lazy" width="600" height="517" src="wp-content/uploads/Multi-Color-Knitwear-600x517.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async" /><img loading="lazy" width="600" height="517" src="wp-content/uploads/Multi-Color-Knitwear2-600x517.webp" class="attachment-woocommerce_thumbnail_rectangle size-woocommerce_thumbnail_rectangle" alt="Multi Color Knitwear" decoding="async"  /></div>  
-                <a href="product/multi-color-knitwear/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="index07a6.html?add-to-wishlist=268" class="cms-woosw-btn woosw-btn woosw-btn-268 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="268" data-product_name="Multi Color Knitwear" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Multi-Color-Knitwear2-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="indexf4d9.html?quick-view=268" class="woosq-btn woosq-btn-268 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="268" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="indexee06.html?add-to-cart=268" data-quantity="1" class="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart" data-product_id="268" data-product_sku="ED5690010" aria-label="Add to cart: &ldquo;Multi Color Knitwear&rdquo;" rel="nofollow" data-success_message="&ldquo;Multi Color Knitwear&rdquo; has been added to your cart" role="button">Add to cart</a>      <a href="shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_268" class="screen-reader-text">
-            </span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="product/multi-color-knitwear/index.html">Multi Color Knitwear</a></h2>
-    <span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906b9aa8df2f"  data-product-id="268"><span class="woocommerce-Price-amount amount"><bdi>70.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></span>
-</div></div>
-<div class="cms-carousel-item swiper-slide hover-second-img cms-product-5 product type-product post-260 status-publish last instock product_cat-t-shirts product_tag-t-shirts has-post-thumbnail shipping-taxable purchasable product-type-simple wooct-ended wpcvs-active wpcvs-single-replacement-enable">
-    <div class="cms-products-content relative">    <div class="cms-products-loop-thumbs relative">
-<div class="wpcbm-wrapper">        <div class="cms-wc-badges absolute d-flex gap-5 empty-none">    <span class="cms-wc-badge new">New</span>
-    </div>
-    <div class="wpcbm-badges wpcbm-badges-flat "><div class="wpcbm-badge wpcbm-badge-674 wpcbm-pid-260 wpcbm-badge-style-cms-new wpcbm-badge-group-102 hint--top" aria-label=""><div class="wpcbm-badge-inner">New</div></div></div><img loading="lazy" width="600" height="517" src="wp-content/uploads/Boyfriend-Knitted-T-Shirt5-600x517.webp" class="cms-overlay cms-second-image cms-transition" alt="" decoding="async" /><img loading="lazy" width="600" height="517" src="wp-content/uploads/Boyfriend-Knitted-T-Shirt2-600x517.webp" class="attachment-woocommerce_thumbnail_rectangle size-woocommerce_thumbnail_rectangle" alt="Boyfriend Knitted T-Shirt" decoding="async"  /></div>  
-                <a href="product/boyfriend-knitted-t-shirt/index.html" class="cms-overlay"></a>
-            <div class="cms-products-loop-thumbs-top cms-transition absolute top-right z-top3 empty-none mt-10 mr-10 d-flex flex-column gap-4"><a href="index16dc.html?add-to-wishlist=260" class="cms-woosw-btn woosw-btn woosw-btn-260 woosw-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="260" data-product_name="Boyfriend Knitted T-Shirt" data-product_image="https://7oroofthemes.com/trevox/wp-content/uploads/Boyfriend-Knitted-T-Shirt2-77x70.webp" rel="nofollow" aria-label="Add to wishlist" data-hint="Add to wishlist"><span class="cms-woosw-btn-icon trevox-icon-love cms-normal"></span></a><a href="index4697.html?quick-view=260" class="woosq-btn woosq-btn-260 woosq-btn-has-icon cms-loop-thumbs-icon  hint--bounce  hint--left" data-id="260" data-effect="mfp-3d-unfold" data-context="default" rel="nofollow" data-hint="Quick view"><span class="woosq-btn-icon trevox-icon-eye"></span></a></div>
-        <div class="cms-products-loop-thumbs-middle cms-transition absolute center z-top3 empty-none"></div>
-        <div class="cms-products-loop-thumbs-bot cms-transition absolute bottom z-top3 empty-none w-100 pb-10 p-lr-10"><div class="cms-loop-addtocart"><a href="index84f3.html?add-to-cart=260" data-quantity="1" class="cms-loop-atc product_type_simple in-stock add_to_cart_button ajax_add_to_cart" data-product_id="260" data-product_sku="ED56900013" aria-label="Add to cart: &ldquo;Boyfriend Knitted T-Shirt&rdquo;" rel="nofollow" data-success_message="&ldquo;Boyfriend Knitted T-Shirt&rdquo; has been added to your cart" role="button">Add to cart</a>      <a href="shop/cart/index.html" class="added_to_cart cms-loop-atc" title="View Cart"> 
-                  View Cart              </a>
-    </div>	<span id="woocommerce_loop_add_to_cart_link_describedby_260" class="screen-reader-text">
-            </span>
-</div>
-            </div> 
-<h2 class="cms-loop-title text-18 pt-20 pb-3"><a href="product/boyfriend-knitted-t-shirt/index.html">Boyfriend Knitted T-Shirt</a></h2>
-    <span class="price"><span class="woocs_price_code" data-currency="" data-redraw-id="6906b9aa8f08f"  data-product-id="260"><span class="woocommerce-Price-amount amount"><bdi>35.00<span class="woocommerce-Price-currencySymbol">&#36;</span></bdi></span></span></span>
-</div></div>
-                            </div>
-                        </div>
-                    </div>
-</div>				</div>
-                </div>
-                </div>
-                    </div>
-                </div>
-                </div>
-        </div></li>
-<li id="menu-item-130" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-130"><a href="#" class="cms-menu-link"><span class="menu-title title">Pages</span><span class="main-menu-toggle"></span></a>
-<ul class="sub-menu">
-    <li id="menu-item-132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-132"><a href="about-us/index.html" class="cms-menu-link"><span class="menu-title title">About Us</span></a></li>
-    <li id="menu-item-133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-133"><a href="store-locations/index.html" class="cms-menu-link"><span class="menu-title title">Store Locations</span></a></li>
-    <li id="menu-item-134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134"><a href="shipping-returns/index.html" class="cms-menu-link"><span class="menu-title title">Shipping &#038; Return</span></a></li>
-    <li id="menu-item-135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135"><a href="sustainability/index.html" class="cms-menu-link"><span class="menu-title title">Sustainability</span></a></li>
-    <li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="faqs/index.html" class="cms-menu-link"><span class="menu-title title">Help &#038; FAQs</span></a></li>
-    <li id="menu-item-137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137"><a href="contacts/index.html" class="cms-menu-link"><span class="menu-title title">Contacts</span></a></li>
-</ul>
+</a>
+
+        
+
+        <div class="mobile-catnav-wrapper wt-overlay wt-overlay--peek wt-overlay--peek-left wt-p-xs-0" data-wt-overlay="" id="mobile-catnav-overlay" aria-hidden="true" aria-modal="false" role="dialog">
+        </div>
+
+        <div class="wt-flex-shrink-xs-0" data-primary-nav-container="">
+            <nav aria-label="Main">
+    <ul class="wt-display-flex-xs wt-justify-content-space-between wt-list-unstyled wt-m-xs-0 wt-align-items-center">
+        <li>
+    <button class="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin header-button">
+        Sign in
+    </button>
 </li>
-<li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-51"><a href="blog-grid/index.html" class="cms-menu-link"><span class="menu-title title">Blog</span><span class="main-menu-toggle"></span></a>
-<ul class="sub-menu">
-    <li id="menu-item-131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131"><a href="blog-grid/index.html" class="cms-menu-link"><span class="menu-title title">Blog Grid</span></a></li>
-    <li id="menu-item-50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="blog-standard/index.html" class="cms-menu-link"><span class="menu-title title">Blog Standard</span></a></li>
-    <li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-138"><a href="our-journey-towards-a-more-conscious-fashion-industry/index.html" class="cms-menu-link"><span class="menu-title title">Single Post</span></a></li>
-</ul>
-</li>
-<li id="menu-item-139" class="menu-item menu-item-type-custom menu-item-object-custom megamenu menu-item-has-children megamenu-full menu-item-139"><a href="#" class="cms-menu-link"><span class="menu-title title">Features</span><span class="main-menu-toggle"></span></a><div class="sub-menu sub-megamenu cms-megamenu-full">		<div data-elementor-type="wp-post" data-elementor-id="622" class="elementor elementor-622">
-                <div class="elementor-element elementor-element-24234ff e-flex e-con-boxed e-con e-parent" data-id="24234ff" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
-                    <div class="e-con-inner">
-        <div class="elementor-element elementor-element-a86b13b e-con-full e-flex e-con e-child" data-id="a86b13b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-fc97e77 elementor-widget elementor-widget-cms_navigation_menu" data-id="fc97e77" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Features List</a>
-        </h2>
-        <ul id="menu-features-list-1" class="cms-menu cms-dropdown-mega"><li id="menu-item-587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-587 cms-dropdown-mega-item"><a href="features/header-01-transparent/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 01 – Transparent</span></a></li>
-<li id="menu-item-586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-586 cms-dropdown-mega-item"><a href="features/header-01-white/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 01 – White</span></a></li>
-<li id="menu-item-585" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-585 cms-dropdown-mega-item"><a href="features/header-02-transparent/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 02 – Transparent</span></a></li>
-<li id="menu-item-584" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-584 cms-dropdown-mega-item"><a href="features/header-02-white/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 02 – White</span></a></li>
-<li id="menu-item-583" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-583 cms-dropdown-mega-item"><a href="features/header-03/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 03</span></a></li>
-<li id="menu-item-582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-582 cms-dropdown-mega-item"><a href="features/header-04/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 04</span></a></li>
-<li id="menu-item-581" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-581 cms-dropdown-mega-item"><a href="features/header-05/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 05</span></a></li>
-<li id="menu-item-580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-580 cms-dropdown-mega-item"><a href="features/header-06/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 06</span></a></li>
-<li id="menu-item-579" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-579 cms-dropdown-mega-item"><a href="features/header-07/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Header 07</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-625337d e-con-full e-flex e-con e-child" data-id="625337d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-0a64a55 elementor-widget elementor-widget-cms_navigation_menu" data-id="0a64a55" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Features List</a>
-        </h2>
-        <ul id="menu-features-list-2" class="cms-menu cms-dropdown-mega"><li id="menu-item-592" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-592 cms-dropdown-mega-item"><a href="features/collection-big-cards/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Big Cards</span></a></li>
-<li id="menu-item-591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-591 cms-dropdown-mega-item"><a href="features/collection-divided/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Divided</span></a></li>
-<li id="menu-item-590" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-590 cms-dropdown-mega-item"><a href="features/collection-carousel/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Carousel</span></a></li>
-<li id="menu-item-589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-589 cms-dropdown-mega-item"><a href="features/collection-grid/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Grid</span></a></li>
-<li id="menu-item-588" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-588 cms-dropdown-mega-item"><a href="features/collection-text/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Collection Text</span></a></li>
-<li id="menu-item-594" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-594 cms-dropdown-mega-item"><a href="features/testimonials-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Testimonials 1</span></a></li>
-<li id="menu-item-593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-593 cms-dropdown-mega-item"><a href="features/testimonials-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Testimonials 2</span></a></li>
-<li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595 cms-dropdown-mega-item"><a href="features/custom-content/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Custom content</span></a></li>
-<li id="menu-item-596" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-596 cms-dropdown-mega-item"><a href="features/lookbook/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Lookbook</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-6345f15 e-con-full e-flex e-con e-child" data-id="6345f15" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-47fcf4e elementor-widget elementor-widget-cms_navigation_menu" data-id="47fcf4e" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Features List</a>
-        </h2>
-        <ul id="menu-features-list-3" class="cms-menu cms-dropdown-mega"><li id="menu-item-597" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-597 cms-dropdown-mega-item"><a href="features/image-cards/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Image cards</span></a></li>
-<li id="menu-item-598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-598 cms-dropdown-mega-item"><a href="features/video-banner/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Video Banner</span></a></li>
-<li id="menu-item-600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-600 cms-dropdown-mega-item"><a href="features/instagram-widget-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Instagram Widget 1</span></a></li>
-<li id="menu-item-599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-599 cms-dropdown-mega-item"><a href="features/instagram-widget-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Instagram Widget 2</span></a></li>
-<li id="menu-item-603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-603 cms-dropdown-mega-item"><a href="features/announcement-bar-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Announcement bar 1</span></a></li>
-<li id="menu-item-602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-602 cms-dropdown-mega-item"><a href="features/announcement-bar-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Announcement bar 2</span></a></li>
-<li id="menu-item-601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-601 cms-dropdown-mega-item"><a href="features/announcement-bar-3/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Announcement bar 3</span></a></li>
-<li id="menu-item-604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-604 cms-dropdown-mega-item"><a href="features/newsletter/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Newsletter</span></a></li>
-<li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605 cms-dropdown-mega-item"><a href="features/blog-posts/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Blog posts</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-        <div class="elementor-element elementor-element-6067a2c e-con-full e-flex e-con e-child" data-id="6067a2c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
-                <div class="elementor-element elementor-element-652dfea elementor-widget elementor-widget-cms_navigation_menu" data-id="652dfea" data-element_type="widget" data-widget_type="cms_navigation_menu.default">
-                <div class="elementor-widget-container">
-                        <div class="cms-emenu cms-emenu--mega">
-        <h2 class="cms-title text-18 text-heading mt-n5 mb-15">
-            <a class="text-heading" href="#">Features List</a>
-        </h2>
-        <ul id="menu-features-list-4" class="cms-menu cms-dropdown-mega"><li id="menu-item-606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-606 cms-dropdown-mega-item"><a href="features/notification-popup/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Notification popup</span></a></li>
-<li id="menu-item-607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-607 cms-dropdown-mega-item"><a href="features/countdown-timer/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Countdown timer</span></a></li>
-<li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608 cms-dropdown-mega-item"><a href="features/product-tabs/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Product tabs</span></a></li>
-<li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609 cms-dropdown-mega-item"><a href="features/brands-list/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Brands list</span></a></li>
-<li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610 cms-dropdown-mega-item"><a href="features/slideshow/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Slideshow</span></a></li>
-<li id="menu-item-612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612 cms-dropdown-mega-item"><a href="features/footer-1/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Footer 1</span></a></li>
-<li id="menu-item-611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611 cms-dropdown-mega-item"><a href="features/footer-2/index.html" class="cms-menu-link text-link text-hover-link"><span class="menu-title title">Footer 2</span></a></li>
-</ul>	</div>
-                </div>
-                </div>
-                </div>
-                    </div>
-                </div>
-                </div>
-        </div></li>
-</ul></nav> 
 
 
-
-<div class="has-tools site-tools flex-basic d-flex gap-20 justify-content-end align-items-center">
-                        <a href="#csh-login-wrap" class="site-header-login site-header-item menu-color cms-modal" data-modal="#csh-login-wrap" data-modal-mode="fade" data-modal-class="center bg-white" data-modal-slide="center" data-modal-width="400px" data-modal-content-width="400px" data-modal-space="50px">
-                        <span class="header-icon trevox-icon-user" style={{color: "black"}}></span>
+<li data-favorites-nav-container="" data-ge-nav-menu="favorites" data-ge-hover-event-name="gnav_hover_favorites_menu">
+    <span class="wt-tooltip wt-tooltip--disabled-touch" data-wt-tooltip="">
+        <a href="https://www.etsy.com/guest/favorites?ref=hdr-fav" class="wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon reduced-margin-xs header-button" data-favorites-nav-link="" aria-labelledby="ge-tooltip-label-favorites">
+            <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
         </a>
-        <div class="site-header-search cms-modal site-header-item menu-color" data-modal="#cms-modal-search" data-focus=".cms-search-popup-input" data-modal-mode="slide" data-modal-slide="top" data-modal-class=""  data-modal-width="100vw"><i class="header-icon  search-toggle trevox-icon-search1" style={{color: "black"}}></i></div>
-        <div class="cms-header-wishlist relative woosw-menu">
-            <a class="cms-wishlist relative cms-counter-icon menu-color" href="wishlist/index.html">
-                                <span class="wishlist-icon header-icon trevox-icon-love" data-count="0" style={{color: "black"}}></span>
-                <span class="header-count wishlist-count cms-count">0</span>
-            </a>
-        </div>
-    <span class="cms-header-divider cms-hidden-mobile-menu"></span>    <div class="site-header-item site-header-cart menu-color cms-modal" data-modal="#cms-modal-cart" data-modal-mode="slide" data-modal-slide="right" data-modal-class="bg-white">
-                <div class="relative cms-cart-icon cms-counter-icon">
-            <i class="header-icon cart-icon trevox-icon-shopping-basket1" style={{color: "black"}}></i>
-            <span class="cart-counter cart_total cms-count" data-count="0" style={{color: "black"}}>0</span>
-        </div>
-            </div>
-        <div id="main-menu-mobile" class="main-menu-mobile cms-hidden-desktop-menu" style={{color: "black"}}>
-            <span class="btn-nav-mobile open-menu" style={{color: "black"}}>
-                <span></span>
+
+        <span id="ge-tooltip-label-favorites" role="tooltip" data-favorites-label-tooltip="">Favorites</span>
+    </span>
+</li>
+<li data-gift-mode-nav-container="">
+    <span class="wt-tooltip wt-tooltip--disabled-touch" data-wt-tooltip="">
+        <a href="/gift-mode?ref=gm_utility_nav" class=" wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon reduced-margin-xs header-button" data-gift-mode-nav-link="" aria-labelledby="ge-tooltip-label-gift-mode">
+            <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.535 7A4 4 0 0 1 12 2.354 4 4 0 0 1 18.465 7H22v9h-1v6H3v-6H2V7zm9.466 0H13V5a2 2 0 1 1 2.001 2M11 5a2 2 0 1 0-2.001 2H11zm-.764 4c-.55.614-1.348 1-2.236 1v2a4.98 4.98 0 0 0 3-1v3H4V9zM13 11c.836.628 1.874 1 3 1v-2a3 3 0 0 1-2.236-1H20v5h-7zm-8 5v4h6v-4zm8 4v-4h6v4z"></path></svg></span>
+        </a>
+
+        <span id="ge-tooltip-label-gift-mode" role="tooltip" data-registry-label-tooltip="">
+            
+                Gifts
+            
+        </span>
+    </span>
+</li>
+<li data-ge-nav-menu="cart" data-ge-hover-event-name="gnav_hover_cart_menu">
+    <span class="wt-tooltip wt-tooltip--bottom-left wt-tooltip--disabled-touch" data-wt-tooltip="" data-header-cart-button="">
+        <a aria-label="Cart" href="https://www.etsy.com/cart?ref=hdr-cart" class="wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon header-button">
+            <span class="wt-z-index-1 wt-no-wrap wt-display-none ge-cart-badge wt-badge wt-badge--notificationPrimary wt-badge--small wt-badge--outset-top-right" data-selector="header-cart-count" aria-hidden="true">
+                0
             </span>
+            <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.307l2.4-12zM7.82 15l-1.6-8h14.227l-1.6 8z"></path><path d="M10.667 20.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m8.333 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg></span>
+        </a>
+        <span role="tooltip" aria-hidden="true">Cart</span>
+    </span>
+</li>
+    </ul>
+</nav>
         </div>
-                </div>
-    </div>
+    </header>
 
+    
+</div>
 
+<nav className="wt-hide-xs wt-show-lg category-nav-button-menu">
+      <div
+        data-ui="cat-nav"
+        id="desktop-category-topnav"
+        className="cat-nav responsive-disabled v2-toolkit-cat-nav wt-ml-xs-0 wt-mr-xs-0"
+      >
+        <div className="wt-text-caption wt-position-relative wt-sem-bg-elevation-0 wt-z-index-5 v2-toolkit-cat-nav-tab-bar">
+          <div className="wt-body-max-width">
 
+            <ul
+              className="wt-list-unstyled wt-body-max-width wt-display-flex-xs wt-justify-content-center"
+              data-menu-ui="menubar"
+              data-ui="top-nav-category-list"
+            >
+
+              {/* DYNAMIC CATEGORY ITEMS */}
+              {categories.map((cat) => (
+                <li key={cat._id} className="wt-mr-xs-3">
+                  <a
+                    href={`/category/${cat._id}`}
+                    className="wt-btn wt-btn--transparent wt-btn--small"
+                    data-menu-ui="menuitem"
+                    data-ui="top-nav-category-link"
+                  >
+                    <span className="wt-icon wt-icon--smaller-xs wt-nudge-b-1 wt-nudge-r-3">
+                      {cat.icon ? (
+                        <span style={{ fontSize: "14px" }}>{cat.icon}</span>
+                      ) : null}
+                    </span>
+                    <span>{cat.name}</span>
+                  </a>
+                </li>
+              ))}
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+</div>
+<div class="wt-overlay wt-z-index-4" aria-hidden="true" data-ui="overlay"></div>
+<div class="sidebar-cart-carat"></div>
+
+   <div data-below-header="">
+            
+        </div>
+
+</body>
     </div>
     
-</header>	
-    </div>
   );
 };
 

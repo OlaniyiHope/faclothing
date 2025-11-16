@@ -14,6 +14,15 @@ import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
 import OrderSuccess from "./pages/OrderSuccess";
 import OrderFailed from "./pages/OrderFailed";
+import Category from "./pages/Category";
+import Single2 from "./pages/Single2";
+import Cart2 from "./pages/Cart2";
+import Checkout2 from "./pages/Checkout2";
+import ContinuePay from "./pages/Continue";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Orders from "./pages/Orders";
+import OrderDetails from "./pages/OrderDetails";
 
 
 const routes = [
@@ -29,16 +38,52 @@ const routes = [
     element: <Selling />,
   },
   {
+    path: "/shop-category",
+    element: <Category />,
+  },
+  {
  path: "/single-product/:id",
     element: <Single />,
+  },
+  {
+ path: "/single-products",
+    element: <Single2 />,
   },
   {
  path: "/cart",
     element: <Cart />,
   },
   {
+ path: "/carts",
+    element: <Cart2 />,
+  },
+  {
  path: "/checkout",
     element: <Checkout />,
+  },
+  {
+ path: "/login",
+    element: <Login />,
+  },
+  {
+ path: "/orders",
+    element: <Orders />,
+  },
+  {
+ path: "/order-details",
+    element: <OrderDetails />,
+  },
+  {
+ path: "/register",
+    element: <Register />,
+  },
+  {
+ path: "/continue",
+    element: <ContinuePay />,
+  },
+  {
+ path: "/checkouts",
+    element: <Checkout2 />,
   },
   {
  path: "/privacy-policy",
