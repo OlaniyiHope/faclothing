@@ -500,17 +500,69 @@ return (
         </div>
     </section>
 </div>
+
 <div class="hp-spacing-reduced-default">
     
         
-</div><div data-appears-component-name="hp_gifting_occasion_container">
+</div>
+<div data-appears-component-name="Homepage_Vesta_ApiSpec_TopInTaxonomy" data-appears-event-data="{&quot;module_placement&quot;:&quot;home_top_in_taxo_categories&quot;,&quot;datasets&quot;:[&quot;Etsy\\Web\\Recsys\\ReactorRecs\\Registry\\Web\\Category\\RivuletTopSearchedTaxos&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Homepage_Vesta_ApiSpec_TopInTaxonomy&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Etsy\\Web\\Recsys\\ReactorRecs\\Registry\\Web\\Category\\RivuletTopSearchedTaxos&quot;:[0,1,2,3,4,5]},&quot;taxonomy_ids&quot;:[1229,2844,11371,77,7103,1857],&quot;refTag&quot;:&quot;hp_top_in_taxo_categories&quot;,&quot;queries&quot;:[&quot;pendant necklaces&quot;,&quot;signs&quot;,&quot;prints&quot;,&quot;digital drawings and illustrations&quot;,&quot;party and gifting&quot;,&quot;christmas ornaments&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
+<div class="wt-body-max-width wt-pr-xs-0 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
+    <div class="wt-pr-xs-0 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+<h2 className="wt-text-title-larger wt-text-black">
+  Shop our most-loved categories
+</h2>
+
+<div className="updated-category-module wt-pt-xs-2 wt-pt-md-3 wt-pl-xs-1 wt-pb-xs-1 wt-mr-xs-2 wt-mr-md-0">
+  <div className="updated-category-module__container wt-display-flex-xs wt-align-items-flex-start wt-block-grid-md-3 wt-block-grid-lg-6">
+
+    {categories.map((cat) => (
+      <li
+        key={cat._id}
+        className="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0"
+      >
+        <div className="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
+          <a
+            href={`/category/${cat._id}`}
+            className="shopping-window-interior"
+          >
+            <img
+              className="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image"
+              src={cat.image}
+              alt={cat.name}
+              style={{ aspectRatio: "0.8" }}
+            />
+
+            <p className="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1">
+              {cat.icon} {cat.name}
+            </p>
+          </a>
+        </div>
+      </li>
+    ))}
+
+  </div>
+</div>
+
+    </div>
+</div>
+</div><div class="hp-spacing-reduced-default">
+    
+        
+</div>
+<div class="hp-spacing-reduced-default">
+    
+        
+</div>
+
+
+<div data-appears-component-name="hp_gifting_occasion_container">
 <div class="new-missions-gifting wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 appears-ready">
     <div class="wt-pb-xs-3">
         <div class="new-missions-gifting__hero_section wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-xl wt-flex-gap-xs-3">
     <div class="wt-flex-xs-1 wt-flex-gap-xl-3 wt-display-flex-xs wt-align-items-center wt-flex-direction-row-xs wt-flex-direction-column-xl">
         <h2 class="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-grow-xs-1 wt-flex-grow-xl-0">
-            <p class="wt-text-title-larger wt-show-md ">Etsy-special gifts for Christmas</p>
-            <p class="wt-text-title-large wt-show-xs ">Etsy-special gifts for Christmas</p>
+            <p class="wt-text-title-larger wt-show-md ">Rayofaa Special Christmas Sales</p>
+            <p class="wt-text-title-large wt-show-xs ">Rayofaa Special Christmas Sales</p>
         </h2>
         <a href="https://www.etsy.com/gift-mode/occasion/christmas?ref=hp_gifting_occasion" type="button" class="wt-btn wt-btn--tertiary wt-align-self-flex-start">
             Get inspired
@@ -558,502 +610,8 @@ return (
     <div>
 
     <ul class="wt-block-grid wt-list-unstyled wt-block-grid-xs-2 wt-block-grid-md-4 wt-block-grid-lg-5 wt-block-grid-xl-6 ">
-        <li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
-           wt-position-relative
-           wt-mr-xs-0
-make-listing-link-display-block wt-rounded-02 
-            
-            listing-card-experimental-style" data-palette-listing-id="250910361" data-shop-id="5801665" data-listing-id="250910361" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-height-full
-            " data-listing-id="250910361" data-palette-listing-image="" href="https://www.etsy.com/listing/250910361/gold-half-moon-tribal-hoop-earrings?click_key=dbeaf478afa222bb79ad85d194836b273601a975%3A250910361&amp;click_sum=6060165c&amp;external=1&amp;ref=hp_consolidated_gifting_listings-1" data-listing-link="" target="etsy.250910361" title="Gold Half Moon Tribal Hoop Earrings | Creole hoop earrings | Crescent moon hoop earrings | Brass Jewellery | Half hoop earring | Nickel free">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        wt-height-full
-">
-                    <div class="placeholder  wt-rounded-02
-             placeholder-landscape wt-rounded-02 
-                
-             wt-height-full 
-            
-">
-    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#CFB9A8"}}>
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_340x270.846259472_b35w.jpg" alt="Gold Half Moon Tribal Hoop Earrings | Creole hoop earrings | Crescent moon hoop earrings | Brass Jewellery | Half hoop earring | Nickel free"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_400xN.846259472_b35w.jpg 400w, https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_600xN.846259472_b35w.jpg 600w, https://i.etsystatic.com/5801665/c/1470/1167/30/222/il/1db86b/846259472/il_800xN.846259472_b35w.jpg 800w" />
-
-            
-            
-                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
-                                <span><span class="currency-symbol">USD </span><span class="currency-value">23.36</span></span>
-
-</span>
-            </p>
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    wt-display-none
     
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                wt-display-none " id="listing-title-250910361">
-                Gold Half Moon Tribal Hoop Earrings | Creole hoop earrings | Crescent moon hoop earrings | Brass Jewellery | Half hoop earring | Nickel free
-            </h3>
-
-                    
-            
-                        
-            
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
-            " data-ui="favorite-listing-button" data-listing-id="250910361" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div></li><li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
-           wt-position-relative
-           wt-mr-xs-0
-make-listing-link-display-block wt-rounded-02 
-            
-            listing-card-experimental-style" data-palette-listing-id="87120891" data-shop-id="5570303" data-listing-id="87120891" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-height-full
-            " data-listing-id="87120891" data-palette-listing-image="" href="https://www.etsy.com/listing/87120891/santa-key-ornament-painted-santa-key?click_key=de73d3f3afbc0f36cbebc362c3f7a78a36cf7c92%3A87120891&amp;click_sum=569c6d4d&amp;external=1&amp;ref=hp_consolidated_gifting_listings-2" data-listing-link="" target="etsy.87120891" title="Santa Key Ornament, Painted Santa Key, Christmas Ornament, Handmade Christmas Ornament">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        wt-height-full
-">
-                    <div class="placeholder  wt-rounded-02
-             placeholder-landscape wt-rounded-02 
-                
-             wt-height-full 
-            
-">
-    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#948E89"}}>
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-2 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_340x270.3505245681_pr2t.jpg" alt="Santa Key Ornament, Painted Santa Key, Christmas Ornament, Handmade Christmas Ornament"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_400xN.3505245681_pr2t.jpg 400w, https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_600xN.3505245681_pr2t.jpg 600w, https://i.etsystatic.com/5570303/r/il/5582da/3505245681/il_800xN.3505245681_pr2t.jpg 800w" />
-
-            
-            
-                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
-                                <span><span class="currency-symbol">USD </span><span class="currency-value">22.00</span></span>
-
-</span>
-            </p>
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    wt-display-none
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                wt-display-none " id="listing-title-87120891">
-                Santa Key Ornament, Painted Santa Key, Christmas Ornament, Handmade Christmas Ornament
-            </h3>
-
-                    
-            
-                        
-            
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
-            " data-ui="favorite-listing-button" data-listing-id="87120891" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div></li><li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
-           wt-position-relative
-           wt-mr-xs-0
-make-listing-link-display-block wt-rounded-02 
-            
-            listing-card-experimental-style" data-palette-listing-id="250614510" data-shop-id="10897104" data-listing-id="250614510" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-height-full
-            " data-listing-id="250614510" data-palette-listing-image="" href="https://www.etsy.com/listing/250614510/personalised-felt-christmas-bauble?click_key=56a9600474cc92999b3338e48d6e0d3f4220a93e%3A250614510&amp;click_sum=758589c4&amp;external=1&amp;ref=hp_consolidated_gifting_listings-3&amp;sts=1" data-listing-link="" target="etsy.250614510" title="Personalised Felt Christmas Bauble: Handmade Tree Ornament">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        wt-height-full
-">
-                    <div class="placeholder  wt-rounded-02
-             placeholder-landscape wt-rounded-02 
-                
-             wt-height-full 
-            
-">
-    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#748B79"}}>
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-3 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_340x270.1124244435_nuct.jpg" alt="Personalised Felt Christmas Bauble: Handmade Tree Ornament"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_400xN.1124244435_nuct.jpg 400w, https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_600xN.1124244435_nuct.jpg 600w, https://i.etsystatic.com/10897104/r/il/5dcebc/1124244435/il_800xN.1124244435_nuct.jpg 800w" />
-
-            
-            
-                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
-                                <span><span class="currency-symbol">USD </span><span class="currency-value">20.62</span></span>
-
-</span>
-            </p>
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    wt-display-none
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                wt-display-none " id="listing-title-250614510">
-                Personalised Felt Christmas Bauble: Handmade Tree Ornament
-            </h3>
-
-                    
-            
-                        
-            
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
-            " data-ui="favorite-listing-button" data-listing-id="250614510" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div></li><li class="wt-block-grid__item"><div class="js-merch-stash-check-listing v2-listing-card 
-           wt-position-relative
-           wt-mr-xs-0
-make-listing-link-display-block wt-rounded-02 
-            
-            listing-card-experimental-style" data-palette-listing-id="201256190" data-shop-id="5870358" data-listing-id="201256190" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-height-full
-            " data-listing-id="201256190" data-palette-listing-image="" href="https://www.etsy.com/listing/201256190/advent-calendar-kit-christmas-calendar?click_key=7659c30f4eff657032033a74b911d363b8dccad0%3A201256190&amp;click_sum=c595039d&amp;external=1&amp;ref=hp_consolidated_gifting_listings-4&amp;sts=1" data-listing-link="" target="etsy.201256190" title="advent calendar kit Christmas Calendar kit advent calendar 25 bags by renna deluxe">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        wt-height-full
-">
-                    <div class="placeholder  wt-rounded-02
-             placeholder-landscape wt-rounded-02 
-                
-             wt-height-full 
-            
-">
-    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-4 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_340x270.818852444_tsg4.jpg" alt="advent calendar kit Christmas Calendar kit advent calendar 25 bags by renna deluxe"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_400xN.818852444_tsg4.jpg 400w, https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_600xN.818852444_tsg4.jpg 600w, https://i.etsystatic.com/5870358/r/il/156bb7/818852444/il_800xN.818852444_tsg4.jpg 800w" />
-
-            
-            
-                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
-                                <span><span class="currency-symbol">USD </span><span class="currency-value">20.39</span></span>
-
-</span>
-            </p>
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    wt-display-none
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                wt-display-none " id="listing-title-201256190">
-                advent calendar kit Christmas Calendar kit advent calendar 25 bags by renna deluxe
-            </h3>
-
-                    
-            
-                        
-            
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
-            " data-ui="favorite-listing-button" data-listing-id="201256190" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div></li><li class="wt-block-grid__item "><div class="js-merch-stash-check-listing v2-listing-card 
-           wt-position-relative
-           wt-mr-xs-0
-make-listing-link-display-block wt-rounded-02 
-            
-            listing-card-experimental-style" data-palette-listing-id="208930046" data-shop-id="9997414" data-listing-id="208930046" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-height-full
-            " data-listing-id="208930046" data-palette-listing-image="" href="https://www.etsy.com/listing/208930046/barware-for-him-custom-gifts-for-dad?click_key=19193f8681c74fcd064d11ca46b5d8c12d50c875%3A208930046&amp;click_sum=0f008f42&amp;external=1&amp;ref=hp_consolidated_gifting_listings-5&amp;sts=1" data-listing-link="" target="etsy.208930046" title="Barware For Him - Custom Gifts for Dad - Christmas Gift - Barware Set – Personalized Whiskey Decanter Set – Boyfriend Gift, Groomsmen Gifts">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        wt-height-full
-">
-                    <div class="placeholder  wt-rounded-02
-             placeholder-landscape wt-rounded-02 
-                
-             wt-height-full 
-            
-">
-    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#9F806D"}}>
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-5 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_340x270.3117927256_564w.jpg" alt="Barware For Him - Custom Gifts for Dad - Christmas Gift - Barware Set – Personalized Whiskey Decanter Set – Boyfriend Gift, Groomsmen Gifts"  style={{ aspectRatio: "0" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_400xN.3117927256_564w.jpg 400w, https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_600xN.3117927256_564w.jpg 600w, https://i.etsystatic.com/9997414/c/2000/1589/0/705/il/bff4f3/3117927256/il_800xN.3117927256_564w.jpg 800w" />
-
-            
-            
-                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
-                                <span><span class="currency-symbol">USD </span><span class="currency-value">61.99</span></span>
-
-</span>
-            </p>
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    wt-display-none
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                wt-display-none " id="listing-title-208930046">
-                Barware For Him - Custom Gifts for Dad - Christmas Gift - Barware Set – Personalized Whiskey Decanter Set – Boyfriend Gift, Groomsmen Gifts
-            </h3>
-
-                    
-            
-                        
-            
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
-            " data-ui="favorite-listing-button" data-listing-id="208930046" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div></li><li class="wt-block-grid__item  wt-show-xl"><div class="js-merch-stash-check-listing v2-listing-card 
+<li class="wt-block-grid__item  wt-show-xl"><div class="js-merch-stash-check-listing v2-listing-card 
            wt-position-relative
            wt-mr-xs-0
 make-listing-link-display-block wt-rounded-02 
@@ -1157,230 +715,8 @@ make-listing-link-display-block wt-rounded-02
 </div>
 </div>
     </div>
-    <div>
-        <div class="gifting-mission-search-bubbles">
-    <h2 class="wt-text-title wt-pb-xs-2"> Gifts as special as they are </h2>
-    <ul class="gifting-mission--tracked wt-block-grid-xs-2 wt-block-grid-md-3 wt-block-grid-lg-4 wt-block-grid-xl-5 wt-action-group wt-list-inline wt-justify-content-space-between">
-                <li class="wt-block-grid__item ">
-<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=personalized+toys&amp;anchor_listing_id=1757298107&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1422880675474&amp;is_merch_library=true">
-    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
-                                <div>
-                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_300x300.5659610211_g4x3.jpg" alt="Personalized Toys"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_100x100.5659610211_g4x3.jpg 100w, https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_200x200.5659610211_g4x3.jpg 200w, https://i.etsystatic.com/48987854/r/il/75fa9d/5659610211/il_300x300.5659610211_g4x3.jpg 300w" />
-
-                                </div>
-                                <div>
-                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Personalized Toys">
-                                    Personalized Toys
-                                </p>
-                                </div>
-                            </div>
-
+ 
 </div>
-</div>
-                </li>
-                <li class="wt-block-grid__item ">
-<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=gifts+for+him&amp;anchor_listing_id=4322955672&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1422880711300&amp;is_merch_library=true">
-    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
-                                <div>
-                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_300x300.6953060846_da75.jpg" alt="Gifts for Him"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_100x100.6953060846_da75.jpg 100w, https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_200x200.6953060846_da75.jpg 200w, https://i.etsystatic.com/50393449/c/2250/2250/0/713/il/1d3317/6953060846/il_300x300.6953060846_da75.jpg 300w" />
-
-                                </div>
-                                <div>
-                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Gifts for Him">
-                                    Gifts for Him
-                                </p>
-                                </div>
-                            </div>
-
-</div>
-</div>
-                </li>
-                <li class="wt-block-grid__item ">
-<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=wedding+gifts&amp;anchor_listing_id=1729661664&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1423047299721&amp;is_merch_library=true">
-    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
-                                <div>
-                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_300x300.6203569120_2zh4.jpg" alt="Wedding Gifts"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_100x100.6203569120_2zh4.jpg 100w, https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_200x200.6203569120_2zh4.jpg 200w, https://i.etsystatic.com/8459606/r/il/117fd0/6203569120/il_300x300.6203569120_2zh4.jpg 300w" />
-
-                                </div>
-                                <div>
-                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Wedding Gifts">
-                                    Wedding Gifts
-                                </p>
-                                </div>
-                            </div>
-
-</div>
-</div>
-                </li>
-                <li class="wt-block-grid__item wt-show-xs  ">
-<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=stocking+stuffers&amp;anchor_listing_id=1504641428&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1423047344265&amp;is_merch_library=true">
-    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
-                                <div>
-                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_300x300.6459908032_9vjh.jpg" alt="Stocking Stuffers"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_100x100.6459908032_9vjh.jpg 100w, https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_200x200.6459908032_9vjh.jpg 200w, https://i.etsystatic.com/6825188/r/il/e11b43/6459908032/il_300x300.6459908032_9vjh.jpg 300w" />
-
-                                </div>
-                                <div>
-                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Stocking Stuffers">
-                                    Stocking Stuffers
-                                </p>
-                                </div>
-                            </div>
-
-</div>
-</div>
-                </li>
-                <li class="wt-block-grid__item  wt-show-xl">
-<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=cozy+clothing+gift&amp;anchor_listing_id=4378499321&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1423047417625&amp;is_merch_library=true">
-    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
-                                <div>
-                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_300x300.7242550048_8226.jpg" alt="Cozy Style Gifts"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_100x100.7242550048_8226.jpg 100w, https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_200x200.7242550048_8226.jpg 200w, https://i.etsystatic.com/62313489/c/3000/3000/0/0/il/078a91/7242550048/il_300x300.7242550048_8226.jpg 300w" />
-
-                                </div>
-                                <div>
-                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Cozy Style Gifts">
-                                    Cozy Style Gifts
-                                </p>
-                                </div>
-                            </div>
-
-</div>
-</div>
-                </li>
-                <li class="wt-block-grid__item ">
-<div data-clg-id="WtCard" class="wt-card wt-card--contained wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=stockings&amp;anchor_listing_id=559159004&amp;ref=hp_bubbles_peakholiday25&amp;mosv=sese&amp;moci=1418457747290&amp;mosi=1422880950836&amp;is_merch_library=true">
-    <span class="wt-screen-reader-only">                            1/4 inch scale miniature-Breakfast Plate
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                                <div class="wt-display-flex-xs wt-flex-gap-xs-1 wt-p-xs-1 wt-align-items-center">
-                                <div>
-                                    <img data-clg-id="WtImage" class="wt-rounded-01 gifting-mission-search-bubbles__image wt-image--cover wt-image" src="https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_300x300.6356436475_b135.jpg" alt="Stockings"  style={{ aspectRatio: "1" }} sizes="(max-width: 479px) 75px, (max-width: 639px) 102px, 90px" srcset="https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_100x100.6356436475_b135.jpg 100w, https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_200x200.6356436475_b135.jpg 200w, https://i.etsystatic.com/6825188/r/il/bfd0d3/6356436475/il_300x300.6356436475_b135.jpg 300w" />
-
-                                </div>
-                                <div>
-                                    <p class="wt-text-title-small gifting-mission-search-bubbles__title" title="Stockings">
-                                    Stockings
-                                </p>
-                                </div>
-                            </div>
-
-</div>
-</div>
-                </li>
-    </ul>
-</div>
-    </div>
-</div>
-</div><div class="hp-spacing-reduced-default">
-    
-        
-</div><div data-appears-component-name="Homepage_Vesta_ApiSpec_TopInTaxonomy" data-appears-event-data="{&quot;module_placement&quot;:&quot;home_top_in_taxo_categories&quot;,&quot;datasets&quot;:[&quot;Etsy\\Web\\Recsys\\ReactorRecs\\Registry\\Web\\Category\\RivuletTopSearchedTaxos&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Homepage_Vesta_ApiSpec_TopInTaxonomy&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Etsy\\Web\\Recsys\\ReactorRecs\\Registry\\Web\\Category\\RivuletTopSearchedTaxos&quot;:[0,1,2,3,4,5]},&quot;taxonomy_ids&quot;:[1229,2844,11371,77,7103,1857],&quot;refTag&quot;:&quot;hp_top_in_taxo_categories&quot;,&quot;queries&quot;:[&quot;pendant necklaces&quot;,&quot;signs&quot;,&quot;prints&quot;,&quot;digital drawings and illustrations&quot;,&quot;party and gifting&quot;,&quot;christmas ornaments&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
-<div class="wt-body-max-width wt-pr-xs-0 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
-    <div class="wt-pr-xs-0 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
-        <h2 class="wt-text-title-larger wt-text-black">
-            Shop our most-loved categories
-        </h2>
-        <div class="updated-category-module wt-pt-xs-2 wt-pt-md-3 wt-pl-xs-1 wt-pb-xs-1 wt-mr-xs-2 wt-mr-md-0">
-    <div class="updated-category-module__container wt-display-flex-xs wt-align-items-flex-start wt-block-grid-md-3 wt-block-grid-lg-6">
-            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
-                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
-                    <a href="https://www.etsy.com/c/jewelry/necklaces/pendant-necklaces?explicit=1&amp;ref=hp_top_in_taxo_categories-1" class="shopping-window-interior">
-                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_340x270.6362008945_fz31.jpg" alt="pendant necklaces"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_255x340.6362008945_fz31.jpg 255w, https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_510x680.6362008945_fz31.jpg 510w, https://i.etsystatic.com/9587904/c/852/852/330/505/il/30a6a5/6362008945/il_765x1020.6362008945_fz31.jpg 765w" />
-
-                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
-                            pendant necklaces
-                        </p>
-                    </a>
-                </div>
-            </li>
-            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
-                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
-                    <a href="https://www.etsy.com/c/home-and-living/home-decor/wall-decor/wall-hangings/signs?explicit=1&amp;ref=hp_top_in_taxo_categories-2" class="shopping-window-interior">
-                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_340x270.3571682397_6tg9.jpg" alt="signs"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_255x340.3571682397_6tg9.jpg 255w, https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_510x680.3571682397_6tg9.jpg 510w, https://i.etsystatic.com/22195950/r/il/582901/3571682397/il_765x1020.3571682397_6tg9.jpg 765w" />
-
-                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
-                            signs
-                        </p>
-                    </a>
-                </div>
-            </li>
-            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
-                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
-                    <a href="https://www.etsy.com/c/home-and-living/home-decor/wall-decor/wall-hangings/prints?explicit=1&amp;ref=hp_top_in_taxo_categories-3" class="shopping-window-interior">
-                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_340x270.5729625769_3jbx.jpg" alt="prints"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_255x340.5729625769_3jbx.jpg 255w, https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_510x680.5729625769_3jbx.jpg 510w, https://i.etsystatic.com/44161790/r/il/226159/5729625769/il_765x1020.5729625769_3jbx.jpg 765w" />
-
-                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
-                            prints
-                        </p>
-                    </a>
-                </div>
-            </li>
-            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
-                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
-                    <a href="https://www.etsy.com/c/art-and-collectibles/drawing-and-illustration/digital?explicit=1&amp;ref=hp_top_in_taxo_categories-4" class="shopping-window-interior">
-                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_340x270.2796261612_g1nk.jpg" alt="digital drawings and illustrations"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_255x340.2796261612_g1nk.jpg 255w, https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_510x680.2796261612_g1nk.jpg 510w, https://i.etsystatic.com/15777598/c/2521/2003/258/193/il/64a0c8/2796261612/il_765x1020.2796261612_g1nk.jpg 765w" />
-
-                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
-                            digital drawings and illustrations
-                        </p>
-                    </a>
-                </div>
-            </li>
-            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
-                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
-                    <a href="https://www.etsy.com/c/craft-supplies-and-tools/paper-party-and-kids/party-and-gifting?explicit=1&amp;ref=hp_top_in_taxo_categories-5" class="shopping-window-interior">
-                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_340x270.4309931155_7eik.jpg" alt="party and gifting"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_255x340.4309931155_7eik.jpg 255w, https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_510x680.4309931155_7eik.jpg 510w, https://i.etsystatic.com/18454161/r/il/43e66f/4309931155/il_765x1020.4309931155_7eik.jpg 765w" />
-
-                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
-                            party and gifting
-                        </p>
-                    </a>
-                </div>
-            </li>
-            <li class="homepage_search_rectangle wt-display-flex-xs wt-block-grid__item wt-mr-xs-2 wt-mr-md-0">
-                <div class="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
-                    <a href="https://www.etsy.com/c/home-and-living/home-decor/seasonal-decor/ornaments?explicit=1&amp;ref=hp_top_in_taxo_categories-6" class="shopping-window-interior">
-                        <img data-clg-id="WtImage" class="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_340x270.5537950255_5zri.jpg" alt="christmas ornaments"  style={{ aspectRatio: "0.8" }} sizes="(max-width: 899px) 33vw, 17vw" srcset="https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_255x340.5537950255_5zri.jpg 255w, https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_510x680.5537950255_5zri.jpg 510w, https://i.etsystatic.com/11907845/r/il/0bb90b/5537950255/il_765x1020.5537950255_5zri.jpg 765w" />
-
-                        <p class="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1" title="">
-                            christmas ornaments
-                        </p>
-                    </a>
-                </div>
-            </li>
-    </div>
-</div>
-    </div>
-</div>
-</div><div class="hp-spacing-reduced-default">
-    
-        
 </div>
 
 
