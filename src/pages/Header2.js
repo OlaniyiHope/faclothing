@@ -173,7 +173,7 @@ const Header2 = ({ cartCount = 1 }) => {
             <nav aria-label="Main">
     <ul class="wt-display-flex-xs wt-justify-content-space-between wt-list-unstyled wt-m-xs-0 wt-align-items-center">
         <li>
-    <button class="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin header-button">
+    <button class="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin header-button" href="/login">
         Sign in
     </button>
 </li>
