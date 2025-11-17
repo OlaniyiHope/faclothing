@@ -609,116 +609,12 @@ return (
         
 </div>
 
-<div data-appears-component-name="hp_gifting_occasion_container">
-  <div className="new-missions-gifting wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 appears-ready">
-    
-    {/* SECTION HEADER */}
-    <div className="wt-pb-xs-3">
-      <div className="new-missions-gifting__hero_section wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-xl wt-flex-gap-xs-3">
-        
-        <div className="wt-flex-xs-1 wt-flex-gap-xl-3 wt-display-flex-xs wt-align-items-center wt-flex-direction-row-xs wt-flex-direction-column-xl">
-          <h2 className="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-grow-xs-1 wt-flex-grow-xl-0">
-            <p className="wt-text-title-larger wt-show-md">Rayofaa Special Christmas Sales</p>
-            <p className="wt-text-title-large wt-show-xs">Rayofaa Special Christmas Sales</p>
-          </h2>
 
-          <a
-            href="#"
-            className="wt-btn wt-btn--tertiary wt-align-self-flex-start"
-          >
-            Get inspired
-          </a>
-        </div>
-
-        {/* DYNAMIC PRODUCTS ROW */}
-        <div className="wt-flex-xl-3 wt-flex-lg-1">
-          <ul className="new-missions-gifting__gift_ideas wt-flex-gap-xs-3 wt-list wt-list-unstyled wt-display-flex-xs wt-align-items-flex-start appears-ready">
-
-            {special.slice(0, 3).map((item) => (
-              <li key={item._id} className="wt-flex-xs-1">
- <Link
-                  to={`/single-product/${product._id}`}>
-
-                <div className="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
-                  
-                  <a
-                    className="wt-card__action-link"
-                    href={`/product/${item._id}`}
-                    aria-label={item.name}
-                  ></a>
-
-                  <img
-                    className="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image"
-                    src={item.images[0]}
-                    alt={item.name}
-                    style={{ aspectRatio: "1.259259" }}
-                  />
-
-                  <div className="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2">
-                    <p className="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">
-                      {item.name}
-                    </p>
-                  </div>
-                </div>
-                </Link>
-              </li>
-            ))}
-
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    {/* PRODUCT GRID BELOW */}
-    <div className="wt-pb-md-4 wt-pb-xs-3">
-      <div className="consolidated-gifting__listing-picks">
-        <div>
-          <ul className="wt-block-grid wt-list-unstyled wt-block-grid-xs-2 wt-block-grid-md-4 wt-block-grid-lg-5 wt-block-grid-xl-6">
-
-            {special.map((item) => (
-              <li key={item._id} className="wt-block-grid__item">
-                <div className="v2-listing-card wt-position-relative wt-rounded-02">
-                   <Link
-                                    to={`/single-product/${product._id}`}>
-                  <a
-                    className="listing-link wt-display-inline-block wt-height-full"
-                    href={`/product/${item._id}`}
-                  >
-                    <div className="v2-listing-card__img wt-position-relative wt-height-full">
-                      <img
-                        className="wt-width-full wt-display-block wt-height-full wt-rounded-02 wt-image--cover wt-image"
-                        src={item.images[0]}
-                        alt={item.name}
-                        style={{ aspectRatio: "1.259259" }}
-                      />
-                    </div>
-                  </a>
-
-                  <p className="listing-card-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-mb-xs-1 wt-sem-text-primary wt-position-absolute wt-position-bottom">
-                    <span className="wt-badge wt-badge--default wt-badge--border wt-width-full">
-                      <span>₦ {item.price}</span>
-                    </span>
-                  </p>
-</Link>
-                </div>
-              </li>
-            ))}
-
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-
+{/* 
 <div class="hp-spacing-reduced-default" data-spacing-for-spec-name="Homepage_Vesta_ApiSpec_DailyDeals" data-spacing-for-spec-id="c8f326da2990ea5137ac795c163837b7">
     
         
-</div>
+</div> */}
 
 {/* <div data-appears-component-name="hp_editors_picks_primary" data-appears-event-data="{&quot;title&quot;:&quot;Etsy\u2019s Guide to Vintage&quot;}">
 <div class="wt-grid wt-body-max-width wt-pl-xs-1 wt-pl-md-2 wt-pl-lg-3 appears-ready">
