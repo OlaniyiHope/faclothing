@@ -1228,43 +1228,27 @@ wt-position-relative wt-width-full wt-rounded-02
 </svg></span>
             <div class="wt-text-center-xs wt-body-max-width wt-pb-xs-6 wt-pt-xs-6 wt-pl-xs-5 wt-pr-xs-5 wt-pl-md-10 wt-pr-md-10 wt-pl-lg-9 wt-pr-lg-9">
                 <h2 class="wt-text-heading-large wt-mb-xs-1 wt-text-center-xs"> What is Rayofaa? </h2>
-                <a class="wt-text-link" href="/about"> Read our wonderfully weird story </a>
+                <a class="wt-text-link" href="/about"> Read our story </a>
 
                 <div class="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-lg wt-pt-xs-6 wt-text-center-xs wt-text-left-lg wt-mb-lg-7 wt-mb-xs-1">
                     <div class="wt-flex-xs-1 wt-mb-xs-5 wt-mb-lg-0">
                         <div data-selector="what-is-etsy-community-impact-container" id="what-is-etsy-community-impact-container">
-    <h3 class="wt-text-title-larger wt-mb-xs-3"> A community doing good </h3>
+
 
     <p class="wt-text-body-01 wt-display-inline">
-        Rayofaa is a global online marketplace, where people come together to make, sell, buy, and collect unique items. We’re also a community pushing for positive change for small businesses, people, and the planet.
+Welcome to fa&a African print everyday wear,<br/>
+My name is Aderayo, also known as Ay, and I'm so happy you're here!<br />
+FA&A designs empowers women to embrace cultural pride and beauty with Afro-centric fashion that is modest. modern and majestic<br />
+Each piece in my store is carefully hand-patterned and made. A passionate seamstress who's  passionate to bring African print cloths to life, with it's bold, vibrant designs. I believe African print cloths it's more than a cultural clothing but  a wearable art , made to suits your everyday lifestyle perfectly. They are designed to celebrate heritage, elegance and contemporary style<br />
+I take pride in working with African print clothes. one-of-a kind garments that celebrate individuality and culture. Whether you're looking for a stunning dress for a special event or a unique piece to elevate your everyday wardrobe, every item is sewn with love, just for you <br />
+New designs are always in the works! Be sure to follow  FA&A on all social media platforms to stay updated and be the first to know when there's a new release fresh styles. You won't want to miss out on exclusive pieces that blend modern fashion with timeless African prints<br />If it's your first time here, I want to say thank you, there's something special for you at the checkout to save %15 on your purchase. It's my way of saying welcome to the fa&a clothing. If you have any questions or concerns please feel free to reach out to me f_a36n@yahoo.com and I will definitely respond promptly.
     </p>
 
-    <div class="wt-popover wt-popover--top wt-display-inline" data-wt-popover="">
-        <a data-wt-popover-trigger="" class="wt-popover__trigger wt-popover__trigger--underline wt-align-items-center" aria-describedby="what-is-etsy-community-impact-popover">
-            <span class="wt-text-body-01">Here are some of the ways we’re making a positive impact, together.</span>
-        </a>
 
-        <div id="what-is-etsy-community-impact-popover" role="tooltip" class="wt-text-left-xs">
-            <div data-appears-component-name="impact_message" data-appears-event-data="{&quot;impact_name&quot;:&quot;hp_whatisetsy_community&quot;,&quot;impact_themes&quot;:[&quot;general&quot;],&quot;impact_audiences&quot;:[&quot;buyers&quot;]}">
-<ul class="appears-ready"><li>Your purchases on Etsy in 2020 generated nearly $4 billion in income for small businesses.</li>
-<li>We advocate for policy—at the global and local level—that benefits creative entrepreneurs and helps small businesses grow and thrive.</li>
-<li>We are deepening our commitment to a sustainable future and are working towards a new goal to reach net zero emissions by 2030.</li>
-</ul>
-</div>
-        <span class="wt-popover__arrow"></span></div>
-    </div>
 </div>
                     </div>
-                    <div class="wt-ml-lg-6 wt-mr-lg-6 wt-flex-xs-1 wt-mb-xs-5 wt-mb-lg-0">
-                        <h3 class="wt-text-title-larger wt-mb-xs-3"> Support independent creators </h3>
-                        <p class="wt-text-body-01"> There’s no Etsy warehouse – just millions of people selling the things they love. We make the
-            whole process easy, helping you connect directly with makers to find something extraordinary. </p>
-                    </div>
-                    <div class="wt-flex-xs-1 wt-mb-xs-5 wt-mb-lg-0">
-                        <h3 class="wt-text-title-larger wt-mb-xs-3"> Peace of mind </h3>
-                        <p class="wt-text-body-01"> Your privacy is the highest priority of our dedicated team. And if you ever need assistance,
-            we are always ready to step in for support. </p>
-                    </div>
+               
+               
                 </div>
                 <div class="wt-text-center-xs">
                     <h4 class="wt-text-title-large"> Have a question? Well, we’ve got some answers. </h4>
