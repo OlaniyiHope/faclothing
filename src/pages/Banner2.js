@@ -577,7 +577,11 @@ return (
               className="wt-horizontal-center query-image-container wt-mb-xs-1 wt-rounded-02 wt-image--cover wt-image"
               src={cat.image}
               alt={cat.name}
-              style={{ aspectRatio: "0.8" }}
+            style={{
+    aspectRatio: "0.8",
+    maxHeight: "200px", // restrict height on mobile
+    objectFit: "cover",
+  }}
             />
  <Link
                   to={`/category/${cat._id}`}>

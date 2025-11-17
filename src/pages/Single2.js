@@ -1316,10 +1316,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
         <div data-listing-page-badge="" style={{marginLeft: "78px;"}} class="wt-position-absolute wt-z-index-2 wt-position-top wt-position-left wt-mt-xs-1">
             <div class="wt-popover" data-wt-popover="">
     <button data-wt-popover-trigger="" class="wt-popover__trigger wt-popover__trigger--underline wt-display-inline-flex-xs wt-align-items-center wt-text-caption" aria-disabled="true" aria-describedby="bestseller">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--statusRecommendation wt-pl-xs-2">
-                <span class="wt-icon wt-icon--smaller-xs wt-nudge-r-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 18a8 8 0 0 0 7.021-4.163q.008-.012.013-.024A8 8 0 1 0 12 18m4.5-8.8c.2-.1.2-.4.2-.6s-.3-.3-.5-.3h-2.8l-.9-2.7c-.1-.4-.8-.4-1 0l-.9 2.7H7.8c-.2 0-.4.1-.5.3s0 .4.2.6l2.3 1.7-.9 2.7c-.1.2 0 .4.2.6q.3.15.6 0l2.3-1.7 2.3 1.7c.1.1.2.1.3.1s.2 0 .3-.1c.2-.1.2-.4.2-.6l-.9-2.7z"></path><path d="M4.405 14.831a9 9 0 0 0 6.833 4.137L8.9 23l-2.7-3.3L2 19zm15.19 0a9 9 0 0 1-6.833 4.137L15.1 23l2.7-3.3L22 19z"></path></svg></span>Bestseller
 
-</span>
     </button>
     <div id="bestseller" role="tooltip">
         This item has had a high sales volume over the past 6 months.
@@ -1505,32 +1502,34 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
       </div>
 
       {/* Main Image */}
-      <div className="woocommerce-product-gallery__wrapper flex-1">
-        <div className="woocommerce-product-gallery__image">
-          <a
-            className="cms-galleries-light-box"
-            data-elementor-open-lightbox="yes"
-            data-elementor-lightbox-slideshow={`cms-product-gal-${product?._id || "gallery"}`}
-            href={product.images[currentImageIndex]}
-          >
-            <img
-              loading="lazy"
-              width="600"
-              height="687"
-              src={product.images[currentImageIndex]}
-              alt={product.name}
-              title={product.name}
-              data-caption=""
-              data-src={product.images[currentImageIndex]}
-              data-large_image={product.images[currentImageIndex]}
-              data-large_image_width="600"
-              data-large_image_height="900"
-              decoding="async"
-              className="rounded-lg shadow-lg object-contain max-h-[700px] w-auto"
-            />
-          </a>
-        </div>
-      </div>
+     {/* Main Image */}
+<div
+  className="woocommerce-product-gallery__wrapper flex-1"
+  style={{
+    position: "relative",
+    width: "100%",
+    height: "800px", // <<< MAKE IT VERY BIG
+    background: "#f6f6f6",
+    borderRadius: "12px",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }}
+>
+  <img
+    src={product.images[currentImageIndex]}
+    alt={product.name}
+    loading="lazy"
+    decoding="async"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "contain", // <<< Make it BIG but NOT distorted
+    }}
+  />
+</div>
+
     </div>
   </div>
 ) : (
