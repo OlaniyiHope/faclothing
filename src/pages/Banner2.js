@@ -1147,7 +1147,7 @@ wt-position-relative wt-width-full wt-rounded-02
       <div className="simple-header wt-pb-xs-2 wt-pb-md-3 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between">
         <div className="header-wrapper">
           <h2 className="wt-text-title-larger">
-            Save now on standout styles
+         Best sellers
           </h2>
         </div>
       </div>
