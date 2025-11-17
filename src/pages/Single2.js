@@ -44,6 +44,19 @@ const [currentImageIndex, setCurrentImageIndex] = useState(0); // <-- add this
    const { addToCart } = useCart();
     const [activeTab, setActiveTab] = useState("description");
   const [selectedSize, setSelectedSize] = useState("");
+    // NEXT & PREV buttons
+  const goNext = () => {
+    setCurrentImageIndex((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const goPrev = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
+
 useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -1332,7 +1345,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
                     
                         
                         
-                            wt-display-none
+                      
                         
                     " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
             </div>
@@ -1345,7 +1358,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
         
     
 
-    <div class="listing-page-image-carousel-component wt-display-flex-xs is-initialized" data-component="listing-page-image-carousel" data-palette-listing-id="1629181619" data-shop-id="46787910">
+    {/* <div class="listing-page-image-carousel-component wt-display-flex-xs is-initialized" data-component="listing-page-image-carousel" data-palette-listing-id="1629181619" data-shop-id="46787910">
 
     <div class="image-carousel-container wt-position-relative wt-flex-xs-6 wt-order-xs-2
                 
@@ -1355,31 +1368,31 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
                     <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="0" data-image-id="5623924627" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 1" data-carousel-first-image="" data-perf-group="main-product-image" src="https://i.etsystatic.com/46787910/r/il/7de41e/5623924627/il_794xN.5623924627_fxlc.jpg" srcset="https://i.etsystatic.com/46787910/r/il/7de41e/5623924627/il_794xN.5623924627_fxlc.jpg 1x, https://i.etsystatic.com/46787910/r/il/7de41e/5623924627/il_1588xN.5623924627_fxlc.jpg 2x" fetchpriority="high" data-original-image-width="2398" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/7de41e/5623924627/il_fullxfull.5623924627_fxlc.jpg" data-index="0" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="1" data-image-id="5623922097" data-palette-listing-image="">
+                    <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="1" data-image-id="5623922097" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 2" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/11b840/5623922097/il_794xN.5623922097_3uad.jpg" srcset="https://i.etsystatic.com/46787910/r/il/11b840/5623922097/il_794xN.5623922097_3uad.jpg 1x, https://i.etsystatic.com/46787910/r/il/11b840/5623922097/il_1588xN.5623922097_3uad.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2514" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/11b840/5623922097/il_fullxfull.5623922097_3uad.jpg" data-index="1" /> 
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="2" data-image-id="5623921741" data-palette-listing-image="">
+                    <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="2" data-image-id="5623921741" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 3" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/a57d2b/5623921741/il_794xN.5623921741_78pp.jpg" srcset="https://i.etsystatic.com/46787910/r/il/a57d2b/5623921741/il_794xN.5623921741_78pp.jpg 1x, https://i.etsystatic.com/46787910/r/il/a57d2b/5623921741/il_1588xN.5623921741_78pp.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2325" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/a57d2b/5623921741/il_fullxfull.5623921741_78pp.jpg" data-index="2" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="3" data-image-id="5575814058" data-palette-listing-image="">
+                    <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="3" data-image-id="5575814058" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 4" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/bc92c0/5575814058/il_794xN.5575814058_fls3.jpg" srcset="https://i.etsystatic.com/46787910/r/il/bc92c0/5575814058/il_794xN.5575814058_fls3.jpg 1x, https://i.etsystatic.com/46787910/r/il/bc92c0/5575814058/il_1588xN.5575814058_fls3.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2514" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/bc92c0/5575814058/il_fullxfull.5575814058_fls3.jpg" data-index="3" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="4" data-image-id="5623922171" data-palette-listing-image="">
+                    <li class="  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="4" data-image-id="5623922171" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 5" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/7f9aee/5623922171/il_794xN.5623922171_pvxd.jpg" srcset="https://i.etsystatic.com/46787910/r/il/7f9aee/5623922171/il_794xN.5623922171_pvxd.jpg 1x, https://i.etsystatic.com/46787910/r/il/7f9aee/5623922171/il_1588xN.5623922171_pvxd.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2960" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/7f9aee/5623922171/il_fullxfull.5623922171_pvxd.jpg" data-index="4" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="5" data-image-id="5623921891" data-palette-listing-image="">
+                    <li class="  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="5" data-image-id="5623921891" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 6" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/1ac685/5623921891/il_794xN.5623921891_iydr.jpg" srcset="https://i.etsystatic.com/46787910/r/il/1ac685/5623921891/il_794xN.5623921891_iydr.jpg 1x, https://i.etsystatic.com/46787910/r/il/1ac685/5623921891/il_1588xN.5623921891_iydr.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2480" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/1ac685/5623921891/il_fullxfull.5623921891_iydr.jpg" data-index="5" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="6" data-image-id="5623921661" data-palette-listing-image="">
+                    <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="6" data-image-id="5623921661" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 7" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/0dd7f3/5623921661/il_794xN.5623921661_nt6p.jpg" srcset="https://i.etsystatic.com/46787910/r/il/0dd7f3/5623921661/il_794xN.5623921661_nt6p.jpg 1x, https://i.etsystatic.com/46787910/r/il/0dd7f3/5623921661/il_1588xN.5623921661_nt6p.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2398" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/0dd7f3/5623921661/il_fullxfull.5623921661_nt6p.jpg" data-index="6" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="7" data-image-id="5575814116" data-palette-listing-image="">
+                    <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="7" data-image-id="5575814116" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 8" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/fceefe/5575814116/il_794xN.5575814116_5n96.jpg" srcset="https://i.etsystatic.com/46787910/r/il/fceefe/5575814116/il_794xN.5575814116_5n96.jpg 1x, https://i.etsystatic.com/46787910/r/il/fceefe/5575814116/il_1588xN.5575814116_5n96.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="2373" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/fceefe/5575814116/il_fullxfull.5575814116_5n96.jpg" data-index="7" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="8" data-image-id="5521151353" data-palette-listing-image="">
+                    <li class="  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="8" data-image-id="5521151353" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 9" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/f47f95/5521151353/il_794xN.5521151353_3hph.jpg" srcset="https://i.etsystatic.com/46787910/r/il/f47f95/5521151353/il_794xN.5521151353_3hph.jpg 1x, https://i.etsystatic.com/46787910/r/il/f47f95/5521151353/il_1588xN.5521151353_3hph.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="3000" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/f47f95/5521151353/il_fullxfull.5521151353_3hph.jpg" data-index="8" />
                     </li>
-                    <li class="wt-display-none  wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="9" data-image-id="5289994672" data-palette-listing-image="">
+                    <li class=" wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane" data-carousel-pane="" data-index="9" data-image-id="5289994672" data-palette-listing-image="">
                         <img class="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded" alt="Happy Chemicals Poster, Therapy Office Decor, Mental Health Poster, Anxiety Relief, Calming Corner, School Psychology, Digital Download image 10" loading="lazy" src="https://i.etsystatic.com/46787910/r/il/5e0b8c/5289994672/il_794xN.5289994672_nvxm.jpg" srcset="https://i.etsystatic.com/46787910/r/il/5e0b8c/5289994672/il_794xN.5289994672_nvxm.jpg 1x, https://i.etsystatic.com/46787910/r/il/5e0b8c/5289994672/il_1588xN.5289994672_nvxm.jpg 2x" data-perf-group="secondary-product-image" data-original-image-width="3000" data-src-zoom-image="https://i.etsystatic.com/46787910/r/il/5e0b8c/5289994672/il_fullxfull.5289994672_nvxm.jpg" data-index="9" />
                     </li>
         </ul>
@@ -1449,7 +1462,80 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
             </div>
 
         
-</div>
+</div> */}
+{product && product.images?.length > 0 ? (
+  <div className="cms-woocommerce-product-gallery single-product-full cms-gallery-grid-mixed relative">
+    <div className="cms-wc-badges absolute d-flex gap-5 empty-none"></div>
+
+    <div
+      className="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-0 images cms-gallery-grid-mixed cms-sticky"
+      data-columns="grid-mixed"
+      style={{
+        opacity: 1,
+        transition: "opacity 0.25s ease-in-out",
+        display: "flex",
+        gap: "20px",
+      }}
+    >
+      {/* Thumbnails */}
+      <div className="flex flex-col gap-3">
+        {product.images.map((img, index) => (
+          <div
+            key={index}
+            className={`woocommerce-product-gallery__image cursor-pointer ${
+              index === currentImageIndex ? "border-2 border-blue-500" : ""
+            }`}
+            onClick={() => setCurrentImageIndex(index)}
+            style={{
+              borderRadius: "8px",
+              overflow: "hidden",
+              width: "90px",
+              height: "110px",
+            }}
+          >
+            <img
+              src={img}
+              alt={`Thumbnail ${index}`}
+              className="object-cover w-full h-full"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Main Image */}
+      <div className="woocommerce-product-gallery__wrapper flex-1">
+        <div className="woocommerce-product-gallery__image">
+          <a
+            className="cms-galleries-light-box"
+            data-elementor-open-lightbox="yes"
+            data-elementor-lightbox-slideshow={`cms-product-gal-${product?._id || "gallery"}`}
+            href={product.images[currentImageIndex]}
+          >
+            <img
+              loading="lazy"
+              width="600"
+              height="687"
+              src={product.images[currentImageIndex]}
+              alt={product.name}
+              title={product.name}
+              data-caption=""
+              data-src={product.images[currentImageIndex]}
+              data-large_image={product.images[currentImageIndex]}
+              data-large_image_width="600"
+              data-large_image_height="900"
+              decoding="async"
+              className="rounded-lg shadow-lg object-contain max-h-[700px] w-auto"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+) : (
+  <p className="text-center text-gray-400 py-8">Loading product...</p>
+)}
 </div>
 
 
@@ -1481,7 +1567,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
             </span>
         </p>
     
-    <div data-clg-id="WtSpinner" class="wt-spinner wt-spinner--01 wt-display-none" aria-live="assertive" data-buy-box-price-spinner="">
+    <div data-clg-id="WtSpinner" class="wt-spinner wt-spinner--01" aria-live="assertive" data-buy-box-price-spinner="">
         <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle fill="transparent" cx="12" cy="12" r="10"></circle></svg></span>
         Loading
     </div>
@@ -1582,7 +1668,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
             
             
 
-        <div class="wt-display-none" id="mao-button-disabled-text-div">
+        <div  id="mao-button-disabled-text-div">
             <p class="wt-text-body-body wt-sem-text-secondary wt-text-center-xs">
                 You can only make an offer when buying a single item
             </p>
@@ -1592,11 +1678,11 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
         <form action="/cart/listing.php" method="post" class="add-to-cart-form" data-buy-box-add-to-cart-form="">
             <input type="hidden" name="listing_id" value="1629181619" />
             <input type="hidden" name="ref" value="listing_page" />
-            <input type="hidden" name="_nnc" value="3:1762952986:U0Su2AKqiNrzYiW2MEyOogYcUazs:687b293a66a02bf3d94b5b0a16be1a6860111af6f43e95969f9b4f96fc600d09" class="wt-display-none" />
+            <input type="hidden" name="_nnc" value="3:1762952986:U0Su2AKqiNrzYiW2MEyOogYcUazs:687b293a66a02bf3d94b5b0a16be1a6860111af6f43e95969f9b4f96fc600d09"  />
                 <input type="hidden" name="listing_inventory_id" value="19441100920" />
                 <input type="hidden" name="shipping_method_id" value="" />
                 <input type="hidden" name="quantity" value="1" />
-                <input type="hidden" name="_nnc" value="3:1762952986:U0Su2AKqiNrzYiW2MEyOogYcUazs:687b293a66a02bf3d94b5b0a16be1a6860111af6f43e95969f9b4f96fc600d09" class="wt-display-none" />
+                <input type="hidden" name="_nnc" value="3:1762952986:U0Su2AKqiNrzYiW2MEyOogYcUazs:687b293a66a02bf3d94b5b0a16be1a6860111af6f43e95969f9b4f96fc600d09"  />
             <div class="wt-width-full" data-add-to-cart-button="" data-selector="add-to-cart-button">
 <button data-clg-id="WtButton" class="wt-btn wt-btn--filled wt-width-full wt-no-wrap" type="submit">
             <span>Add to cart
@@ -1611,7 +1697,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
 </div>
         </form>
         
-        <p class="purchase-accept-terms wt-display-none wt-mt-xs-2 wt-sem-text-primary wt-text-body-small wt-width-full"></p>
+        <p class="purchase-accept-terms  wt-mt-xs-2 wt-sem-text-primary wt-text-body-small wt-width-full"></p>
 </div>
 </div>
     </div>
@@ -1925,8 +2011,8 @@ Copyright (c) DaysAndColours
         <input type="hidden" class="id" name="user_id" value="833699117" />
             <a href="https://www.etsy.com/signin?workflow=ZmF2b3JpdGVfdXNlcl9pZDo4MzM2OTkxMTc6MTc2Mjk1MzU4NTo3OTA4ZGYyNzhjN2Q4ZTE4ZTFlYWQwMzY0Njk5OTg3OA%3D%3D&amp;use_follow_text=1&amp;from_page=https%3A%2F%2Fwww.etsy.com%2Flisting%2F1629181619%2Fhappy-chemicals-poster-therapy-office%3Fls%3Dr%26ref%3Drlp-listing-grid-2%26external%3D1%26space_id%3D1368461677904%26pro%3D1%26sts%3D1%26dd%3D1%26content_source%3D2dd9b4ba02a841000d243d2781f9d5d2%25253ALT2b5414eacb64225d919d2a55b4c835af680d0ffb%26logging_key%3D2dd9b4ba02a841000d243d2781f9d5d2%253ALT2b5414eacb64225d919d2a55b4c835af680d0ffb" rel="nofollow" data-downtime-overlay-type="favorite" data-supplemental-state--use_follow_text="true" class="inline-overlay-trigger favorite-shop-action wt-btn wt-btn--small wt-btn--transparent follow-shop-button-listing-header-v3 wt-btn--transparent-flush-left" aria-label="Follow shop" data-action="follow-shop-button" data-shop-id="46787910" data-source-name="listing_header" data-module-name="">
                 <span class="etsy-icon wt-icon--smaller-xs" data-not-following-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12,21C10.349,21,2,14.688,2,9,2,5.579,4.364,3,7.5,3A6.912,6.912,0,0,1,12,5.051,6.953,6.953,0,0,1,16.5,3C19.636,3,22,5.579,22,9,22,14.688,13.651,21,12,21ZM7.5,5C5.472,5,4,6.683,4,9c0,4.108,6.432,9.325,8,10,1.564-.657,8-5.832,8-10,0-2.317-1.472-4-3.5-4-1.979,0-3.7,2.105-3.721,2.127L11.991,8.1,11.216,7.12C11.186,7.083,9.5,5,7.5,5Z"></path></svg></span>
-                <span class="etsy-icon wt-icon--smaller-xs wt-display-none wt-text-brick" data-following-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.5,3A6.953,6.953,0,0,0,12,5.051,6.912,6.912,0,0,0,7.5,3C4.364,3,2,5.579,2,9c0,5.688,8.349,12,10,12S22,14.688,22,9C22,5.579,19.636,3,16.5,3Z"></path></svg></span>
-                        <span data-following-message="" class="wt-ml-xs-1 listing-header-v3-message wt-display-inline-block wt-position-relative wt-display-none ">
+                <span class="etsy-icon wt-icon--smaller-xs wt-text-brick" data-following-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.5,3A6.953,6.953,0,0,0,12,5.051,6.912,6.912,0,0,0,7.5,3C4.364,3,2,5.579,2,9c0,5.688,8.349,12,10,12S22,14.688,22,9C22,5.579,19.636,3,16.5,3Z"></path></svg></span>
+                        <span data-following-message="" class="wt-ml-xs-1 listing-header-v3-message wt-display-inline-block wt-position-relative">
                             Following
                         </span>
                         <span data-not-following-message="" class="wt-ml-xs-1 listing-header-v3-message wt-display-inline-block wt-position-relative ">

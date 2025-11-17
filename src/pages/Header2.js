@@ -29,7 +29,7 @@ const Header2 = ({ cartCount = 1 }) => {
   }, []);
 
   return (
-    <div > 
+    <div style={{marginBottom: "20px"}}> 
 
  
 
