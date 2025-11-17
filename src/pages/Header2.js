@@ -31,14 +31,8 @@ const Header2 = ({ cartCount = 1 }) => {
   return (
     <div > 
 
-       <body class="ui-toolkit transitional-wide etsy-has-it-design is-responsive no-touch en-US USD NG bg-white guest wt-focus-visible" data-language="en-US" data-currency="USD" data-region="NG" data-hover-none="true" data-visual-focus-state="true" data-mobile-viewport-height="true">
+ 
 
-
-        <div data-above-header="" class="wt-z-index-5 wt-position-relative">
-            
-            
-
-        </div>
 
         <div data-selector="header-cat-nav-wrapper" data-menu-ui="menubar">
 <div id="gnav-header" class=" gnav-header global-nav v2-toolkit-gnav-header wt-z-index-6 wt-sem-bg-elevation-0 wt-position-relative " data-as-version="10_12672349415_19" data-count-ajax="" data-show-suggested-searches-in-as="" data-show-gift-card-cta-in-as="1" data-as-personalized="1" data-as-extras="{&amp;quot;expt&amp;quot;:&amp;quot;all_xml&amp;quot;,&amp;quot;lang&amp;quot;:&amp;quot;en-US&amp;quot;,&amp;quot;extras&amp;quot;:[]}" data-cheact="1" data-gnav-header="">
@@ -173,8 +167,7 @@ const Header2 = ({ cartCount = 1 }) => {
 
         
 
-        <div class="mobile-catnav-wrapper wt-overlay wt-overlay--peek wt-overlay--peek-left wt-p-xs-0" data-wt-overlay="" id="mobile-catnav-overlay" aria-hidden="true" aria-modal="false" role="dialog">
-        </div>
+   
 
         <div class="wt-flex-shrink-xs-0" data-primary-nav-container="">
             <nav aria-label="Main">
@@ -268,14 +261,12 @@ const Header2 = ({ cartCount = 1 }) => {
       </div>
     </nav>
 </div>
-<div class="wt-overlay wt-z-index-4" aria-hidden="true" data-ui="overlay"></div>
-<div class="sidebar-cart-carat"></div>
 
-   <div data-below-header="">
-            
-        </div>
 
-</body>
+
+  
+
+
     </div>
     
   );

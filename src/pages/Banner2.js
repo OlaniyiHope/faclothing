@@ -188,14 +188,8 @@ return (
   
                   <main id="content">
             <div data-async-homepage-modules="">
-    <div class="hp-spacing-smaller">
-    
-        
-</div>
-<div class="hp-spacing-reduced-default">
-    
-        
-</div>
+
+
 <div data-appears-component-name="hp_shoppable_hero" data-appears-event-data="{&quot;image_url&quot;:&quot;https:\/\/i.etsystatic.com\/ij\/6b6698\/7316241243\/ij_fullxfull.7316241243_3bsney2g.jpg?version=0&quot;,&quot;panels&quot;:[{&quot;title&quot;:&quot;Pieces that will start new traditions&quot;,&quot;entry_id&quot;:&quot;4RtraSdenNjYc5UT3RNiFT&quot;}]}">
 <div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
     

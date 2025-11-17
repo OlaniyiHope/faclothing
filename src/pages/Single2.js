@@ -1452,11 +1452,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
 </div>
 </div>
 
-<div class="wt-display-flex-xs wt-justify-content-flex-end wt-mt-xs-3">
-        <a class="wt-text-link wt-text-link-underline" href="https://www.etsy.com/signin?from_page=https%3A%2F%2Fwww.etsy.com%2Flisting%2F1629181619%2Fhappy-chemicals-poster-therapy-office%23report-overlay-trigger">
-        <span class="wt-icon wt-icon--smaller-xs wt-nudge-r-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 3a1 1 0 0 0-2 0v18a1 1 0 1 0 2 0v-6h14.766l-3.6-6 3.6-6zm0 2v8h11.234l-2.4-4 2.4-4z"></path></svg></span>Report this item to Etsy
-    </a>
-    </div>
+
 
                         </div>
                     </div>
