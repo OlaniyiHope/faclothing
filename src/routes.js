@@ -3,7 +3,6 @@ import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import GoogleAuthHandler from "./GoogleAuthHandler";
 import Selling from "./pages/Selling";
-import Single from "./pages/Single";
 import ShopCategory from "./pages/ShopCategory";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
@@ -41,12 +40,12 @@ const routes = [
     path: "/shop-category",
     element: <Category />,
   },
+//   {
+//  path: "/single-product/:id",
+//     element: <Single />,
+//   },
   {
  path: "/single-product/:id",
-    element: <Single />,
-  },
-  {
- path: "/single-products",
     element: <Single2 />,
   },
   {

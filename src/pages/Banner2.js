@@ -16,7 +16,11 @@ const Banner2 = () => {
   const [categories, setCategories] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
   const [brands, setBrands] = useState([]);
-
+  const [selectedCategory, setSelectedCategory] = useState("all");
+      const [bestsellers, setBestSellers] = useState([]);
+          const [trending, setTrending] = useState([]);
+          const [special, setSpecial] = useState([]);
+      const [product, setProduct] = useState([]);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -36,7 +40,7 @@ const Banner2 = () => {
         const { data } = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/db/products/best-sellers`
         );
-        setProducts(data);
+        setBestSellers(data);
       } catch (err) {
         console.error("Error fetching best sellers:", err);
       }
@@ -44,12 +48,55 @@ const Banner2 = () => {
 
     fetchBestSellers();
   }, []);
+  useEffect(() => {
+    const fetchTrending = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/db/products/trending`
+        );
+        setTrending(data);
+      } catch (err) {
+        console.error("Error fetching best sellers:", err);
+      }
+    };
+
+    fetchTrending();
+  }, []);
+  useEffect(() => {
+    const fetchSpecial = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/db/products/special`
+        );
+        setSpecial(data);
+      } catch (err) {
+        console.error("Error fetching best sellers:", err);
+      }
+    };
+
+    fetchSpecial();
+  }, []);
   // Render submenu
 // Only keep children that are categories (ignore products)
 const isCategory = (item) => {
   // A category has a 'children' property (array) and no 'price' property
   return item.children && Array.isArray(item.children) && !item.price;
 };
+useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const url =
+          selectedCategory === "all"
+            ? `${process.env.REACT_APP_API_URL}/api/db/products`
+            : `${process.env.REACT_APP_API_URL}/api/db/products/category/${selectedCategory}`;
+        const res = await axios.get(url);
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+    fetchProducts();
+  }, [selectedCategory]);
 
 
 const renderSubmenu = (category) => {
@@ -144,7 +191,12 @@ return (
     <div class="hp-spacing-smaller">
     
         
-</div><div data-appears-component-name="hp_shoppable_hero" data-appears-event-data="{&quot;image_url&quot;:&quot;https:\/\/i.etsystatic.com\/ij\/6b6698\/7316241243\/ij_fullxfull.7316241243_3bsney2g.jpg?version=0&quot;,&quot;panels&quot;:[{&quot;title&quot;:&quot;Pieces that will start new traditions&quot;,&quot;entry_id&quot;:&quot;4RtraSdenNjYc5UT3RNiFT&quot;}]}">
+</div>
+<div class="hp-spacing-reduced-default">
+    
+        
+</div>
+<div data-appears-component-name="hp_shoppable_hero" data-appears-event-data="{&quot;image_url&quot;:&quot;https:\/\/i.etsystatic.com\/ij\/6b6698\/7316241243\/ij_fullxfull.7316241243_3bsney2g.jpg?version=0&quot;,&quot;panels&quot;:[{&quot;title&quot;:&quot;Pieces that will start new traditions&quot;,&quot;entry_id&quot;:&quot;4RtraSdenNjYc5UT3RNiFT&quot;}]}">
 <div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
     
         <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
@@ -159,7 +211,7 @@ return (
             <p class="wt-text-title-large">
                 
             </p>
-            <a href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
+            <a href="/shop-categories" type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
                 Shop all products
             </a>
         </div>
@@ -168,7 +220,7 @@ return (
 			
 			 style={{ aspectRatio: "1.25925925926" }} fetchpriority="high" sizes="(max-width: 639px) 100vw, (max-width: 899px) 45vw, (max-width: 1199px) 55vw, 33vw" srcset={d2} />
 
-            <a href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" type="button" class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
+            <a href="/shop-categories" type="button" class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
                 Shop all products
             </a>
         </div>
@@ -179,15 +231,17 @@ return (
         <div class="shoppable-hero-section wt-width-full  wt-show-xl"><div class="shoppable-hero-page wt-flex-grow-xs-1 wt-flex-basis-xs-full">
     <div class="shoppable-hero-page__container wt-height-full">
         <div class="wt-card wt-card--contained shoppable-hero-page__item shoppable-hero-page__item--primary shoppable-hero-page__item--primary-gradient wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
-            <a class="wt-card__action-link" href="https://www.etsy.com/r/curated/best-of-family-traditions?sections=1410717528977&amp;ref=hp_shoppable_hero_secondary" aria-label="Pieces that will start new traditions Shop now"></a>
+            <a class="wt-card__action-link" href="" aria-label="Pieces that will start new traditions Shop now"></a>
             <img data-clg-id="WtImage" class="wt-height-full wt-object-fit-cover shoppable-hero-page__image wt-z-index-negative-1 wt-rounded-02 wt-image" src={d3} alt="Pieces that will start new traditions"  style={{ aspectRatio: "1" }} sizes="400px" srcset={d3} />
 
-            <div class="wt-position-absolute wt-width-full wt-pl-xs-3 wt-pr-xs-3 wt-pb-xs-3">
+
+                                <div class="wt-position-absolute wt-width-full wt-pl-xs-3 wt-pr-xs-3 wt-pb-xs-3">
                 <p class="wt-text-white wt-text-title-larger">Authentic African Styles for Every Moment</p>
                 <span class="wt-text-white wt-text-title">
                     Shop now
                 </span>
             </div>
+    
         </div>
     </div>
 </div></div>
@@ -271,10 +325,7 @@ return (
     </ul>
 </section> */}
 
-</div><div class="hp-spacing-reduced-default">
-    
-        
-</div><div data-appears-component-name="hp_curated_rlp">
+</div>
 {/* <div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
     
         <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
@@ -374,7 +425,7 @@ return (
 </div>
 </div>
 </div> */}
-</div>
+
 <div data-appears-component-name="Homepage_Vesta_ApiSpec_DailyDeals" data-appears-event-data="{&quot;module_placement&quot;:&quot;home_daily_deals&quot;,&quot;datasets&quot;:[&quot;Common_Listing_DailyDealsListings&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Homepage_Vesta_ApiSpec_DailyDeals&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:{&quot;72d04706-5cbc-455d-a695-2909641aa8b4&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]},&quot;candidate_source_map&quot;:{&quot;arizona:daily_deals_listings_migrated&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]},&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Common_Listing_DailyDealsListings&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]},&quot;region_id&quot;:&quot;NG&quot;,&quot;user_id&quot;:0,&quot;limit&quot;:15,&quot;listing_ids&quot;:[1554579312,1558106140,1778630263,1275026920,1806681962,4333767364,1895313425,1490503424,1660348743,1811620349,1217354784,1639687880,1208309840,1693473321,1092702703,1859896209,1268615771,1579015837,4301825628,4370018901,1683201881,1786839649,887755550,1830883275,1799278658,1772191538,1801449863,1200489887,1806776138,4369183618,1706218238,1760174793,1803755127,1856983733,953599040,1687432605,1753668990,965245133,1754875706,1651487996,1817281685,1559634006,4344786926,1818897311,1813509350,1083414610,1564934453,889071937,1822499711,1021132911,1788449800,1775539641,1810659441,1782789165,768656512,4356479072,1623683213,1609802633,1804638172,1694868202,902970767,1624829479,1788140643,1820266638,1656546341,1480371199,4391684141,1687932493,1669644555,1540119376,4302947751,4356405095,1696621683,1855801765,1873355764,1652021866,1798894213,1337248891,1802967382,4362401182,1227735580,1504687221,1552380871,1420552889,1800616256,1256533541,4295011799,1906432319,1866444395,4378729147,1237647786,1544885822,1800764501,4321329650],&quot;dedupe_taxo_level&quot;:2,&quot;refTag&quot;:&quot;hp_daily_deals&quot;,&quot;listing_prices_usd&quot;:[8.9900000000000002131628207280300557613372802734375,3,14,5.5800000000000000710542735760100185871124267578125,21.980000000000000426325641456060111522674560546875,21,12.3699999999999992184029906638897955417633056640625,16.260000000000001563194018672220408916473388671875,10.7599999999999997868371792719699442386627197265625,13.9700000000000006394884621840901672840118408203125,6.6500000000000003552713678800500929355621337890625,12.3699999999999992184029906638897955417633056640625,5.13999999999999968025576890795491635799407958984375,26.699999999999999289457264239899814128875732421875,42.219999999999998863131622783839702606201171875,26.989999999999998436805981327779591083526611328125,9.03999999999999914734871708787977695465087890625,15.46000000000000085265128291212022304534912109375,9.0099999999999997868371792719699442386627197265625,6.82000000000000028421709430404007434844970703125,16.82000000000000028421709430404007434844970703125,18.989999999999998436805981327779591083526611328125,16.5,17.32000000000000028421709430404007434844970703125,24.39999999999999857891452847979962825775146484375,13.519999999999999573674358543939888477325439453125,29,32.8299999999999982946974341757595539093017578125,13.0600000000000004973799150320701301097869873046875,2,13.730000000000000426325641456060111522674560546875,21,19.89999999999999857891452847979962825775146484375,24.489999999999998436805981327779591083526611328125,44.93999999999999772626324556767940521240234375,10.2200000000000006394884621840901672840118408203125,10.1199999999999992184029906638897955417633056640625,11.25,39.96000000000000085265128291212022304534912109375,8.589999999999999857891452847979962825775146484375,23.35000000000000142108547152020037174224853515625,14.839999999999999857891452847979962825775146484375,23.14999999999999857891452847979962825775146484375,6.79999999999999982236431605997495353221893310546875,7.5999999999999996447286321199499070644378662109375,8.25,14.78999999999999914734871708787977695465087890625,2,22.160000000000000142108547152020037174224853515625,20.1700000000000017053025658242404460906982421875,36,1.20999999999999996447286321199499070644378662109375,1.4899999999999999911182158029987476766109466552734375,35.50999999999999801048033987171947956085205078125,7.53000000000000024868995751603506505489349365234375,3.9900000000000002131628207280300557613372802734375,17.96000000000000085265128291212022304534912109375,21.6700000000000017053025658242404460906982421875,3.720000000000000195399252334027551114559173583984375,8.589999999999999857891452847979962825775146484375,17.800000000000000710542735760100185871124267578125,22.809999999999998721023075631819665431976318359375,13.0600000000000004973799150320701301097869873046875,11.019999999999999573674358543939888477325439453125,18.370000000000000994759830064140260219573974609375,4.29000000000000003552713678800500929355621337890625,3.4900000000000002131628207280300557613372802734375,1.70999999999999996447286321199499070644378662109375,7.5,11,6.660000000000000142108547152020037174224853515625,16.17999999999999971578290569595992565155029296875,17.10000000000000142108547152020037174224853515625,6.79999999999999982236431605997495353221893310546875,9.949999999999999289457264239899814128875732421875,49.97999999999999687361196265555918216705322265625,9.6899999999999995026200849679298698902130126953125,23.910000000000000142108547152020037174224853515625,25.969999999999998863131622783839702606201171875,35.25,3.70999999999999996447286321199499070644378662109375,16.260000000000001563194018672220408916473388671875,9.17999999999999971578290569595992565155029296875,2.399999999999999911182158029987476766109466552734375,16.3599999999999994315658113919198513031005859375,3.45000000000000017763568394002504646778106689453125,6.79999999999999982236431605997495353221893310546875,26.190000000000001278976924368180334568023681640625,6.79999999999999982236431605997495353221893310546875,28,10.7599999999999997868371792719699442386627197265625,18.60000000000000142108547152020037174224853515625,4.839999999999999857891452847979962825775146484375,13.5],&quot;taxonomy_ids&quot;:[1017,1666,2844,2099,1197,328,175,1666,2078,1229,6343,175,367,347,197,1197,1858,11196,1026,12643,143,6102,1858,6365,12197,1166,2844,2353,6109,1858,1222,1222,12622,1167,1668,2078,1197,2844,2811,6343,1227,1023,469,6343,6343,173,2815,1857,6365,1229,338,1858,1349,6396,322,1671,2385,1226,173,6343,1671,2124,1093,1023,2078,1350,2078,328,326,6665,1668,1857,1020,6343,1029,114,25,326,338,2638,6343,1666,1349,12420,2124,6343,6343,2078,6343,1030,2078,326,6343,2202],&quot;taxo_paths&quot;:[&quot;home_and_living.home_decor.throw_pillows&quot;,&quot;weddings.gifts_and_mementos.bridesmaids_gifts&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings.signs&quot;,&quot;books_movies_and_music.music.picks_and_slides.picks&quot;,&quot;jewelry.bracelets.charm_bracelets&quot;,&quot;books_movies_and_music.books.book_accessories&quot;,&quot;bags_and_purses.luggage_and_travel.passport_covers&quot;,&quot;weddings.gifts_and_mementos.bridesmaids_gifts&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;jewelry.necklaces.pendant_necklaces&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;bags_and_purses.luggage_and_travel.passport_covers&quot;,&quot;books_movies_and_music.music.musical_instruments.tuning_and_accessories&quot;,&quot;books_movies_and_music.books.literature_and_fiction&quot;,&quot;bags_and_purses.wallets_and_money_clips.wallets&quot;,&quot;jewelry.bracelets.charm_bracelets&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;clothing.gender_neutral_adult_clothing.pajamas_and_robes.pajamas.sets&quot;,&quot;home_and_living.home_decor.home_accents.vases&quot;,&quot;accessories.aprons&quot;,&quot;bags_and_purses.cosmetic_and_toiletry_storage.cosmetic_bags&quot;,&quot;jewelry.jewelry_storage.jewelry_boxes&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;craft_supplies_and_tools.stamps_and_seals.stamps&quot;,&quot;electronics_and_accessories.video_games.stands_and_displays&quot;,&quot;home_and_living.storage_and_organization.baskets&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings.signs&quot;,&quot;toys_and_games.games_and_puzzles.puzzles.jigsaw_puzzles&quot;,&quot;home_and_living.home_decor.seasonal_decor.christmas_trees&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;jewelry.necklaces.charm_necklaces&quot;,&quot;jewelry.necklaces.charm_necklaces&quot;,&quot;toys_and_games.games_and_puzzles.puzzles.name_puzzles&quot;,&quot;home_and_living.storage_and_organization.boxes_and_bins&quot;,&quot;weddings.gifts_and_mementos.groomsmen_gifts&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;jewelry.bracelets.charm_bracelets&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings.signs&quot;,&quot;art_and_collectibles.glass_art.suncatchers&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;jewelry.necklaces.monogram_and_name_necklaces&quot;,&quot;home_and_living.home_decor.seasonal_decor&quot;,&quot;clothing.gender_neutral_adult_clothing.hoodies_and_sweatshirts&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;bags_and_purses.luggage_and_travel.luggage_tags&quot;,&quot;home_and_living.lighting.lamps_shades_and_bases.lamps.table_lamps&quot;,&quot;home_and_living.home_decor.seasonal_decor.ornaments&quot;,&quot;craft_supplies_and_tools.stamps_and_seals.stamps&quot;,&quot;jewelry.necklaces.pendant_necklaces&quot;,&quot;books_movies_and_music.books.childrens_books&quot;,&quot;home_and_living.home_decor.seasonal_decor.stockings&quot;,&quot;paper_and_party_supplies.party_supplies.party_favors_and_games.party_favors&quot;,&quot;craft_supplies_and_tools.tools_and_equipment.tools&quot;,&quot;bath_and_beauty.spa_and_relaxation.spa_kits_and_gifts&quot;,&quot;weddings.gifts_and_mementos.wedding_favors&quot;,&quot;toys_and_games.games_and_puzzles.card_games.trading_card_games&quot;,&quot;jewelry.necklaces.lockets&quot;,&quot;bags_and_purses.luggage_and_travel.luggage_tags&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;weddings.gifts_and_mementos.wedding_favors&quot;,&quot;clothing.gender_neutral_kids_clothing.gender_neutral_baby_clothing.bodysuits&quot;,&quot;home_and_living.lighting.light_fixtures.wall_lights.night_lights&quot;,&quot;home_and_living.home_decor.seasonal_decor&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;paper_and_party_supplies.party_supplies.party_favors_and_games.party_games&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;books_movies_and_music.books.book_accessories&quot;,&quot;books_movies_and_music.books.blank_books.journals_and_notebooks&quot;,&quot;craft_supplies_and_tools.stamps_and_seals.seals.wax_seals&quot;,&quot;weddings.gifts_and_mementos.groomsmen_gifts&quot;,&quot;home_and_living.home_decor.seasonal_decor.ornaments&quot;,&quot;home_and_living.home_decor.flower_arrangements&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;home_and_living.home_decor.wall_decor.wall_hangings&quot;,&quot;art_and_collectibles.painting.watercolor&quot;,&quot;accessories.hats_and_head_coverings.hats_and_caps&quot;,&quot;books_movies_and_music.books.blank_books.journals_and_notebooks&quot;,&quot;books_movies_and_music.books.childrens_books&quot;,&quot;pet_supplies.urns_and_memorials.pet_portraits&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;weddings.gifts_and_mementos.bridesmaids_gifts&quot;,&quot;paper_and_party_supplies.party_supplies.party_favors_and_games.party_favors&quot;,&quot;electronics_and_accessories.car_parts_and_accessories.car_accessories.car_charms&quot;,&quot;clothing.gender_neutral_kids_clothing.gender_neutral_baby_clothing.bodysuits&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;home_and_living.home_decor.wreaths_and_door_hangers&quot;,&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;books_movies_and_music.books.blank_books.journals_and_notebooks&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.patterns_and_blueprints&quot;,&quot;clothing.gender_neutral_adult_clothing.hoodies_and_sweatshirts.sweatshirts&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
 <section class="wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 daily-deals-carousel   daily-deals-carousel--initialized appears-ready">
         <div class="wt-display-flex-xs wt-justify-content-space-between wt-align-items-flex-end wt-mb-xs-3">
@@ -406,7 +457,7 @@ return (
         
 
 
-{products.map((product) => (
+{trending.map((product) => (
   <div
     key={product._id}
     className="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
@@ -444,9 +495,12 @@ return (
 
         <div className="wt-grid wt-align-items-baseline">
           <div className="wt-grid__item-xs-12 wt-grid__item-xl-8 wt-p-xs-0">
+             <Link
+                              to={`/single-product/${product._id}`}>
             <h3 className="wt-text-caption v2-listing-card__title wt-text-truncate">
               {product.name}
             </h3>
+            </Link>
           </div>
 
           {/* Rating */}
@@ -531,10 +585,13 @@ return (
               alt={cat.name}
               style={{ aspectRatio: "0.8" }}
             />
-
+ <Link
+                  to={`/category/${cat._id}`}>
             <p className="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1">
               {cat.icon} {cat.name}
             </p>
+
+            </Link>
           </a>
         </div>
       </li>
@@ -554,169 +611,108 @@ return (
         
 </div>
 
-
 <div data-appears-component-name="hp_gifting_occasion_container">
-<div class="new-missions-gifting wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 appears-ready">
-    <div class="wt-pb-xs-3">
-        <div class="new-missions-gifting__hero_section wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-xl wt-flex-gap-xs-3">
-    <div class="wt-flex-xs-1 wt-flex-gap-xl-3 wt-display-flex-xs wt-align-items-center wt-flex-direction-row-xs wt-flex-direction-column-xl">
-        <h2 class="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-grow-xs-1 wt-flex-grow-xl-0">
-            <p class="wt-text-title-larger wt-show-md ">Rayofaa Special Christmas Sales</p>
-            <p class="wt-text-title-large wt-show-xs ">Rayofaa Special Christmas Sales</p>
-        </h2>
-        <a href="https://www.etsy.com/gift-mode/occasion/christmas?ref=hp_gifting_occasion" type="button" class="wt-btn wt-btn--tertiary wt-align-self-flex-start">
+  <div className="new-missions-gifting wt-body-max-width wt-pr-xs-0 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-6 wt-pl-lg-6 appears-ready">
+    
+    {/* SECTION HEADER */}
+    <div className="wt-pb-xs-3">
+      <div className="new-missions-gifting__hero_section wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-xl wt-flex-gap-xs-3">
+        
+        <div className="wt-flex-xs-1 wt-flex-gap-xl-3 wt-display-flex-xs wt-align-items-center wt-flex-direction-row-xs wt-flex-direction-column-xl">
+          <h2 className="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-grow-xs-1 wt-flex-grow-xl-0">
+            <p className="wt-text-title-larger wt-show-md">Rayofaa Special Christmas Sales</p>
+            <p className="wt-text-title-large wt-show-xs">Rayofaa Special Christmas Sales</p>
+          </h2>
+
+          <a
+            href="#"
+            className="wt-btn wt-btn--tertiary wt-align-self-flex-start"
+          >
             Get inspired
-        </a>
-    </div>
-    <div data-appears-component-name="Etsy-Modules-NewMissions-Gifting-GiftIdeas-ApiSpec" data-appears-event-data="{&quot;module_placement&quot;:&quot;hp_gifting_occasion&quot;,&quot;datasets&quot;:[&quot;ORM&quot;],&quot;targets&quot;:[&quot;1262837003684&quot;,&quot;1262837112714&quot;,&quot;1262837145724&quot;,&quot;1262837167464&quot;,&quot;1262837362270&quot;,&quot;1262837458760&quot;,&quot;1262837543486&quot;,&quot;1262837621156&quot;,&quot;1262837658302&quot;,&quot;1262839504916&quot;],&quot;logging_class&quot;:&quot;Etsy\\Modules\\NewMissions\\Gifting\\GiftIdeas\\ApiSpec()&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;directLanding&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;2&quot;,&quot;hourOfDay&quot;:&quot;10&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;ORM&quot;:[0,1,2,3,4,5,6,7,8,9]},&quot;refTag&quot;:&quot;hp_gifting_occasion&quot;,&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger wt-flex-xl-3 wt-flex-lg-1">
-<ul data-clg-id="WtList" class="new-missions-gifting__gift_ideas wt-flex-gap-xs-3 wt-list wt-list-unstyled wt-display-flex-xs wt-align-items-flex-start appears-ready">
-    <li class="wt-flex-xs-1 ">
-    <div class="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
-        <a class="wt-card__action-link" href="https://www.etsy.com/gift-mode/gift-idea/1262837362270/festive-servingware?ref=hp_gifting_occasion" aria-label="Festive Servingware"></a>
-        <img data-clg-id="WtImage" class="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image wt-image--cover wt-image" src="https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_fullxfull.4329508554_q99v.jpg" alt="Festive Servingware"  style={{ aspectRatio: "1.25925925926" }} sizes="(max-width: 639px) 100vw, (max-width: 899px) 60vw, (max-width: 1199px) 55vw, 40vw" srcset="https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_680x540.4329508554_q99v.jpg 680w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_850x675.4329508554_q99v.jpg 850w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_1020x810.4329508554_q99v.jpg 1020w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_1190x945.4329508554_q99v.jpg 1190w, https://i.etsystatic.com/31388531/r/il/b66a90/4329508554/il_1360x1080.4329508554_q99v.jpg 1360w" />
-
-
-        <div class="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2 wt-pl-lg-2 wt-pr-lg-2 wt-pb-lg-2">
-            <p class="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">Festive Servingware</p>
+          </a>
         </div>
-    </div>
-</li><li class="wt-flex-xs-1 ">
-    <div class="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
-        <a class="wt-card__action-link" href="https://www.etsy.com/gift-mode/gift-idea/1262837003684/stocking-stuffers?ref=hp_gifting_occasion" aria-label="Stocking Stuffers"></a>
-        <img data-clg-id="WtImage" class="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image wt-image--cover wt-image" src="https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_fullxfull.6465633458_2afq.jpg" alt="Stocking Stuffers"  style={{ aspectRatio: "1.25925925926" }} sizes="(max-width: 639px) 100vw, (max-width: 899px) 60vw, (max-width: 1199px) 55vw, 40vw" srcset="https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_680x540.6465633458_2afq.jpg 680w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_850x675.6465633458_2afq.jpg 850w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_1020x810.6465633458_2afq.jpg 1020w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_1190x945.6465633458_2afq.jpg 1190w, https://i.etsystatic.com/13863268/r/il/f3fcc9/6465633458/il_1360x1080.6465633458_2afq.jpg 1360w" />
 
+        {/* DYNAMIC PRODUCTS ROW */}
+        <div className="wt-flex-xl-3 wt-flex-lg-1">
+          <ul className="new-missions-gifting__gift_ideas wt-flex-gap-xs-3 wt-list wt-list-unstyled wt-display-flex-xs wt-align-items-flex-start appears-ready">
 
-        <div class="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2 wt-pl-lg-2 wt-pr-lg-2 wt-pb-lg-2">
-            <p class="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">Stocking Stuffers</p>
-        </div>
-    </div>
-</li><li class="wt-flex-xs-1 ">
-    <div class="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
-        <a class="wt-card__action-link" href="https://www.etsy.com/gift-mode/gift-idea/1262837543486/christmas-cookie-making-supplies?ref=hp_gifting_occasion" aria-label="Christmas Cookie Making Supplies"></a>
-        <img data-clg-id="WtImage" class="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image wt-image--cover wt-image" src="https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_fullxfull.7339432191_i9gk.jpg" alt="Christmas Cookie Making Supplies"  style={{ aspectRatio: "1.25925925926" }} sizes="(max-width: 639px) 100vw, (max-width: 899px) 60vw, (max-width: 1199px) 55vw, 40vw" srcset="https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_680x540.7339432191_i9gk.jpg 680w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_850x675.7339432191_i9gk.jpg 850w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_1020x810.7339432191_i9gk.jpg 1020w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_1190x945.7339432191_i9gk.jpg 1190w, https://i.etsystatic.com/22525986/r/il/b04d82/7339432191/il_1360x1080.7339432191_i9gk.jpg 1360w" />
+            {special.slice(0, 3).map((item) => (
+              <li key={item._id} className="wt-flex-xs-1">
+ <Link
+                  to={`/single-product/${product._id}`}>
 
+                <div className="wt-card wt-card--contained wt-rounded-02 new-missions-gifting__gift_ideas--gradient-bg wt-display-flex-xs wt-flex-direction-column-xs wt-position-relative wt-justify-content-flex-end">
+                  
+                  <a
+                    className="wt-card__action-link"
+                    href={`/product/${item._id}`}
+                    aria-label={item.name}
+                  ></a>
 
-        <div class="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2 wt-pl-lg-2 wt-pr-lg-2 wt-pb-lg-2">
-            <p class="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">Christmas Cookie Making Supplies</p>
-        </div>
-    </div>
-</li>
-</ul>
-</div>
-</div>
-    </div>
-    <div class="wt-pb-md-4 wt-pb-xs-3">
-        <div class="consolidated-gifting__listing-picks">
-    <div>
+                  <img
+                    className="square-category-module__listing wt-horizontal-center query-image-container wt-rounded-02 wt-z-index-negative-1 wt-image--cover wt-image"
+                    src={item.images[0]}
+                    alt={item.name}
+                    style={{ aspectRatio: "1.259259" }}
+                  />
 
-    <ul class="wt-block-grid wt-list-unstyled wt-block-grid-xs-2 wt-block-grid-md-4 wt-block-grid-lg-5 wt-block-grid-xl-6 ">
-    
-<li class="wt-block-grid__item  wt-show-xl"><div class="js-merch-stash-check-listing v2-listing-card 
-           wt-position-relative
-           wt-mr-xs-0
-make-listing-link-display-block wt-rounded-02 
-            
-            listing-card-experimental-style" data-palette-listing-id="113686407" data-shop-id="6595416" data-listing-id="113686407" data-page-type="" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-height-full
-            " data-listing-id="113686407" data-palette-listing-image="" href="https://www.etsy.com/listing/113686407/papyrus-origami-christmas-tree-topper?click_key=07ebe5282167a7d3cd77d640242cdc96168c06da%3A113686407&amp;click_sum=ced2460e&amp;external=1&amp;ref=hp_consolidated_gifting_listings-6" data-listing-link="" target="etsy.113686407" title="PAPYRUS Origami Christmas Tree Topper - Gold Star, Classic, XMas, Modern, Traditional, Classy, Timeless, Original">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        wt-height-full
-">
-                    <div class="placeholder  wt-rounded-02
-             placeholder-landscape wt-rounded-02 
-                
-             wt-height-full 
-            
-">
-    <div class="placeholder vertically-centered-placeholder placeholder-content placeholder-landscape wt-rounded-02 wt-height-full" style={{backgroundColor: "#847D6C"}}>
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute fit-to-variable-height hp_consolidated_gifting_listings-6 wt-rounded-02 wt-image--cover wt-image" src="https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_340x270.1572044864_d7zv.jpg" alt="PAPYRUS Origami Christmas Tree Topper - Gold Star, Classic, XMas, Modern, Traditional, Classy, Timeless, Original"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" loading="lazy" sizes="(max-width: 639px) 50vw, (max-width: 899px) 25vw, (max-width: 1199px) 20vw, 16vw" srcset="https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_400xN.1572044864_d7zv.jpg 400w, https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_600xN.1572044864_d7zv.jpg 600w, https://i.etsystatic.com/6595416/c/800/635/0/225/il/07f57d/1572044864/il_800xN.1572044864_d7zv.jpg 800w" />
-
-            
-            
-                    <p class="listing-card-price-badge always-visible-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-max-width-full wt-mb-xs-1 wt-sem-text-primary wt-text-truncate wt-position-absolute wt-position-bottom wt-z-index-1">
-<span data-clg-id="WtBadge" class="wt-badge wt-badge--default wt-badge--border wt-width-full wt-text-truncate">
-                                <span><span class="currency-symbol">USD </span><span class="currency-value">59.50</span></span>
-
-</span>
-            </p>
-    </div>
-        
-</div>
-                    
+                  <div className="wt-position-absolute wt-width-full wt-pl-xs-2 wt-pr-xs-2 wt-pb-xs-2">
+                    <p className="wt-text-title wt-sem-text-on-surface-dark balanced-wrap">
+                      {item.name}
+                    </p>
+                  </div>
                 </div>
-        
-                <div class="v2-listing-card__info
-    wt-display-none
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                wt-display-none " id="listing-title-113686407">
-                PAPYRUS Origami Christmas Tree Topper - Gold Star, Classic, XMas, Modern, Traditional, Classy, Timeless, Original
-            </h3>
+                </Link>
+              </li>
+            ))}
 
-                    
-            
-                        
-            
-            
-                    
-                
-            
+          </ul>
+        </div>
 
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position
-            " data-ui="favorite-listing-button" data-listing-id="113686407" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing-card" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div></li>
-    </ul>
-</div>
-</div>
+      </div>
     </div>
- 
-</div>
+
+    {/* PRODUCT GRID BELOW */}
+    <div className="wt-pb-md-4 wt-pb-xs-3">
+      <div className="consolidated-gifting__listing-picks">
+        <div>
+          <ul className="wt-block-grid wt-list-unstyled wt-block-grid-xs-2 wt-block-grid-md-4 wt-block-grid-lg-5 wt-block-grid-xl-6">
+
+            {special.map((item) => (
+              <li key={item._id} className="wt-block-grid__item">
+                <div className="v2-listing-card wt-position-relative wt-rounded-02">
+                   <Link
+                                    to={`/single-product/${product._id}`}>
+                  <a
+                    className="listing-link wt-display-inline-block wt-height-full"
+                    href={`/product/${item._id}`}
+                  >
+                    <div className="v2-listing-card__img wt-position-relative wt-height-full">
+                      <img
+                        className="wt-width-full wt-display-block wt-height-full wt-rounded-02 wt-image--cover wt-image"
+                        src={item.images[0]}
+                        alt={item.name}
+                        style={{ aspectRatio: "1.259259" }}
+                      />
+                    </div>
+                  </a>
+
+                  <p className="listing-card-price-badge wt-pl-xs-1 wt-pr-xs-1 wt-mb-xs-1 wt-sem-text-primary wt-position-absolute wt-position-bottom">
+                    <span className="wt-badge wt-badge--default wt-badge--border wt-width-full">
+                      <span>₦ {item.price}</span>
+                    </span>
+                  </p>
+</Link>
+                </div>
+              </li>
+            ))}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
@@ -726,7 +722,7 @@ make-listing-link-display-block wt-rounded-02
         
 </div>
 
-<div data-appears-component-name="hp_editors_picks_primary" data-appears-event-data="{&quot;title&quot;:&quot;Etsy\u2019s Guide to Vintage&quot;}">
+{/* <div data-appears-component-name="hp_editors_picks_primary" data-appears-event-data="{&quot;title&quot;:&quot;Etsy\u2019s Guide to Vintage&quot;}">
 <div class="wt-grid wt-body-max-width wt-pl-xs-1 wt-pl-md-2 wt-pl-lg-3 appears-ready">
     
         <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
@@ -1244,113 +1240,90 @@ wt-position-relative wt-width-full wt-rounded-02
     </div>
 </div>
 </div>
-</div><div class="hp-spacing-reduced-default">
-    
+</div> */}
+
+
+<div data-appears-component-name="hp_shop_our_selections">
+<div className="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+
+  <div className="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
+
+    <div>
+      {/* SECTION HEADER */}
+      <div className="simple-header wt-pb-xs-2 wt-pb-md-3 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between">
+        <div className="header-wrapper">
+          <h2 className="wt-text-title-larger">
+            Save now on standout styles
+          </h2>
+        </div>
+      </div>
+
+      {/* PRODUCT GRID */}
+      <ul className="shop-our-selections-module wt-block-grid-xs-2 wt-block-grid-md-5 wt-p-xs-0">
         
-</div><div data-appears-component-name="hp_shop_our_selections">
-<div class="wt-grid wt-body-max-width wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3 appears-ready">
-    
-        <div class="wt-grid__item-xs-12 wt-pr-xs-1 wt-pl-xs-1 wt-pr-md-2 wt-pl-md-2 wt-pr-lg-3 wt-pl-lg-3">
-    
-        <div>
-    <div class="simple-header wt-pb-xs-2 wt-pb-md-3 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between">
-    <div class="header-wrapper ">
-            <h2 class="wt-text-title-larger">
-                Save now on standout styles
-            </h2>
+        {bestsellers.map((item) => (
+          <li key={item._id} className="wt-list-unstyled wt-block-grid__item">
+            <div className="wt-card wt-card--transparent wt-height-full wt-width-full">
+ <Link
+                  to={`/single-product/${product._id}`}>
+                                  {/* LINK */}
+              <a className="wt-card__action-link" >
+                <span className="wt-screen-reader-only">
+                  {item.name}
+                </span>
+              </a>
+</Link>
+              {/* CARD CONTENT */}
+              <div className="wt-card__inner">
+                <div className="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
+                  
+                  <img
+                    className="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover"
+                    loading="lazy"
+                    src={item.images?.[0]}
+                    alt={item.name}
+                  />
+
+                </div>
+
+                {/* NAME */}
+                <p className="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">
+                  {item.name}
+                </p>
+
+                {/* DISCOUNT (IF ANY) */}
+                {item.discountPrice ? (
+                  <p className="wt-text-title wt-ml-xs-1 wt-mr-xs-1">
+                    up to {Math.round(((item.price - item.discountPrice) / item.price) * 100)}% off
+                  </p>
+                ) : (
+                  <p className="wt-text-title wt-ml-xs-1 wt-mr-xs-1">
+                    ₦ {item.price.toLocaleString()}
+                  </p>
+                )}
+
+              </div>
+            </div>
+          </li>
+        ))}
+
+      </ul>
+
     </div>
-        
-    
+  </div>
 </div>
-    <ul class="shop-our-selections-module wt-block-grid-xs-2 wt-block-grid-md-5 wt-p-xs-0">
-            <li class="wt-list-unstyled wt-block-grid__item">
-<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search/home-and-living?q=holiday+decor&amp;anchor_listing_id=654339441&amp;ref=hp_g_DealsRow_11_03_25-1&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1418664528913&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
-    <span class="wt-screen-reader-only">                        Personalized Holiday Decor
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
-                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/15873879/r/il/efa3d6/2001683148/il_300x300.2001683148_jkc9.jpg" alt="" />
-                        </div>
-                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Personalized Holiday Decor</p>
-                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
 
-</div>
-</div>
-            </li>
-            <li class="wt-list-unstyled wt-block-grid__item">
-<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=winter+clothing+and+accessories&amp;anchor_listing_id=4369897730&amp;ref=hp_g_DealsRow_11_03_25-2&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1415631595990&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
-    <span class="wt-screen-reader-only">                        Winter Style
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
-                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/61781071/r/il/3f31be/7200963520/il_300x300.7200963520_2qjv.jpg" alt="" />
-                        </div>
-                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Winter Style</p>
-                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
 
-</div>
-</div>
-            </li>
-            <li class="wt-list-unstyled wt-block-grid__item">
-<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=gift+for+her&amp;anchor_listing_id=1733993795&amp;ref=hp_g_DealsRow_11_03_25-3&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1415889842361&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
-    <span class="wt-screen-reader-only">                        Gifts for Her
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
-                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/19615202/c/2026/2026/517/161/il/77e918/7362204708/il_300x300.7362204708_mpr7.jpg" alt="" />
-                        </div>
-                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Gifts for Her</p>
-                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
 
-</div>
-</div>
-            </li>
-            <li class="wt-list-unstyled wt-block-grid__item">
-<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=personalized+portraits&amp;anchor_listing_id=1884149669&amp;ref=hp_g_DealsRow_11_03_25-4&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1418664664487&amp;is_discounted=true&amp;is_merch_library=true&amp;pct_discount_max=30">
-    <span class="wt-screen-reader-only">                        Custom Portraits
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
-                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/52061210/r/il/3f550c/6694397172/il_300x300.6694397172_ep41.jpg" alt="" />
-                        </div>
-                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Custom Portraits</p>
-                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
-
-</div>
-</div>
-            </li>
-            <li class="wt-list-unstyled wt-block-grid__item">
-<div data-clg-id="WtCard" class="wt-card wt-card--transparent wt-height-full wt-width-full">
-    <a data-clg-id="WtCardAction" class="wt-card__action-link" href="https://www.etsy.com/search?q=jewelry&amp;anchor_listing_id=514354742&amp;ref=hp_g_DealsRow_11_03_25-5&amp;mosv=sese&amp;moci=1415889840353&amp;mosi=1417967106503&amp;min=100&amp;max=400&amp;is_merch_library=true&amp;is_star_seller=true&amp;infb=mt_9%2Cmt_8%2Cmt_7%2Cmt_6%2Cmt_4&amp;is_discounted=true&amp;pct_discount_max=30">
-    <span class="wt-screen-reader-only">                        Demi Fine Jewelry
-</span>
-</a>
-<div data-clg-id="WtCardContent" class="wt-card__inner">
-                            <div class="wt-skeleton-ui--image-square wt-position-relative wt-height-full wt-rounded-02 wt-overflow-hidden">
-                            <img class="wt-position-absolute wt-position-top wt-height-full wt-object-fit-cover" loading="lazy" src="https://i.etsystatic.com/13824738/c/1533/1533/312/373/il/63ae75/6786744374/il_300x300.6786744374_5kp9.jpg" alt="" />
-                        </div>
-                        <p class="wt-text-title wt-mt-xs-1 wt-ml-xs-1 wt-mr-xs-1">Demi Fine Jewelry</p>
-                        <p class="wt-text-title wt-ml-xs-1 wt-mr-xs-1">up to 30% off</p>
-
-</div>
-</div>
-            </li>
-    </ul>
-</div>
-</div>
-</div>
 </div><div class="hp-spacing-reduced-default">
     
         
-</div><div></div><div data-appears-component-name="Homepage_Vesta_ApiSpec_WhatIsEtsy">
+</div>
+<div class="hp-spacing-reduced-default">
+    
+        
+</div>
+<div></div><div data-appears-component-name="Homepage_Vesta_ApiSpec_WhatIsEtsy">
 <div class="wt-grid wt-body-max-width appears-ready">
     <div class="wt-grid__item-xs-12">
         <div class="wt-bg-beeswax-tint vesta-hp-full-width-banner wt-position-relative wt-pb-xs-6 wt-overflow-hidden" data-selector="what-is-etsy-container">
@@ -1360,7 +1333,7 @@ wt-position-relative wt-width-full wt-rounded-02
 <rect x="0" width="1400" height="24"></rect>
 </svg></span>
             <div class="wt-text-center-xs wt-body-max-width wt-pb-xs-6 wt-pt-xs-6 wt-pl-xs-5 wt-pr-xs-5 wt-pl-md-10 wt-pr-md-10 wt-pl-lg-9 wt-pr-lg-9">
-                <h2 class="wt-text-heading-large wt-mb-xs-1 wt-text-center-xs"> What is Royofaa? </h2>
+                <h2 class="wt-text-heading-large wt-mb-xs-1 wt-text-center-xs"> What is Rayofaa? </h2>
                 <a class="wt-text-link" href="/about"> Read our wonderfully weird story </a>
 
                 <div class="wt-display-flex-xs wt-flex-direction-column-xs wt-flex-direction-row-lg wt-pt-xs-6 wt-text-center-xs wt-text-left-lg wt-mb-lg-7 wt-mb-xs-1">

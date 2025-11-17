@@ -19,13 +19,105 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Header2 from "./Header2";
 import Header3 from "./Header3";
 
+
 const bgImage = `url("data:image/svg+xml;utf8,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'>
     <image href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACRUlEQVR4nLVTPWtVQRBNTCCKBhSTJiKJip8oVoqK+CoxTYyFMYUhj3ff3TMzuzu79yYxJKg8TSM2goqFIGKdxkIQrGwVwUZQK0Xx619E9uELL0UiERw4zNwtDuecO9PRsXZ1/kH73P62rupsNBobEpaWlpbn9rd1kZVluQlAn3Nue5ZlvdVq3ApM9dVq2p+6tXbL4uJi11rEy3bGxsa6nHMDIlohCmdhw2nmeA5SjEDiBXZFNXWReDARrxZBy063qvaIyE6yOko2GrLBMxfXwWGOJC6ILZ6zLV6yjbdhp89k2ZXeFaTJXpa5gTz3u4jCXua434gcg/hxSGBDOmOM3jCk8+B4BxJek8Sf1pXvrS/vEZXHq9XqxiZpUpXsGePOA45zCnUgTORwCvZzOXQqwRg/a4zOG+gjw+ENcfjEUny3rnxLtiiToGaeiZCo3EGkF5MCI8UM4AMQGs1v8mRMQvCAnwPpE1B8Zzh8A8cvZONX4uIx4I60bHemYPPc7TNGTuWko8aEMoe/1lRH3uTk60TBJuugcBccXoHDj0QI1l+Q+IxZTyRxzQzTMDysPWk9auSPgjVPdkG6YEivQgLA6gz5WZDeAocXkPCRJHyAhM9ki6dAPJm2Y8XapGBrIruN0QqgIzn5yaSuDj+ek14i0stEvg4ON3PWBxC9TxIeGtF5wB9YVtiqSqXSneyLyLaaan8KmoiG0t/PrB20mR0kikMpnhrpoYSM+fAksGdiYnrzX6+ldWbJSvvZ/estryBv66vh/9RvTxMh3UHKN/wAAAAASUVORK5CYII='/>
   </svg>")`;
 const Single2 = () => {
 
-   
+      const { id } = useParams();
+  const navigate = useNavigate();
+const [currentImageIndex, setCurrentImageIndex] = useState(0); // <-- add this
+
+  const [name, setName] = useState("");
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState("");
+ const [product, setProduct] = useState(null);
+  const [grandParents, setGrandParents] = useState([]);
+  const [parents, setParents] = useState([]);
+  const [children, setChildren] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [selectedGrandParent, setSelectedGrandParent] = useState("");
+  const [selectedParent, setSelectedParent] = useState("");
+  const [selectedChild, setSelectedChild] = useState("");
+   const { addToCart } = useCart();
+    const [activeTab, setActiveTab] = useState("description");
+  const [selectedSize, setSelectedSize] = useState("");
+useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data: product } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/db/product/${id}`
+        );
+
+        setProduct(product);
+
+        // Category info
+        const category = product.category;
+        if (category) {
+          setSelectedChild(category._id);
+          if (category.parent) {
+            setSelectedParent(category.parent._id);
+            if (category.parent.parent) {
+              setSelectedGrandParent(category.parent.parent._id);
+            }
+          }
+        }
+
+        // Debugging
+        console.log("Fetched product:", product);
+        console.log("Child:", category?.name);
+        console.log("Parent:", category?.parent?.name);
+        console.log("Grandparent:", category?.parent?.parent?.name);
+      } catch (err) {
+        console.error("Failed to fetch product:", err);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+const [selectedColor, setSelectedColor] = useState(null);
+
+useEffect(() => {
+  if (product?.color?.length > 0) {
+    // pick the first color from DB as default
+    setSelectedColor(product.color[0]);
+  }
+}, [product]);
+useEffect(() => {
+  const fetchRelatedProducts = async () => {
+    if (!product?.category?._id) return;
+
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/db/products/category/${product.category._id}`
+      );
+
+      // filter out the current product
+      const filtered = data.filter((p) => p._id !== product._id);
+
+      setProducts(filtered);
+    } catch (err) {
+      console.error("Failed to fetch related products:", err);
+    }
+  };
+
+  fetchRelatedProducts();
+}, [product]);
+
+const availableColors = [
+  { name: "Black", hex: "#000000" },
+  { name: "White", hex: "#FFFFFF" },
+  { name: "Red", hex: "#FF0000" },
+  { name: "Blue", hex: "#0000FF" },
+  { name: "Green", hex: "#008000" },
+  { name: "Yellow", hex: "#FFFF00" },
+  { name: "Purple", hex: "#800080" },
+  { name: "Gray", hex: "#808080" },
+  { name: "Navy", hex: "#001F54" },
+  { name: "Orange", hex: "#FFA500" },
+];
   return (
     <div>
 
@@ -41,7 +133,7 @@ const Single2 = () => {
         <div class="wt-show-lg wt-show-xl wt-show-tv wt-hide-md wt-hide-sm">
             <div class="wt-display-flex-xs wt-align-items-center">
                 <p class="wt-text-title">
-                    Shop confidently on Etsy
+                    Shop confidently on Rayofaa
                 </p>
             </div>
         </div>
@@ -51,12 +143,12 @@ const Single2 = () => {
                 <div class="wt-popover" id="trust-suite-banner-epp-popover" >
                     <button type="button"  class="wt-popover__trigger wt-popover__trigger--underline wt-text-link wt-display-inline-flex-xs wt-align-items-center" aria-describedby="trust-suite-banner-epp-popover-overlay">
                         <span class="wt-text-title">
-                            Etsy Purchase Protection
+                            Rayofaa Purchase Protection
                         </span>
                     </button>
                     <div id="trust-suite-banner-epp-popover-overlay" role="tooltip">
                         <h4 class="wt-mb-xs-1">
-                            Etsy Purchase Protection
+                            Rayofaa Purchase Protection
                         </h4>
                         <p class="wt-mb-xs-3">
                             <strong>
@@ -172,7 +264,7 @@ const Single2 = () => {
     </div>
 </div>
   
-    <div data-appears-component-name="Listzilla_ApiSpecs_SimilarListingsRow" data-appears-event-data="{&quot;module_placement&quot;:&quot;external_top&quot;,&quot;datasets&quot;:[&quot;organic&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Listzilla_ApiSpecs_SimilarListingsRow&quot;,&quot;page_listing_id&quot;:1629181619,&quot;
+    {/* <div data-appears-component-name="Listzilla_ApiSpecs_SimilarListingsRow" data-appears-event-data="{&quot;module_placement&quot;:&quot;external_top&quot;,&quot;datasets&quot;:[&quot;organic&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Listzilla_ApiSpecs_SimilarListingsRow&quot;,&quot;page_listing_id&quot;:1629181619,&quot;
     mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;
         :{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;https:\/\/www.etsy.com\/r\/themes\/1368461677904?anchor_listings=1772270430\u0026ref=hp_themes_module-2&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;3&quot;,&quot;hourOfDay&quot;:&quot;13&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;organic&quot;:[0,1,2,3,4,5,6,7,8]},&quot;target_listing_id&quot;:1629181619,&quot;sash_flavor&quot;:&quot;spaces&quot;,&quot;refTag&quot;:&quot;landingpage_similar_listing_top&quot;,&quot;listing_ids&quot;:[1772270430,1254144636,1043229566,557997966,746185432,974826767,1174180936,1650949737,1393678802],&quot;listing_prices_usd&quot;:[29.989999999999998436805981327779591083526611328125,11.03999999999999914734871708787977695465087890625,57.52000000000000312638803734444081783294677734375,36,29.949999999999999289457264239899814128875732421875,49.99000000000000198951966012828052043914794921875,53.9500000000000028421709430404007434844970703125,11.9900000000000002131628207280300557613372802734375,42.2000000000000028421709430404007434844970703125],&quot;taxonomy_ids&quot;:[2350,180,1062,1005,1667,6346,1027,7020,482],&quot;taxo_paths&quot;:[&quot;toys_and_games.games_and_puzzles.dice_and_tile_games.dice&quot;,&quot;bags_and_purses.market_bags&quot;,&quot;home_and_living.kitchen_and_dining.drink_and_barware.drinkware.mugs&quot;,&quot;home_and_living.home_decor.candles_and_home_fragrances.candles.container_candles&quot;,&quot;weddings.gifts_and_mementos.gifts_for_the_couple&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.kits&quot;,&quot;home_and_living.home_decor.wall_decor&quot;,&quot;craft_supplies_and_tools.blanks.hat_and_hair_blanks.hair_clip_blanks&quot;,&quot;clothing.gender_neutral_adult_clothing.tops_and_tees.tshirts&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
     
@@ -1190,7 +1282,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
         
     </div>
 </div>
-    </div>
+    </div> */}
 
 
 <div data-selector="listing-page-content" class="content-wrap listing-page-content">
