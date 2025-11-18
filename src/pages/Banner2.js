@@ -197,7 +197,7 @@ return (
     
         <section class="shoppable-hero shoppable-hero--two-column wt-display-flex-xs " aria-labelledby="shoppable-hero-title">
         <div data-clg-id="WtCard" class="wt-card wt-card--contained shoppable-hero-headline shoppable-hero-headline--xs-portrait wt-display-flex-xs wt-width-full wt-flex-grow-xs-1">
-    <a class="wt-card__action-link" href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" aria-label="Gifts that show you care Shop original pieces"></a>
+  
 <div class="wt-width-full">
     <div class="shoppable-hero-headline__container  wt-display-flex-xs wt-overflow-hidden wt-height-full" style={{backgroundColor: "#8b023a"}}>
         <div class="shoppable-hero-headline__content wt-p-xs-4 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-gap-xs-1 wt-align-items-center wt-justify-content-center wt-text-center-xs  wt-text-white">
@@ -1250,7 +1250,7 @@ New designs are always in the works! Be sure to follow  FA&A on all social media
                 </div>
                 <div class="wt-text-center-xs">
                     <h4 class="wt-text-title-large"> Have a question? Well, we’ve got some answers. </h4>
-                    <a class="wt-mt-xs-2 button wt-btn wt-sem-text-primary wt-btn--outline" href="https://www.etsy.com/help?ref=hp_what_is_etsy_help_center">Go to Help Center</a>
+                    <a class="wt-mt-xs-2 button wt-btn wt-sem-text-primary wt-btn--outline" href="/help">Go to Help Center</a>
                 </div>
             </div>
 
@@ -1267,168 +1267,8 @@ New designs are always in the works! Be sure to follow  FA&A on all social media
 </div><div class="hp-spacing-none">
     
         
-</div><div data-wt-overlay="" id="user-lists-overlay" class="wt-overlay wt-display-none wt-position-fixed wt-position-bottom wt-overlay--has-close-icon collection-list-overlay " role="dialog" aria-hidden="true" aria-modal="false" aria-labelledby="collection-modal-title" data-animations="{ &quot;open&quot;: { &quot;mask&quot;: &quot;wt-animated wt-animated--appear-02&quot;, &quot;content&quot;: &quot;wt-animated wt-animated--appear-02&quot; }, &quot;close&quot;: { &quot;mask&quot;: &quot;wt-animated wt-animated--disappear-02&quot;, &quot;content&quot;: &quot;wt-animated wt-animated--disappear-02&quot; } }">
-    <div class="wt-overlay__modal collection-list-overlay-view wt-display-flex-xs wt-pb-xs-0 wt-pb-md-4 " data-overlay-modal="">
-        <div data-collection-list="" data-max-characters="50" class="wt-overflow-hidden favorites-modal-collection-list wt-width-full">
-    <button class="wt-btn wt-btn--icon wt-btn--tertiary wt-btn--light  wt-overlay__close-icon
-        " data-wt-overlay-close="" data-overlay-initial-focus="" aria-label="Close">
-        <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z"></path></svg></span>
-    </button>
-    <div data-collection-list-section="" class="favorites-modal--collection-list-section wt-position-relative wt-flex-direction-column-xs wt-height-full wt-align-items-center">
-        <div class="wt-overlay__header wt-display-flex-xs wt-align-items-center wt-justify-content-center ">
-
-            <img src="https://www.etsy.com/images/grey.gif" alt="An image of the listing you can save" class="wt-mr-xs-2 wt-mr-md-3 add-to-list-overlay--img" />
-
-            <h2 class="wt-text-heading" id="collection-modal-title">
-                <span data-collections-modal-title="" class="">
-                    Add to collection
-                </span>
-                <span data-registry-modal-title="" class="wt-display-none">
-                    Add to registry
-                </span>
-            </h2>
-        </div>
-        <div class="collection-list-loading-container" data-spinner-container="">
-            <div class="wt-spinner wt-spinner--02">
-                <div>Loading</div>
-            </div>
-        </div>
-        <div class="wt-display-none collection-list-loading-container" data-collection-list-fail-state="">
-            <div class="wt-vertical-center wt-text-center-xs wt-sem-text-secondary">
-                <p>Hmm, something went wrong.</p>
-                <p>Try that again.</p>
-            </div>
-        </div>
-        <fieldset class="wt-max-width-full wt-pr-xs-2 wt-overflow-scroll">
-            <div class="wt-display-none wt-width-full wt-action-group wt-action-group--image wt-list-inline wt-mb-xs-0" data-collection-list-content="">
-                <span class="wt-p-xs-0 wt-width-full wt-mb-xs-2">
-                    <input type="checkbox" id="create_new_list" hidden="" />
-                    <label role="button" tabindex="0" data-add-list-trigger="" class="add-to-list-overlay-row wt-width-full wt-display-flex-xs wt-align-items-center">
-                        <div class="add-list--trigger add-to-list-overlay-row--icon wt-sem-text-on-surface-dark wt-rounded-02 wt-overflow-hidden wt-display-flex-xs wt-justify-content-center wt-align-items-center">
-                            <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20,11H13V4a1,1,0,0,0-2,0v7H4a1,1,0,0,0,0,2h7v7a1,1,0,0,0,2,0V13h7A1,1,0,0,0,20,11Z"></path></svg></span>
-                        </div>
-                        <p class="wt-pl-xs-2 wt-text-title-01">
-                            Create new collection
-                        </p>
-                    </label>
-                </span>
-                
-                
-                
-            </div>
-        </fieldset>
-        <div class="wt-overlay__sticky-footer-container wt-bt-xs wt-width-full">
-            <div class="wt-overlay__footer wt-justify-content-flex-end wt-pt-md-4">
-                <div class="wt-overlay__footer__action">
-                    <button type="button" class="wt-btn wt-btn--primary wt-pr-md-7 wt-pl-md-7" data-wt-overlay-close="">Done</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="wt-display-none" data-add-collection-section="" data-listing-id="">
-        <div data-collection-list-add="">
-    <div class="wt-overlay__header">
-        <h3 class="wt-text-heading wt-text-center-xs">
-            Create new collection
-        </h3>
-    </div>
-    <div class="wt-display-flex-xs wt-flex-direction-row-xs wt-align-items-baseline">
-        <div class="wt-validation wt-width-full">
-            <label class="wt-label" for="edit-list">Name</label>
-            <input data-add-collection-input="" autofocus="" aria-invalid="false" type="text" class="wt-input" id="edit-list" placeholder="Gifts, Home, Wedding, etc." />
-            <div class="wt-display-flex-xs wt-justify-content-space-between">
-                <div>
-                    <div data-duplicated-name-alert="" data-error="duplicate_name" class="wt-validation__message wt-validation__message--is-hidden wt-sem-text-critical">You've already used that name</div>
-                    <div data-too-long-alert="" data-error="too_long" class="wt-validation__message wt-validation__message--is-hidden wt-sem-text-critical">
-                        Collection name is too long
-                    </div>
-                </div>
-                <p class="wt-text-right-xs wt-sem-text-secondary wt-mt-md-1" data-character-count="">50</p>
-            </div>
-        </div>
-    </div>
-    <div class="wt-display-flex-sm wt-flex-direction-column-xs wt-flex-direction-row-md wt-justify-content-space-between wt-mt-xs-1">
-            <div class="wt-mb-xs-5 wt-mb-md-0">
-                <legend class="wt-text-title-01 wt-mt-xs-1">
-                    Set to private?
-                </legend>
-                <p class="wt-text-body-01 wt-max-width-sm wt-ml-xs-0">
-                    Keep collections to yourself or inspire other shoppers! Keep in mind that anyone can view public collections—they may also appear in recommendations and other places.
-                    <a href="https://www.etsy.com/legal/privacy/" target="_blank">View Etsy’s Privacy Policy</a></p>
-            </div>
-            <div>
-                    <div id="collection-privacy-control" class="wt-display-flex-md wt-flex-direction-column-xs wt-align-items-center" data-label-yes="Private" data-label-no="Public" data-selector="toggle-switch">
-                        <div data-clg-id="WtSwitchInput" class="wt-switch__wrapper" data-wt-props-small="true" data-wt-props-label-text="Set to private?" data-wt-props-label-type="hidden" data-wt-neu-rendered="">
-    
-    <div class="wt-switch__frame">
-        <input type="checkbox" class="wt-switch wt-switch--small" id="wt-switch-691314626a575" />
-        <label class="wt-switch__toggle" for="wt-switch-691314626a575">
-            <span class="wt-screen-reader-only">
-                Set to private? 
-            </span>
-        </label>
-    </div>
-    
 </div>
 
-                        <div class="wt-display-flex-xs wt-flex-direction-row-reverse-xs wt-align-items-center wt-justify-content-flex-end wt-nudge-t-2">
-                            <span data-toggle-private-text="" class="wt-text-body">
-                                Public
-                            </span>
-                            <span class="etsy-icon wt-icon--smaller-xs wt-mr-xs-1 wt-display-none" data-toggle-private-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 13v5h-2v-5z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M4 9.25A.25.25 0 0 1 4.25 9H7.5V6.5a4.5 4.5 0 0 1 9 0V9h3.25a.25.25 0 0 1 .25.25V18a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM9.5 6.5a2.5 2.5 0 0 1 5 0V9h-5zM8 20a2 2 0 0 1-2-2v-7h12v7a2 2 0 0 1-2 2z"></path></svg></span>
-                            <span class="etsy-icon wt-icon--smaller-xs wt-mr-xs-1" data-toggle-public-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2M9 18.883v.528a7.94 7.94 0 0 1-4.94-8.351l3.385 3.385a2.967 2.967 0 0 0 1.649 4.4zM17.5 15q.252 0 .5-.05V15a.99.99 0 0 0 .927.985A8 8 0 0 1 12 20c-.216 0-.427-.016-.639-.032l1.254-2.5-.015.006a2.97 2.97 0 0 0-.08-3.11A2.988 2.988 0 0 0 8 13.78V11h1a1 1 0 0 0 1-1V9a1 1 0 0 0 1-1 1 1 0 1 0 0-2H6.726A7.9 7.9 0 0 1 14 4.263V6a1 1 0 0 0 2 0v-.918a8 8 0 0 1 2 1.649V7h-1a1 1 0 1 0 0 2h2.411q.196.49.326 1H17a2.556 2.556 0 0 0-2 2.5 2.5 2.5 0 0 0 2.5 2.5"></path></svg></span>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    <div data-collection-list-add-footer="">
-        <div class="wt-overlay__footer">
-            <div class="wt-overlay__footer__cancel">
-                <button type="button" class="wt-btn wt-btn--transparent wt-btn--transparent-flush-left wt-btn--transparent-flush-right" data-overlay-back="">Cancel</button>
-            </div>
-            <div class="wt-overlay__footer__action">
-                <button type="button" class="wt-btn wt-btn--primary" data-add-collection-button="" disabled="true">
-                    Create collection
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="wt-overlay wt-overlay--alert" id="make-public-list-modal" data-wt-overlay="" aria-hidden="true" role="alertdialog" aria-modal="false">
-    <div class="wt-overlay__modal" data-overlay-modal="">
-        <div class="wt-overlay__header">
-            <h2 class="wt-text-heading wt-text-center-xs">
-                Make your collection public?
-
-            </h2>
-        </div>
-        <div class="wt-display-flex-xs wt-justify-content-space-between">
-            <div>
-                <p>
-                    Public collections can be seen by the public, including other shoppers, and may show up in recommendations and other places.
-                </p>
-            </div>
-        </div>
-        <div class="wt-overlay__footer">
-            <div class="wt-overlay__footer__cancel">
-                <button type="button" data-selector="cancel-make-public-button" class="wt-btn wt-btn--transparent wt-btn--transparent-flush-left wt-btn--transparent-flush-right">Cancel</button>
-            </div>
-            <div class="wt-overlay__footer__action">
-                <button type="button" data-selector="make-public-button" class="wt-btn wt-btn--primary">Make Public</button>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</div>
-    </div>
-</div><div class="hp-spacing-none">
-    
-        
-</div><div class="hp-spacing-none">
-    
-        
-</div>
 </div>
         </main>     
     

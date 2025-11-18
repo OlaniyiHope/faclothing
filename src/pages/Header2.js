@@ -48,7 +48,7 @@ const Header2 = ({ cartCount = 1 }) => {
       </span>
     </a>
 </div>
-            <nav class="wt-hide-xs wt-show-lg">
+            {/* <nav class="wt-hide-xs wt-show-lg">
                 <div data-clg-id="WtMenu" class="wt-menu wt-tooltip ge-menu--body-below-trigger wt-tooltip--disabled-touch dropdown-category-menu wt-menu--bottom wt-menu--left" data-wt-menu="" data-wt-tooltip="true" data-menu-body-below-trigger="true" data-close-on-select="true" data-hide-trigger-on-open="false" data-animate-in="true" data-contain-focus="false" data-open-direction-vert="bottom" data-open-direction-horiz="left" data-open-direction-force="true" data-menu-type="action">
         <button type="button" class="wt-menu__trigger wt-btn wt-btn--transparent header-button wt-mr-xs-1 wt-btn--small" aria-haspopup="true" aria-expanded="false" data-wt-menu-trigger="" data-level="0" data-overlay-trigger-selector="overlay-trigger-ele">
           <span class="etsy-icon wt-mr-xs-1 wt-icon--smaller">
@@ -102,7 +102,7 @@ const Header2 = ({ cartCount = 1 }) => {
         <span class="ge-menu__body-caret wt-z-index-10 wt-sem-bg-elevation-0 wt-position-absolute wt-bl-xs wt-bt-xs wt-br-xs-none wt-bb-xs-none"></span>
 
 </div>
-            </nav>
+            </nav> */}
 
         <div class="wt-width-full wt-display-flex-xs wt-pr-lg-3 wt-flex-lg-1 order-mobile-tablet-2" data-hamburger-search-container="">
             <button data-id="hamburger" class="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg
@@ -126,8 +126,8 @@ const Header2 = ({ cartCount = 1 }) => {
    Search for items or shops
 </label>
 <div class="search-container" data-id="search-bar">
-    <div class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container" data-id="search-suggestions-trigger">
-        <input id="global-enhancements-search-query" data-id="search-query" data-search-input="" type="text" name="search_query" class="wt-input wt-input-btn-group__input global-enhancements-search-input-btn-group__input
+    <div  style={{width: "90%", margin: "auto"}} class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container" data-id="search-suggestions-trigger">
+        <input id="global-enhancements-search-query" data-id="search-query"  data-search-input="" type="text" name="search_query" class="wt-input wt-input-btn-group__input global-enhancements-search-input-btn-group__input
                     wt-pr-xs-7
                                         
                     " placeholder="Search for anything" value="" autocomplete="off" autocorrect="off" autocapitalize="off" role="combobox" aria-autocomplete="both" aria-controls="global-enhancements-search-suggestions" aria-expanded="false" />
