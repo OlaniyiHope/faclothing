@@ -1507,8 +1507,8 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
   className="woocommerce-product-gallery__wrapper flex-1"
   style={{
     position: "relative",
-    width: "100%",
-    height: "800px", // <<< MAKE IT VERY BIG
+    // width: "100%",
+    // height: "800px", // <<< MAKE IT VERY BIG
     background: "#f6f6f6",
     borderRadius: "12px",
     overflow: "hidden",
@@ -1522,11 +1522,11 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
     alt={product.name}
     loading="lazy"
     decoding="async"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "contain", // <<< Make it BIG but NOT distorted
-    }}
+    // style={{
+    //   width: "100%",
+    //   height: "100%",
+    //   objectFit: "contain", // <<< Make it BIG but NOT distorted
+    // }}
   />
 </div>
 

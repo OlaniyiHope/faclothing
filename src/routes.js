@@ -37,7 +37,7 @@ const routes = [
     element: <Selling />,
   },
   {
-    path: "/shop-category",
+    path: "/shop-category/:id",
     element: <Category />,
   },
 //   {

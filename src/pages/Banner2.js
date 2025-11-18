@@ -203,7 +203,7 @@ return (
         <div class="shoppable-hero-headline__content wt-p-xs-4 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-gap-xs-1 wt-align-items-center wt-justify-content-center wt-text-center-xs  wt-text-white">
             <p id="shoppable-hero-title" class="wt-text-display">Wear Your Heritage Proudly</p>
         
-            <a href="/shop-categories"   type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
+            <a href="/shop-category"   type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
                 Shop all products
             </a>
         </div>
@@ -212,7 +212,7 @@ return (
 			
 			 style={{ aspectRatio: "1.25925925926" }} fetchpriority="high" sizes="(max-width: 639px) 100vw, (max-width: 899px) 45vw, (max-width: 1199px) 55vw, 33vw" srcset={d2} />
 
-            <a href="/shop-categories" type="button"   class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
+            <a href="/shop-category" type="button"   class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
                 Shop all products
             </a>
         </div>
@@ -568,7 +568,7 @@ return (
       >
         <div className="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
           <a
-            href={`/category/${cat._id}`}
+            href={`/shop-category/${cat._id}`}
             className="shopping-window-interior"
           >
             <img
@@ -582,7 +582,7 @@ return (
   }}
             />
  <Link
-                  to={`/category/${cat._id}`}>
+                  to={`/shop-category/${cat._id}`}>
             <p className="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1">
               {cat.icon} {cat.name}
             </p>
