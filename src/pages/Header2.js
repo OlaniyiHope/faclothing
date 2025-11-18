@@ -105,7 +105,7 @@ const Header2 = ({ cartCount = 1 }) => {
             </nav> */}
 
         <div class="wt-width-full wt-display-flex-xs wt-pr-lg-3 wt-flex-lg-1 order-mobile-tablet-2" data-hamburger-search-container="">
-            <button data-id="hamburger" class="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg
+            {/* <button data-id="hamburger" class="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg
                wt-btn--transparent-flush-left
                          wt-mb-xs-2
                
@@ -115,7 +115,19 @@ const Header2 = ({ cartCount = 1 }) => {
                     Browse
           </span>
           <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 7H3V5h18zm-5 6H3v-2h13zm5 6H3v-2h18z"></path></svg></span>
-     </button>
+     </button> */}
+     <button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg header-button"
+>
+  <span className="wt-screen-reader-only">Browse</span>
+  <span className="wt-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M21 7H3V5h18zm-5 6H3v-2h13zm5 6H3v-2h18z"></path>
+    </svg>
+  </span>
+</button>
+
             <div class="wt-display-inline-block wt-flex-xs-1 wt-pl-lg-0
                 wt-mb-xs-2
         
@@ -263,6 +275,25 @@ const Header2 = ({ cartCount = 1 }) => {
 </div>
 
 
+{menuOpen && (
+  <div className="mobile-menu-container wt-show-xs wt-hide-lg">
+    <ul className="wt-list-unstyled wt-m-xs-0 wt-p-xs-2">
+      {categories.map((cat) => (
+        <li key={cat._id} className="wt-mb-xs-2">
+          <a
+            href={`/category/${cat._id}`}
+            className="wt-btn wt-btn--transparent wt-btn--small wt-width-full"
+          >
+            <span className="wt-icon wt-icon--smaller-xs wt-nudge-r-2">
+              {cat.icon ? <span style={{ fontSize: "16px" }}>{cat.icon}</span> : null}
+            </span>
+            <span>{cat.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
 
   
 
