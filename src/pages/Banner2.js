@@ -199,13 +199,11 @@ return (
         <div data-clg-id="WtCard" class="wt-card wt-card--contained shoppable-hero-headline shoppable-hero-headline--xs-portrait wt-display-flex-xs wt-width-full wt-flex-grow-xs-1">
     <a class="wt-card__action-link" href="https://www.etsy.com/featured/hub/holiday?ref=hp_shoppable_hero_primary" aria-label="Gifts that show you care Shop original pieces"></a>
 <div class="wt-width-full">
-    <div class="shoppable-hero-headline__container  wt-display-flex-xs wt-overflow-hidden wt-height-full" style={{backgroundColor: "#384124"}}>
+    <div class="shoppable-hero-headline__container  wt-display-flex-xs wt-overflow-hidden wt-height-full" style={{backgroundColor: "#8b023a"}}>
         <div class="shoppable-hero-headline__content wt-p-xs-4 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-gap-xs-1 wt-align-items-center wt-justify-content-center wt-text-center-xs  wt-text-white">
             <p id="shoppable-hero-title" class="wt-text-display">Wear Your Heritage Proudly</p>
-            <p class="wt-text-title-large">
-                
-            </p>
-            <a href="/shop-categories" type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
+        
+            <a href="/shop-categories"   type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
                 Shop all products
             </a>
         </div>
@@ -214,7 +212,7 @@ return (
 			
 			 style={{ aspectRatio: "1.25925925926" }} fetchpriority="high" sizes="(max-width: 639px) 100vw, (max-width: 899px) 45vw, (max-width: 1199px) 55vw, 33vw" srcset={d2} />
 
-            <a href="/shop-categories" type="button" class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
+            <a href="/shop-categories" type="button"   class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
                 Shop all products
             </a>
         </div>
