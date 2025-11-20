@@ -234,11 +234,9 @@ useEffect(() => {
 <Link to="/cart" className="site-header-item site-header-cart menu-color">
   <div className="relative cms-cart-icon cms-counter-icon">
     <i className="header-icon cart-icon trevox-icon-shopping-basket1"></i>
-   
     <span className="cart-counter cart_total cms-count" data-count={totalItems}>
   {totalItems}
 </span>
-
   </div>
 </Link>
 

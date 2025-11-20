@@ -138,7 +138,7 @@ const Header2 = ({ cartCount = 1 }) => {
    Search for items or shops
 </label>
 <div class="search-container" data-id="search-bar">
-    <div  style={{width: "90%", margin: "auto"}} class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container" data-id="search-suggestions-trigger">
+    <div  style={{width: "90%",  margin: "auto"}} class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container" data-id="search-suggestions-trigger">
         <input id="global-enhancements-search-query" data-id="search-query"  data-search-input="" type="text" name="search_query" class="wt-input wt-input-btn-group__input global-enhancements-search-input-btn-group__input
                     wt-pr-xs-7
                                         
@@ -147,13 +147,25 @@ const Header2 = ({ cartCount = 1 }) => {
             
             search-close-btn-margin-right " data-search-close-btn="">
             <span class="wt-screen-reader-only">Clear search</span>
-            <span class="wt-icon wt-icon--smaller wt-nudge-t-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z"></path></svg></span>
+            <span class="wt-icon wt-icon--smaller wt-nudge-t-1">
+              
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z"></path></svg>
+              
+              
+              </span>
         </button>
-        <button type="submit" class="wt-input-btn-group__btn global-enhancements-search-input-btn-group__btn
-                
-                " value="Search" aria-label="Search" data-id="gnav-search-submit-button">
+        <button type="submit" class="wt-input-btn-group__btn 
+              
+                " value="Search" aria-label="Search" data-id="gnav-search-submit-button" style={{backgroundColor: "#8b023a", color: "white"}}>
             
-            <span class="wt-icon wt-nudge-b-2 wt-nudge-r-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 19a8.46 8.46 0 0 0 5.262-1.824l4.865 4.864 1.414-1.414-4.865-4.865A8.5 8.5 0 1 0 10.5 19m0-2a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13"></path></svg></span>
+            <span class="wt-icon wt-nudge-b-2 wt-nudge-r-1">
+              
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 19a8.46 8.46 0 0 0 5.262-1.824l4.865 4.864 1.414-1.414-4.865-4.865A8.5 8.5 0 1 0 10.5 19m0-2a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13"></path></svg>
+            
+            
+            </span>
         </button>
     </div>
     <div id="global-enhancements-search-suggestions" class="global-nav-menu__body
@@ -216,12 +228,12 @@ const Header2 = ({ cartCount = 1 }) => {
 <li data-ge-nav-menu="cart" data-ge-hover-event-name="gnav_hover_cart_menu">
     <span class="wt-tooltip wt-tooltip--bottom-left wt-tooltip--disabled-touch" data-wt-tooltip="" data-header-cart-button="">
         <a aria-label="Cart" href="https://www.etsy.com/cart?ref=hdr-cart" class="wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon header-button">
-            <span class="wt-z-index-1 wt-no-wrap wt-display-none ge-cart-badge wt-badge wt-badge--notificationPrimary wt-badge--small wt-badge--outset-top-right" data-selector="header-cart-count" aria-hidden="true">
+            <span class="wt-z-index-1 wt-no-wrap wt-display-none ge-cart-badge wt-badge wt-badge--notificationPrimary wt-badge--small wt-badge--outset-top-right"  data-count={totalItems} aria-hidden="true">
                 0
             </span>
             <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.307l2.4-12zM7.82 15l-1.6-8h14.227l-1.6 8z"></path><path d="M10.667 20.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m8.333 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg></span>
         </a>
-        <span role="tooltip" aria-hidden="true">Cart</span>
+        <span role="tooltip" aria-hidden="true" data-count={totalItems} >   {totalItems}</span>
     </span>
 </li>
     </ul>
