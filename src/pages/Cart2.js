@@ -96,7 +96,7 @@ const Cart2 = () => {
 
 
     <div class="wt-grid wt-position-relative wt-pl-xs-0 wt-pr-xs-0 ">
-        <ul class="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
+        {/* <ul class="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
             <li class="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5" data-multi-shop-cart-single="" multi-shop-eligible="">
     <div class="wt-rounded-02 wt-b-xs">
         <div>
@@ -182,7 +182,7 @@ const Cart2 = () => {
                     
                     <p data-listing-title-wrapper="" class="wt-display-flex-xs wt-flex-direction-column-xs wt-pb-xs-1">
                         <a class="wt-text-link-no-underline wt-text-body wt-text-truncate" href="https://www.etsy.com/listing/1226534278/sports-clipart-black-bold-word-dance-w?ref=cart" data-title="Sports Clipart: Black Bold Word &quot;Dance&quot; w/ Three Different Dancer / Ballerina Pastel Silhouettes Layered on Top - Digital Download SVG &amp; PNG" aria-label="Sports Clipart: Black Bold Word &quot;Dance&quot; w/ Three Different Dancer / Ballerina Pastel Silhouettes Layered on Top - Digital Download SVG &amp; PNG (This link opens in a new tab or window)" target="_blank" data-listing-title="">
-                                Sports Clipart: Black Bold Word "Dance" w/ Three Different Dancer / Ballerina Pastel Silhouettes Layered on Top - Digital Download SVG &amp; PNG
+                                Sports Clipart: Black Bold Word "Dance" w/ SVG &amp; PNG
                         </a>
                     </p>
 
@@ -268,7 +268,90 @@ const Cart2 = () => {
         </div>
     </div>
 </li>
-        </ul>
+        </ul> */}
+        <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
+                {cartItems.map((item) => (
+                  <li key={item.id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
+                    <div className="wt-rounded-02 wt-b-xs">
+                      <div className="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
+                        <input type="hidden" name="cart_ids[]" value={item.id} />
+
+                        <div className="shop-details wt-mb-xs-3">
+                          <div className="wt-display-flex-xs wt-justify-content-space-between wt-align-items-center desktop__shop-details--height wt-width-full">
+                            <div className="wt-display-flex-xs wt-align-items-center">
+                              <div className="wt-pr-lg-1">
+                                <a
+                                  className="wt-display-flex-xs wt-align-items-center"
+                                  href={item.shopLink}
+                                  title={item.shopName}
+                                  aria-label={`shop-${item.shopName}`}
+                                  tabIndex="-1"
+                                >
+                                  <img
+                                    className="wt-rounded"
+                                    src={item.shopAvatar}
+                                    width="32"
+                                    height="32"
+                                    alt={item.shopName}
+                                  />
+                                </a>
+                              </div>
+                              <div className="wt-pl-xs-1">
+                                <p className="wt-text-title">
+                                  <a
+                                    className="wt-sem-text-primary wt-text-link-no-underline"
+                                    href={item.shopLink}
+                                    aria-label={`shop-${item.shopName}`}
+                                  >
+                                    {item.shopName}
+                                  </a>
+                                </p>
+                              </div>
+                              <div className="wt-pl-xs-2 wt-display-flex-xs wt-align-items-center">
+                                <span>{item.rating} ({item.reviews})</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="wt-display-flex-xs wt-pt-xs-1 wt-pt-md-0">
+                          <div className="wt-flex-xs-1">
+                            <a href={item.listingLink} target="_blank" rel="noreferrer">
+                              <img
+                                src={item.listingThumbnail}
+                                className="wt-width-full wt-rounded-01 wt-overflow-hidden wt-display-block"
+                                alt={item.listingTitle}
+                              />
+                            </a>
+                          </div>
+
+                          <div className="wt-flex-xs-3 wt-pl-xs-2 wt-break-word simplified-cart-min-width-0 wt-pl-md-3">
+                            <p>
+                              <a
+                                className="wt-text-link-no-underline wt-text-body wt-text-truncate"
+                                href={item.listingLink}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {item.listingTitle}
+                              </a>
+                            </p>
+                            <div>
+                              {item.instantDownload && <span>Instant Download</span>}
+                              <span>{item.filesIncluded}</span>
+                              <span className="wt-sem-text-critical">{item.inCarts}</span>
+                            </div>
+                            <div>
+                              <span>USD {item.price}</span>
+                              <span>Qty: {item.quantity}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
         <div class="wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pt-xs-2 wt-mt-md-0 wt-mt-xs-2 wt-pt-md-0 wt-pl-md-3 wt-grid__item-lg-4 wt-grid__item-md-5">
             <div data-multi-shop-cart-payment="" data-shop-payment-unique-id="12541074043">
     <div class="multi-shop-cart-payment wt-p-md-3">
@@ -539,7 +622,7 @@ Local taxes included (where applicable)
 
 
 
-        <div class="wt-sem-bg-elevation-0">
+        {/* <div class="wt-sem-bg-elevation-0">
                 <div data-selector="cart-recommendations-container">
                     <div data-appears-component-name="Cart_Recommendations_ApiSpec_List" data-appears-event-data="{&quot;module_placement&quot;:&quot;cart&quot;,&quot;datasets&quot;:[&quot;ads&quot;,&quot;Common_Listing_SameShopFrequencyV2ComplementaryWithFallback&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Cart_Recommendations_ApiSpec_List&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:{&quot;55147f25-8bbd-4747-8fcf-c8a64bd8b4d4&quot;:[5,6,7,8,9]},&quot;candidate_source_map&quot;:{&quot;arizona:Listing_Candidates_SameShop&quot;:[5,6,7,8,9]},&quot;second_pass_ranker_map&quot;:{&quot;recs-ranking-listwise-v6a&quot;:[5,6,7,8,9]},&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;https:\/\/www.etsy.com\/listing\/1629181619\/happy-chemicals-poster-therapy-office?ls=r\u0026ref=rlp-listing-grid-2\u0026external=1\u0026space_id=1368461677904\u0026pro=1\u0026sts=1\u0026dd=1\u0026content_source=2dd9b4ba02a841000d243d2781f9d5d2%253ALT2b5414eacb64225d919d2a55b4c835af680d0ffb\u0026logging_key=2dd9b4ba02a841000d243d2781f9d5d2%3ALT2b5414eacb64225d919d2a55b4c835af680d0ffb&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;5&quot;,&quot;hourOfDay&quot;:&quot;13&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[-0.9054200649261474609375,-1.01154553890228271484375,-1.03110086917877197265625,-1.0343334674835205078125,-1.06853425502777099609375],&quot;datasets_map&quot;:{&quot;ads&quot;:[0,1,2,3,4],&quot;Common_Listing_SameShopFrequencyV2ComplementaryWithFallback&quot;:[5,6,7,8,9]},&quot;target_listing_id&quot;:1226534278,&quot;refTag&quot;:&quot;also_bought&quot;,&quot;listing_ids&quot;:[4298647493,1668778321,1359543755,4327442958,1510353026,1570575519,1115919049,1103308701,1598536599,1055594718],&quot;listing_prices_usd&quot;:[2.79000000000000003552713678800500929355621337890625,2.5,2.9900000000000002131628207280300557613372802734375,3.79000000000000003552713678800500929355621337890625,1.0500000000000000444089209850062616169452667236328125,1.3899999999999999023003738329862244427204132080078125,1.060000000000000053290705182007513940334320068359375,1.1699999999999999289457264239899814128875732421875,1.3899999999999999023003738329862244427204132080078125,1.060000000000000053290705182007513940334320068359375],&quot;taxonomy_ids&quot;:[2078,12394,6844,6844,6844,6844,6844,6844,6844,6844],&quot;taxo_paths&quot;:[&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.craft_machine_files.cutting_machine_files&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
 <div class="appears-ready">
@@ -2538,7 +2621,7 @@ Local taxes included (where applicable)
   </div>
 
     </div>
-</div>
+</div> */}
     </div>
 </div>
         </main>

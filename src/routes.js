@@ -49,11 +49,11 @@ const routes = [
     element: <Single2 />,
   },
   {
- path: "/cart",
+ path: "/carts",
     element: <Cart />,
   },
   {
- path: "/carts",
+ path: "/cart",
     element: <Cart2 />,
   },
   {
