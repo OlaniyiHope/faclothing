@@ -263,7 +263,7 @@ const Header2 = ({ cartCount = 1 }) => {
               {categories.map((cat) => (
                 <li key={cat._id} className="wt-mr-xs-3">
                   <a
-                    href={`/category/${cat._id}`}
+                    href={`/shop-category/${cat._id}`}
                     className="wt-btn wt-btn--transparent wt-btn--small"
                     data-menu-ui="menuitem"
                     data-ui="top-nav-category-link"
@@ -293,7 +293,7 @@ const Header2 = ({ cartCount = 1 }) => {
       {categories.map((cat) => (
         <li key={cat._id} className="wt-mb-xs-2">
           <a
-            href={`/category/${cat._id}`}
+            href={`/shop-category/${cat._id}`}
             className="wt-btn wt-btn--transparent wt-btn--small wt-width-full"
           >
             <span className="wt-icon wt-icon--smaller-xs wt-nudge-r-2">
