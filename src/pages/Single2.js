@@ -2396,1025 +2396,7 @@ const availableColors = [
     </div>
 </div>
   
-    {/* <div data-appears-component-name="Listzilla_ApiSpecs_SimilarListingsRow" data-appears-event-data="{&quot;module_placement&quot;:&quot;external_top&quot;,&quot;datasets&quot;:[&quot;organic&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Listzilla_ApiSpecs_SimilarListingsRow&quot;,&quot;page_listing_id&quot;:1629181619,&quot;
-    mmx_request_uuid_map&quot;:[],&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;
-        :{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;https:\/\/www.etsy.com\/r\/themes\/1368461677904?anchor_listings=1772270430\u0026ref=hp_themes_module-2&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;3&quot;,&quot;hourOfDay&quot;:&quot;13&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;organic&quot;:[0,1,2,3,4,5,6,7,8]},&quot;target_listing_id&quot;:1629181619,&quot;sash_flavor&quot;:&quot;spaces&quot;,&quot;refTag&quot;:&quot;landingpage_similar_listing_top&quot;,&quot;listing_ids&quot;:[1772270430,1254144636,1043229566,557997966,746185432,974826767,1174180936,1650949737,1393678802],&quot;listing_prices_usd&quot;:[29.989999999999998436805981327779591083526611328125,11.03999999999999914734871708787977695465087890625,57.52000000000000312638803734444081783294677734375,36,29.949999999999999289457264239899814128875732421875,49.99000000000000198951966012828052043914794921875,53.9500000000000028421709430404007434844970703125,11.9900000000000002131628207280300557613372802734375,42.2000000000000028421709430404007434844970703125],&quot;taxonomy_ids&quot;:[2350,180,1062,1005,1667,6346,1027,7020,482],&quot;taxo_paths&quot;:[&quot;toys_and_games.games_and_puzzles.dice_and_tile_games.dice&quot;,&quot;bags_and_purses.market_bags&quot;,&quot;home_and_living.kitchen_and_dining.drink_and_barware.drinkware.mugs&quot;,&quot;home_and_living.home_decor.candles_and_home_fragrances.candles.container_candles&quot;,&quot;weddings.gifts_and_mementos.gifts_for_the_couple&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.kits&quot;,&quot;home_and_living.home_decor.wall_decor&quot;,&quot;craft_supplies_and_tools.blanks.hat_and_hair_blanks.hair_clip_blanks&quot;,&quot;clothing.gender_neutral_adult_clothing.tops_and_tees.tshirts&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
-    
 
-<div class="wt-pt-xs-4 wt-pr-xs-2 wt-pl-xs-2 wt-pr-md-4 wt-pl-md-4 wt-pr-lg-5 wt-pl-lg-5 wt-body-max-width wt-bb-md appears-ready">
-    <div data-similar-listings-row="">
-  
-        <div class="wt-pl-xs-1 wt-display-flex-xs wt-align-items-center wt-justify-content-space-between" data-similar-target-heading="">
-            <div class="wt-pr-xs-2 wt-display-flex-xs wt-align-items-baseline wt-break-word wt-flex-xs-6 wt-mb-xs-2">
-                <h2 class="wt-text-title-large--tight">
-                    Chemistry Essentials
-                </h2>
-                    
-                    
-                </div>
-
-                <a class="wt-arrow-link wt-arrow-link--forward wt-mb-xs-3 wt-text-caption" href="https://www.etsy.com/search?ls=r&amp;ref=hp_themes_module-1&amp;external=1&amp;space_id=1368461677904&amp;pro=1&amp;sts=1&amp;dd=1&amp;content_source=2dd9b4ba02a841000d243d2781f9d5d2%253ALT2b5414eacb64225d919d2a55b4c835af680d0ffb&amp;logging_key=2dd9b4ba02a841000d243d2781f9d5d2%3ALT2b5414eacb64225d919d2a55b4c835af680d0ffb&amp;explicit=1&amp;q=Chemistry+Essentials&amp;anchor_listing_id=1629181619&amp;is_merch_library=1" data-see-more-link="">
-                    <span aria-label="See more listings like this">
-                    See more
-                    </span>
-                </a>
-            
-        
-        </div>
-            <div class="wt-grid negative-mr-xs">
-                <div class="wt-grid__item-xs-12 wt-grid__item-lg-9"><ul class="responsive-listing-grid wt-grid wt-grid--block wt-justify-content-flex-start wt-list-unstyled wt-ml-xs-0 wt-pl-xs-0 wt-mr-xs-0 wt-width-full">
-    <div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-2
-                wt-grid__item-lg-2
-                wt-grid__item-md-2
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="1772270430" data-shop-id="15975158" data-listing-id="1772270430" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="1772270430" data-palette-listing-image="" href="https://www.etsy.com/listing/1772270430/periodic-table-dice-118-element-20-dice?click_key=1eda215a6db1cad0eea27700f773322fc39e83f3%3A1772270430&amp;click_sum=9cb666d9&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-1&amp;cns=1&amp;sts=1" data-listing-link="" target="etsy.1772270430" title="Periodic Table Dice - 118 Element, 20 Dice Full Set">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-1 wt-image--cover wt-image" src="https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_340x270.6235256128_lcnn.jpg" alt="Periodic Table Dice - 118 Element, 20 Dice Full Set"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_170x135.6235256128_lcnn.jpg 170w, https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_340x270.6235256128_lcnn.jpg 340w, https://i.etsystatic.com/15975158/r/il/771cf4/6235256128/il_680x540.6235256128_lcnn.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-1772270430">
-                Periodic Table Dice - 118 Element, 20 Dice Full Set
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                <p class="wt-text-title-01 wt-pr-xs-1">
-                    <span class="currency-symbol">USD </span><span class="currency-value">29.99</span>
-                </p>
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                <div class="wt-text-brick lc-half-unit-mt wt-text-caption">
-    Only 1 available and it's in <span class="wt-display-inline-block">9 people's carts</span>
-</div>
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="1772270430" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-2
-                wt-grid__item-lg-2
-                wt-grid__item-md-2
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="1254144636" data-shop-id="30394554" data-listing-id="1254144636" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="1254144636" data-palette-listing-image="" href="https://www.etsy.com/listing/1254144636/science-tote-bag-chemistry-gift-physics?click_key=8e4b5513afbc89508e70caf5abaf6e110036a11f%3A1254144636&amp;click_sum=84f025e9&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-2&amp;pro=1&amp;sts=1" data-listing-link="" target="etsy.1254144636" title="Science Tote Bag | Chemistry Gift, Physics Gift | Science Teacher Gift">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-2 wt-image--cover wt-image" src="https://i.etsystatic.com/30394554/c/1986/1579/602/1375/il/954ff8/4063614491/il_340x270.4063614491_9ukp.jpg" alt="Science Tote Bag | Chemistry Gift, Physics Gift | Science Teacher Gift"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/30394554/c/1986/1579/602/1375/il/954ff8/4063614491/il_170x135.4063614491_9ukp.jpg 170w, https://i.etsystatic.com/30394554/c/1986/1579/602/1375/il/954ff8/4063614491/il_340x270.4063614491_9ukp.jpg 340w, https://i.etsystatic.com/30394554/c/1986/1579/602/1375/il/954ff8/4063614491/il_680x540.4063614491_9ukp.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-1254144636">
-                Science Tote Bag | Chemistry Gift, Physics Gift | Science Teacher Gift
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                    <p class="
-                              
-                               wt-text-slime
-                              wt-text-title-01 wt-pr-xs-1">
-                        <span class="wt-screen-reader-only">
-                            Sale Price USD 11.04
-                        </span>
-                        <span aria-hidden="true">
-                            <span class="currency-symbol">USD </span><span class="currency-value">11.04</span>
-                        </span><br />
-                        </p><p class="wt-text-caption
-                            search-collage-promotion-price
-                            
-                            
-                            wt-text-gray
-                            ">
-                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">12.99</span></span>
-                            <span class="wt-screen-reader-only">
-                                Original Price USD 12.99
-                            </span>
-                            <span class="wt-text-grey wt-no-wrap">
-                                
-                                
-                                
-                            </span>
-                        </p>
-                    <p></p>
-
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="1254144636" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-2
-                wt-grid__item-lg-2
-                wt-grid__item-md-2
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="1043229566" data-shop-id="17179263" data-listing-id="1043229566" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="1043229566" data-palette-listing-image="" href="https://www.etsy.com/listing/1043229566/custom-science-teacher-mug-handmade?click_key=0c7ac0c23647957f26524b733574a0c4dd98eb23%3A1043229566&amp;click_sum=a5b6a35f&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-3&amp;pro=1&amp;sts=1" data-listing-link="" target="etsy.1043229566" title="Custom Science Teacher Mug: Handmade Chemist Coffee Cup">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-3 wt-image--cover wt-image" src="https://i.etsystatic.com/17179263/c/2019/1603/197/494/il/13f4f4/6240679351/il_340x270.6240679351_9q60.jpg" alt="Custom Science Teacher Mug: Handmade Chemist Coffee Cup"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/17179263/c/2019/1603/197/494/il/13f4f4/6240679351/il_170x135.6240679351_9q60.jpg 170w, https://i.etsystatic.com/17179263/c/2019/1603/197/494/il/13f4f4/6240679351/il_340x270.6240679351_9q60.jpg 340w, https://i.etsystatic.com/17179263/c/2019/1603/197/494/il/13f4f4/6240679351/il_680x540.6240679351_9q60.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-1043229566">
-                Custom Science Teacher Mug: Handmade Chemist Coffee Cup
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                    <p class="
-                              
-                               wt-text-slime
-                              wt-text-title-01 wt-pr-xs-1">
-                        <span class="wt-screen-reader-only">
-                            Sale Price USD 57.52
-                        </span>
-                        <span aria-hidden="true">
-                            <span class="currency-symbol">USD </span><span class="currency-value">57.52</span>
-                        </span><br />
-                        </p><p class="wt-text-caption
-                            search-collage-promotion-price
-                            
-                            
-                            wt-text-gray
-                            ">
-                            <span class="wt-text-strikethrough wt-text-grey" aria-hidden="true"><span class="currency-symbol">USD </span><span class="currency-value">88.50</span></span>
-                            <span class="wt-screen-reader-only">
-                                Original Price USD 88.50
-                            </span>
-                            <span class="wt-text-grey wt-no-wrap">
-                                
-                                
-                                
-                            </span>
-                        </p>
-                    <p></p>
-
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="1043229566" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-2
-                wt-grid__item-lg-2
-                wt-grid__item-md-2
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="557997966" data-shop-id="16104738" data-listing-id="557997966" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="557997966" data-palette-listing-image="" href="https://www.etsy.com/listing/557997966/candle-kit-make-your-own-candles-with?click_key=bc6287c5bff673cb378c8aee463a4ff0427416ac%3A557997966&amp;click_sum=eadaffb4&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-4" data-listing-link="" target="etsy.557997966" title="Candle Kit, Make Your Own Candles with Soy Wax and Essential Oils">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-4 wt-image--cover wt-image" src="https://i.etsystatic.com/16104738/r/il/8320e0/3436796761/il_340x270.3436796761_69s1.jpg" alt="Candle Kit, Make Your Own Candles with Soy Wax and Essential Oils"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/16104738/r/il/8320e0/3436796761/il_170x135.3436796761_69s1.jpg 170w, https://i.etsystatic.com/16104738/r/il/8320e0/3436796761/il_340x270.3436796761_69s1.jpg 340w, https://i.etsystatic.com/16104738/r/il/8320e0/3436796761/il_680x540.3436796761_69s1.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-557997966">
-                Candle Kit, Make Your Own Candles with Soy Wax and Essential Oils
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                <p class="wt-text-title-01 wt-pr-xs-1">
-                    <span class="currency-symbol">USD </span><span class="currency-value">36.00</span>
-                </p>
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="557997966" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-2
-                wt-grid__item-lg-2
-                wt-grid__item-md-2
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="746185432" data-shop-id="14509506" data-listing-id="746185432" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="746185432" data-palette-listing-image="" href="https://www.etsy.com/listing/746185432/periodic-table-cutting-board-engraved?click_key=29b0d4be7f331f043896f62cfc3db5465f1872c2%3A746185432&amp;click_sum=a05bdb9c&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-5&amp;cns=1" data-listing-link="" target="etsy.746185432" title="PERIODIC Table CUTTING BOARD, Engraved Cutting Board, Periodic Table of Elements, Teacher Gift, Charcuterie Board">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-5 wt-image--cover wt-image" src="https://i.etsystatic.com/14509506/r/il/476865/2073203023/il_340x270.2073203023_rzul.jpg" alt="PERIODIC Table CUTTING BOARD, Engraved Cutting Board, Periodic Table of Elements, Teacher Gift, Charcuterie Board"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/14509506/r/il/476865/2073203023/il_170x135.2073203023_rzul.jpg 170w, https://i.etsystatic.com/14509506/r/il/476865/2073203023/il_340x270.2073203023_rzul.jpg 340w, https://i.etsystatic.com/14509506/r/il/476865/2073203023/il_680x540.2073203023_rzul.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-746185432">
-                PERIODIC Table CUTTING BOARD, Engraved Cutting Board, Periodic Table of Elements, Teacher Gift, Charcuterie Board
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                <p class="wt-text-title-01 wt-pr-xs-1">
-                    <span class="currency-symbol">USD </span><span class="currency-value">29.95</span>
-                </p>
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                <div class="wt-text-brick lc-half-unit-mt wt-text-caption">
-    Only 1 available and it's in <span class="wt-display-inline-block">2 people's carts</span>
-</div>
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="746185432" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-2
-                wt-grid__item-lg-2
-                wt-grid__item-md-2
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="974826767" data-shop-id="27788297" data-listing-id="974826767" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="974826767" data-palette-listing-image="" href="https://www.etsy.com/listing/974826767/craft-soap-kit-soap-soap-kit-handmade?click_key=f6cc45bc32a1aaef6f5bd45ccc8f7e71ae2b626a%3A974826767&amp;click_sum=3a5ec1ac&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-6" data-listing-link="" target="etsy.974826767" title="Craft Soap Kit, Soap, Soap kit, Handmade Soap, Toy Soap, Hand Craft Soap, Craft Kits, DIY Soap, DIY Soap Kit, Beginner DIY Kit, Gift Soap">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-6 wt-image--cover wt-image" src="https://i.etsystatic.com/27788297/r/il/61603f/2918589072/il_340x270.2918589072_qsh3.jpg" alt="Craft Soap Kit, Soap, Soap kit, Handmade Soap, Toy Soap, Hand Craft Soap, Craft Kits, DIY Soap, DIY Soap Kit, Beginner DIY Kit, Gift Soap"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/27788297/r/il/61603f/2918589072/il_170x135.2918589072_qsh3.jpg 170w, https://i.etsystatic.com/27788297/r/il/61603f/2918589072/il_340x270.2918589072_qsh3.jpg 340w, https://i.etsystatic.com/27788297/r/il/61603f/2918589072/il_680x540.2918589072_qsh3.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-974826767">
-                Craft Soap Kit, Soap, Soap kit, Handmade Soap, Toy Soap, Hand Craft Soap, Craft Kits, DIY Soap, DIY Soap Kit, Beginner DIY Kit, Gift Soap
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                <p class="wt-text-title-01 wt-pr-xs-1">
-                    <span class="currency-symbol">USD </span><span class="currency-value">49.99</span>
-                </p>
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="974826767" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div>
-</ul></div>
-                <div class="wt-grid__item-lg-3 wt-show-lg"><ul class="responsive-listing-grid wt-grid wt-grid--block wt-justify-content-flex-start wt-list-unstyled wt-ml-xs-0 wt-pl-xs-0 wt-mr-xs-0 wt-width-full">
-    <div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-6
-                wt-grid__item-lg-6
-                wt-grid__item-md-6
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="1174180936" data-shop-id="7408963" data-listing-id="1174180936" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="1174180936" data-palette-listing-image="" href="https://www.etsy.com/listing/1174180936/wash-periodic-table-wood-sign-bathroom?click_key=fd08c4678307db22b861f4c29b666070058bafa1%3A1174180936&amp;click_sum=1e411490&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-7&amp;sts=1" data-listing-link="" target="etsy.1174180936" title="Wash Periodic Table Wood Sign | Bathroom Decor | Laundry | Industrial Style | 3D | Engraved Signs | Gift Idea | Science | Home Decor | 17x7">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-7 wt-image--cover wt-image" src="https://i.etsystatic.com/7408963/c/2100/1400/0/0/il/198715/3703966488/il_340x270.3703966488_3dbb.jpg" alt="Wash Periodic Table Wood Sign | Bathroom Decor | Laundry | Industrial Style | 3D | Engraved Signs | Gift Idea | Science | Home Decor | 17x7"  style={{ aspectRatio: "1" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/7408963/c/2100/1400/0/0/il/198715/3703966488/il_170x135.3703966488_3dbb.jpg 170w, https://i.etsystatic.com/7408963/c/2100/1400/0/0/il/198715/3703966488/il_340x270.3703966488_3dbb.jpg 340w, https://i.etsystatic.com/7408963/c/2100/1400/0/0/il/198715/3703966488/il_680x540.3703966488_3dbb.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-1174180936">
-                Wash Periodic Table Wood Sign | Bathroom Decor | Laundry | Industrial Style | 3D | Engraved Signs | Gift Idea | Science | Home Decor | 17x7
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                <p class="wt-text-title-01 wt-pr-xs-1">
-                    <span class="currency-symbol">USD </span><span class="currency-value">53.95</span>
-                </p>
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="1174180936" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div><div class="js-merch-stash-check-listing v2-listing-card wt-mb-xs-2
-           wt-position-relative
-                wt-grid__item-xs-3 wt-flex-shrink-xs-1
-                wt-grid__item-xl-6
-                wt-grid__item-lg-6
-                wt-grid__item-md-6
-           
-listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced-border-radius 
-            
-            listing-card-experimental-style" data-palette-listing-id="1650949737" data-shop-id="47543410" data-listing-id="1650949737" data-page-type="listing_page_similar_listings_row" data-behat-listing-card="" data-listing-card-v2-requires-setup="" data-listing-card-v2="">
-    <a class="listing-link
-                wt-display-inline-block
-            
-                wt-transparent-card
-" data-listing-id="1650949737" data-palette-listing-image="" href="https://www.etsy.com/listing/1650949737/beaker-hair-clip-scientist-stem-chemist?click_key=594d0f8e24ba997d96fdcb9674d1641210b92996%3A1650949737&amp;click_sum=522b6a72&amp;external=1&amp;rec_type=cs&amp;ref=landingpage_similar_listing_top-8&amp;sts=1" data-listing-link="" target="etsy.1650949737" title="Beaker Hair Clip, Scientist, Stem, Chemist, Physicist">
-            
-                <div class="v2-listing-card__img wt-position-relative
-                        listing-card-image-no-shadow
-                        listing-card-rounded-corners
-                    ">
-                    <div class="placeholder 
-             placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                 wt-mb-xs-1 
-            
-            
-                listing-card-rounded-corners
-            ">
-    <div class="placeholder vertically-centered-placeholder
-                 placeholder-content placeholder-landscape wt-rounded-02 wt-overflow-hidden 
-                
-                
-                 listing-card-rounded-corners ">
-            <img data-clg-id="WtImage" class="wt-width-full wt-display-block wt-height-full wt-position-absolute listing-card-rounded-corners landingpage_similar_listing_top-8 wt-image--cover wt-image" src="https://i.etsystatic.com/47543410/c/1779/1412/0/198/il/92d2b9/6162776269/il_340x270.6162776269_p4y9.jpg" alt="Beaker Hair Clip, Scientist, Stem, Chemist, Physicist"  style={{ aspectRatio: "1.25925925926" }} data-listing-card-listing-image="" sizes="(max-width: 479px) 33vw, (max-width: 639px) 25vw, (max-width: 899px) 17vw, 13vw" srcset="https://i.etsystatic.com/47543410/c/1779/1412/0/198/il/92d2b9/6162776269/il_170x135.6162776269_p4y9.jpg 170w, https://i.etsystatic.com/47543410/c/1779/1412/0/198/il/92d2b9/6162776269/il_340x270.6162776269_p4y9.jpg 340w, https://i.etsystatic.com/47543410/c/1779/1412/0/198/il/92d2b9/6162776269/il_680x540.6162776269_p4y9.jpg 680w" />
-
-            
-            
-    </div>
-        
-</div>
-                    
-                </div>
-        
-                <div class="v2-listing-card__info
-    
-    
-    ">
-        
-    
-            <h3 class="wt-text-caption v2-listing-card__title
-                wt-text-truncate
-                
-                 wt-mb-xs-1" id="listing-title-1650949737">
-                Beaker Hair Clip, Scientist, Stem, Chemist, Physicist
-            </h3>
-
-                    
-            
-                        
-            
-                           <div class="n-listing-card__price  wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-width-full
-             wt-text-title-01 wt-pr-xs-1
-             ">
-
-
-                <p class="wt-text-title-01 wt-pr-xs-1">
-                    <span class="currency-symbol">USD </span><span class="currency-value">11.99</span>
-                </p>
-</div>
-                        
-                        
-                            
-                        
-            
-                    
-                
-            
-
-
-
-            
-            
-                
-            
-            
-            
-</div>
-    </a>
-            <div data-favorite-button-wrapper="" class="v2-listing-card__actions wt-z-index-1 wt-position-absolute ">
-                <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
-            wt-btn--filled wt-btn--icon neu-default-favorite wt-position-right wt-position-top fav-opacity-hidden neu-hover-on-card neu-default-button-position--grid
-            " data-ui="favorite-listing-button" data-listing-id="1650949737" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="listing_page_similar_listings_row" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs
-                    
-                    
-                        
-                        
-                            wt-display-block
-                        
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
-                <span class="etsy-icon wt-nudge-t-1 wt-icon--smaller-xs wt-text-favorite-heart
-                    
-                    
-                        
-                        
-                            wt-display-none
-                        
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
-            </div>
-            <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
-                
-                Add to Favorites
-            </span>
-            </button>
-            </div>
-</div>
-</ul></div>
-            </div>
-        
-    </div>
-</div>
-    </div> */}
 
 
 <div data-selector="listing-page-content" class="content-wrap listing-page-content">
@@ -3554,7 +2536,7 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
 
                         </div>
                     </div>
-
+{/* 
                     <div class="cart-col wt-order-xs-2 wt-mb-lg-5">
     <div id="listing-page-cart" class="wt-display-flex-lg wt-flex-direction-column-md wt-flex-lg-3 wt-pl-md-4 wt-pr-md-4 wt-pl-lg-0 wt-pr-lg-5 wt-pl-xs-2 wt-pr-xs-2">
             <div class="
@@ -3740,9 +2722,111 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
         </div>
         
     </div>
+</div> */}
+<div className="cart-col wt-order-xs-2 wt-mb-lg-5">
+  <div
+    id="listing-page-cart"
+    className="wt-display-flex-lg wt-flex-direction-column-md wt-flex-lg-3 wt-pl-md-4 wt-pr-md-4 wt-pl-lg-0 wt-pr-lg-5 wt-pl-xs-2 wt-pr-xs-2"
+  >
+
+
+    {/* PRICE SECTION */}
+    <div className="wt-display-flex-xs wt-align-items-center wt-flex-wrap">
+      <div>
+        <div className="wt-display-flex-xs wt-align-items-baseline wt-flex-wrap">
+          <p className="wt-text-title-larger wt-mr-xs-1 wt-text-black">
+            USD {product?.discountPrice ?? product?.price}
+          </p>
+
+          {product?.discountPrice && (
+            <p className="wt-text-caption">
+              <span className="wt-text-strikethrough wt-nudge-b-1">
+                USD {product.price}
+              </span>
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+
+    {/* DISCOUNT LABEL */}
+    {product?.discountPrice && (
+      <div className="wt-mb-xs-1 wt-display-flex-xs">
+        <div>
+          <p className="wt-text-title-small wt-sem-text-monetary-value">
+            {Math.floor(
+              ((product.price - product.discountPrice) / product.price) * 100
+            )}
+            % off
+          </p>
+        </div>
+
+        <span className="wt-sem-text-monetary-value wt-mr-xs-1 wt-ml-xs-1">
+          •
+        </span>
+
+        <div>
+          <p className="wt-text-title-small wt-sem-text-monetary-value">
+            Limited time sale
+          </p>
+        </div>
+      </div>
+    )}
+
+    {/* VAT Section */}
+    <div>
+      <div className="wt-sem-text-secondary wt-text-caption wt-pt-xs-1 wt-pb-xs-1">
+        VAT Included
+      </div>
+    </div>
+
+    {/* PRODUCT NAME */}
+    <div className="wt-mt-xs-1 wt-mb-xs-1">
+      <h1
+        className="wt-line-height-tight wt-break-word wt-text-body"
+        tabIndex={0}
+      >
+        {product?.name}
+      </h1>
+    </div>
+
+
+
+    {/* ADD TO CART SECTION */}
+    <div className="wt-mb-xs-6 wt-mb-lg-0">
+      <div>
+        <div className="wt-display-flex-xs wt-flex-direction-column-lg wt-flex-gap-xs-2">
+          <button
+            className="wt-btn wt-btn--filled wt-width-full wt-no-wrap"
+      onClick={() => {
+    addToCart(product);
+    navigate("/cart"); // redirects to cart pa
+      }}
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* STOCK / BESTSELLER NOTICE */}
+    <div className="wt-mt-xs-3">
+      {product?.isBestSeller && (
+        <p className="wt-text-caption">
+          ⭐ This item is a Bestseller — selling fast!
+        </p>
+      )}
+      {product?.quantityAvailable <= 5 && (
+        <p className="wt-text-caption wt-text-critical">
+          Only {product.quantityAvailable} left in stock
+        </p>
+      )}
+    </div>
+  </div>
 </div>
 
-<div class="listing-info info-col description-right wt-order-xs-5">
+
+{/* <div class="listing-info info-col description-right wt-order-xs-5">
     <div class="wt-flex-lg-3 wt-order-xs-1 wt-order-lg-3 wt-max-width-full wt-pl-md-4 wt-pr-md-4 wt-pl-lg-0 wt-pr-lg-5 wt-pl-xs-2 wt-pr-xs-2">
             <div data-appears-component-name="product_details">
 <div id="product_details" class="appears-ready">
@@ -3816,7 +2900,112 @@ listing-card-deemphasized-sash wt-pl-xs-1 wt-pr-xs-1 no-atc-spacing cnc-enhanced
 
 </div>
     </div>
+</div> */}
+<div className="listing-info info-col description-right wt-order-xs-5">
+  <div className="wt-flex-lg-3 wt-order-xs-1 wt-order-lg-3 wt-max-width-full wt-pl-md-4 wt-pr-md-4 wt-pl-lg-0 wt-pr-lg-5 wt-pl-xs-2 wt-pr-xs-2">
+    <div data-appears-component-name="product_details">
+      <div id="product_details" className="appears-ready">
+
+        <div className="wt-content-toggle">
+          <button
+            className="wt-btn wt-btn--transparent wt-content-toggle--btn wt-width-full wt-content-toggle--flush"
+            data-default-open="true"
+          >
+            <span className="wt-flex-xs-auto wt-width-full wt-text-title">
+              <h2 style={{fontWeight: "800"}}>Item Details</h2>
+            </span>
+          </button>
+
+          <div >
+
+            {/* ----------- HIGHLIGHTS ------------ */}
+            <div className="wt-mb-xs-6">
+              <div className="wt-mt-xs-2">
+                <h3 className="wt-text-title" style={{fontWeight: "800"}}>Highlights</h3>
+                <ul>
+
+                  {/* MATERIAL */}
+                  {product?.material && (
+                    <li className="wt-block-grid__item wt-display-flex-xs wt-align-items-flex-start">
+                      <div className="wt-ml-xs-1">Material: {product.material}</div>
+                    </li>
+                  )}
+
+                  {/* WEIGHT */}
+                  {product?.weight && (
+                    <li className="wt-block-grid__item wt-display-flex-xs wt-align-items-flex-start">
+                      <div className="wt-ml-xs-1">Weight: {product.weight}</div>
+                    </li>
+                  )}
+
+                  {/* CLOSURE TYPE */}
+                  {product?.closureType && (
+                    <li className="wt-block-grid__item wt-display-flex-xs wt-align-items-flex-start">
+                      <div className="wt-ml-xs-1">Closure type: {product.closureType}</div>
+                    </li>
+                  )}
+
+                  {/* COLORS */}
+                  {product?.color?.length > 0 && (
+                    <li className="wt-block-grid__item wt-display-flex-xs wt-align-items-flex-start">
+                      <div className="wt-ml-xs-1">
+                        Available Colors: {product.color.join(", ")}
+                      </div>
+                    </li>
+                  )}
+
+                  {/* SIZES */}
+                  {product?.size?.length > 0 && (
+                    <li className="wt-block-grid__item wt-display-flex-xs wt-align-items-flex-start">
+                      <div className="wt-ml-xs-1">
+                        Sizes: {product.size.join(", ")}
+                      </div>
+                    </li>
+                  )}
+
+                </ul>
+              </div>
+
+              {/* ----------- FEATURES (comma separated) ------------ */}
+              {product?.features?.length > 0 && (
+                <div className="wt-mt-xs-2">
+                  <h3 className="wt-text-title" style={{fontWeight: "800"}} >Features</h3>
+                  <ul >
+                    {product.features[0]
+                      .split(",")
+                      .map((item, index) => (
+                        <li
+                          key={index}
+                          className="wt-block-grid__item wt-display-flex-xs wt-align-items-flex-start"
+                        >
+                          <div className="wt-ml-xs-1">{item.trim()}</div>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* ----------- DESCRIPTION ------------ */}
+              <div data-id="description-text" className="wt-mt-xs-4">
+                <div className="wt-content-toggle__body wt-content-toggle__body--truncated wt-content-toggle__body--truncated-02">
+                      <h3 className="wt-text-title" style={{fontWeight: "800"}}>Description</h3>
+                  <p className="wt-text-body-01 wt-break-word">
+                    {product?.description}
+                  </p>
+                </div>
+
+             
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
+
 
             <div class="raised-tags-col wt-pl-md-4 wt-pr-md-4 wt-pr-lg-5 wt-pl-lg-5 wt-order-xs-3">
         <div data-appears-component-name="Listzilla_ApiSpecs_Tags_MultiChannelLanding" data-appears-event-data="{&quot;module_placement&quot;:&quot;lp_queries_external_top&quot;,&quot;datasets&quot;:[&quot;Common_Query_VMEPoweredSSQU2L&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Listzilla_ApiSpecs_Tags_MultiChannelLanding&quot;,&quot;page_listing_id&quot;:1629181619,&quot;mmx_request_uuid_map&quot;:{&quot;7a6c6c6a-7e80-4d0e-9af3-e53b35c3e15c&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]},&quot;candidate_source_map&quot;:[],&quot;second_pass_ranker_map&quot;:[],&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;https:\/\/www.etsy.com\/r\/themes\/1368461677904?anchor_listings=1772270430\u0026ref=hp_themes_module-2&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;3&quot;,&quot;hourOfDay&quot;:&quot;13&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[],&quot;datasets_map&quot;:{&quot;Common_Query_VMEPoweredSSQU2L&quot;:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]},&quot;target_listing_id&quot;:1629181619,&quot;refTag&quot;:&quot;lp_queries_external_top&quot;,&quot;queries&quot;:[&quot;Therapy Poster&quot;,&quot;Psychology Poster&quot;,&quot;Mental Health Poster&quot;,&quot;Therapy Wall Art&quot;,&quot;Psychiatry&quot;,&quot;Therapy Office Decor&quot;,&quot;Psychiatry Poster&quot;,&quot;Mental Health Wall Decor&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
