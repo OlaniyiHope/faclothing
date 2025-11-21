@@ -269,7 +269,7 @@ const Cart2 = () => {
     </div>
 </li>
         </ul> */}
-     <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
+ <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
   {cartItems.map((item) => (
     <li key={item._id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
       <div className="wt-rounded-02 wt-b-xs">
@@ -303,6 +303,15 @@ const Cart2 = () => {
               <div className="wt-mt-xs-1 wt-text-title-01">
                 ₦{item.discountPrice ? item.discountPrice : item.price}
               </div>
+
+              {/* REMOVE BUTTON */}
+              <button
+                onClick={() => removeFromCart(item._id)}
+                className="wt-btn wt-btn--small wt-btn--secondary wt-mt-xs-2"
+                style={{ cursor: "pointer" }}
+              >
+                Remove
+              </button>
             </div>
 
           </div>
@@ -312,6 +321,7 @@ const Cart2 = () => {
     </li>
   ))}
 </ul>
+
 
         <div class="wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pt-xs-2 wt-mt-md-0 wt-mt-xs-2 wt-pt-md-0 wt-pl-md-3 wt-grid__item-lg-4 wt-grid__item-md-5">
             <div data-multi-shop-cart-payment="" data-shop-payment-unique-id="12541074043">
@@ -412,16 +422,26 @@ const Cart2 = () => {
                     <table class="wt-b-xs-none wt-width-full" summary="This is the order summary, it contains costs for the products you have put in your cart">
         <caption hidden="true">Order summary</caption>
         <tbody class="wt-text-left-xs">
-        
-        <tr>
-    <th class="wt-p-xs-0 wt-b-xs-none wt-sem-text-primary wt-text-body-01
-        th-payments-normal" scope="row">
-            Item(s) total
-    </th>
-    <td class="wt-p-xs-0 wt-b-xs-none wt-text-right-xs wt-text-body-01 wt-sem-text-primary wt-no-wrap">
-        <span class="money"><span class="currency-symbol">USD </span><span class="currency-value">1.06</span></span>
-    </td>
+<tr>
+  <th
+    className="wt-p-xs-0 wt-b-xs-none wt-sem-text-primary wt-text-body-01 th-payments-normal"
+    scope="row"
+  >
+    Item(s) total
+  </th>
+  <td className="wt-p-xs-0 wt-b-xs-none wt-text-right-xs wt-text-body-01 wt-sem-text-primary wt-no-wrap">
+    <span className="money">
+      <span className="currency-symbol">₦ </span>
+      <span className="currency-value">
+        {cartItems.reduce(
+          (total, item) => total + (item.discountPrice ?? item.price) * item.quantity,
+          0
+        )}
+      </span>
+    </span>
+  </td>
 </tr>
+
         <tr>
             <td colspan="2">                    
                 <div data-selector="cart-page-purchase-protection" class="wt-mt-xs-1 wt-mb-xs-2">
@@ -429,11 +449,11 @@ const Cart2 = () => {
         <span class="wt-icon wt-icon--base-xs wt-flex-shrink-xs-0 wt-mr-xs-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2 4 6v6c0 8 8 10 8 10s8-2 8-10V6zm5.25 7.54-6.67 6.67-.11.11h-.32l-.9-.12h-.16L9 16l-2.3-4-.17-.29.29-.17L8 10.88l.28-.17.17.29 1.66 2.87 5.74-5.74.24-.24.24.24.94.94.23.23z"></path></svg></span>
         <div class="wt-popover" data-wt-popover="" data-popover="cart-epp">
             <div class="wt-text-body-small">
-                You're covered with <button data-wt-popover-trigger="" type="button" tabindex="0" aria-describedby="epp-signal-popover" class="wt-text-body-small wt-popover__trigger wt-popover__trigger--underline">Etsy Purchase Protection</button>
+                You're covered with <button data-wt-popover-trigger="" type="button" tabindex="0" aria-describedby="epp-signal-popover" class="wt-text-body-small wt-popover__trigger wt-popover__trigger--underline">Rayofaa Purchase Protection</button>
             </div>
             <div id="epp-signal-popover" role="tooltip">
                 <div class="wt-text-title wt-mb-xs-2 wt-display-inline-flex-xs">
-                    Etsy Purchase Protection
+                    Rayofaa Purchase Protection
                 </div>
                 <div class="wt-text-body-small wt-mb-xs-3">If something goes wrong with your order, you'll get a full refund.</div>
                 <p class="wt-text-title-small wt-mb-xs-1">Here's what's eligible:</p>
@@ -568,18 +588,6 @@ Local taxes included (where applicable)
 </div>
             </div>
 
-        <div class="wt-display-flex-xs wt-flex-direction-column-xs wt-align-items-flex-start wt-mb-xs-5">
-        <div class="wt-display-flex-xs wt-justify-content-center" data-selector="cart-carbon-offset-module">
-            <div data-appears-component-name="impact_message" data-appears-event-data="{&quot;impact_name&quot;:&quot;cart_carbon_offset&quot;,&quot;impact_themes&quot;:[&quot;carbon&quot;],&quot;impact_audiences&quot;:[&quot;buyers&quot;]}">
-<div class="wt-display-inline-flex-xs wt-mt-md-2 appears-ready">
-    <span class="wt-icon wt-flex-shrink-xs-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4c-3.9 0-7 3.1-7 7 0 1.1.3 2.2.8 3.2l6.5-4.9.7.7L3 20l3 1 2.5-3.9c1 .6 2.2.9 3.5.9 3.9 0 7-3.1 7-7V4z"></path></svg></span>
-    <p class="wt-text-caption wt-pl-xs-2">Etsy invests in climate solutions like electric trucks and carbon offsets for every delivery. <a class="wt-text-link" href="/climateimpact?ref=cart" target="_blank">See how</a></p>
-</div>
-</div>
-        </div>
-        
-        
-        </div>
 
 
 

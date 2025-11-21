@@ -226,16 +226,40 @@ const Header2 = ({ cartCount = 1 }) => {
     </span>
 </li>
 <li data-ge-nav-menu="cart" data-ge-hover-event-name="gnav_hover_cart_menu">
-    <span class="wt-tooltip wt-tooltip--bottom-left wt-tooltip--disabled-touch" data-wt-tooltip="" data-header-cart-button="">
-        <a aria-label="Cart" href="https://www.etsy.com/cart?ref=hdr-cart" class="wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon header-button">
-            <span class="wt-z-index-1 wt-no-wrap wt-display-none ge-cart-badge wt-badge wt-badge--notificationPrimary wt-badge--small wt-badge--outset-top-right"  data-count={totalItems} aria-hidden="true">
-                0
-            </span>
-            <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.307l2.4-12zM7.82 15l-1.6-8h14.227l-1.6 8z"></path><path d="M10.667 20.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m8.333 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg></span>
-        </a>
-        <span role="tooltip" aria-hidden="true" data-count={totalItems} >   {totalItems}</span>
-    </span>
+  <span
+    className="wt-tooltip wt-tooltip--bottom-left"
+    data-wt-tooltip=""
+    data-header-cart-button=""
+  >
+    <a
+      aria-label="Cart"
+      href="/cart"
+      className="wt-btn wt-btn--transparent wt-btn--icon header-button"
+    >
+      {/* CART BADGE WITH PURPLE BACKGROUND */}
+      <span
+        className="wt-z-index-1 wt-no-wrap ge-cart-badge wt-badge wt-badge--small wt-badge--outset-top-right"
+        data-count={totalItems}
+        style={{ backgroundColor: "#8b023a", color: "#fff" }}
+      >
+        {totalItems}
+      </span>
+
+      {/* CART ICON */}
+      <span className="wt-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          aria-hidden="true" focusable="false">
+          <path fillRule="evenodd" clipRule="evenodd"
+            d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.307l2.4-12zM7.82 15l-1.6-8h14.227l-1.6 8z">
+          </path>
+          <path d="M10.667 20.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m8.333 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
+        </svg>
+      </span>
+    </a>
+  </span>
 </li>
+
+
     </ul>
 </nav>
         </div>
