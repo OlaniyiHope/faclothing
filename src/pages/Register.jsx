@@ -1,9 +1,53 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import Header2 from "./Header2";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
+import {toast} from "react-toastify";
 const Register = () => {
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail]       = useState("");
+  const [password, setPassword] = useState("");
+
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    if (!fullname || !email || !password) {
+      toast.error("All fields are required");
+      return;
+    }
+
+    dispatch({ type: "LOGIN_START" });
+
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/signup`,
+        {
+          fullname,
+          email,
+          password,
+        }
+      );
+
+      toast.success("Registration successful!");
+
+      dispatch({ type: "LOGIN_SUCCESS", payload: data.user });
+
+      navigate("/login"); // redirect after registration
+    } catch (err) {
+      dispatch({
+        type: "LOGIN_FAILURE",
+        payload: err.response?.data?.message || "Registration failed",
+      });
+
+      toast.error(err.response?.data?.message || "Registration failed");
+    }
+  };
+
   return (
     <div className="wt-bg-white">
       <Header2 />
@@ -33,15 +77,18 @@ const Register = () => {
                                 <div className="wt-display-flex-xs wt-align-items-center">
                                   <button className="wt-text-link">
                                     {/* YOUR LOGO HERE */}
-                                    <span
-                                      style={{
-                                        fontSize: "26px",
-                                        fontWeight: "700",
-                                        color: "#8b023a"
-                                      }}
-                                    >
-                                      Rayofaa
-                                    </span>
+                      <Link to="/" className="wt-text-link" style={{ textDecoration: "none" }}>
+  <span
+    style={{
+      fontSize: "26px",
+      fontWeight: "700",
+      color: "#8b023a"
+    }}
+  >
+    Rayofaa
+  </span>
+</Link>
+
                                   </button>
 
                                   <div className="wt-ml-xs-1 wt-display-flex-xs">
@@ -66,17 +113,19 @@ const Register = () => {
 
                           {/* LOGIN FORM */}
                           <div className="wt-mt-xs-4">
-                            <form >
+                            <form onSubmit={handleRegister}>
 
                               {/* EMAIL */}
                               <div className="wt-form__field wt-mb-xs-3">
                                 <label className="wt-label wt-label--small">
-                                First Name
+                                Full Name
                                 </label>
                                 <input
                                   type="name"
                                   className="wt-input wt-input--small"
-                                  placeholder="john"
+                                  placeholder="enter your full name"
+                                   value={fullname}
+                      onChange={(e) => setFullname(e.target.value)}
                                 />
                               </div>
                               <div className="wt-form__field wt-mb-xs-3">
@@ -87,6 +136,8 @@ const Register = () => {
                                   type="email"
                                   className="wt-input wt-input--small"
                                   placeholder="you@example.com"
+                                     value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                                 />
                               </div>
 
@@ -98,7 +149,9 @@ const Register = () => {
                                 <input
                                   type="password"
                                   className="wt-input wt-input--small"
-                                  placeholder="••••••••"
+                                  placeholder="password"
+                                            value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                                 />
                               </div>
 

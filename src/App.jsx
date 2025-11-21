@@ -30,6 +30,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CartProvider } from "./context/CartContext";
+import { AuthContextProvider } from "./context/AuthContext";
 function App() {
   const content = useRoutes(routes);
   const navigate = useNavigate();
@@ -39,9 +40,14 @@ function App() {
   
 
           <CartProvider>
+              <AuthContextProvider>
+
+
+      
           <GoogleOAuthProvider clientId="383086754449-8p3mg46a39tsepkgd47uof98qu32cmn5.apps.googleusercontent.com">
             {content} {/* Wrap routes with a single AuthProvider */}
           </GoogleOAuthProvider>
+                  </AuthContextProvider>
           </CartProvider>
            <ToastContainer position="top-right" autoClose={2000} />
 

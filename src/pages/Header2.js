@@ -5,6 +5,7 @@ import axios from "axios";
 import { FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import { HiMenu, HiX } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 
 const Header2 = ({ cartCount = 1 }) => {
@@ -193,14 +194,17 @@ const Header2 = ({ cartCount = 1 }) => {
 
    
 
-        <div class="wt-flex-shrink-xs-0" data-primary-nav-container="">
+        <div class="wt-flex-shrink-xs-0" >
             <nav aria-label="Main">
     <ul class="wt-display-flex-xs wt-justify-content-space-between wt-list-unstyled wt-m-xs-0 wt-align-items-center">
-        <li>
-    <button class="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin header-button" href="/login">
-        Sign in
+<li>
+  <Link to="/login">
+    <button className="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 select-signin header-button">
+      Sign in
     </button>
+  </Link>
 </li>
+
 
 
 <li data-favorites-nav-container="" data-ge-nav-menu="favorites" data-ge-hover-event-name="gnav_hover_favorites_menu">

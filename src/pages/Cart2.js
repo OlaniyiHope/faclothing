@@ -494,7 +494,7 @@ const Cart2 = () => {
                     <button class="proceed-to-checkout wt-btn wt-btn--filled wt-mt-xs-2 wt-width-full
             
             inline-overlay-trigger guest-checkout-action
-        " type="submit" data-redirect-to="/cart/12541074043/checkout/?guest=1&amp;payment_method=cc" data-selector="cart-submit-button" data-supplemental-state--has_estimated_shipping="true">
+        " type="submit" data-redirect-to="/checkout" data-selector="cart-submit-button" data-supplemental-state--has_estimated_shipping="true">
     <span class="submit-button-text" data-cart-default-submit-button-text="">Proceed to checkout</span>
     <span class="wt-spinner wt-spinner--01 wt-display-none" role="alert" aria-live="assertive" data-cart-default-submit-button-loading-spinner="">
       <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle fill="transparent" cx="12" cy="12" r="10"></circle></svg></span>

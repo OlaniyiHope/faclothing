@@ -31,17 +31,19 @@ const Login = () => {
                                 className="checkout-sheet-panel-header-text wt-text-title-large wt-text-title-small wt-sem-text-secondary"
                               >
                                 <div className="wt-display-flex-xs wt-align-items-center">
-                                  <button className="wt-text-link">
-                                    {/* YOUR LOGO HERE */}
-                                    <span
-                                      style={{
-                                        fontSize: "26px",
-                                        fontWeight: "700",
-                                        color: "#8b023a"
-                                      }}
-                                    >
-                                      Rayofaa
-                                    </span>
+                                  <button className="wt-text-link"  >
+                           <Link to="/" className="wt-text-link" style={{ textDecoration: "none" }}>
+  <span
+    style={{
+      fontSize: "26px",
+      fontWeight: "700",
+      color: "#8b023a"
+    }}
+  >
+    Rayofaa
+  </span>
+</Link>
+
                                   </button>
 
                                   <div className="wt-ml-xs-1 wt-display-flex-xs">
@@ -159,7 +161,7 @@ const Login = () => {
     {/* SIGN UP LINK */}
                       <div style={{ textAlign: "center", marginTop: "15px" }}>
                         <span style={{ color: "#444" }}>Don't have an account? </span>
-                        <Link to="/signup" style={{ color: "#8b023a", fontWeight: "600" }}>
+                        <Link to="/register" style={{ color: "#8b023a", fontWeight: "600" }}>
                           Create an account
                         </Link>
                       </div>
