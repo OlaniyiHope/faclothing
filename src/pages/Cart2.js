@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import white from "./home.png";
 import young from "./a1.jpeg";
 import old from "./a3.jpg";
@@ -15,10 +15,15 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import Header2 from "./Header2";
 import Header3 from "./Header3";
+import { AuthContext } from "../context/AuthContext";
 
 
 const Cart2 = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+const navigate = useNavigate();
+const { user } = useContext(AuthContext);
+const isLoggedIn = !!user;
+
 
   // Default shipping rate options
   const [shipping, setShipping] = useState(15);
@@ -343,7 +348,9 @@ const Cart2 = () => {
 
                 <fieldset class="wt-mt-xs-1">
                         <legend class="wt-text-title-01">
-                            How you'll pay
+                            <a href="/checkout">      How you'll pay</a>
+
+                      
                         </legend>
 
 
@@ -485,13 +492,41 @@ const Cart2 = () => {
     <div class="wt-sem-text-secondary wt-text-caption wt-pb-xs-2">
         VAT included
     </div>
+    <button
+  className=" wt-btn wt-btn--filled wt-mt-xs-2 wt-width-full"
+  type="button"
+  onClick={() => {
+    if (!isLoggedIn) {
+      return alert("You must be logged in before proceeding to checkout.\nClick OK to go to login.");
+    }
+
+    // Force navigate to checkout
+    navigate("/checkout");
+
+    // FORCE STOP any redirect caused by Checkout2
+    setTimeout(() => {
+      if (window.location.pathname !== "/checkout") {
+        window.location.replace("/checkout");
+      }
+    }, 200);
+  }}
+>
+  <span className="submit-button-text">Proceed to checkout</span>
+
+  <span className="wt-spinner wt-spinner--01 wt-display-none" role="alert" aria-live="assertive">
+    <span className="etsy-icon">
+   
+    </span>
+    Loading
+  </span>
+</button>
                     
                 </div>
             </div>
             <div>
                 
                 <div class="wt-pb-xs-2">
-                    <button class="proceed-to-checkout wt-btn wt-btn--filled wt-mt-xs-2 wt-width-full
+                    {/* <button class="proceed-to-checkout wt-btn wt-btn--filled wt-mt-xs-2 wt-width-full
             
             inline-overlay-trigger guest-checkout-action
         " type="submit" data-redirect-to="/checkout" data-selector="cart-submit-button" data-supplemental-state--has_estimated_shipping="true">
@@ -500,7 +535,11 @@ const Cart2 = () => {
       <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle fill="transparent" cx="12" cy="12" r="10"></circle></svg></span>
       Loading
     </span>
-</button>
+</button> */}
+
+
+
+
                     <div class="wt-display-none apple-pay-button-wrapper" data-is-guest="true" data-buyer-currency="USD" data-shop-currency="USD" data-cart-listing-ids="1226534278" data-has-giftcard-shop="false" data-shop-id="27595895" data-is-eu-buyer="false" data-guest-user-id="1161191815" data-cart-type-id="2">
         
         <button class="wt-btn wt-width-full wt-mt-xs-2 wt-mb-lg-0 checkout-with apple-pay-button

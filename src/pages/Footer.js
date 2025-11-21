@@ -46,9 +46,7 @@ const Footer = () => {
             <div class="wt-validation__message wt-validation__message--is-hidden wt-text-body-01" id="email-list-signup-invalid-email" role="alert" aria-live="polite" data-invalid-email="" data-submission-error-response="">
                 Please enter a valid email address.
             </div>
-            <div class="wt-alert wt-alert--inline wt-alert--status-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite" data-requires-signin="" data-submission-response="">
-                Looks like you already have an account! Please <a href="/signin?from_page=https%3A%2F%2Fwww.etsy.com%2F&amp;workflow=c3Vic2NyaWJlX3RvX2VtYWlsX2xpc3Q6bmV3X2F0X2V0c3k6MTc2Mjg1ODY4Mjo3ODVjNjMzOThkY2YwNzAzM2FkM2I5YTAyN2I1YmI5Yg==" data-campaign-slug="new_at_etsy">Log in</a> to subscribe.
-            </div>
+           
             <div class="wt-alert wt-alert--inline wt-alert--status-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite" data-requires-signup="" data-submission-response="">
                 You've already signed up for some newsletters, but you haven't confirmed your address. <a href="/join?from_url=https%3A%2F%2Fwww.etsy.com%2F" class="" data-campaign-slug="new_at_etsy">Register</a> to confirm your address.
             </div>

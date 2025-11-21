@@ -59,74 +59,10 @@ const Header2 = ({ cartCount = 1 }) => {
       </span>
     </a>
 </div>
-            {/* <nav class="wt-hide-xs wt-show-lg">
-                <div data-clg-id="WtMenu" class="wt-menu wt-tooltip ge-menu--body-below-trigger wt-tooltip--disabled-touch dropdown-category-menu wt-menu--bottom wt-menu--left" data-wt-menu="" data-wt-tooltip="true" data-menu-body-below-trigger="true" data-close-on-select="true" data-hide-trigger-on-open="false" data-animate-in="true" data-contain-focus="false" data-open-direction-vert="bottom" data-open-direction-horiz="left" data-open-direction-force="true" data-menu-type="action">
-        <button type="button" class="wt-menu__trigger wt-btn wt-btn--transparent header-button wt-mr-xs-1 wt-btn--small" aria-haspopup="true" aria-expanded="false" data-wt-menu-trigger="" data-level="0" data-overlay-trigger-selector="overlay-trigger-ele">
-          <span class="etsy-icon wt-mr-xs-1 wt-icon--smaller">
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 18 18">
-              <rect x="2" y="8" width="14" height="2"></rect>
-              <rect x="2" y="13" width="14" height="2"></rect>
-              <rect x="2" y="3" width="14" height="2"></rect>
-            </svg>
-          </span>
-          Categories
-        </button>
-        <div data-clg-id="WtMenuBody" role="menu" class="wt-menu__body wt-pt-xs-2 wt-pb-xs-2 ge-you-menu-dimensions wt-z-index-10 dropdown-category-menu__body" data-wt-menu-body="" type="option">
-      <a href="/c/accessories?ref=catnav-1" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Accessories
-  </a><a href="/c/art-and-collectibles?ref=catnav-66" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Art &amp; Collectibles
-  </a><a href="/c/baby?ref=catnav-12545" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Baby
-  </a><a href="/c/bags-and-purses?ref=catnav-132" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Bags &amp; Purses
-  </a><a href="/c/bath-and-beauty?ref=catnav-199" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Bath &amp; Beauty
-  </a><a href="/c/books-movies-and-music?ref=catnav-323" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Books, Movies &amp; Music
-  </a><a href="/c/clothing?ref=catnav-374" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Clothing
-  </a><a href="/c/craft-supplies-and-tools?ref=catnav-562" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Craft Supplies &amp; Tools
-  </a><a href="/c/electronics-and-accessories?ref=catnav-825" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Electronics &amp; Accessories
-  </a><a href="/c/gifts?ref=catnav-12584" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Gifts
-  </a><a href="/c/home-and-living?ref=catnav-891" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Home &amp; Living
-  </a><a href="/c/jewelry?ref=catnav-1179" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Jewelry
-  </a><a href="/c/paper-and-party-supplies?ref=catnav-1250" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Paper &amp; Party Supplies
-  </a><a href="/c/pet-supplies?ref=catnav-1351" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Pet Supplies
-  </a><a href="/c/shoes?ref=catnav-1429" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Shoes
-  </a><a href="/c/toys-and-games?ref=catnav-1552" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Toys &amp; Games
-  </a><a href="/c/weddings?ref=catnav-1633" class="wt-menu__item wt-display-block wt-text-truncate wt-width-full wt-pr-xs-1 wt-position-relative wt-max-width-full " role="menuitem" tabindex="-1" data-level="1">
-          Weddings
-  </a>
-
-</div>
-
-        <span class="ge-menu__body-caret wt-z-index-10 wt-sem-bg-elevation-0 wt-position-absolute wt-bl-xs wt-bt-xs wt-br-xs-none wt-bb-xs-none"></span>
-
-</div>
-            </nav> */}
+         
 
         <div class="wt-width-full wt-display-flex-xs wt-pr-lg-3 wt-flex-lg-1 order-mobile-tablet-2" data-hamburger-search-container="">
-            {/* <button data-id="hamburger" class="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg
-               wt-btn--transparent-flush-left
-                         wt-mb-xs-2
-               
-               wt-mb-lg-0
-               header-button" aria-controls="mobile-catnav-overlay" tab-index="0">
-          <span class="wt-screen-reader-only">
-                    Browse
-          </span>
-          <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 7H3V5h18zm-5 6H3v-2h13zm5 6H3v-2h18z"></path></svg></span>
-     </button> */}
+      
      <button
   onClick={() => setMenuOpen(!menuOpen)}
   className="wt-btn wt-btn--transparent wt-btn--icon wt-hide-lg header-button"

@@ -57,7 +57,7 @@ const routes = [
     element: <Cart2 />,
   },
   {
- path: "/checkout",
+ path: "/checkoutss",
     element: <Checkout />,
   },
   {
@@ -81,7 +81,7 @@ const routes = [
     element: <ContinuePay />,
   },
   {
- path: "/checkouts",
+ path: "/checkout",
     element: <Checkout2 />,
   },
   {
