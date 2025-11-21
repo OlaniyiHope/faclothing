@@ -411,7 +411,7 @@ const Cart2 = () => {
     
 </div>
                     </span>
-                    <span class="wt-screen-reader-only">Buy with Google Pay</span>
+                    <span class="wt-screen-reader-only">Buy with Klarna</span>
                 </label>
             </div>
         </li>
