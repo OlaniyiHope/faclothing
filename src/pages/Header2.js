@@ -1,11 +1,13 @@
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import { HiMenu, HiX } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import "./mycss.css"
 
 
 const Header2 = ({ cartCount = 1 }) => {
@@ -14,7 +16,15 @@ const Header2 = ({ cartCount = 1 }) => {
   const { cartItems } = useCart();
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const { user, dispatch } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    localStorage.removeItem("user");
+    navigate("/");
+  };
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -196,15 +206,128 @@ const Header2 = ({ cartCount = 1 }) => {
 
         <div class="wt-flex-shrink-xs-0" >
             <nav aria-label="Main">
-    <ul class="wt-display-flex-xs wt-justify-content-space-between wt-list-unstyled wt-m-xs-0 wt-align-items-center">
-<li>
-  <Link to="/login">
-    <button className="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 select-signin header-button">
-      Sign in
-    </button>
-  </Link>
-</li>
+    <ul className="wt-display-flex-xs wt-justify-content-space-between wt-list-unstyled wt-m-xs-0 wt-align-items-center">
 
+          {/* IF NOT LOGGED IN */}
+          {!user && (
+            <li>
+              <Link to="/login">
+                <button className="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 select-signin header-button">
+                  Sign in
+                </button>
+              </Link>
+            </li>
+          )}
+
+          {/* IF LOGGED IN → SHOW DROPDOWN */}
+          {user && (
+            <li style={{ position: "relative" }}>
+              <button
+                onClick={() => setOpen(!open)}
+                className="wt-btn wt-btn--transparent"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  cursor: "pointer"
+                }}
+              >
+                {/* USER ICON */}
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                  alt="user"
+                  width="22"
+                  height="22"
+                />
+
+                {/* USERNAME */}
+                <span style={{ fontWeight: "600" }}>
+                  {user.fullname?.split(" ")[0] || "Account"}
+                </span>
+              </button>
+
+              {/* DROPDOWN MENU */}
+              {open && (
+                <ul
+                  className="dropdown-menu"
+                  style={{
+                    position: "absolute",
+                    top: "40px",
+                    right: "0",
+                    background: "#fff",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    width: "200px",
+                    padding: "10px 0",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    zIndex: 50,
+                    listStyle: "none"
+                  }}
+                >
+
+                  <li className="dropdown-item">
+                    <Link
+                      to="/purchases"
+                      className="dropdown-link"
+                    >
+                      My Purchases
+                    </Link>
+                  </li>
+
+                  <li className="dropdown-item">
+                    <Link
+                      to="/messages"
+                      className="dropdown-link"
+                    >
+                      My Messages
+                    </Link>
+                  </li>
+
+                  <li className="dropdown-item">
+                    <Link
+                      to="/special-offers"
+                      className="dropdown-link"
+                    >
+                      Special Offers
+                    </Link>
+                  </li>
+
+                  <li className="dropdown-item">
+                    <Link
+                      to="/account-settings"
+                      className="dropdown-link"
+                    >
+                      Account Settings
+                    </Link>
+                  </li>
+
+                  <li className="dropdown-item">
+                    <Link
+                      to="/wallet"
+                      className="dropdown-link"
+                    >
+                      Credit Balance
+                    </Link>
+                  </li>
+
+                  <hr style={{ margin: "8px 0", borderColor: "#eee" }} />
+
+                  <li className="dropdown-item">
+                    <button
+                      onClick={handleLogout}
+                      className="dropdown-link"
+                      style={{ color: "red" }}
+                    >
+                      Sign Out
+                    </button>
+                  </li>
+
+                </ul>
+              )}
+            </li>
+          )}
+
+    
 
 
 <li data-favorites-nav-container="" data-ge-nav-menu="favorites" data-ge-hover-event-name="gnav_hover_favorites_menu">

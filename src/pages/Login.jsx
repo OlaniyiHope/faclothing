@@ -1,9 +1,46 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import Header2 from "./Header2";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 const Login = () => {
+   const [email, setEmail]       = useState("");
+  const [password, setPassword] = useState("");
+
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
+
+    dispatch({ type: "LOGIN_START" });
+
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        { email, password }
+      );
+
+      dispatch({ type: "LOGIN_SUCCESS", payload: data.user });
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      toast.success("Login successful!");
+
+      navigate("/"); // redirect to home
+    } catch (err) {
+      const message = err.response?.data?.message || "Login failed";
+      dispatch({ type: "LOGIN_FAILURE", payload: message });
+      toast.error(message);
+    }
+  };
   return (
     <div className="wt-bg-white">
       <Header2 />
@@ -68,7 +105,7 @@ const Login = () => {
 
                           {/* LOGIN FORM */}
                           <div className="wt-mt-xs-4">
-                            <form className="wt-form checkout-sheet-payment-form">
+                            <form className="wt-form checkout-sheet-payment-form" onSubmit={handleLogin}>
 
                               {/* EMAIL */}
                               <div className="wt-form__field wt-mb-xs-3">
@@ -79,6 +116,8 @@ const Login = () => {
                                   type="email"
                                   className="wt-input wt-input--small"
                                   placeholder="you@example.com"
+                                     value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                                 />
                               </div>
 
@@ -91,6 +130,8 @@ const Login = () => {
                                   type="password"
                                   className="wt-input wt-input--small"
                                   placeholder="••••••••"
+                                   value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                                 />
                               </div>
 
