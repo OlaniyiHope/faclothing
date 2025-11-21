@@ -269,89 +269,50 @@ const Cart2 = () => {
     </div>
 </li>
         </ul> */}
-        <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
-                {cartItems.map((item) => (
-                  <li key={item.id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
-                    <div className="wt-rounded-02 wt-b-xs">
-                      <div className="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
-                        <input type="hidden" name="cart_ids[]" value={item.id} />
+     <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
+  {cartItems.map((item) => (
+    <li key={item._id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
+      <div className="wt-rounded-02 wt-b-xs">
+        <div className="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
 
-                        <div className="shop-details wt-mb-xs-3">
-                          <div className="wt-display-flex-xs wt-justify-content-space-between wt-align-items-center desktop__shop-details--height wt-width-full">
-                            <div className="wt-display-flex-xs wt-align-items-center">
-                              <div className="wt-pr-lg-1">
-                                <a
-                                  className="wt-display-flex-xs wt-align-items-center"
-                                  href={item.shopLink}
-                                  title={item.shopName}
-                                  aria-label={`shop-${item.shopName}`}
-                                  tabIndex="-1"
-                                >
-                                  <img
-                                    className="wt-rounded"
-                                    src={item.shopAvatar}
-                                    width="32"
-                                    height="32"
-                                    alt={item.shopName}
-                                  />
-                                </a>
-                              </div>
-                              <div className="wt-pl-xs-1">
-                                <p className="wt-text-title">
-                                  <a
-                                    className="wt-sem-text-primary wt-text-link-no-underline"
-                                    href={item.shopLink}
-                                    aria-label={`shop-${item.shopName}`}
-                                  >
-                                    {item.shopName}
-                                  </a>
-                                </p>
-                              </div>
-                              <div className="wt-pl-xs-2 wt-display-flex-xs wt-align-items-center">
-                                <span>{item.rating} ({item.reviews})</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+          <div className="wt-display-flex-xs wt-pt-xs-1 wt-pt-md-0">
+            
+            {/* PRODUCT IMAGE */}
+            <div className="wt-flex-xs-1">
+              <img
+                src={item.images?.[0]}
+                className="wt-width-full wt-rounded-01 wt-overflow-hidden wt-display-block"
+                alt={item.name}
+                style={{ height: "120px", objectFit: "cover" }}
+              />
+            </div>
 
-                        <div className="wt-display-flex-xs wt-pt-xs-1 wt-pt-md-0">
-                          <div className="wt-flex-xs-1">
-                            <a href={item.listingLink} target="_blank" rel="noreferrer">
-                              <img
-                                src={item.listingThumbnail}
-                                className="wt-width-full wt-rounded-01 wt-overflow-hidden wt-display-block"
-                                alt={item.listingTitle}
-                              />
-                            </a>
-                          </div>
+            {/* PRODUCT DETAILS */}
+            <div className="wt-flex-xs-3 wt-pl-xs-2 wt-break-word simplified-cart-min-width-0 wt-pl-md-3">
+              <p className="wt-text-body wt-text-truncate">
+                {item.name}
+              </p>
 
-                          <div className="wt-flex-xs-3 wt-pl-xs-2 wt-break-word simplified-cart-min-width-0 wt-pl-md-3">
-                            <p>
-                              <a
-                                className="wt-text-link-no-underline wt-text-body wt-text-truncate"
-                                href={item.listingLink}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {item.listingTitle}
-                              </a>
-                            </p>
-                            <div>
-                              {item.instantDownload && <span>Instant Download</span>}
-                              <span>{item.filesIncluded}</span>
-                              <span className="wt-sem-text-critical">{item.inCarts}</span>
-                            </div>
-                            <div>
-                              <span>USD {item.price}</span>
-                              <span>Qty: {item.quantity}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <div className="wt-mt-xs-1 wt-text-small">
+                {item.size && (
+                  <div>Size: {item.size.join(", ")}</div>
+                )}
+                <div>Qty: {item.quantity}</div>
+              </div>
+
+              <div className="wt-mt-xs-1 wt-text-title-01">
+                ₦{item.discountPrice ? item.discountPrice : item.price}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>
+
         <div class="wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pt-xs-2 wt-mt-md-0 wt-mt-xs-2 wt-pt-md-0 wt-pl-md-3 wt-grid__item-lg-4 wt-grid__item-md-5">
             <div data-multi-shop-cart-payment="" data-shop-payment-unique-id="12541074043">
     <div class="multi-shop-cart-payment wt-p-md-3">

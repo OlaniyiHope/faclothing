@@ -39,3 +39,11 @@
 .elementor a[href*="contact-us"] {
   pointer-events: none !important;
 }
+/* MOBILE ONLY: add space between product cards */
+@media (max-width: 768px) {
+  .mobile-grid-gap {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; /* space between cards */
+  }
+}
