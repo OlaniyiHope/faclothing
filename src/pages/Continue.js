@@ -1,179 +1,144 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { loadStripe } from "@stripe/stripe-js";
-import axios from "axios";
-import { useCart } from "../context/CartContext";
+import React from "react";
 import Header2 from "./Header2";
 import Footer from "./Footer";
+import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-const ContinuePay = ({ shippingInfo }) => {
+const ContinueToPay = ({ payment, setPayment }) => {
+  const { cartItems } = useCart();
   const navigate = useNavigate();
-  const { cartItems, clearCart } = useCart();
 
-  const [payment, setPayment] = useState("card");
-  const [loading, setLoading] = useState(false);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
-  const getTotalPrice = () => {
-    return cartItems.reduce(
-      (total, item) =>
-        total +
-        ((item.product.discountPrice ?? item.product.price) * item.quantity),
-      0
-    );
-  };
+  // You can change shipping if needed
+  const shipping = 15;
 
-  const handleStripePayment = async () => {
-    try {
-      setLoading(true);
-      const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+  const total = subtotal + shipping;
 
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/db/create-checkout-session`,
-        {
-          cartItems,
-          paymentMethod: payment,
-          shippingInfo,
-        }
-      );
+  const paymentMethods = [
+    {
+      id: "card",
+      title: "Credit / Debit Card",
+   
+    },
+    {
+      id: "klarna",
+      title: "Klarna",
+     
+    },
+    {
+      id: "paypal",
+      title: "Pay with PayPal",
 
-      if (res.data.id) {
-        await stripe.redirectToCheckout({ sessionId: res.data.id });
-      } else {
-        alert("Unable to start payment session");
-      }
-    } catch (err) {
-      console.error("Stripe payment error:", err);
-      alert("Payment failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePayPalPayment = () => {
-    alert("PayPal integration goes here");
-  };
-
-  const handleCOD = async () => {
-    try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/db/create-order`,
-        {
-          cartItems,
-          paymentMethod: "cod",
-          shippingInfo,
-        }
-      );
-      clearCart();
-      navigate("/order-success", { state: { order: res.data.order } });
-    } catch (err) {
-      console.error("COD order failed", err);
-    }
-  };
+    },
+    {
+      id: "cod",
+      title: "Cash on Delivery",
+ 
+    },
+  ];
 
   return (
-    <div className="wt-bg-white min-h-screen flex flex-col">
+    <div className="wt-bg-white">
       <Header2 />
 
-      <main className="flex-grow flex justify-center items-start pt-6 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md bg-gray-50 border rounded-lg p-6 sm:p-8 shadow-md">
-          <h2 className="text-2xl font-semibold mb-6 text-center">
-            Select Payment Method
-          </h2>
+      <main id="content">
+        <div className="wt-width-full">
+          <div className="checkout-sheet-navigation-container wt-width-full checkout-sheet-full-page-width">
+            <div className="wt-width-full wt-flex-shrink-xs-0">
+              <div className="wt-pl-xs-3 wt-pr-xs-3 wt-pb-xs-3 wt-p-md-5 wt-pt-xs-4">
 
-          {/* Payment Options */}
-          <div className="space-y-4">
-            {/* Credit / Debit Card */}
-            <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
-              <input
-                type="radio"
-                name="payment"
-                value="card"
-                className="mr-3"
-                checked={payment === "card"}
-                onChange={() => setPayment("card")}
-              />
-              <span className="font-medium">Credit / Debit Card (Pay Now)</span>
-            </label>
+                {/* HEADER */}
+                <div className="checkout-sheet-panel-header wt-display-flex-xs wt-align-items-center wt-justify-content-center wt-mb-xs-2">
+                  <h1 className="checkout-sheet-panel-header-text wt-text-title-large wt-sem-text-secondary">
+                    <div className="wt-display-flex-xs wt-align-items-center">
+                      <button className="wt-text-link">
+                        <span className="wt-icon--logo wt-icon--base-md wt-fill-orange etsy-icon"></span>
+                      </button>
+                      <div className="wt-ml-xs-1 wt-display-flex-xs">
+                        <span className="wt-icon--smallest-xs wt-align-self-center etsy-icon"></span>
+                        <div style={{ marginLeft: "2px" }}>Secure checkout</div>
+                      </div>
+                    </div>
+                  </h1>
+                </div>
 
-            {/* Klarna */}
-            <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
-              <input
-                type="radio"
-                name="payment"
-                value="klarna"
-                className="mr-3"
-                checked={payment === "klarna"}
-                onChange={() => setPayment("klarna")}
-              />
-              <span className="font-medium">Klarna Pay Later (Pay in 4)</span>
-            </label>
+                {/* SUBWAY NAV */}
+                <ol className="wt-subway">
+                  <li className="wt-subway__stop">
+                    <span className="wt-subway__stop__link">
+                      <div className="wt-subway__stop__dot"></div>
+                      <span className="wt-subway__stop__title">Shipping</span>
+                    </span>
+                  </li>
 
-            {/* PayPal */}
-            <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
-              <input
-                type="radio"
-                name="payment"
-                value="paypal"
-                className="mr-3"
-                checked={payment === "paypal"}
-                onChange={() => setPayment("paypal")}
-              />
-              <span className="font-medium">PayPal</span>
-            </label>
+                  <li className="wt-subway__stop wt-subway__stop--active">
+                    <span className="wt-subway__stop__link">
+                      <div className="wt-subway__stop__dot"></div>
+                      <span className="wt-subway__stop__title">Payment</span>
+                    </span>
+                  </li>
 
-            {/* Cash on Delivery */}
-            <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
-              <input
-                type="radio"
-                name="payment"
-                value="cod"
-                className="mr-3"
-                checked={payment === "cod"}
-                onChange={() => setPayment("cod")}
-              />
-              <span className="font-medium">Cash on Delivery</span>
-            </label>
-          </div>
+                  <li className="wt-subway__stop">
+                    <span className="wt-subway__stop__link">
+                      <div className="wt-subway__stop__dot"></div>
+                      <span className="wt-subway__stop__title">Review</span>
+                    </span>
+                  </li>
+                </ol>
 
-          {/* Action Button */}
-          <div className="mt-6">
-            {(payment === "card" || payment === "klarna") && (
-              <button
-                type="button"
-                onClick={handleStripePayment}
-                className="w-full py-2 rounded-lg text-white font-semibold transition duration-150"
-                style={{ backgroundColor: "#8b023a" }}
-                disabled={loading}
-              >
-                {loading ? "Processing..." : `Pay $${getTotalPrice().toFixed(2)}`}
-              </button>
-            )}
+                {/* TITLE */}
+                <h1 className="checkout-sheet-panel-header-text wt-text-title-large wt-mt-xs-3 wt-display-flex-xs wt-align-items-center wt-justify-content-center">
+                  Payment Method
+                </h1>
 
-            {payment === "paypal" && (
-              <button
-                type="button"
-                onClick={handlePayPalPayment}
-                className="w-full py-2 rounded-lg text-white font-semibold mt-4 transition duration-150"
-                style={{ backgroundColor: "#0070ba" }}
-              >
-                Pay with PayPal
-              </button>
-            )}
+              {/* PAYMENT BUTTONS */}
+<div className="wt-mt-xs-4">
+  <div>
+    {paymentMethods.map((m) => (
+      <button
+        key={m.id}
+        type="button"
+        onClick={() => setPayment(m.id)}
+        className={`wt-btn wt-width-full wt-py-3 wt-font-semibold wt-mb-xs-3 ${
+          payment === m.id ? "wt-btn--primary" : "wt-btn--secondary"
+        }`}
+        style={{ display: "block" }}
+      >
+        <div className="wt-flex-col wt-align-items-center">
+          <span>{m.title}</span>
+          {m.subtitle && (
+            <span className="wt-text-small wt-mt-1">{m.subtitle}</span>
+          )}
+        </div>
+      </button>
+    ))}
+  </div>
+</div>
 
-            {payment === "cod" && (
-              <div className="mt-4 p-4 border rounded-lg bg-white text-gray-700">
-                You have selected Cash on Delivery. Please prepare the payment when
-                your order arrives.
-                <button
-                  type="button"
-                  onClick={handleCOD}
-                  className="mt-3 w-full py-2 rounded-lg text-white font-semibold transition duration-150"
-                  style={{ backgroundColor: "#8b023a" }}
-                >
-                  Confirm Order
-                </button>
+                {/* ACTION BUTTONS */}
+                <div className="wt-display-flex-xs wt-justify-content-space-between wt-mt-xs-5">
+                  <button
+                    className="wt-btn wt-btn--secondary"
+                    onClick={() => navigate("/checkout")}
+                  >
+                    Back
+                  </button>
+
+                  <button
+                    className="wt-btn wt-btn--primary"
+                    onClick={() => navigate("/review-order")}
+                  >
+                    Continue
+                  </button>
+                </div>
+
               </div>
-            )}
+            </div>
           </div>
         </div>
       </main>
@@ -183,4 +148,4 @@ const ContinuePay = ({ shippingInfo }) => {
   );
 };
 
-export default ContinuePay;
+export default ContinueToPay;
