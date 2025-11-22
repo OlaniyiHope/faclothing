@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { useCart } from "../context/CartContext";
 import Header2 from "./Header2";
 import Footer from "./Footer";
-import { useCart } from "../context/CartContext";
-
 
 const ContinuePay = ({ shippingInfo }) => {
   const navigate = useNavigate();
@@ -16,11 +15,12 @@ const ContinuePay = ({ shippingInfo }) => {
 
   const getTotalPrice = () => {
     return cartItems.reduce(
-      (total, item) => total + ((item.product.discountPrice ?? item.product.price) * item.quantity),
+      (total, item) =>
+        total +
+        ((item.product.discountPrice ?? item.product.price) * item.quantity),
       0
     );
   };
-console.log("Cart Items Received:", cartItems);
 
   const handleStripePayment = async () => {
     try {
@@ -55,11 +55,14 @@ console.log("Cart Items Received:", cartItems);
 
   const handleCOD = async () => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/db/create-order`, {
-        cartItems,
-        paymentMethod: "cod",
-        shippingInfo,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/db/create-order`,
+        {
+          cartItems,
+          paymentMethod: "cod",
+          shippingInfo,
+        }
+      );
       clearCart();
       navigate("/order-success", { state: { order: res.data.order } });
     } catch (err) {
@@ -68,15 +71,17 @@ console.log("Cart Items Received:", cartItems);
   };
 
   return (
-    <div className="wt-bg-white">
+    <div className="wt-bg-white min-h-screen flex flex-col">
       <Header2 />
-      <main id="content" className="wt-px-4 wt-pt-4">
-        <h2 className="wt-text-title-large wt-mb-4">Select Payment Method</h2>
 
-        {/* Payment Options */}
-        <div className="payment-method mt-6 p-4 border rounded-lg bg-gray-50">
-          <h3 className="text-lg font-semibold mb-4">Payment Method</h3>
-          <div className="grid gap-3">
+      <main className="flex-grow flex justify-center items-start pt-6 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md bg-gray-50 border rounded-lg p-6 sm:p-8 shadow-md">
+          <h2 className="text-2xl font-semibold mb-6 text-center">
+            Select Payment Method
+          </h2>
+
+          {/* Payment Options */}
+          <div className="space-y-4">
             {/* Credit / Debit Card */}
             <label className="flex items-center p-4 border rounded-lg cursor-pointer hover:border-blue-500">
               <input
@@ -131,44 +136,48 @@ console.log("Cart Items Received:", cartItems);
           </div>
 
           {/* Action Button */}
-          {(payment === "card" || payment === "klarna") && (
-            <button
-              type="button"
-              onClick={handleStripePayment}
-              className="mt-4 w-full py-2 rounded-lg transition"
-              style={{ backgroundColor: "#8b023a", color: "white" }}
-              disabled={loading}
-            >
-              {loading ? "Processing..." : `Pay $${getTotalPrice().toFixed(2)}`}
-            </button>
-          )}
-
-          {payment === "paypal" && (
-            <button
-              type="button"
-              onClick={handlePayPalPayment}
-              className="mt-4 w-full py-2 rounded-lg transition"
-              style={{ backgroundColor: "#0070ba", color: "white" }}
-            >
-              Pay with PayPal
-            </button>
-          )}
-
-          {payment === "cod" && (
-            <div className="mt-4 p-3 border rounded-lg bg-white text-gray-700">
-              You have selected Cash on Delivery. Please prepare the payment when your order arrives.
+          <div className="mt-6">
+            {(payment === "card" || payment === "klarna") && (
               <button
                 type="button"
-                onClick={handleCOD}
-                className="mt-3 w-full py-2 rounded-lg transition"
-                style={{ backgroundColor: "#8b023a", color: "white" }}
+                onClick={handleStripePayment}
+                className="w-full py-2 rounded-lg text-white font-semibold transition duration-150"
+                style={{ backgroundColor: "#8b023a" }}
+                disabled={loading}
               >
-                Confirm Order
+                {loading ? "Processing..." : `Pay $${getTotalPrice().toFixed(2)}`}
               </button>
-            </div>
-          )}
+            )}
+
+            {payment === "paypal" && (
+              <button
+                type="button"
+                onClick={handlePayPalPayment}
+                className="w-full py-2 rounded-lg text-white font-semibold mt-4 transition duration-150"
+                style={{ backgroundColor: "#0070ba" }}
+              >
+                Pay with PayPal
+              </button>
+            )}
+
+            {payment === "cod" && (
+              <div className="mt-4 p-4 border rounded-lg bg-white text-gray-700">
+                You have selected Cash on Delivery. Please prepare the payment when
+                your order arrives.
+                <button
+                  type="button"
+                  onClick={handleCOD}
+                  className="mt-3 w-full py-2 rounded-lg text-white font-semibold transition duration-150"
+                  style={{ backgroundColor: "#8b023a" }}
+                >
+                  Confirm Order
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );

@@ -8,20 +8,26 @@ import { useNavigate } from "react-router-dom";
 const Checkout2 = ({ onNext }) => {
 
    const navigate = useNavigate();
+const initialValues = {
+  email: "",
+  full_name: "",
+  company_address: "",
+  street_address: "",
+  phone: "",
+};
 
-  const initialValues = {
-    email: "",
-    email_confirmation: "",
-    phone: "",
-  };
 
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
-    email_confirmation: Yup.string()
-      .oneOf([Yup.ref("email"), null], "Emails must match")
-      .required("Please confirm your email"),
+    street_address: Yup.string()
+      .oneOf([Yup.ref("street_address"), null], "Street Address is required" )
+      .required("Street Address is required"),
+    full_name: Yup.string()
+      .oneOf([Yup.ref("full_name"), null], "Full name is required" )
+      .required("Full name is required"),
+  
     phone: Yup.string()
       .matches(/^[0-9]{10,15}$/, "Phone number must be 10-15 digits")
       .nullable()
@@ -118,7 +124,7 @@ const Checkout2 = ({ onNext }) => {
                             </ol>
 
                             <h1 className="checkout-sheet-panel-header-text wt-text-title-large wt-mt-xs-3 wt-display-flex-xs wt-align-items-center wt-justify-content-center">
-                              Enter an address
+                          Delivery Details
                             </h1>
                           </div>
 
@@ -151,24 +157,55 @@ const Checkout2 = ({ onNext }) => {
               {/* Confirm Email */}
               <div className="wt-form__field wt-mb-xs-3">
                 <label className="wt-label wt-label--small">
-                  Confirm Email <span className="wt-label__required">*</span>
+                 Full Name<span className="wt-label__required">*</span>
                 </label>
                 <Field
-                  type="email"
-                  name="email_confirmation"
+                  type="name"
+                  name="full_name"
                   className="wt-input wt-input--small"
                 />
                 <ErrorMessage
-                  name="email_confirmation"
+                  name="full_name"
                   component="div"
                   className="wt-text-red"
                 />
               </div>
-
+              {/* Confirm Email */}
+              <div className="wt-form__field wt-mb-xs-3">
+                <label className="wt-label wt-label--small">
+                Company Address(optional)
+                </label>
+                <Field
+                  type="name"
+                  name="company_address"
+                  className="wt-input wt-input--small"
+                />
+                <ErrorMessage
+                  name="company_address"
+                  component="div"
+                  className="wt-text-red"
+                />
+              </div>
+                    {/* Confirm Email */}
+              <div className="wt-form__field wt-mb-xs-3">
+                <label className="wt-label wt-label--small">
+               Street Address<span className="wt-label__required">*</span>
+                </label>
+                <Field
+                  type="name"
+                  name="street_address"
+                  className="wt-input wt-input--small"
+                />
+                <ErrorMessage
+                  name="street_address"
+                  component="div"
+                  className="wt-text-red"
+                />
+              </div>
               {/* Phone */}
               <div className="wt-form__field wt-mb-xs-3">
                 <label className="wt-label wt-label--small">
-                  Phone number <span className="wt-label__optional">(optional)</span>
+                  Phone number <span className="wt-label__optional"></span>
                 </label>
                 <Field
                   type="tel"
