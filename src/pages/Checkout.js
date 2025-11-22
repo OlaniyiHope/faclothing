@@ -791,7 +791,7 @@ const handlePaystackPayment = async () => {
 <div id="payment" class="woocommerce-checkout-payment">
 			<ul class="wc_payment_methods payment_methods methods">
 			<li class="wc_payment_method payment_method_bacs">
-	<input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked" data-order_button_text="" />
+	<input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked" />
 
 	<label for="payment_method_bacs">
 		Direct bank transfer 	</label>
@@ -800,7 +800,7 @@ const handlePaystackPayment = async () => {
 		</div>
 	</li>
 <li class="wc_payment_method payment_method_cheque">
-	<input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="cheque" data-order_button_text="" />
+	<input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="cheque"  />
 
 	<label for="payment_method_cheque">
 		Check payments 	</label>
@@ -809,7 +809,7 @@ const handlePaystackPayment = async () => {
 		</div>
 	</li>
 <li class="wc_payment_method payment_method_cod">
-	<input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text="" />
+	<input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod"  />
 
 	<label for="payment_method_cod">
 		Cash on delivery 	</label>
@@ -878,7 +878,7 @@ const handlePaystackPayment = async () => {
 			</div>
 	
 		
-		<button type="submit" class="btn btn-primary text-white btn-hover-accent text-hover-white cms-hover-underline-bg" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order"><span class="cms-place-order">Place order</span></button>
+		<button type="submit" class="btn btn-primary text-white btn-hover-accent text-hover-white cms-hover-underline-bg" name="woocommerce_checkout_place_order" id="place_order" value="Place order" ><span class="cms-place-order">Place order</span></button>
 		
 		<input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="c5822e4adf" /><input type="hidden" name="_wp_http_referer" value="/trevox/?wc-ajax=update_order_review" />	</div>
 </div>

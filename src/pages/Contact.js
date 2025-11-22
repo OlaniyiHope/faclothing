@@ -11,9 +11,9 @@ const Contact = () => {
       <body  >
        
           <Header2 />
-         	<main id="cms-main" class="cms-main is-elementor" style={{backgroundColor: "white"}}>		<div data-elementor-type="wp-page" data-elementor-id="83" class="elementor elementor-83">
-				<div class="elementor-element elementor-element-ff78056 e-con-full-no-space e-flex e-con e-parent" data-id="ff78056" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full-no-space&quot;}">
-				<div class="elementor-element elementor-element-e715857 elementor-widget elementor-widget-cms_google_map" data-id="e715857" data-element_type="widget" data-widget_type="cms_google_map.default">
+         	<main id="cms-main" class="cms-main is-elementor" style={{backgroundColor: "white"}}>		<div  class="elementor elementor-83">
+				<div class="elementor-element elementor-element-ff78056 e-con-full-no-space e-flex e-con e-parent"  >
+				<div class="elementor-element elementor-element-e715857 elementor-widget elementor-widget-cms_google_map" >
 				<div class="elementor-widget-container">
 					<div class="cms-egmap cms-egmap-2 relative">
 	<iframe loading="lazy"

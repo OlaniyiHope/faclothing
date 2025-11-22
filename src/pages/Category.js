@@ -164,12 +164,12 @@ useEffect(() => {
   return (
     <div>
     <Header2 />
-   <body class="ui-toolkit transitional-wide etsy-has-it-design is-responsive no-touch en-US USD NG bg-white guest wt-focus-visible" data-language="en-US" data-currency="USD" data-region="NG" data-hover-none="true" data-visual-focus-state="true" data-mobile-viewport-height="true">
+   <body class="ui-toolkit transitional-wide etsy-has-it-design is-responsive no-touch en-US USD NG bg-white guest wt-focus-visible" >
 
 
      
         <main id="content">
-            <div data-async-nlp-modules="" class="wt-pl-md-3 wt-pr-md-3 wt-pb-xs-4 wt-body-max-width">
+            <div  class="wt-pl-md-3 wt-pr-md-3 wt-pb-xs-4 wt-body-max-width">
     
     <div class="wt-display-flex-xs wt-mt-lg-4 wt-mt-xs-3 wt-align-items-baseline wt-justify-content-center">
         <h1 class="wt-text-black wt-text-heading-large">
@@ -184,7 +184,7 @@ useEffect(() => {
     
     <div class="wt-pb-xs-3 wt-pt-xs-3 wt-pt-lg-4">
         <div class="nlp-filters-rail wt-display-flex-xs wt-flex-direction-row ">
-    <div data-clg-id="WtPanelAnchoredWithTrigger" id="nlp-price-pill" class="wt-panel-with-trigger wt-pr-xs-2" data-type="enclosing">
+    <div  id="nlp-price-pill" class="wt-panel-with-trigger wt-pr-xs-2" >
         
         <div class="wt-panel__trigger-container">
             
@@ -194,7 +194,7 @@ useEffect(() => {
             
             </div></div>
                  <PriceFilter onChange={handlePriceChange} />
-    <button data-clg-id="WtButton" class="wt-btn wt-btn--secondary wt-btn--small selectable-pill wt-mr-xs-2" id="nlp-sale-pill">
+    <button  class="wt-btn wt-btn--secondary wt-btn--small selectable-pill wt-mr-xs-2" id="nlp-sale-pill">
             On sale
 </button>
     {/* <button data-clg-id="WtButton" class="wt-btn wt-btn--secondary wt-btn--small selectable-pill wt-mr-xs-2" id="nlp-stash-pill">
@@ -203,7 +203,7 @@ useEffect(() => {
 </button> */}
 <SizeFilter onChange={(size) => console.log("Selected size:", size)} />
 
-    <div data-clg-id="WtPanelAnchoredWithTrigger" id="nlp-ships-from-pill" class="wt-panel-with-trigger wt-pr-xs-2" data-type="enclosing"><div class="wt-panel__trigger-container">
+    <div  id="nlp-ships-from-pill" class="wt-panel-with-trigger wt-pr-xs-2" ><div class="wt-panel__trigger-container">
         
         
         {/* <button type="button" class="nlp-filter-pill wt-menu__trigger wt-btn wt-btn--small wt-btn--secondary wt-no-wrap top-filter-menu wt-height-full" data-wt-panel-trigger="" aria-expanded="false"><span class="wt-menu__trigger__label wt-text-truncate"><span data-menu-title="">Ships fro</span></span> <span class="etsy-icon wt-menu__trigger__caret wt-icon--smaller top-filters__arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="16.5 10 12 16 7.5 10 16.5 10"></polygon></svg></span></button>
@@ -279,7 +279,7 @@ useEffect(() => {
 
 
         <div class="wt-display-flex-xs wt-justify-content-center">
-            <nav data-clg-id="WtPagination" aria-label="Page results">
+            <nav aria-label="Page results">
     <div class="wt-action-group wt-list-inline wt-flex-no-wrap  wt-mt-xs-4 wt-mb-xs-4">
             <div class="wt-action-group__item-container">
                 <a class="wt-action-group__item wt-btn wt-btn--icon  wt-is-disabled" aria-disabled="true" role="link">
@@ -293,7 +293,7 @@ useEffect(() => {
 
 
             <div class="wt-action-group__item-container">
-                <a class="wt-action-group__item wt-btn wt-btn--icon " href="https://www.etsy.com/r/themes/1368497667979?anchor_listings=1542627936&amp;ref=pagination&amp;page=2" data-page="2">
+                <a class="wt-action-group__item wt-btn wt-btn--icon " href="https://www.etsy.com/r/themes/1368497667979?anchor_listings=1542627936&amp;ref=pagination&amp;page=2" >
                     <span class="wt-screen-reader-only">Next page</span>
                     <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path d="M17.3 12.7l.7-.7-.7-.7-4-4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l2.3 2.3H7c-.6 0-1 .4-1 1s.4 1 1 1h7.2l-2.3 2.3c-.2.2-.3.4-.3.7 0 .6.4 1 1 1 .3 0 .5-.1.7-.3l4-4z"></path>

@@ -9,7 +9,7 @@ const Footer = () => {
     <footer>
             <div class="chrome-footer__etsy-finds" style={{backgroundColor: "#8b023a"}}>
                 <div class="wt-text-center-xs wt-pl-xs-4 wt-pr-xs-4 wt-pt-xs-3 wt-pt-md-6">
-    <form action="/email-subscriptions/form?from_page=https%3A%2F%2Fwww.etsy.com%2F" method="POST" class="subscribe-form not-signed-in" data-finds-form="">
+    <form action="/email-subscriptions/form?from_page=https%3A%2F%2Fwww.etsy.com%2F" method="POST" class="subscribe-form not-signed-in" >
 
         <input type="hidden" name="campaign_name" value="" />
         <input type="hidden" name="campaign_slug" value="new_at_etsy" />
@@ -23,9 +23,9 @@ const Footer = () => {
 
             <div class="wt-max-width-sm wt-validation">
                 <label class="wt-label wt-mt-xs-4 wt-screen-reader-only" for="email-list-signup-email-input">Enter your email</label>
-                <div class="wt-input-btn-group" data-email-list-signup-form-elements="">
-                    <input class="wt-input-btn-group__input wt-text-body-01" id="email-list-signup-email-input" placeholder="Enter your email" name="email_address" data-email-list-signup-email-input="" />
-                    <button type="submit" class="wt-btn wt-input-btn-group__btn" data-email-list-signup-btn-input="">
+                <div class="wt-input-btn-group" >
+                    <input class="wt-input-btn-group__input wt-text-body-01" id="email-list-signup-email-input" placeholder="Enter your email" name="email_address" />
+                    <button type="submit" class="wt-btn wt-input-btn-group__btn">
                         Subscribe
                         <div class="wt-spinner wt-spinner--01 wt-display-none" role="alert" aria-live="assertive">
                            <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle fill="transparent" cx="12" cy="12" r="10"></circle></svg></span>
@@ -34,7 +34,7 @@ const Footer = () => {
                     </button>
                 </div>
             </div>
-            <div class="g-recaptcha-etsy" data-sitekey="6Ldgkr0ZAAAAAGnf08YhMemepXW29Ux9rtJCcBD3" data-etsy-autoload="false" data-recaptcha-version="enterprise" data-recaptcha-key-type="score" id="g-recaptcha-etsy-public_email_subscribe-score" data-badge="inline" data-recaptcha-action="public_email_subscribe">
+            <div class="g-recaptcha-etsy" >
 </div>
 <div class="wt-alert wt-alert--inline wt-alert--error-01 wt-display-none js-recaptcha-load-error">
        <p class="wt-text-body-01">Captcha failed to load. Try using a different browser or disabling ad blockers.</p>
@@ -43,20 +43,20 @@ const Footer = () => {
 <input id="g-recaptcha-etsy-public_email_subscribe-score-input-key-type" type="hidden" name="enterprise_recaptcha_token_key_type" value="score" />
 
         <div class="wt-text-center wt-mt-xs-2 wt-validation wt-max-width-sm">
-            <div class="wt-validation__message wt-validation__message--is-hidden wt-text-body-01" id="email-list-signup-invalid-email" role="alert" aria-live="polite" data-invalid-email="" data-submission-error-response="">
+            <div class="wt-validation__message wt-validation__message--is-hidden wt-text-body-01" id="email-list-signup-invalid-email" role="alert" aria-live="polite" >
                 Please enter a valid email address.
             </div>
            
-            <div class="wt-alert wt-alert--inline wt-alert--status-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite" data-requires-signup="" data-submission-response="">
-                You've already signed up for some newsletters, but you haven't confirmed your address. <a href="/join?from_url=https%3A%2F%2Fwww.etsy.com%2F" class="" data-campaign-slug="new_at_etsy">Register</a> to confirm your address.
+            <div class="wt-alert wt-alert--inline wt-alert--status-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite">
+                You've already signed up for some newsletters, but you haven't confirmed your address. <a href="/join?from_url=https%3A%2F%2Fwww.etsy.com%2F" class="" >Register</a> to confirm your address.
             </div>
-            <div class="wt-alert wt-alert--inline wt-alert--success-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite" data-success-signed-in="" data-success-no-email-signed-in="" data-success-no-email-signed-out="" data-submission-response="">
+            <div class="wt-alert wt-alert--inline wt-alert--success-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite"  >
                 You've been successfully signed up!
             </div>
-            <div class="wt-alert wt-alert--inline wt-alert--success-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite" data-success-signed-out="" data-submission-response="">
+            <div class="wt-alert wt-alert--inline wt-alert--success-01 wt-display-none wt-text-body-01" role="alert" aria-live="polite" >
                 Great! We've sent you an email to confirm your subscription.
             </div>
-            <div class="wt-validation__message wt-validation__message--is-hidden wt-text-body-01" id="email-list-signup-generic-error" role="alert" aria-live="polite" data-generic-error="" data-submission-error-response="">
+            <div class="wt-validation__message wt-validation__message--is-hidden wt-text-body-01" id="email-list-signup-generic-error" role="alert" aria-live="polite" >
                 There was a problem subscribing you to this newsletter.
             </div>
         </div>
@@ -69,7 +69,7 @@ const Footer = () => {
  
 
         <div class="chrome-footer__extra-links-app-container" style={{backgroundColor: "#280111"}}>
-    <nav class="chrome-footer__extra-links" aria-label="Footer" data-footer-extra-links="">
+    <nav class="chrome-footer__extra-links" aria-label="Footer" >
         <div class="wt-body-max-width">
             <div class="wt-grid">
                 <div class="chrome-footer__extra-links-group wt-grid__item-md-3">
@@ -77,7 +77,7 @@ const Footer = () => {
         Shop
     </h3>
 
-    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark" data-wt-content-toggle="" aria-controls="footer-extra-links-shop" aria-expanded="false">
+    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark"  aria-controls="footer-extra-links-shop" aria-expanded="false">
         <span class="wt-text-title-01 wt-text-left-xs wt-flex-xs-auto wt-width-full">
             Shop
         </span>
@@ -117,7 +117,7 @@ const Footer = () => {
         Sell
     </h3>
 
-    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark" data-wt-content-toggle="" aria-controls="footer-extra-links-sell" aria-expanded="false">
+    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark" aria-controls="footer-extra-links-sell" aria-expanded="false">
         <span class="wt-text-title-01 wt-text-left-xs wt-flex-xs-auto wt-width-full">
             Sell
         </span>
@@ -160,7 +160,7 @@ const Footer = () => {
         About
     </h3>
 
-    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark" data-wt-content-toggle="" aria-controls="footer-extra-links-about" aria-expanded="false">
+    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark"  aria-controls="footer-extra-links-about" aria-expanded="false">
         <span class="wt-text-title-01 wt-text-left-xs wt-flex-xs-auto wt-width-full">
             About
         </span>
@@ -221,14 +221,14 @@ const Footer = () => {
         Help
     </h3>
 
-    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark" data-wt-content-toggle="" aria-controls="footer-extra-links-help" aria-expanded="false" data-keep-open="">
+    <button type="button" class="wt-hide-md wt-content-toggle--btn wt-width-full wt-btn wt-btn--transparent wt-btn--light wt-content-toggle--with-icon wt-content-toggle--flush wt-sem-text-on-surface-dark"  aria-controls="footer-extra-links-help" aria-expanded="false" >
         <span class="wt-text-title-01 wt-text-left-xs wt-flex-xs-auto wt-width-full">
             Help
         </span>
         <span class="wt-content-toggle--btn__icon"></span>
     </button>
     
-    <div id="footer-extra-links-help" class="wt-content-toggle__body" aria-hidden="false" data-keep-open="">
+    <div id="footer-extra-links-help" class="wt-content-toggle__body" aria-hidden="false" >
         <ul class="wt-list-unstyled wt-text-left-xs wt-pl-sm-0 wt-pr-xs-1">
                     <li class="wt-pt-xs-1 wt-pb-xs-2 wt-pb-md-1 wt-display-block wt-width-full ">
                         <a class="appshell-responsive-footer-link wt-sem-text-on-surface-dark wt-text-link-no-underline" href="https://www.etsy.com/help?ref=ftr">
@@ -237,7 +237,7 @@ const Footer = () => {
                         </a>
                     </li>
                     <li class="wt-pt-xs-1 wt-pb-xs-2 wt-pb-md-1 wt-display-block wt-width-full ">
-                        <a class="appshell-responsive-footer-link wt-sem-text-on-surface-dark wt-text-link-no-underline" data-gdpr-privacy-settings-trigger="" href="#">
+                        <a class="appshell-responsive-footer-link wt-sem-text-on-surface-dark wt-text-link-no-underline"  href="#">
                             
                             <span>Privacy settings</span>
                         </a>
@@ -295,7 +295,7 @@ const Footer = () => {
             <div class="chrome-footer__final">
 
                     <div class="chrome-footer__final-col">
-                        <a id="locale-picker-trigger" class="wt-btn wt-btn--transparent wt-btn--transparent-flush-left wt-btn--transparent-flush-right  wt-btn--light  wt-btn--small" aria-label="Update your settings Nigeria English (US) $ (USD)" href="https://www.etsy.com/your/account/locale_preferences?from_page=https%3A%2F%2Fwww.etsy.com%2F" data-aria-controls="wt-locale-picker-overlay" role="button" aria-controls="wt-locale-picker-overlay">
+                        <a id="locale-picker-trigger" class="wt-btn wt-btn--transparent wt-btn--transparent-flush-left wt-btn--transparent-flush-right  wt-btn--light  wt-btn--small" aria-label="Update your settings Nigeria English (US) $ (USD)" href="https://www.etsy.com/your/account/locale_preferences?from_page=https%3A%2F%2Fwww.etsy.com%2F"  role="button" aria-controls="wt-locale-picker-overlay">
     <span class="wt-display-inline-block wt-nudge-t-2 wt-vertical-align-middle">    <span class="etsy-icon locale-icon-svg-default wt-display-block wt-text-white
                     wt-icon--smaller-xs wt-nudge-b-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12,2A10,10,0,1,0,22,12,10.012,10.012,0,0,0,12,2ZM9,18.883v0.528A7.938,7.938,0,0,1,4.06,11.06l3.385,3.385a2.967,2.967,0,0,0,1.649,4.4ZM17.5,15a2.509,2.509,0,0,0,.5-0.05V15a0.992,0.992,0,0,0,.927.985A8,8,0,0,1,12,20c-0.216,0-.427-0.016-0.639-0.032l1.254-2.5-0.015.006A2.968,2.968,0,0,0,13,16a2.988,2.988,0,0,0-5-2.221V11H9a1,1,0,0,0,1-1V9a1,1,0,0,0,1-1,1,1,0,0,0,0-2H6.726A7.9,7.9,0,0,1,14,4.263V6a1,1,0,0,0,2,0V5.082a8.047,8.047,0,0,1,2,1.649V7H17a1,1,0,0,0,0,2h2.411a7.941,7.941,0,0,1,.326,1H17a2.556,2.556,0,0,0-2,2.5A2.5,2.5,0,0,0,17.5,15Z"></path></svg></span>
 </span>

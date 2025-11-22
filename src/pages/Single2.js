@@ -213,11 +213,11 @@ const availableColors = [
   <Header2 />
   
 
-     <body class="ui-toolkit transitional-wide etsy-has-it-design is-responsive no-touch en-US USD NG bg-white guest wt-focus-visible" data-language="en-US" data-currency="USD" data-region="NG" data-hover-none="true" data-visual-focus-state="true" data-mobile-viewport-height="true">
+     <body class="ui-toolkit transitional-wide etsy-has-it-design is-responsive no-touch en-US USD NG bg-white guest wt-focus-visible" >
  <main id="content" style={{marginBottom: "200px"}}>
 
 
-           <div data-clg-id="WtBanner" class="wt-banner wt-banner--informational-01 trust-suite-banner wt-max-width-full wt-display-flex-xs wt-align-items-center wt-justify-content-center wt-p-xs-3" id="etsywebtoolkitbannerswtbanner6914871a8e928" data-prop-id="etsywebtoolkitbannerswtbanner6914871a8e928" data-prop-type="static" data-prop-style-type="informational-01" data-prop-is-open="true" data-wt-neu-rendered="">
+           <div  class="wt-banner wt-banner--informational-01 trust-suite-banner wt-max-width-full wt-display-flex-xs wt-align-items-center wt-justify-content-center wt-p-xs-3" id="etsywebtoolkitbannerswtbanner6914871a8e928"  >
         <div class="wt-banner__layout wt-display-flex-xs wt-align-items-center wt-justify-content-space-evenly wt-flex-nowrap">
         <div class="wt-show-lg wt-show-xl wt-show-tv wt-hide-md wt-hide-sm">
             <div class="wt-display-flex-xs wt-align-items-center">
@@ -249,7 +249,7 @@ const availableColors = [
                                 Here's what's eligible:
                             </strong>
                         </p>
-<ul data-clg-id="WtList" class="wt-list wt-mb-xs-1 wt-text-body-small" >                            <li>
+<ul  class="wt-list wt-mb-xs-1 wt-text-body-small" >                            <li>
                                 Your order doesn't match the item description or photos
                             </li>
                             <li>
@@ -263,7 +263,7 @@ const availableColors = [
                             </li>
 </ul>
                         <p class="wt-text-body-small">
-                            <a href="https://www.etsy.com/etsy-purchase-protection"  data-listings-track-click="" data-event-name="trust_suite_banner_purchase_protection_banner_link_clicked" target="_blank">
+                            <a href="https://www.etsy.com/etsy-purchase-protection"   target="_blank">
                                 View program terms
                             </a>
                         </p>
@@ -278,8 +278,8 @@ const availableColors = [
                 <div class="wt-pr-xs-1" aria-hidden="true">
                     <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 13v5h-2v-5z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M4 9.25A.25.25 0 0 1 4.25 9H7.5V6.5a4.5 4.5 0 0 1 9 0V9h3.25a.25.25 0 0 1 .25.25V18a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM9.5 6.5a2.5 2.5 0 0 1 5 0V9h-5zM8 20a2 2 0 0 1-2-2v-7h12v7a2 2 0 0 1-2 2z"></path></svg></span>
                 </div>
-                <div class="wt-popover" id="trust-suite-banner-spo-popover" data-wt-popover="">
-                    <button type="button" data-wt-popover-trigger="" class="wt-popover__trigger wt-popover__trigger--underline wt-text-link wt-display-inline-flex-xs wt-align-items-center" aria-describedby="trust-suite-banner-spo-popover-overlay">
+                <div class="wt-popover" id="trust-suite-banner-spo-popover" >
+                    <button type="button"  class="wt-popover__trigger wt-popover__trigger--underline wt-text-link wt-display-inline-flex-xs wt-align-items-center" aria-describedby="trust-suite-banner-spo-popover-overlay">
                         <span class="wt-text-title">
                     Secure payment options
                         </span>
@@ -305,8 +305,8 @@ const availableColors = [
                 <div class="wt-pr-xs-1" aria-hidden="true">
                     <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.782 8.676 12 2.145l-2.78 6.53-7.086.625 5.364 4.663-1.595 6.918L12 17.228l6.097 3.653-1.596-6.919L21.867 9.3z"></path></svg></span>
                 </div>
-                <div class="wt-popover" id="trust-suite-banner-vr-popover" data-wt-popover="">
-                    <button type="button" data-wt-popover-trigger="" class="wt-popover__trigger wt-popover__trigger--underline wt-text-link wt-display-inline-flex-xs wt-align-items-center" aria-describedby="trust-suite-banner-vr-popover-overlay">
+                <div class="wt-popover" id="trust-suite-banner-vr-popover" >
+                    <button type="button"  class="wt-popover__trigger wt-popover__trigger--underline wt-text-link wt-display-inline-flex-xs wt-align-items-center" aria-describedby="trust-suite-banner-vr-popover-overlay">
                         <span class="wt-text-title">
                             Verified reviews
                         </span>
@@ -326,8 +326,8 @@ const availableColors = [
 
 </div>
 
-<div data-ui="listing-breadcrumbs" class="wt-hide-xs wt-show-lg breadcrumb_nav">
-    <div data-ui="cat-nav" id="desktop-category-nav" class="cat-nav  v2-toolkit-cat-nav wt-ml-xs-0 wt-mr-xs-0">
+<div  class="wt-hide-xs wt-show-lg breadcrumb_nav">
+    <div  id="desktop-category-nav" class="cat-nav  v2-toolkit-cat-nav wt-ml-xs-0 wt-mr-xs-0">
      <div className="wt-text-caption wt-position-relative wt-z-index-5 wt-pt-xs-2">
   <div className="wt-grid wt-body-max-width wt-pl-xs-2 wt-pr-xs-2 wt-pl-md-4 wt-pr-md-4 wt-pl-lg-6 wt-pr-lg-6">
     
@@ -359,7 +359,7 @@ const availableColors = [
 
 
 
-<div data-selector="listing-page-content" class="content-wrap listing-page-content">
+<div  class="content-wrap listing-page-content">
 
 
    <div class="wt-pt-xs-5 listing-page-content-container-wider wt-horizontal-center">
@@ -374,9 +374,9 @@ const availableColors = [
                             <div class="image-wrapper wt-position-relative carousel-container-responsive" id="photos">
     
 
-        <div data-listing-page-badge="" style={{marginLeft: "78px;"}} class="wt-position-absolute wt-z-index-2 wt-position-top wt-position-left wt-mt-xs-1">
-            <div class="wt-popover" data-wt-popover="">
-    <button data-wt-popover-trigger="" class="wt-popover__trigger wt-popover__trigger--underline wt-display-inline-flex-xs wt-align-items-center wt-text-caption" aria-disabled="true" aria-describedby="bestseller">
+        <div  style={{marginLeft: "78px;"}} class="wt-position-absolute wt-z-index-2 wt-position-top wt-position-left wt-mt-xs-1">
+            <div class="wt-popover">
+    <button  class="wt-popover__trigger wt-popover__trigger--underline wt-display-inline-flex-xs wt-align-items-center wt-text-caption" aria-disabled="true" aria-describedby="bestseller">
 
     </button>
     <div id="bestseller" role="tooltip">
@@ -388,8 +388,8 @@ const availableColors = [
     
         <button class="btn--focus  wt-position-absolute wt-btn wt-btn--light wt-btn--small wt-z-index-2
             wt-btn--filled wt-btn--icon wt-btn--fixed-floating wt-position-right wt-mr-xs-2 wt-mt-xs-2
-            " data-ui="favorite-listing-button" data-listing-id="1629181619" data-accessible-btn-fave="" data-favorite-label="Add to Favorites" data-favorited-label="Remove from Favorites" data-always-show="true">
-            <div class="favorite-listing-button-icon-container should-animate " data-source="lp_image_carousel" data-btn-fave="" data-neu-fave="" data-favorite-icon-container="">
+            " >
+            <div class="favorite-listing-button-icon-container should-animate ">
                 <span class="etsy-icon wt-nudge-t-1
                     
                     
@@ -397,7 +397,7 @@ const availableColors = [
                         
                             wt-display-block
                         
-                    " data-not-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
+                    " ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
                 <span class="etsy-icon wt-nudge-t-1 wt-text-favorite-heart
                     
                     
@@ -405,10 +405,10 @@ const availableColors = [
                         
                       
                         
-                    " data-favorited-icon=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
+                    " ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.024 12.281a2 2 0 0 1-.147.24l-.673.961q-.349.497-.789.915L12 21.422l-7.415-7.025a6 6 0 0 1-.789-.915l-.673-.961a2 2 0 0 1-.147-.24A6 6 0 0 1 12 4.528a6 6 0 0 1 9.024 7.753"></path></svg></span>
             </div>
             <span aria-hidden="true" class="icon"></span>
-            <span class="wt-screen-reader-only" data-a11y-label="">
+            <span class="wt-screen-reader-only" >
                 
                 Add to Favorites
             </span>
@@ -421,7 +421,7 @@ const availableColors = [
 
     <div
       className="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-0 images cms-gallery-grid-mixed cms-sticky"
-      data-columns="grid-mixed"
+ 
       style={{
         opacity: 1,
         transition: "opacity 0.25s ease-in-out",
@@ -863,13 +863,13 @@ const availableColors = [
 </div> */}
 <div className="listing-info info-col description-right wt-order-xs-5">
   <div className="wt-flex-lg-3 wt-order-xs-1 wt-order-lg-3 wt-max-width-full wt-pl-md-4 wt-pr-md-4 wt-pl-lg-0 wt-pr-lg-5 wt-pl-xs-2 wt-pr-xs-2">
-    <div data-appears-component-name="product_details">
+    <div >
       <div id="product_details" className="appears-ready">
 
         <div className="wt-content-toggle">
           <button
             className="wt-btn wt-btn--transparent wt-content-toggle--btn wt-width-full wt-content-toggle--flush"
-            data-default-open="true"
+           
           >
             <span className="wt-flex-xs-auto wt-width-full wt-text-title">
               <h2 style={{fontWeight: "800"}}>Item Details</h2>
@@ -946,7 +946,7 @@ const availableColors = [
               )}
 
               {/* ----------- DESCRIPTION ------------ */}
-              <div data-id="description-text" className="wt-mt-xs-4">
+              <div  className="wt-mt-xs-4">
                 <div className="wt-content-toggle__body wt-content-toggle__body--truncated wt-content-toggle__body--truncated-02">
                       <h3 className="wt-text-title" style={{fontWeight: "800"}}>Description</h3>
                   <p className="wt-text-body-01 wt-break-word">

@@ -40,7 +40,7 @@ const availableColors = [
     <div style={{backgroundColor: "white"}}>
   <Header />
 
-<div id="cms-ptitle" class="cms-ptitle text-center" data-stellar-background-ratio="0.5">
+<div id="cms-ptitle" class="cms-ptitle text-center" >
 		<div class="container-fluid relative z-top">
 			<h1 class="title
 

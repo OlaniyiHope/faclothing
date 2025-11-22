@@ -9,37 +9,37 @@ const ContinuePay = () => {
 
       <main id="content">
         <div id="checkout-sheet-container">
-          <div id="checkout-sheet" data-testid="checkout-sheet">
-            <div data-selector="checkout-sheet">
+          <div id="checkout-sheet" >
+            <div >
               <div className="wt-width-full checkout-sheet-full-height-container">
                 <div
-                  data-testid="checkout-sheet-navigation-container"
+
                   className="wt-display-flex-xs checkout-sheet-navigation-container wt-width-full checkout-sheet-full-page-width"
                 >
                   <div className="wt-width-full wt-flex-shrink-xs-0">
                     <div>
-                      <div data-selector="checkout-sheet-panel-payment">
+                      <div >
                         <div className="wt-pl-xs-3 wt-pr-xs-3 wt-pb-xs-3 wt-p-md-5 wt-pt-xs-4 wt-pt-xs-0">
                           
                           {/* HEADER */}
-                          <div data-testid="subway-nav-panel-header">
+                          <div >
                             <div className="checkout-sheet-panel-header wt-display-flex-xs wt-align-items-center wt-justify-content-center wt-mb-xs-2">
 
                               <h1
-                                data-testid="panel-header"
+             
                                 className="checkout-sheet-panel-header-text wt-text-title-large wt-text-title-small wt-sem-text-secondary"
                               >
                                 <div className="wt-display-flex-xs wt-align-items-center">
                                   <button className="wt-text-link">
                                     <span
-                                      data-testid="etsy-logo"
+                            
                                       className="wt-icon--logo wt-icon--base-md wt-icon--smaller-xs wt-fill-orange etsy-icon"
                                     ></span>
                                   </button>
 
                                   <div className="wt-ml-xs-1 wt-display-flex-xs">
                                     <span
-                                      data-testid="lock-icon"
+                          
                                       className="wt-icon--smallest-xs wt-align-self-center etsy-icon"
                                     ></span>
 
@@ -53,7 +53,7 @@ const ContinuePay = () => {
                             </div>
 
                             {/* SUBWAY NAVIGATION */}
-                            <ol data-clg-id="WtSubway" className="wt-subway">
+                            <ol  className="wt-subway">
                               <li className="wt-subway__stop">
                                 <span className="wt-subway__stop__link">
                                   <div className="wt-subway__stop__dot"></div>

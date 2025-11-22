@@ -170,7 +170,7 @@ useEffect(() => {
     backfaceVisibility: "hidden",
     pointerEvents: "none",
   }}>
-				<div class="icon-one" data-depth="0.10"  style={{
+				<div class="icon-one"   style={{
     transform: "translate3d(0px, 0px, 0px)",
     transformStyle: "preserve-3d",
     backfaceVisibility: "hidden",
@@ -179,7 +179,7 @@ useEffect(() => {
     left: "0px",
     top: "0px",
   }} ></div>
-                				<div class="icon-two" data-depth="0.30"
+                				<div class="icon-two"
                         
      
                         
@@ -195,7 +195,7 @@ useEffect(() => {
                         >
 					<img src="https://themexriver.com/wp/prinox-wp/wp-content/uploads/2022/08/vector-9.png" alt="" />
 				</div>
-                                				<div class="icon-three" data-depth="0.30"
+                                				<div class="icon-three"
                                         
  style={{
     transform: "translate3d(0px, 0px, 0px)",
@@ -212,7 +212,7 @@ useEffect(() => {
                                         >
                     <img src="https://themexriver.com/wp/prinox-wp/wp-content/uploads/2022/08/vector-34.png" alt="" />
 				</div>
-                				<div class="icon-four" data-depth="0.10"
+                				<div class="icon-four" 
                         
                        style={{
     transform: "translate3d(0px, 0px, 0px)",

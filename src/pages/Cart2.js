@@ -450,12 +450,12 @@ const isLoggedIn = !!user;
 
         <tr>
             <td colspan="2">                    
-                <div data-selector="cart-page-purchase-protection" class="wt-mt-xs-1 wt-mb-xs-2">
+                <div class="wt-mt-xs-1 wt-mb-xs-2">
     <div class="wt-display-flex-xs wt-align-items-center">
         <span class="wt-icon wt-icon--base-xs wt-flex-shrink-xs-0 wt-mr-xs-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2 4 6v6c0 8 8 10 8 10s8-2 8-10V6zm5.25 7.54-6.67 6.67-.11.11h-.32l-.9-.12h-.16L9 16l-2.3-4-.17-.29.29-.17L8 10.88l.28-.17.17.29 1.66 2.87 5.74-5.74.24-.24.24.24.94.94.23.23z"></path></svg></span>
-        <div class="wt-popover" data-wt-popover="" data-popover="cart-epp">
+        <div class="wt-popover" >
             <div class="wt-text-body-small">
-                You're covered with <button data-wt-popover-trigger="" type="button" tabindex="0" aria-describedby="epp-signal-popover" class="wt-text-body-small wt-popover__trigger wt-popover__trigger--underline">Rayofaa Purchase Protection</button>
+                You're covered with <button  type="button" tabindex="0" aria-describedby="epp-signal-popover" class="wt-text-body-small wt-popover__trigger wt-popover__trigger--underline">Rayofaa Purchase Protection</button>
             </div>
             <div id="epp-signal-popover" role="tooltip">
                 <div class="wt-text-title wt-mb-xs-2 wt-display-inline-flex-xs">
@@ -539,17 +539,17 @@ const isLoggedIn = !!user;
 
 
 
-                    <div class="wt-display-none apple-pay-button-wrapper" data-is-guest="true" data-buyer-currency="USD" data-shop-currency="USD" data-cart-listing-ids="1226534278" data-has-giftcard-shop="false" data-shop-id="27595895" data-is-eu-buyer="false" data-guest-user-id="1161191815" data-cart-type-id="2">
+                    <div class="wt-display-none apple-pay-button-wrapper" >
         
         <button class="wt-btn wt-width-full wt-mt-xs-2 wt-mb-lg-0 checkout-with apple-pay-button
         
         
-        wt-mb-xs-1 apple-pay-button-black" type="submit" data-redirect-to="/cart/12541074043/checkout/?guest=1&amp;payment_method=apple_pay" data-apple-pay-selected="0" data-apple-cart-hash="cart_hash_851e5f8">
+        wt-mb-xs-1 apple-pay-button-black" type="submit"  >
             &nbsp;
         </button>
-        <div data-selector="apple-pay-legal-terms" class="wt-pt-xs-2">
+        <div  class="wt-pt-xs-2">
             <div class="wt-sem-text-primary wt-text-body-small">
-                By clicking the Apple Pay button, you agree to Etsy's <a href="/legal/terms-of-use" title="Terms of Use" data-article-id="25545769842" class="checkout-purchase-accept-terms-link">Terms of Use</a> and <a href="/legal/privacy" title="Privacy Policy" data-article-id="25468388617" class="checkout-purchase-accept-terms-link">Privacy Policy</a>
+                By clicking the Apple Pay button, you agree to Etsy's <a href="/legal/terms-of-use" title="Terms of Use"  class="checkout-purchase-accept-terms-link">Terms of Use</a> and <a href="/legal/privacy" title="Privacy Policy"  class="checkout-purchase-accept-terms-link">Privacy Policy</a>
 </div>
         </div>
 </div>
@@ -557,7 +557,7 @@ const isLoggedIn = !!user;
                 </div>
                 <button type="button" class="wt-content-toggle--btn wt-btn wt-btn--small wt-btn--transparent-flush-left
         
-        wt-nudge-r-2" data-selector="strategic-discount-toggle" aria-controls="strategic-discount-input-12541074043" aria-expanded="false">
+        wt-nudge-r-2"  aria-controls="strategic-discount-input-12541074043" aria-expanded="false">
     <span class="wt-display-flex-xs wt-align-items-center wt-width-full
         
         ">
@@ -570,15 +570,15 @@ const isLoggedIn = !!user;
         <div class="wt-validation wt-mt-xs-2 wt-mb-xs-2">
             <div class="wt-input-btn-group">
                 <input type="text" class="wt-input-btn-group__input" id="strategic-discount" value="" placeholder="Enter code" />
-                <button type="submit" class="wt-input-btn-group__btn wt-input-btn-group__btn--filled" data-selector="strategic-discount-submit">
+                <button type="submit" class="wt-input-btn-group__btn wt-input-btn-group__btn--filled" >
                     Apply
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="wt-overlay wt-overlay--info" id="nbo-celebration-overlay" aria-hidden="true" data-wt-overlay="" role="dialog" aria-modal="false" aria-label="Important information">
-    <div class="wt-overlay__modal wt-p-xs-4" data-overlay-modal="" data-celebration-modal="">
+    <div class="wt-overlay wt-overlay--info" id="nbo-celebration-overlay" aria-hidden="true"  role="dialog" aria-modal="false" aria-label="Important information">
+    <div class="wt-overlay__modal wt-p-xs-4"  >
         <div class="wt-display-flex-xs wt-flex-direction-column-xs wt-align-items-center">
             <img class="wt-width-full nbo-celebration-img" loading="lazy" src="https://www.etsy.com/assets/dist/images/checkout/nbo-celebration.20211014161635.png" alt="Shoppers celebrating that their coupon worked" />
             <h1 class="wt-text-heading wt-line-height-tight wt-mt-xs-6 wt-mb-xs-8 wt-text-center-xs nbo-celebration-text">
@@ -589,10 +589,10 @@ const isLoggedIn = !!user;
 </div>
                 
                 <div class="wt-sem-text-secondary wt-text-caption wt-text-center-xs">
-                    <div data-tax-transparent-messaging="" class="  wt-text-left-xs ">
+                    <div  class="  wt-text-left-xs ">
 Local taxes included (where applicable)
     <div class="wt-mt-xs-1">
-        * Learn more about additional taxes, duties, and fees that <button class="wt-text-link" aria-controls="tax-transparency-overlay-69172fff272ed" type="button" data-tax-transparent-price-overlay-trigger="">may apply</button>
+        * Learn more about additional taxes, duties, and fees that <button class="wt-text-link" aria-controls="tax-transparency-overlay-69172fff272ed" type="button" >may apply</button>
     </div>
 </div>
                 </div>
@@ -603,7 +603,7 @@ Local taxes included (where applicable)
 </div>
         </div>
     </div>
-    <div data-block-user-input="" class="wt-display-none wt-width-full wt-height-full wt-z-index-1 overlay-styling">
+    <div  class="wt-display-none wt-width-full wt-height-full wt-z-index-1 overlay-styling">
         <div class="wt-spinner wt-spinner--02 wt-vertical-center">
             <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle fill="transparent" cx="24" cy="24" r="21"></circle></svg></span>
                 Loading
@@ -617,7 +617,7 @@ Local taxes included (where applicable)
                         </div>
                     </div>
                 </div>
-                <div class="wt-mb-xs-6 wt-mt-xs-4 wt-mt-xs-1 wt-position-relative wt-display-none" data-empty-cart="">
+                <div class="wt-mb-xs-6 wt-mt-xs-4 wt-mt-xs-1 wt-position-relative wt-display-none" >
     <div class="wt-text-center-xs">
         <h1 class="wt-text-heading wt-pt-xs-2 wt-pb-xs-2">
             Your cart is empty.
@@ -631,7 +631,7 @@ Local taxes included (where applicable)
 
         {/* <div class="wt-sem-bg-elevation-0">
                 <div data-selector="cart-recommendations-container">
-                    <div data-appears-component-name="Cart_Recommendations_ApiSpec_List" data-appears-event-data="{&quot;module_placement&quot;:&quot;cart&quot;,&quot;datasets&quot;:[&quot;ads&quot;,&quot;Common_Listing_SameShopFrequencyV2ComplementaryWithFallback&quot;],&quot;targets&quot;:[],&quot;logging_class&quot;:&quot;Cart_Recommendations_ApiSpec_List&quot;,&quot;page_listing_id&quot;:null,&quot;mmx_request_uuid_map&quot;:{&quot;55147f25-8bbd-4747-8fcf-c8a64bd8b4d4&quot;:[5,6,7,8,9]},&quot;candidate_source_map&quot;:{&quot;arizona:Listing_Candidates_SameShop&quot;:[5,6,7,8,9]},&quot;second_pass_ranker_map&quot;:{&quot;recs-ranking-listwise-v6a&quot;:[5,6,7,8,9]},&quot;client_provided_features&quot;:{&quot;browser&quot;:{&quot;acceptLanguage&quot;:&quot;en-US&quot;,&quot;browser&quot;:&quot;Chrome&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;localeRegion&quot;:&quot;NG&quot;,&quot;operatingSystem&quot;:&quot;macOS&quot;,&quot;platform&quot;:&quot;desktop&quot;,&quot;platformEtsyApp&quot;:&quot;web&quot;,&quot;platformMobileDevice&quot;:&quot;unidentified&quot;,&quot;source&quot;:&quot;https:\/\/www.etsy.com\/listing\/1629181619\/happy-chemicals-poster-therapy-office?ls=r\u0026ref=rlp-listing-grid-2\u0026external=1\u0026space_id=1368461677904\u0026pro=1\u0026sts=1\u0026dd=1\u0026content_source=2dd9b4ba02a841000d243d2781f9d5d2%253ALT2b5414eacb64225d919d2a55b4c835af680d0ffb\u0026logging_key=2dd9b4ba02a841000d243d2781f9d5d2%3ALT2b5414eacb64225d919d2a55b4c835af680d0ffb&quot;},&quot;date_time&quot;:{&quot;dayOfWeek&quot;:&quot;5&quot;,&quot;hourOfDay&quot;:&quot;13&quot;},&quot;user&quot;:{&quot;locationLatitude&quot;:null,&quot;locationLongitude&quot;:null,&quot;locationZip&quot;:&quot;unidentified&quot;,&quot;userPreferredLanguage&quot;:&quot;en-US&quot;}},&quot;scores&quot;:[-0.9054200649261474609375,-1.01154553890228271484375,-1.03110086917877197265625,-1.0343334674835205078125,-1.06853425502777099609375],&quot;datasets_map&quot;:{&quot;ads&quot;:[0,1,2,3,4],&quot;Common_Listing_SameShopFrequencyV2ComplementaryWithFallback&quot;:[5,6,7,8,9]},&quot;target_listing_id&quot;:1226534278,&quot;refTag&quot;:&quot;also_bought&quot;,&quot;listing_ids&quot;:[4298647493,1668778321,1359543755,4327442958,1510353026,1570575519,1115919049,1103308701,1598536599,1055594718],&quot;listing_prices_usd&quot;:[2.79000000000000003552713678800500929355621337890625,2.5,2.9900000000000002131628207280300557613372802734375,3.79000000000000003552713678800500929355621337890625,1.0500000000000000444089209850062616169452667236328125,1.3899999999999999023003738329862244427204132080078125,1.060000000000000053290705182007513940334320068359375,1.1699999999999999289457264239899814128875732421875,1.3899999999999999023003738329862244427204132080078125,1.060000000000000053290705182007513940334320068359375],&quot;taxonomy_ids&quot;:[2078,12394,6844,6844,6844,6844,6844,6844,6844,6844],&quot;taxo_paths&quot;:[&quot;art_and_collectibles.prints.digital_prints&quot;,&quot;craft_supplies_and_tools.patterns_and_how_to.craft_machine_files.cutting_machine_files&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;,&quot;craft_supplies_and_tools.canvas_and_surfaces.stencils_templates_and_transfers.clip_art&quot;],&quot;rec_event_name&quot;:&quot;recommendations_module&quot;}" class="recs-appears-logger">
+                    <div>
 <div class="appears-ready">
         <div class="wt-display-flex-xs wt-mb-xs-3  wt-align-items-baseline">
     <h3 class="wt-text-title-large wt-mr-xs-1">Related items you may like</h3>

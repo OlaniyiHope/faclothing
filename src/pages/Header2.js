@@ -45,13 +45,13 @@ const Header2 = ({ cartCount = 1 }) => {
  
 
 
-        <div data-selector="header-cat-nav-wrapper" data-menu-ui="menubar">
-<div id="gnav-header" class=" gnav-header global-nav v2-toolkit-gnav-header wt-z-index-6 wt-sem-bg-elevation-0 wt-position-relative " data-as-version="10_12672349415_19" data-count-ajax="" data-show-suggested-searches-in-as="" data-show-gift-card-cta-in-as="1" data-as-personalized="1" data-as-extras="{&amp;quot;expt&amp;quot;:&amp;quot;all_xml&amp;quot;,&amp;quot;lang&amp;quot;:&amp;quot;en-US&amp;quot;,&amp;quot;extras&amp;quot;:[]}" data-cheact="1" data-gnav-header="">
+        <div >
+<div id="gnav-header" class=" gnav-header global-nav v2-toolkit-gnav-header wt-z-index-6 wt-sem-bg-elevation-0 wt-position-relative" >
     <header id="gnav-header-inner" class="global-enhancements-header wt-display-flex-xs wt-justify-content-space-between wt-align-items-center wt-width-full wt-body-max-width wt-pl-xs-2 wt-pr-xs-2 wt-pl-lg-6 wt-pr-lg-6 wt-bb-xs wt-bb-lg-none gnav-header-inner wt-pt-lg-2 
         
         " role="banner">
      
-<div class="wt-pb-lg-0 wt-pt-sm-1 wt-pt-lg-0 wt-pr-xs-1 " data-header-logo-container="">
+<div class="wt-pb-lg-0 wt-pt-sm-1 wt-pt-lg-0 wt-pr-xs-1 " >
     <a href="/?ref=lgo" elementtiming="ux-global-nav">
         <span class="wt-screen-reader-only">Rayofaa</span>
         <span class="etsy-icon wt-display-block wt-fill-orange wt-nudge-r-3 wt-nudge-t-1 logo-dimensions" id="logo" style={{fontSize: "23px", fontWeight: "800", color: "#8b023a"}}>
@@ -61,7 +61,7 @@ const Header2 = ({ cartCount = 1 }) => {
 </div>
          
 
-        <div class="wt-width-full wt-display-flex-xs wt-pr-lg-3 wt-flex-lg-1 order-mobile-tablet-2" data-hamburger-search-container="">
+        <div class="wt-width-full wt-display-flex-xs wt-pr-lg-3 wt-flex-lg-1 order-mobile-tablet-2" >
       
      <button
   onClick={() => setMenuOpen(!menuOpen)}
@@ -79,20 +79,20 @@ const Header2 = ({ cartCount = 1 }) => {
                 wt-mb-xs-2
         
         wt-mb-lg-0">
-    <form id="gnav-search" class="global-enhancements-search-nav wt-position-relative wt-display-flex-xs" method="GET" action="/search.php" role="search" data-gnav-search="" data-ge-search-clearable="" data-trending-searches="1">
+    <form id="gnav-search" class="global-enhancements-search-nav wt-position-relative wt-display-flex-xs" method="GET" action="/search.php" role="search"  >
 
         <label for="global-enhancements-search-query" class="wt-label wt-screen-reader-only">
    Search for items or shops
 </label>
-<div class="search-container" data-id="search-bar">
-    <div  style={{width: "90%",  margin: "auto"}} class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container" data-id="search-suggestions-trigger">
-        <input id="global-enhancements-search-query" data-id="search-query"  data-search-input="" type="text" name="search_query" class="wt-input wt-input-btn-group__input global-enhancements-search-input-btn-group__input
+<div class="search-container">
+    <div  style={{width: "90%",  margin: "auto"}} class="wt-input-btn-group global-enhancements-search-input-btn-group emphasized_search_bar emphasized_search_bar_grey_bg search-bar-container">
+        <input id="global-enhancements-search-query"  type="text" name="search_query" class="wt-input wt-input-btn-group__input global-enhancements-search-input-btn-group__input
                     wt-pr-xs-7
                                         
                     " placeholder="Search for anything" value="" autocomplete="off" autocorrect="off" autocapitalize="off" role="combobox" aria-autocomplete="both" aria-controls="global-enhancements-search-suggestions" aria-expanded="false" />
         <button type="button" class="wt-btn wt-btn--transparent wt-btn--icon wt-btn--small position-absolute-important wt-position-right wt-z-index-9 wt-animated  wt-animated--is-hidden
             
-            search-close-btn-margin-right " data-search-close-btn="">
+            search-close-btn-margin-right " >
             <span class="wt-screen-reader-only">Clear search</span>
             <span class="wt-icon wt-icon--smaller wt-nudge-t-1">
               
@@ -104,7 +104,7 @@ const Header2 = ({ cartCount = 1 }) => {
         </button>
         <button type="submit" class="wt-input-btn-group__btn 
               
-                " value="Search" aria-label="Search" data-id="gnav-search-submit-button" style={{backgroundColor: "#8b023a", color: "white"}}>
+                " value="Search" aria-label="Search" style={{backgroundColor: "#8b023a", color: "white"}}>
             
             <span class="wt-icon wt-nudge-b-2 wt-nudge-r-1">
               
@@ -118,7 +118,7 @@ const Header2 = ({ cartCount = 1 }) => {
     <div id="global-enhancements-search-suggestions" class="global-nav-menu__body
             search-suggestions-container
              wt-width-full wt-max-width-full
-            " data-id="search-suggestions">
+            ">
     </div>
 </div>
 
@@ -128,7 +128,7 @@ const Header2 = ({ cartCount = 1 }) => {
 </div>
         </div>
 
-        <a data-selector="skip-to-content-marketplace" class="global-enhancements-skip-to-content wt-screen-reader-only wt-focusable" href="#content">
+        <a  class="global-enhancements-skip-to-content wt-screen-reader-only wt-focusable" href="#content">
     <div id="skip-to-content-wrapper" class="wt-display-flex-xs wt-align-items-center wt-justify-content-center wt-body-max-width wt-width-full wt-height-full wt-position-absolute wt-position-top wt-position-left wt-position-right wt-bg-denim wt-z-index-10">
         <label class="wt-btn wt-btn--transparent wt-btn--light">
             Skip to Content
@@ -266,33 +266,32 @@ const Header2 = ({ cartCount = 1 }) => {
     
 
 
-<li data-favorites-nav-container="" data-ge-nav-menu="favorites" data-ge-hover-event-name="gnav_hover_favorites_menu">
-    <span class="wt-tooltip wt-tooltip--disabled-touch" data-wt-tooltip="">
-        <a href="https://www.etsy.com/guest/favorites?ref=hdr-fav" class="wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon reduced-margin-xs header-button" data-favorites-nav-link="" aria-labelledby="ge-tooltip-label-favorites">
+<li >
+    <span class="wt-tooltip wt-tooltip--disabled-touch" >
+        <a href="https://www.etsy.com/guest/favorites?ref=hdr-fav" class="wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon reduced-margin-xs header-button" aria-labelledby="ge-tooltip-label-favorites">
             <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52q.081-.115.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753q.066.123.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025q.44-.418.789-.915zm-14.916.425L12 18.667l6.04-5.722q.293-.279.525-.61l.673-.961a.3.3 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002l-.006-.064a3.98 3.98 0 0 0-1.232-2.51 4 4 0 0 0-6.031 5.193q.014.045.044.086l.673.961a4 4 0 0 0 .526.61"></path></svg></span>
         </a>
 
-        <span id="ge-tooltip-label-favorites" role="tooltip" data-favorites-label-tooltip="">Favorites</span>
+        <span id="ge-tooltip-label-favorites" role="tooltip" >Favorites</span>
     </span>
 </li>
-<li data-gift-mode-nav-container="">
-    <span class="wt-tooltip wt-tooltip--disabled-touch" data-wt-tooltip="">
-        <a href="/gift-mode?ref=gm_utility_nav" class=" wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon reduced-margin-xs header-button" data-gift-mode-nav-link="" aria-labelledby="ge-tooltip-label-gift-mode">
+<li >
+    <span class="wt-tooltip wt-tooltip--disabled-touch" >
+        <a href="/gift-mode?ref=gm_utility_nav" class=" wt-tooltip__trigger wt-tooltip__trigger--icon-only wt-btn wt-btn--transparent wt-btn--icon reduced-margin-xs header-button"  aria-labelledby="ge-tooltip-label-gift-mode">
             <span class="etsy-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.535 7A4 4 0 0 1 12 2.354 4 4 0 0 1 18.465 7H22v9h-1v6H3v-6H2V7zm9.466 0H13V5a2 2 0 1 1 2.001 2M11 5a2 2 0 1 0-2.001 2H11zm-.764 4c-.55.614-1.348 1-2.236 1v2a4.98 4.98 0 0 0 3-1v3H4V9zM13 11c.836.628 1.874 1 3 1v-2a3 3 0 0 1-2.236-1H20v5h-7zm-8 5v4h6v-4zm8 4v-4h6v4z"></path></svg></span>
         </a>
 
-        <span id="ge-tooltip-label-gift-mode" role="tooltip" data-registry-label-tooltip="">
+        <span id="ge-tooltip-label-gift-mode" role="tooltip" >
             
                 Gifts
             
         </span>
     </span>
 </li>
-<li data-ge-nav-menu="cart" data-ge-hover-event-name="gnav_hover_cart_menu">
+<li  >
   <span
     className="wt-tooltip wt-tooltip--bottom-left"
-    data-wt-tooltip=""
-    data-header-cart-button=""
+
   >
     <a
       aria-label="Cart"
@@ -333,7 +332,7 @@ const Header2 = ({ cartCount = 1 }) => {
 
 <nav className="wt-hide-xs wt-show-lg category-nav-button-menu">
       <div
-        data-ui="cat-nav"
+   
         id="desktop-category-topnav"
         className="cat-nav responsive-disabled v2-toolkit-cat-nav wt-ml-xs-0 wt-mr-xs-0"
       >
@@ -342,8 +341,7 @@ const Header2 = ({ cartCount = 1 }) => {
 
             <ul
               className="wt-list-unstyled wt-body-max-width wt-display-flex-xs wt-justify-content-center"
-              data-menu-ui="menubar"
-              data-ui="top-nav-category-list"
+        
             >
 
               {/* DYNAMIC CATEGORY ITEMS */}
@@ -352,8 +350,7 @@ const Header2 = ({ cartCount = 1 }) => {
                   <a
                     href={`/shop-category/${cat._id}`}
                     className="wt-btn wt-btn--transparent wt-btn--small"
-                    data-menu-ui="menuitem"
-                    data-ui="top-nav-category-link"
+                   
                   >
                     <span className="wt-icon wt-icon--smaller-xs wt-nudge-b-1 wt-nudge-r-3">
                       {cat.icon ? (
