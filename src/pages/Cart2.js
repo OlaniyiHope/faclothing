@@ -275,54 +275,57 @@ const isLoggedIn = !!user;
         </ul> */}
 
 
- <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
+<ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
   {cartItems.map((item) => (
-    <li key={item.product._id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
-      <div className="wt-rounded-02 wt-b-xs">
-        <div className="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
-          <div className="wt-display-flex-xs wt-pt-xs-1 wt-pt-md-0">
-            
-            {/* PRODUCT IMAGE */}
-            <div className="wt-flex-xs-1">
-              <img
-                src={item.product.image}
-                className="wt-width-full wt-rounded-01 wt-overflow-hidden wt-display-block"
-                alt={item.product.name}
-                style={{ height: "120px", objectFit: "cover" }}
-              />
-            </div>
-
-            {/* PRODUCT DETAILS */}
-            <div className="wt-flex-xs-3 wt-pl-xs-2 wt-break-word simplified-cart-min-width-0 wt-pl-md-3">
-              <p className="wt-text-body wt-text-truncate">
-                {item.product.name}
-              </p>
-
-              <div className="wt-mt-xs-1 wt-text-small">
-                {item.size && <div>Size: {item.size.join(", ")}</div>}
-                <div>Qty: {item.quantity}</div>
+    item.product ? (  // ✅ check if product exists
+      <li key={item.product._id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
+        <div className="wt-rounded-02 wt-b-xs">
+          <div className="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
+            <div className="wt-display-flex-xs wt-pt-xs-1 wt-pt-md-0">
+              
+              {/* PRODUCT IMAGE */}
+              <div className="wt-flex-xs-1">
+                <img
+                  src={item.product.image || "/placeholder.png"} // fallback image
+                  className="wt-width-full wt-rounded-01 wt-overflow-hidden wt-display-block"
+                  alt={item.product.name || "Product Image"}
+                  style={{ height: "120px", objectFit: "cover" }}
+                />
               </div>
 
-              <div className="wt-mt-xs-1 wt-text-title-01">
-                ₦{item.product.discountPrice ? item.product.discountPrice : item.product.price}
+              {/* PRODUCT DETAILS */}
+              <div className="wt-flex-xs-3 wt-pl-xs-2 wt-break-word simplified-cart-min-width-0 wt-pl-md-3">
+                <p className="wt-text-body wt-text-truncate">
+                  {item.product.name}
+                </p>
+
+                <div className="wt-mt-xs-1 wt-text-small">
+                  {item.size && <div>Size: {item.size.join(", ")}</div>}
+                  <div>Qty: {item.quantity}</div>
+                </div>
+
+                <div className="wt-mt-xs-1 wt-text-title-01">
+                  ₦{item.product.discountPrice ?? item.product.price}
+                </div>
+
+                {/* REMOVE BUTTON */}
+                <button
+                  onClick={() => removeFromCart(item.product._id, item.color)}
+                  className="wt-btn wt-btn--small wt-btn--secondary wt-mt-xs-2"
+                  style={{ cursor: "pointer" }}
+                >
+                  Remove
+                </button>
               </div>
 
-              {/* REMOVE BUTTON */}
-              <button
-                onClick={() => removeFromCart(item.product._id, item.color)}
-                className="wt-btn wt-btn--small wt-btn--secondary wt-mt-xs-2"
-                style={{ cursor: "pointer" }}
-              >
-                Remove
-              </button>
             </div>
-
           </div>
         </div>
-      </div>
-    </li>
+      </li>
+    ) : null // skip if product is missing
   ))}
 </ul>
+
 
         <div class="wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pt-xs-2 wt-mt-md-0 wt-mt-xs-2 wt-pt-md-0 wt-pl-md-3 wt-grid__item-lg-4 wt-grid__item-md-5">
             <div data-multi-shop-cart-payment="" data-shop-payment-unique-id="12541074043">
