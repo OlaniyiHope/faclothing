@@ -1,8 +1,29 @@
 import React from "react";
 import Header2 from "./Header2";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import Footer from "./Footer";
 
-const Checkout2 = () => {
+const Checkout2 = ({ onNext }) => {
+
+    const initialValues = {
+    email: "",
+    email_confirmation: "",
+    phone: "",
+  };
+
+    const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    email_confirmation: Yup.string()
+      .oneOf([Yup.ref("email"), null], "Emails must match")
+      .required("Please confirm your email"),
+    phone: Yup.string().matches(
+      /^[0-9]{10,15}$/,
+      "Phone number must be 10-15 digits"
+    ),
+  });
   return (
     <div className="wt-bg-white">
       <Header2 />
