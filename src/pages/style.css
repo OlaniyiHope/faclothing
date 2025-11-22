@@ -46,4 +46,46 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 15px; /* space between cards */
   }
+}/* Mobile */
+.carousel-image {
+  max-height: 300px;
 }
+
+@media (min-width: 640px) {
+  /* Tablet */
+  .carousel-image {
+    max-height: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop */
+  .carousel-image {
+    max-height: 400px;
+  }
+}
+/* Remove unwanted padding on mobile */
+.no-mobile-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Responsive image sizing */
+.carousel-image {
+  width: 100%;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+@media (min-width: 640px) {
+  .carousel-image {
+    max-height: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-image {
+    max-height: 400px;
+  }
+}
+

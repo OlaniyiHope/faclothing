@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 import step from "./newsprint.png";
 import oil from "./safe.png";
 import hiab from "./ran.png";
-import "./home.css";
 import "./style.css";
 import Footer from "./Footer";
 import Banner from "./Banner";
