@@ -436,15 +436,66 @@ export const CartProvider = ({ children, userId }) => {
     loadCart();
   }, [userId]);
 
+// const addToCart = (product, color) => {
+//   setCartItems((prev) => {
+//     const exist = prev.find((i) => i.productId === product._id && i.color === color);
+
+//     let updatedCart;
+//     if (exist) {
+//       toast.info("Quantity updated");
+//       updatedCart = prev.map((i) =>
+//         i.productId === product._id && i.color === color
+//           ? { ...i, quantity: i.quantity + 1 }
+//           : i
+//       );
+//     } else {
+//       toast.success("Added to cart");
+//       updatedCart = [
+//         ...prev,
+//         {
+//           productId: product._id, // store productId separately
+//           name: product.name,
+//           price: product.price,
+//           discountPrice: product.discountPrice,
+//           image: product.images?.[0] || "",
+//           color,
+//           quantity: 1,
+//         },
+//       ];
+//     }
+
+//     // Call backend with **correct product IDs** and single mapping
+//     axios.post(`${process.env.REACT_APP_API_URL}/api/db/cart`, {
+//       cartId,
+//       userId: userId || null,
+//       items: updatedCart.map((i) => ({
+//         product: {
+//           _id: i.productId,   // <- always use productId
+//           name: i.name,
+//           price: i.price,
+//           discountPrice: i.discountPrice,
+//           image: i.image,      // <- single string
+//         },
+//         quantity: i.quantity,
+//         color: i.color || "",
+//       })),
+//     });
+
+//     return updatedCart;
+//   });
+// };
 const addToCart = (product, color) => {
   setCartItems((prev) => {
-    const exist = prev.find((i) => i.productId === product._id && i.color === color);
+    const exist = prev.find(
+      (i) => i.product._id === product._id && i.color === color
+    );
 
     let updatedCart;
+
     if (exist) {
       toast.info("Quantity updated");
       updatedCart = prev.map((i) =>
-        i.productId === product._id && i.color === color
+        i.product._id === product._id && i.color === color
           ? { ...i, quantity: i.quantity + 1 }
           : i
       );
@@ -453,32 +504,23 @@ const addToCart = (product, color) => {
       updatedCart = [
         ...prev,
         {
-          productId: product._id, // store productId separately
-          name: product.name,
-          price: product.price,
-          discountPrice: product.discountPrice,
-          image: product.images?.[0] || "",
-          color,
+          product: {
+            _id: product._id,
+            name: product.name,
+            price: product.price,
+            discountPrice: product.discountPrice,
+            image: product.images?.[0] || "",
+          },
           quantity: 1,
+          color,
         },
       ];
     }
 
-    // Call backend with **correct product IDs** and single mapping
     axios.post(`${process.env.REACT_APP_API_URL}/api/db/cart`, {
       cartId,
       userId: userId || null,
-      items: updatedCart.map((i) => ({
-        product: {
-          _id: i.productId,   // <- always use productId
-          name: i.name,
-          price: i.price,
-          discountPrice: i.discountPrice,
-          image: i.image,      // <- single string
-        },
-        quantity: i.quantity,
-        color: i.color || "",
-      })),
+      items: updatedCart,
     });
 
     return updatedCart;
