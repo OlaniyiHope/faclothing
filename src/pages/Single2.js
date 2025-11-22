@@ -361,15 +361,15 @@ const availableColors = [
 
 
 
-<div  class="content-wrap listing-page-content">
+<div  class="content-wrap ">
 
 
-   <div class="wt-pt-xs-5 listing-page-content-container-wider wt-horizontal-center">
+   <div class="wt-pt-xs-5  wt-horizontal-center">
 
 
  <div id="listing-right-column" class="listing-buy-box-experiment">
+<div className="body-wrap wt-body-max-width flex flex-col md:flex-row md:gap-6">
 
-     <div class="body-wrap wt-body-max-width wt-display-flex-md wt-flex-direction-column-xs product-page-container">
 
 <div
   className="
@@ -386,10 +386,12 @@ const availableColors = [
     <div
       className="image-wrapper wt-position-relative carousel-container-responsive"
       id="photos"
-      style={{
-        width: "100%",
-        margin: "0 auto",
-      }}
+   style={{
+    width: "100%",
+    maxWidth: "100%",
+    margin: "0 auto",
+    overflow: "hidden",
+  }}
     >
       {/* ❤️ Favorite */}
       <button
@@ -659,7 +661,7 @@ const availableColors = [
 
     <div className="wt-pl-md-4 wt-pr-md-4 wt-pl-lg-5 wt-pr-lg-5 wt-order-xs-3 related-section">
   <div>
-    <h2 className="wt-line-height-tight wt-text-heading-small">
+    <h2 className="wt-line-height-tight wt-text-heading-small" style={{fontWeight: "800"}}>
       Related Products
     </h2>
 
@@ -720,3 +722,4 @@ const availableColors = [
 };
 
 export default Single2;
+

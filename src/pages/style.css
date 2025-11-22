@@ -89,3 +89,25 @@
   }
 }
 
+/* Ensure image wrapper does not overflow on mobile */
+.image-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* prevent horizontal scroll */
+}
+
+/* Make images fully responsive */
+.carousel-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain; /* fits image within container without stretching */
+}
+
+/* Optional: remove extra padding/margin on mobile */
+@media (max-width: 768px) {
+  .image-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
