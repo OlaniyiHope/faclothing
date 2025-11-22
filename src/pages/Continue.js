@@ -1,23 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
 import Header2 from "./Header2";
 import Footer from "./Footer";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 
-const ContinueToPay = ({ payment, setPayment }) => {
+
+
+
+const ContinueToPay = () => {
   const { cartItems } = useCart();
   const navigate = useNavigate();
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  // const subtotal = cartItems.reduce(
+  //   (sum, item) => sum + item.price * item.quantity,
+  //   0
+  // );
+
+const subtotal = cartItems.reduce(
+  (sum, item) =>
+    sum +
+    ((item.product.discountPrice ?? item.product.price) * item.quantity),
+  0
+);
+
+  const [payment, setPayment] = useState("card");
+  const [loading, setLoading] = useState(false);
+const [delivery, setDelivery] = useState("usps");
+const [shippingInfo, setShippingInfo] = useState({
+  method: "USPS International",
+  price: 8689.88,
+  deliveryTime: "4 to 9 business days",
+});
+
+  const getTotalPrice = () => {
+    return cartItems.reduce(
+      (total, item) =>
+        total +
+        ((item.product.discountPrice ?? item.product.price) * item.quantity),
+      0
+    );
+  };
+
+  const handleStripePayment = async () => {
+    try {
+      setLoading(true);
+      const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/db/create-checkout-session`,
+        {
+          cartItems,
+          paymentMethod: payment,
+          shippingInfo,
+        }
+      );
+
+      if (res.data.id) {
+        await stripe.redirectToCheckout({ sessionId: res.data.id });
+      } else {
+        alert("Unable to start payment session");
+      }
+    } catch (err) {
+      console.error("Stripe payment error:", err);
+      alert("Payment failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handlePayPalPayment = () => {
+    alert("PayPal integration goes here");
+  };
+
+  // const handleCOD = async () => {
+  //   try {
+  //     const res = await axios.post(
+  //       `${process.env.REACT_APP_API_URL}/api/db/create-order`,
+  //       {
+  //         cartItems,
+  //         paymentMethod: "cod",
+  //         shippingInfo,
+  //       }
+  //     );
+  //     clearCart();
+  //     navigate("/order-success", { state: { order: res.data.order } });
+  //   } catch (err) {
+  //     console.error("COD order failed", err);
+  //   }
+  // };
 
   // You can change shipping if needed
-  const shipping = 15;
-
-  const total = subtotal + shipping;
+const total = subtotal + shippingInfo.price;
 
   const paymentMethods = [
     {
@@ -119,23 +195,109 @@ const ContinueToPay = ({ payment, setPayment }) => {
     ))}
   </div>
 </div>
+{/* SHIPPING METHOD SECTION */}
+<div className="wt-mt-xs-5 wt-p-xs-4 wt-border wt-rounded bg-gray-50">
+  <h3 className="wt-text-title-small wt-mb-xs-3">Shipping Method</h3>
 
-                {/* ACTION BUTTONS */}
-                <div className="wt-display-flex-xs wt-justify-content-space-between wt-mt-xs-5">
-                  <button
-                    className="wt-btn wt-btn--secondary"
-                    onClick={() => navigate("/checkout")}
-                  >
-                    Back
-                  </button>
+  <div className="wt-grid wt-gap-xs-2">
+    
+    {/* USPS */}
+    <label className="wt-display-flex-xs wt-justify-content-space-between wt-border wt-rounded wt-p-xs-3 wt-cursor-pointer">
+      <input
+        type="radio"
+        name="shippingMethod"
+        value="usps"
+        checked={delivery === "usps"}
+        onChange={() => {
+          setDelivery("usps");
+          setShippingInfo({
+            method: "USPS International",
+            price: 8689.88,
+            deliveryTime: "4 to 9 business days",
+          });
+        }}
+      />
+      <div className="wt-flex-grow-xs wt-ml-xs-2">
+        <div className="wt-font-semibold">USPS International</div>
+        <div className="wt-text-small">${8689.88.toLocaleString()}</div>
+      </div>
+      <span className="wt-text-small">4 to 9 business days</span>
+    </label>
 
-                  <button
-                    className="wt-btn wt-btn--primary"
-                    onClick={() => navigate("/review-order")}
-                  >
-                    Continue
-                  </button>
-                </div>
+    {/* UPS */}
+    <label className="wt-display-flex-xs wt-justify-content-space-between wt-border wt-rounded wt-p-xs-3 wt-cursor-pointer">
+      <input
+        type="radio"
+        name="shippingMethod"
+        value="ups"
+        checked={delivery === "ups"}
+        onChange={() => {
+          setDelivery("ups");
+          setShippingInfo({
+            method: "UPS Worldwide Expedited®",
+            price: 9396.66,
+            deliveryTime: "4 to 9 business days",
+          });
+        }}
+      />
+      <div className="wt-flex-grow-xs wt-ml-xs-2">
+        <div className="wt-font-semibold">UPS Worldwide Expedited®</div>
+        <div className="wt-text-small">${9396.66.toLocaleString()}</div>
+      </div>
+      <span className="wt-text-small">4 to 9 business days</span>
+    </label>
+
+    {/* DHL */}
+    <label className="wt-display-flex-xs wt-justify-content-space-between wt-border wt-rounded wt-p-xs-3 wt-cursor-pointer">
+      <input
+        type="radio"
+        name="shippingMethod"
+        value="dhl"
+        checked={delivery === "dhl"}
+        onChange={() => {
+          setDelivery("dhl");
+          setShippingInfo({
+            method: "DHL Express Worldwide",
+            price: 13417.18,
+            deliveryTime: "4 to 5 business days",
+          });
+        }}
+      />
+      <div className="wt-flex-grow-xs wt-ml-xs-2">
+        <div className="wt-font-semibold">DHL Express Worldwide</div>
+        <div className="wt-text-small">${13417.18.toLocaleString()}</div>
+      </div>
+      <span className="wt-text-small">4 to 5 business days</span>
+    </label>
+
+  </div>
+</div>
+
+            {/* ACTION BUTTONS */}
+<div className="wt-mt-xs-5 wt-display-flex-xs wt-justify-content-space-between">
+  <button
+    className="wt-btn wt-btn--secondary"
+    onClick={() => navigate("/checkout")}
+  >
+    Back
+  </button>
+
+  <button
+    type="button"
+    disabled={!payment}
+    onClick={() => {
+      if (payment === "card" || payment === "klarna") {
+        handleStripePayment();
+      } else if (payment === "paypal") {
+        handlePayPalPayment();
+      }
+    }}
+    className="wt-btn wt-btn--primary"
+  >
+    Pay ${total.toFixed(2)}
+  </button>
+</div>
+
 
               </div>
             </div>
