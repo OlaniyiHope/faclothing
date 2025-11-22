@@ -485,15 +485,49 @@ const addToCart = (product, color) => {
   });
 };
 
-  const removeFromCart = (id, color) => {
-    setCartItems((prev) => prev.filter((i) => !(i._id === id && i.color === color)));
-  };
+// const removeFromCart = (id, color) => {
+//   setCartItems((prev) => prev.filter((i) => !(i.productId === id && i.color === color)));
+// };
 
-  const updateQuantity = (id, color, qty) => {
-    setCartItems((prev) =>
-      prev.map((i) => (i._id === id && i.color === color ? { ...i, quantity: qty } : i))
-    );
-  };
+const removeFromCart = async (id, color) => {
+  try {
+    // Filter using product._id
+    const updatedCart = cartItems.filter((i) => !(i.product._id === id && i.color === color));
+
+    // Update state
+    setCartItems(updatedCart);
+
+    // Sync with backend
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/db/cart`, {
+      cartId,
+      userId: userId || null,
+      items: updatedCart.map((i) => ({
+        product: {
+          _id: i.product._id,
+          name: i.product.name,
+          price: i.product.price,
+          discountPrice: i.product.discountPrice,
+          image: i.product.image,
+        },
+        quantity: i.quantity,
+        color: i.color || "",
+      })),
+    });
+
+    toast.info("Item removed from cart");
+  } catch (err) {
+    console.error("REMOVE FROM CART ERROR:", err);
+    toast.error("Failed to remove item");
+  }
+};
+
+
+const updateQuantity = (id, color, qty) => {
+  setCartItems((prev) =>
+    prev.map((i) => (i.productId === id && i.color === color ? { ...i, quantity: qty } : i))
+  );
+};
+
 
   const clearCart = () => setCartItems([]);
 

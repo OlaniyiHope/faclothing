@@ -276,13 +276,13 @@ const isLoggedIn = !!user;
 
 
 <ul className="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
-  {cartItems.map((item) => (
-    item.product ? (  // ✅ check if product exists
+  {cartItems.map((item) =>
+    item.product ? ( // ✅ check if product exists
       <li key={item.product._id} className="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
         <div className="wt-rounded-02 wt-b-xs">
           <div className="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
             <div className="wt-display-flex-xs wt-pt-xs-1 wt-pt-md-0">
-              
+
               {/* PRODUCT IMAGE */}
               <div className="wt-flex-xs-1">
                 <img
@@ -296,7 +296,7 @@ const isLoggedIn = !!user;
               {/* PRODUCT DETAILS */}
               <div className="wt-flex-xs-3 wt-pl-xs-2 wt-break-word simplified-cart-min-width-0 wt-pl-md-3">
                 <p className="wt-text-body wt-text-truncate">
-                  {item.product.name}
+                  {item.product.name || "Unnamed Product"}
                 </p>
 
                 <div className="wt-mt-xs-1 wt-text-small">
@@ -305,26 +305,29 @@ const isLoggedIn = !!user;
                 </div>
 
                 <div className="wt-mt-xs-1 wt-text-title-01">
-                  ₦{item.product.discountPrice ?? item.product.price}
+                  ₦{item.product.discountPrice ?? item.product.price ?? 0}
                 </div>
 
                 {/* REMOVE BUTTON */}
-                <button
-                  onClick={() => removeFromCart(item.product._id, item.color)}
-                  className="wt-btn wt-btn--small wt-btn--secondary wt-mt-xs-2"
-                  style={{ cursor: "pointer" }}
-                >
-                  Remove
-                </button>
+        <button
+  onClick={() => removeFromCart(item.product._id, item.color)}
+  className="wt-btn wt-btn--small wt-btn--secondary wt-mt-xs-2"
+  style={{ cursor: "pointer" }}
+>
+  Remove
+</button>
+
+
               </div>
 
             </div>
           </div>
         </div>
       </li>
-    ) : null // skip if product is missing
-  ))}
+    ) : null // skip items without product
+  )}
 </ul>
+
 
 
         <div class="wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pt-xs-2 wt-mt-md-0 wt-mt-xs-2 wt-pt-md-0 wt-pl-md-3 wt-grid__item-lg-4 wt-grid__item-md-5">
@@ -435,18 +438,20 @@ const isLoggedIn = !!user;
   >
     Item(s) total
   </th>
-  <td className="wt-p-xs-0 wt-b-xs-none wt-text-right-xs wt-text-body-01 wt-sem-text-primary wt-no-wrap">
-    <span className="money">
-      <span className="currency-symbol">₦ </span>
-      <span className="currency-value">
-        {cartItems.reduce(
-          (total, item) =>
-            total + ((item.product.discountPrice ?? item.product.price) * item.quantity),
-          0
-        )}
-      </span>
+<td className="wt-p-xs-0 wt-b-xs-none wt-text-right-xs wt-text-body-01 wt-sem-text-primary wt-no-wrap">
+  <span className="money">
+    <span className="currency-symbol">₦ </span>
+    <span className="currency-value">
+      {cartItems.reduce((total, item) => {
+        if (!item.product) return total;
+        const price = item.product.discountPrice ?? item.product.price ?? 0;
+        const quantity = item.quantity ?? 1;
+        return total + price * quantity;
+      }, 0)}
     </span>
-  </td>
+  </span>
+</td>
+
 </tr>
 
 
