@@ -20,6 +20,7 @@ import { AuthContext } from "../context/AuthContext";
 const Cart2 = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+console.log(cartItems);
 
 const navigate = useNavigate();
 const { user } = useContext(AuthContext);
@@ -342,8 +343,14 @@ const isLoggedIn = !!user;
                 </p>
 
                 <div className="wt-mt-xs-1 wt-text-small">
-                  {item.size && <div>Size: {item.size.join(", ")}</div>}
-                  <div>Qty: {item.quantity}</div>
+<div className="wt-mt-xs-1 wt-text-small">
+  {item.color && <div>Color: {item.color}</div>}
+  {item.size && <div>Size: {item.size}</div>}
+  <div>Qty: {item.quantity}</div>
+</div>
+
+
+               
                 </div>
 
                 <div className="wt-mt-xs-1 wt-text-title-01">

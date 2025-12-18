@@ -484,10 +484,55 @@ export const CartProvider = ({ children, userId }) => {
 //     return updatedCart;
 //   });
 // };
-const addToCart = (product, color) => {
+// const addToCart = (product, color) => {
+//   setCartItems((prev) => {
+//     const exist = prev.find(
+//       (i) => i.product._id === product._id && i.color === color
+//     );
+
+//     let updatedCart;
+
+//     if (exist) {
+//       toast.info("Quantity updated");
+//       updatedCart = prev.map((i) =>
+//         i.product._id === product._id && i.color === color
+//           ? { ...i, quantity: i.quantity + 1 }
+//           : i
+//       );
+//     } else {
+//       toast.success("Added to cart");
+//       updatedCart = [
+//         ...prev,
+//         {
+//           product: {
+//             _id: product._id,
+//             name: product.name,
+//             price: product.price,
+//             discountPrice: product.discountPrice,
+//             image: product.images?.[0] || "",
+//           },
+//           quantity: 1,
+//           color,
+//         },
+//       ];
+//     }
+
+//     axios.post(`${process.env.REACT_APP_API_URL}/api/db/cart`, {
+//       cartId,
+//       userId: userId || null,
+//       items: updatedCart,
+//     });
+
+//     return updatedCart;
+//   });
+// };
+const addToCart = ({ product, color, size, quantity }) => {
   setCartItems((prev) => {
     const exist = prev.find(
-      (i) => i.product._id === product._id && i.color === color
+      (i) =>
+        i.product._id === product._id &&
+        i.color === color &&
+        i.size === size
     );
 
     let updatedCart;
@@ -495,8 +540,10 @@ const addToCart = (product, color) => {
     if (exist) {
       toast.info("Quantity updated");
       updatedCart = prev.map((i) =>
-        i.product._id === product._id && i.color === color
-          ? { ...i, quantity: i.quantity + 1 }
+        i.product._id === product._id &&
+        i.color === color &&
+        i.size === size
+          ? { ...i, quantity: i.quantity + quantity }
           : i
       );
     } else {
@@ -509,18 +556,31 @@ const addToCart = (product, color) => {
             name: product.name,
             price: product.price,
             discountPrice: product.discountPrice,
-            image: product.images?.[0] || "",
+            image: product.image || "",
           },
-          quantity: 1,
           color,
+          size,
+          quantity,
         },
       ];
     }
 
+    // 🔥 Sync FULL cart to backend
     axios.post(`${process.env.REACT_APP_API_URL}/api/db/cart`, {
       cartId,
       userId: userId || null,
-      items: updatedCart,
+      items: updatedCart.map((i) => ({
+        product: {
+          _id: i.product._id,
+          name: i.product.name,
+          price: i.product.price,
+          discountPrice: i.product.discountPrice,
+          image: i.product.image,
+        },
+        color: i.color,
+        size: i.size,
+        quantity: i.quantity,
+      })),
     });
 
     return updatedCart;

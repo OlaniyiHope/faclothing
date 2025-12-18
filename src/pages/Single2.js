@@ -47,6 +47,12 @@ const [currentImageIndex, setCurrentImageIndex] = useState(0); // <-- add this
    const { addToCart } = useCart();
     const [activeTab, setActiveTab] = useState("description");
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedQuantity, setSelectedQuantity] = useState(1); // default quantity 1
+  const [selectedColor, setSelectedColor] = useState(null);
+console.log("Selected Color:", selectedColor);
+console.log("Selected Size:", selectedSize);
+console.log("Selected Qty:", selectedQuantity);
+
     // NEXT & PREV buttons
   const goNext = () => {
     setCurrentImageIndex((prev) =>
@@ -93,7 +99,7 @@ useEffect(() => {
 
     fetchProduct();
   }, [id]);
-const [selectedColor, setSelectedColor] = useState(null);
+
 useEffect(() => {
   const fetchCategory = async () => {
     try {
@@ -196,6 +202,31 @@ useEffect(() => {
 
   fetchRelatedProducts();
 }, [product]);
+const normalizedSizes = React.useMemo(() => {
+  if (!product?.size) return [];
+
+  // product.size = ["s, l, m"]
+  if (Array.isArray(product.size)) {
+    return product.size
+      .flatMap((s) => s.split(","))
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}, [product]);
+
+useEffect(() => {
+  if (product?.color?.length > 0) {
+    setSelectedColor(product.color[0]);
+  }
+
+  if (normalizedSizes.length > 0) {
+    setSelectedSize(normalizedSizes[0]);
+  }
+
+  setSelectedQuantity(1);
+}, [product, normalizedSizes]);
 
 const availableColors = [
   { name: "Black", hex: "#000000" },
@@ -515,9 +546,11 @@ const availableColors = [
       </h1>
     </div>
 
-{/* COLOR & SIZE SELECT */}
-<div className="wt-mb-xs-6 wt-p-xs-3 wt-p-lg-4" style={{ border: "1px solid #e0e0e0", borderRadius: "6px" }}>
-  
+{/* COLOR, SIZE & QUANTITY SELECT */}
+<div
+  className="wt-mb-xs-6 wt-p-xs-3 wt-p-lg-4"
+  style={{ border: "1px solid #e0e0e0", borderRadius: "6px" }}
+>
   {/* COLOR SELECT */}
   {product?.color?.length > 0 && (
     <div className="wt-mb-xs-3">
@@ -542,58 +575,89 @@ const availableColors = [
     </div>
   )}
 
-  {/* SIZE SELECT */}
-  {product?.size && (
-    <div className="wt-mb-xs-3">
-      <label className="wt-text-caption wt-mb-xs-1 wt-display-block">
-        Size
-      </label>
-      <select
-        className="wt-select wt-width-full"
-        value={selectedSize || ""}
-        onChange={(e) => setSelectedSize(e.target.value)}
-        style={{ padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
-      >
-        <option value="" disabled>
-          Select size
-        </option>
-        {(
-          Array.isArray(product.size)
-            ? product.size.flatMap((s) => s.split(","))
-            : product.size.split(",")
-        )
-          .map((size) => size.trim())
-          .filter(Boolean)
-          .map((size, index) => (
-            <option key={index} value={size}>
-              {size}
-            </option>
-          ))}
-      </select>
-    </div>
-  )}
+{/* SIZE SELECT */}
+{normalizedSizes.length > 0 && (
+  <div className="wt-mb-xs-3">
+    <label className="wt-text-caption wt-mb-xs-1 wt-display-block">
+      Size
+    </label>
 
+    <select
+      className="wt-select wt-width-full"
+      value={selectedSize}
+      onChange={(e) => setSelectedSize(e.target.value)}
+      style={{ padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
+    >
+      {normalizedSizes.map((size) => (
+        <option key={size} value={size}>
+          {size.toUpperCase()}
+        </option>
+      ))}
+    </select>
+  </div>
+)}
+
+
+  {/* QUANTITY SELECT */}
+  <div className="wt-mb-xs-3">
+    <label className="wt-text-caption wt-mb-xs-1 wt-display-block">
+      Quantity
+    </label>
+    <input
+      type="number"
+      min={1}
+      value={selectedQuantity}
+      onChange={(e) => setSelectedQuantity(Number(e.target.value))}
+      className="wt-select wt-width-full"
+      style={{ padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
+    />
+  </div>
 </div>
 
 
 
 
-    {/* ADD TO CART SECTION */}
-    <div className="wt-mb-xs-6 wt-mb-lg-0">
-      <div>
-        <div className="wt-display-flex-xs wt-flex-direction-column-lg wt-flex-gap-xs-2">
-          <button
-            className="wt-btn wt-btn--filled  wt-no-wrap"
-      onClick={() => {
-    addToCart(product);
-    navigate("/cart"); // redirects to cart pa
-      }}
-          >
-            Add to cart
-          </button>
-        </div>
-      </div>
-    </div>
+
+
+{/* ADD TO CART SECTION */}
+<button
+  className="wt-btn wt-btn--filled wt-no-wrap"
+  onClick={() => {
+    if (!selectedColor) {
+      alert("Please select a color");
+      return;
+    }
+
+    if (!selectedSize) {
+      alert("Please select a size");
+      return;
+    }
+
+    if (selectedQuantity < 1) {
+      alert("Quantity must be at least 1");
+      return;
+    }
+
+    addToCart({
+      product: {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        discountPrice: product.discountPrice,
+        image: product.images?.[0],
+      },
+      color: selectedColor,
+      size: selectedSize,
+      quantity: selectedQuantity,
+    });
+
+    navigate("/cart");
+  }}
+>
+  Add to cart
+</button>
+
+
 
     {/* STOCK / BESTSELLER NOTICE */}
     <div className="wt-mt-xs-3">
