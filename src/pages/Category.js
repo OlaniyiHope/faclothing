@@ -273,7 +273,7 @@ const paginatedProducts = products.slice(
             <div className="v2-listing-card__info wt-pt-xs-0">
               <div className="wt-grid wt-align-items-baseline">
                 <div className="wt-grid__item-xs-12 wt-grid__item-xl-8">
-                  <h2 className="wt-text-title-small wt-text-truncate wt-mt-xs-1" style={{fontWeight: "800", fontSize: "17px"}}>
+                  <h2 className="wt-text-title-small wt-text-truncate wt-mt-xs-1" style={{fontWeight: "510", fontSize: "14px"}}>
                     {product.name}
                   </h2>
                 </div>
@@ -281,7 +281,7 @@ const paginatedProducts = products.slice(
 
               {/* PRICE */}
               <div className="n-listing-card__price wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-text-title-01">
-                <p className="wt-text-title-01">${product.price}</p>
+                <p className="wt-text-title-01" style={{fontWeight: "800", fontSize: "18px"}}>USD {product.price}</p>
               </div>
             </div>
           </a>
