@@ -15,7 +15,9 @@ const Header2 = ({ cartCount = 1 }) => {
   const [categories, setCategories] = useState([]);
   const { cartItems } = useCart();
 
-  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  // const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalItems = cartItems.length;
+
   const { user, dispatch } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
