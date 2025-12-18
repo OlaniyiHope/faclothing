@@ -515,6 +515,67 @@ const availableColors = [
       </h1>
     </div>
 
+{/* COLOR & SIZE SELECT */}
+<div className="wt-mb-xs-6 wt-p-xs-3 wt-p-lg-4" style={{ border: "1px solid #e0e0e0", borderRadius: "6px" }}>
+  
+  {/* COLOR SELECT */}
+  {product?.color?.length > 0 && (
+    <div className="wt-mb-xs-3">
+      <label className="wt-text-caption wt-mb-xs-1 wt-display-block">
+        Color
+      </label>
+      <select
+        className="wt-select wt-width-full"
+        value={selectedColor || ""}
+        onChange={(e) => setSelectedColor(e.target.value)}
+        style={{ padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
+      >
+        <option value="" disabled>
+          Select color
+        </option>
+        {product.color.map((color, index) => (
+          <option key={index} value={color}>
+            {color}
+          </option>
+        ))}
+      </select>
+    </div>
+  )}
+
+  {/* SIZE SELECT */}
+  {product?.size && (
+    <div className="wt-mb-xs-3">
+      <label className="wt-text-caption wt-mb-xs-1 wt-display-block">
+        Size
+      </label>
+      <select
+        className="wt-select wt-width-full"
+        value={selectedSize || ""}
+        onChange={(e) => setSelectedSize(e.target.value)}
+        style={{ padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
+      >
+        <option value="" disabled>
+          Select size
+        </option>
+        {(
+          Array.isArray(product.size)
+            ? product.size.flatMap((s) => s.split(","))
+            : product.size.split(",")
+        )
+          .map((size) => size.trim())
+          .filter(Boolean)
+          .map((size, index) => (
+            <option key={index} value={size}>
+              {size}
+            </option>
+          ))}
+      </select>
+    </div>
+  )}
+
+</div>
+
+
 
 
     {/* ADD TO CART SECTION */}
