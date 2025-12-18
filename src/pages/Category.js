@@ -27,6 +27,8 @@ const Category = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState("");
+const ITEMS_PER_PAGE = 10;
+const [currentPage, setCurrentPage] = useState(1);
 
   const [grandParents, setGrandParents] = useState([]);
   const [parents, setParents] = useState([]);
@@ -160,6 +162,13 @@ useEffect(() => {
 
     fetchBrands();
   }, []);
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+
+const paginatedProducts = products.slice(
+  (currentPage - 1) * ITEMS_PER_PAGE,
+  currentPage * ITEMS_PER_PAGE
+);
+
   return (
     <div>
     <Header2 />
@@ -215,7 +224,8 @@ useEffect(() => {
     </div>
 <div className="mobile-padding-wrapper">
   <ul className="wt-grid wt-list-unstyled">
-    {products.map((product) => (
+{paginatedProducts.map((product) => (
+
       <li
         key={product._id}
         className="wt-grid__item-xs-6 wt-grid__item-md-4 wt-grid__item-lg-3
@@ -277,32 +287,51 @@ useEffect(() => {
 
 
 
-        <div class="wt-display-flex-xs wt-justify-content-center">
-            <nav aria-label="Page results">
-    <div class="wt-action-group wt-list-inline wt-flex-no-wrap  wt-mt-xs-4 wt-mb-xs-4">
-            <div class="wt-action-group__item-container">
-                <a class="wt-action-group__item wt-btn wt-btn--icon  wt-is-disabled" aria-disabled="true" role="link">
-                    <span class="wt-screen-reader-only">Previous page</span>
-                    <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path d="M6.7 11.3L6 12l.7.7 4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L9.8 13H17c.6 0 1-.4 1-1s-.4-1-1-1H9.8l2.3-2.3c.2-.2.3-.4.3-.7 0-.6-.4-1-1-1-.3 0-.5.1-.7.3l-4 4z"></path>
-</svg></span>
-                </a>
-            </div>
+    <div className="wt-display-flex-xs wt-justify-content-center">
+  <nav aria-label="Page results">
+    <div className="wt-action-group wt-list-inline wt-flex-no-wrap wt-mt-xs-4 wt-mb-xs-4">
 
+      {/* PREVIOUS */}
+      <div className="wt-action-group__item-container">
+        <button
+          className={`wt-action-group__item wt-btn wt-btn--icon ${
+            currentPage === 1 ? "wt-is-disabled" : ""
+          }`}
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((p) => p - 1)}
+        >
+          <span className="wt-screen-reader-only">Previous page</span>
+          <span className="wt-icon">
+            ←
+          </span>
+        </button>
+      </div>
 
+      {/* PAGE INFO */}
+      <div className="wt-action-group__item-container wt-text-caption">
+        Page {currentPage} of {totalPages}
+      </div>
 
-            <div class="wt-action-group__item-container">
-                <a class="wt-action-group__item wt-btn wt-btn--icon " href="https://www.etsy.com/r/themes/1368497667979?anchor_listings=1542627936&amp;ref=pagination&amp;page=2" >
-                    <span class="wt-screen-reader-only">Next page</span>
-                    <span class="wt-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path d="M17.3 12.7l.7-.7-.7-.7-4-4c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l2.3 2.3H7c-.6 0-1 .4-1 1s.4 1 1 1h7.2l-2.3 2.3c-.2.2-.3.4-.3.7 0 .6.4 1 1 1 .3 0 .5-.1.7-.3l4-4z"></path>
-</svg></span>
-                </a>
-            </div>
+      {/* NEXT */}
+      <div className="wt-action-group__item-container">
+        <button
+          className={`wt-action-group__item wt-btn wt-btn--icon ${
+            currentPage === totalPages ? "wt-is-disabled" : ""
+          }`}
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((p) => p + 1)}
+        >
+          <span className="wt-screen-reader-only">Next page</span>
+          <span className="wt-icon">
+            →
+          </span>
+        </button>
+      </div>
+
     </div>
-</nav>
+  </nav>
+</div>
 
-        </div>
      
 </div>
         </main>
