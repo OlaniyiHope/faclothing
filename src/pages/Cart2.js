@@ -19,6 +19,8 @@ import { AuthContext } from "../context/AuthContext";
 
 const Cart2 = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+
 const navigate = useNavigate();
 const { user } = useContext(AuthContext);
 const isLoggedIn = !!user;
@@ -34,7 +36,47 @@ const isLoggedIn = !!user;
   );
   // const total = subtotal + shipping;
     const total = subtotal;
+    const handleProceedToCheckout = () => {
+  if (isLoggedIn) {
+    navigate("/checkout");
+  } else {
+    setShowCheckoutModal(true); // open modal instead of alert
+  }
+};
+
+    const CheckoutChoiceModal = ({ onClose, onGuest, onLogin }) => {
   return (
+    <div className="checkout-modal-overlay">
+      <div className="checkout-modal">
+        <h3>Proceed to Checkout</h3>
+        <p>You can checkout as a guest or login for a faster experience.</p>
+
+        <div className="checkout-modal-actions">
+          <button
+            className="wt-btn wt-btn--filled wt-width-full wt-mb-xs-2"
+            onClick={onGuest}
+          >
+            Continue as Guest
+          </button>
+
+          <button
+            className="wt-btn wt-btn--secondary wt-width-full"
+            onClick={onLogin}
+          >
+            Login to Continue
+          </button>
+        </div>
+
+        <button className="checkout-modal-close" onClick={onClose}>
+          ✕
+        </button>
+      </div>
+    </div>
+  );
+};
+
+  return (
+    
     <div className="wp-singular page-template-default page page-id-85 page-child parent-pageid-84 wp-custom-logo wp-theme-trevox theme-trevox woocommerce-cart woocommerce-page woocommerce-js translatepress-en_US cms-heading-font-default elementor-default elementor-kit-8 currency-usd e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit" style={{backgroundColor: "white"}}>
       <Header2 />
 	      <main id="content">
@@ -501,23 +543,38 @@ const isLoggedIn = !!user;
     <button
   className=" wt-btn wt-btn--filled wt-mt-xs-2 wt-width-full"
   type="button"
-  onClick={() => {
-    if (!isLoggedIn) {
-      return alert("You must be logged in before proceeding to checkout.\nClick OK to go to login.");
-    }
+//   onClick={() => {
+//     if (!isLoggedIn) {
+//       return alert("You must be logged in before proceeding to checkout.\nClick OK to go to login.");
+//     }
 
-    // Force navigate to checkout
-    navigate("/checkout");
+//     // Force navigate to checkout
+//     navigate("/checkout");
 
-    // FORCE STOP any redirect caused by Checkout2
-    setTimeout(() => {
-      if (window.location.pathname !== "/checkout") {
-        window.location.replace("/checkout");
-      }
-    }, 200);
-  }}
+//     // FORCE STOP any redirect caused by Checkout2
+//     setTimeout(() => {
+//       if (window.location.pathname !== "/checkout") {
+//         window.location.replace("/checkout");
+//       }
+//     }, 200);
+//   }}
+onClick={handleProceedToCheckout}
+
 >
   <span className="submit-button-text">Proceed to checkout</span>
+{showCheckoutModal && (
+  <CheckoutChoiceModal
+    onClose={() => setShowCheckoutModal(false)}
+    onGuest={() => {
+      setShowCheckoutModal(false);
+      navigate("/checkout?mode=guest");
+    }}
+    onLogin={() => {
+      setShowCheckoutModal(false);
+      navigate("/login?redirect=/checkout");
+    }}
+  />
+)}
 
   <span className="wt-spinner wt-spinner--01 wt-display-none" role="alert" aria-live="assertive">
     <span className="etsy-icon">
