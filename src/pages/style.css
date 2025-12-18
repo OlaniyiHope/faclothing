@@ -150,3 +150,12 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .wt-grid__item-xs-12 {
+    margin-bottom: 16px;
+  }
+}
+.wt-grid > li {
+  padding: 12px;
+}

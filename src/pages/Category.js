@@ -226,11 +226,15 @@ const paginatedProducts = products.slice(
   <ul className="wt-grid wt-list-unstyled">
 {paginatedProducts.map((product) => (
 
-      <li
-        key={product._id}
-        className="wt-grid__item-xs-6 wt-grid__item-md-4 wt-grid__item-lg-3
-                   wt-order-xs-4 wt-order-md-4 wt-order-lg-4"
-      >
+<li
+  key={product._id}
+  className="
+    wt-grid__item-xs-12 
+    wt-grid__item-md-4 
+    wt-grid__item-lg-3
+  "
+>
+
         <div
           className="js-merch-stash-check-listing v2-listing-card 
                      wt-mr-xs-0 search-listing-card--desktop listing-card-experimental-style"
@@ -245,18 +249,22 @@ const paginatedProducts = products.slice(
             <div className="v2-listing-card__img wt-position-relative">
               <div className="placeholder placeholder-square">
                 <div className="placeholder vertically-centered-placeholder placeholder-content placeholder-square">
-                  <img
-                    loading="lazy"
-                    width="300"
-                    height="300"
-                    style={{ height: "230px" }}
-                    src={
-                      product.images?.length > 0
-                        ? product.images[0]
-                        : "https://via.placeholder.com/300"
-                    }
-                    alt={product.name}
-                  />
+            <img
+  loading="lazy"
+  src={
+    product.images?.length > 0
+      ? product.images[0]
+      : "https://via.placeholder.com/300"
+  }
+  alt={product.name}
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+  }}
+/>
+
                 </div>
               </div>
             </div>
@@ -265,9 +273,9 @@ const paginatedProducts = products.slice(
             <div className="v2-listing-card__info wt-pt-xs-0">
               <div className="wt-grid wt-align-items-baseline">
                 <div className="wt-grid__item-xs-12 wt-grid__item-xl-8">
-                  <h3 className="wt-text-title-small wt-text-truncate wt-mt-xs-1">
+                  <h2 className="wt-text-title-small wt-text-truncate wt-mt-xs-1" style={{fontWeight: "800", fontSize: "17px"}}>
                     {product.name}
-                  </h3>
+                  </h2>
                 </div>
               </div>
 
