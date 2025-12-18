@@ -346,7 +346,31 @@ const isLoggedIn = !!user;
 <div className="wt-mt-xs-1 wt-text-small">
   {item.color && <div>Color: {item.color}</div>}
   {item.size && <div>Size: {item.size}</div>}
-  <div>Qty: {item.quantity}</div>
+<div className="wt-mt-xs-1 wt-display-flex-xs wt-align-items-center wt-flex-gap-xs-2">
+  <button
+    className="wt-btn wt-btn--small wt-btn--secondary"
+    onClick={() =>
+      updateQuantity(item.product._id, item.color, item.quantity - 1)
+    }
+    disabled={item.quantity <= 1}
+  >
+    −
+  </button>
+
+  <span className="wt-text-body">
+    {item.quantity}
+  </span>
+
+  <button
+    className="wt-btn wt-btn--small wt-btn--secondary"
+    onClick={() =>
+      updateQuantity(item.product._id, item.color, item.quantity + 1)
+    }
+  >
+    +
+  </button>
+</div>
+
 </div>
 
 

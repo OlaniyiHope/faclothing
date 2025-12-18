@@ -624,12 +624,30 @@ const removeFromCart = async (id, color) => {
 };
 
 
-const updateQuantity = (id, color, qty) => {
-  setCartItems((prev) =>
-    prev.map((i) => (i.productId === id && i.color === color ? { ...i, quantity: qty } : i))
-  );
-};
+// const updateQuantity = (id, color, qty) => {
+//   setCartItems((prev) =>
+//     prev.map((i) => (i.productId === id && i.color === color ? { ...i, quantity: qty } : i))
+//   );
+// };
 
+const updateQuantity = async (productId, color, newQty) => {
+  if (newQty < 1) return;
+
+  const updatedCart = cartItems.map((item) =>
+    item.product._id === productId && item.color === color
+      ? { ...item, quantity: newQty }
+      : item
+  );
+
+  setCartItems(updatedCart);
+
+  // sync with backend
+  await axios.post(`${process.env.REACT_APP_API_URL}/api/db/cart`, {
+    cartId,
+    userId: userId || null,
+    items: updatedCart,
+  });
+};
 
   const clearCart = () => setCartItems([]);
 
