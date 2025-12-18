@@ -281,7 +281,7 @@ const paginatedProducts = products.slice(
 
               {/* PRICE */}
               <div className="n-listing-card__price wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-text-title-01">
-                <p className="wt-text-title-01">₦{product.price}</p>
+                <p className="wt-text-title-01">${product.price}</p>
               </div>
             </div>
           </a>
