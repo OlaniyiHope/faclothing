@@ -92,16 +92,15 @@
 }
 .cms-ribbon-1 {
   background-color: #8b023a !important;
-}
-/* ---------- MOBILE SLIDER ---------- */
+}/* ---------- MOBILE SLIDER ---------- */
 @media (max-width: 768px) {
 
-  .slider-wrapper {
-    position: relative;
-    padding-bottom: 24px;
+  /* Show arrows & dots ONLY on mobile */
+  .slider-arrow,
+  .slider-dots {
+    display: flex;
   }
 
-  /* Disable Etsy grid, enable slider */
   .daily-deals-carousel__inner.wt-grid--block {
     display: flex !important;
     grid-template-columns: none !important;
@@ -111,16 +110,16 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Hide ALL scrollbars */
+  /* Completely hide scrollbar */
   .daily-deals-carousel__inner {
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
   }
 
   .daily-deals-carousel__inner::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
   }
 
-  /* One card per screen with padding */
+  /* One card per screen */
   .daily-deal-card {
     flex: 0 0 100vw !important;
     max-width: 100vw !important;
@@ -133,7 +132,7 @@
   /* ---------- ARROWS ---------- */
   .slider-arrow {
     position: absolute;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
     width: 36px;
     height: 36px;
@@ -144,8 +143,7 @@
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 5;
-    display: flex;
+    z-index: 10;
     align-items: center;
     justify-content: center;
   }
@@ -160,12 +158,10 @@
 
   .slider-arrow:disabled {
     opacity: 0.3;
-    cursor: not-allowed;
   }
 
   /* ---------- DOTS ---------- */
   .slider-dots {
-    display: flex;
     justify-content: center;
     gap: 8px;
     margin-top: 14px;
@@ -185,3 +181,45 @@
     transform: scale(1.2);
   }
 }
+
+/* DESKTOP: hide arrows & dots */
+@media (min-width: 769px) {
+  .slider-arrow,
+  .slider-dots {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .currency-symbol {
+    font-size: 18px;
+  }
+
+  .currency-value {
+    font-size: 21px !important;   /* 👈 BIG & BEAUTIFUL */
+    font-weight: 900;
+    line-height: 1;
+  }
+
+
+  .currency-value2 {
+    font-size: 20px;   /* 👈 BIG & BEAUTIFUL */
+    font-weight: 600;
+    line-height: 1;
+  }
+  .currency-value3 {
+    font-size: 24px !important;   /* 👈 BIG & BEAUTIFUL */
+
+    line-height: 1;
+  }
+}
+  .currency-value3 {
+    font-size: 17px ;   /* 👈 BIG & BEAUTIFUL */
+
+    line-height: 1;
+  }
+
+    .currency-value {
+    font-size: 21px;   /* 👈 BIG & BEAUTIFUL */
+    font-weight: 900;
+    line-height: 1;
+  }

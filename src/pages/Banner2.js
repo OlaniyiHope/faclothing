@@ -544,7 +544,7 @@ return (
           <div className="wt-grid__item-xs-12 wt-grid__item-xl-8 wt-p-xs-0">
              <Link
                               to={`/single-product/${product._id}`}>
-            <h3 className="wt-text-caption v2-listing-card__title wt-text-truncate" style={{fontWeight: "800", fontSize: "25px"}}>
+            <h3 className="wt-text-caption v2-listing-card__title wt-text-truncate currency-value3" >
               {product.name}
             </h3>
             </Link>
@@ -554,7 +554,7 @@ return (
           <div className="wt-grid__item-xs-12 wt-grid__item-xl-4 wt-p-xs-0">
             <div className="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
               <span className="wt-display-flex-xs wt-flex-nowrap wt-align-items-center">
-                <span className="wt-text-title-small"  style={{fontWeight: "800", fontSize: "20px"}}>
+                <span className="wt-text-title-small currency-value2"  >
                   {product.rating || 4.8}
                 </span>
               </span>
@@ -566,14 +566,15 @@ return (
         <div className="n-listing-card__price wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-text-title-large lc-price daily-deal-card__price">
 
           {/* Current Price */}
-          <p className="wt-text-slime wt-text-title-large lc-price daily-deal-card__price">
-            <span aria-hidden="true">
-              <span className="currency-symbol">₦ </span>
-              <span className="currency-value"  style={{fontWeight: "800", fontSize: "35px"}}>
-                {product.price.toLocaleString()}
-              </span>
-            </span>
-          </p>
+    <p className="wt-text-slime lc-price daily-deal-card__price">
+  <span aria-hidden="true" className="price-row">
+    <span className="currency-symbol">₦</span>
+    <span className="currency-value">
+      {product.price.toLocaleString()}
+    </span>
+  </span>
+</p>
+
 
           {/* Old Price */}
           {product.oldPrice && (
