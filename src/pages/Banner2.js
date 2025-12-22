@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 
 import axios from "axios";
 
 import { Link } from "react-router-dom";
-
+import "./Banner.css"
 import d2 from "./web.jpg"
 import d3 from "./ank.jpeg"
 const bgImage = `url("data:image/svg+xml;utf8,
@@ -16,6 +16,8 @@ const Banner2 = () => {
   const [categories, setCategories] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
   const [brands, setBrands] = useState([]);
+    const sliderRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("all");
       const [bestsellers, setBestSellers] = useState([]);
           const [trending, setTrending] = useState([]);
@@ -48,6 +50,52 @@ const Banner2 = () => {
 
     fetchBestSellers();
   }, []);
+
+
+const scrollToIndex = (index) => {
+  const container = sliderRef.current;
+  if (!container) return;
+
+  const card = container.querySelector(".daily-deal-card");
+  if (!card) return;
+
+  container.scrollTo({
+    left: index * card.offsetWidth,
+    behavior: "smooth",
+  });
+
+  setActiveIndex(index);
+};
+
+const handleNext = () => {
+  if (activeIndex < trending.length - 1) {
+    scrollToIndex(activeIndex + 1);
+  }
+};
+
+const handlePrev = () => {
+  if (activeIndex > 0) {
+    scrollToIndex(activeIndex - 1);
+  }
+};
+
+useEffect(() => {
+  const container = sliderRef.current;
+  if (!container) return;
+
+  const onScroll = () => {
+    const card = container.querySelector(".daily-deal-card");
+    if (!card) return;
+
+    const index = Math.round(container.scrollLeft / card.offsetWidth);
+    setActiveIndex(index);
+  };
+
+  container.addEventListener("scroll", onScroll);
+  return () => container.removeEventListener("scroll", onScroll);
+}, []);
+
+
   useEffect(() => {
     const fetchTrending = async () => {
       try {
@@ -444,7 +492,15 @@ return (
             </div>
         </div>
         <div class="daily-deals-carousel__scrollable wt-position-relative overflow-clip-respect-box-shadow default-module-padding no-tv-up-padding">
-            <div class="wt-grid wt-flex-nowrap wt-grid--block daily-deals-carousel__inner wt-pl-xs-3">
+            <button
+    className="slider-arrow left"
+    onClick={handlePrev}
+    disabled={activeIndex === 0}
+    aria-label="Previous product"
+  >
+    ‹
+  </button>
+            <div    ref={sliderRef} class="wt-grid wt-flex-nowrap wt-grid--block daily-deals-carousel__inner wt-pl-xs-3">
         
 
 
@@ -488,7 +544,7 @@ return (
           <div className="wt-grid__item-xs-12 wt-grid__item-xl-8 wt-p-xs-0">
              <Link
                               to={`/single-product/${product._id}`}>
-            <h3 className="wt-text-caption v2-listing-card__title wt-text-truncate">
+            <h3 className="wt-text-caption v2-listing-card__title wt-text-truncate" style={{fontWeight: "800", fontSize: "25px"}}>
               {product.name}
             </h3>
             </Link>
@@ -498,7 +554,7 @@ return (
           <div className="wt-grid__item-xs-12 wt-grid__item-xl-4 wt-p-xs-0">
             <div className="wt-display-flex-xs wt-flex-direction-row inline-title-and-stars-wrap">
               <span className="wt-display-flex-xs wt-flex-nowrap wt-align-items-center">
-                <span className="wt-text-title-small">
+                <span className="wt-text-title-small"  style={{fontWeight: "800", fontSize: "20px"}}>
                   {product.rating || 4.8}
                 </span>
               </span>
@@ -513,7 +569,7 @@ return (
           <p className="wt-text-slime wt-text-title-large lc-price daily-deal-card__price">
             <span aria-hidden="true">
               <span className="currency-symbol">₦ </span>
-              <span className="currency-value">
+              <span className="currency-value"  style={{fontWeight: "800", fontSize: "35px"}}>
                 {product.price.toLocaleString()}
               </span>
             </span>
@@ -542,6 +598,26 @@ return (
 ))}
 
             </div>
+             <button
+    className="slider-arrow right"
+    onClick={handleNext}
+    disabled={activeIndex === trending.length - 1}
+    aria-label="Next product"
+  >
+    ›
+  </button>
+
+            <div className="slider-dots mobile-only">
+  {trending.map((_, index) => (
+    <button
+      key={index}
+      className={`slider-dot ${index === activeIndex ? "active" : ""}`}
+      onClick={() => scrollToIndex(index)}
+      aria-label={`Go to slide ${index + 1}`}
+    />
+  ))}
+</div>
+
         </div>
     </section>
 </div>

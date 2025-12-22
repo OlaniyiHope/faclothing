@@ -225,7 +225,7 @@ useEffect(() => {
     setSelectedSize(normalizedSizes[0]);
   }
 
-  setSelectedQuantity(1);
+  // setSelectedQuantity(1);
 }, [product, normalizedSizes]);
 
 const availableColors = [
