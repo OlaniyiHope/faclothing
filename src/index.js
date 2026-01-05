@@ -26,7 +26,12 @@ ReactDOM.render(
     <DarkModeContextProvider>
         <Elements stripe={stripePromise}>
 
-<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+    <PayPalScriptProvider
+      options={{
+        "client-id": "AZh3e_yP_qUSCnISng7Y_rgeDHI2fBKlkt7VNR_iceaNJgx9jWYSX5qIn_FaHCh-Lt9NgAhNNUTmKqVX",
+        currency: "USD", // optional
+      }}
+    >
   <App />
 
 </PayPalScriptProvider>
