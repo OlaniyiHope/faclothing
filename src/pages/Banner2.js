@@ -524,6 +524,8 @@ return (
             style={{ backgroundColor: "#CCB797" }}
           >
             <div className="height-placeholder">
+                <Link
+                              to={`/single-product/${product._id}`}>
               <img
                 className="wt-width-full wt-height-full wt-display-block wt-position-absolute daily-deal-card__placeholder--loud"
                 alt={product.name}
@@ -531,6 +533,7 @@ return (
 
                 loading="lazy"
               />
+              </Link>
             </div>
           </div>
 

@@ -15,6 +15,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { DarkModeContextProvider } from "./context/darkModeContext";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -25,7 +26,11 @@ ReactDOM.render(
     <DarkModeContextProvider>
         <Elements stripe={stripePromise}>
 
-      <App />
+<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+  <App />
+
+</PayPalScriptProvider>
+    
         </Elements>
 
     </DarkModeContextProvider>

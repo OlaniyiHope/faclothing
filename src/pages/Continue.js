@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { PayPalButtons } from "@paypal/react-paypal-js";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -71,9 +75,7 @@ const [shippingInfo, setShippingInfo] = useState({
     }
   };
 
-  const handlePayPalPayment = () => {
-    alert("PayPal integration goes here");
-  };
+
 
   // const handleCOD = async () => {
   //   try {
@@ -117,11 +119,55 @@ const total = subtotal + shippingInfo.price;
  
     },
   ];
+// Inside your component
+const PayPalPayment = () => {
+  return (
+    <div className="wt-mt-4">
+      <PayPalButtons
+        style={{ layout: "vertical" }}
+        createOrder={(data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: total.toFixed(2), // total amount including shipping
+                  currency_code: "USD",
+                },
+              },
+            ],
+          });
+        }}
+        onApprove={async (data, actions) => {
+          const details = await actions.order.capture();
+          console.log("PayPal transaction completed:", details);
 
+          // You can now create an order in your backend
+          try {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/db/create-order`, {
+              cartItems,
+              paymentMethod: "paypal",
+              shippingInfo,
+              transactionDetails: details,
+            });
+            toast.success("Order completed!");
+            navigate("/order-success", { state: { order: res.data.order } });
+          } catch (err) {
+            console.error("PayPal order creation failed:", err);
+            toast.error("Failed to create order");
+          }
+        }}
+        onError={(err) => {
+          console.error("PayPal error:", err);
+          toast.error("PayPal payment failed");
+        }}
+      />
+    </div>
+  );
+};
   return (
     <div className="wt-bg-white">
       <Header2 />
-
+<ToastContainer />
       <main id="content">
         <div className="wt-width-full">
           <div className="checkout-sheet-navigation-container wt-width-full checkout-sheet-full-page-width">
@@ -282,7 +328,7 @@ const total = subtotal + shippingInfo.price;
     Back
   </button>
 
-  <button
+  {/* <button
     type="button"
     disabled={!payment}
     onClick={() => {
@@ -295,7 +341,33 @@ const total = subtotal + shippingInfo.price;
     className="wt-btn wt-btn--primary"
   >
     Pay ${total.toFixed(2)}
+  </button> */}
+  <div className="wt-mt-xs-5 wt-display-flex-xs wt-justify-content-space-between">
+  <button
+    className="wt-btn wt-btn--secondary"
+    onClick={() => navigate("/checkout")}
+  >
+    Back
   </button>
+
+  <div style={{ flex: 1, marginLeft: "10px" }}>
+    {payment === "paypal" ? (
+      // Render PayPal buttons inline
+      <PayPalPayment />
+    ) : (
+      // Stripe / Klarna
+      <button
+        type="button"
+        disabled={!payment}
+        onClick={handleStripePayment}
+        className="wt-btn wt-btn--primary wt-width-full"
+      >
+        Pay ${total.toFixed(2)}
+      </button>
+    )}
+  </div>
+</div>
+
 </div>
 
 
