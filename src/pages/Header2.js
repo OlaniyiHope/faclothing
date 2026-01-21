@@ -27,19 +27,39 @@ const Header2 = ({ cartCount = 1 }) => {
     localStorage.removeItem("user");
     navigate("/");
   };
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/db/categories`
-        );
-        setCategories(res.data);
-      } catch (err) {
-        console.error("Error fetching categories:", err);
-      }
-    };
-    fetchCategories();
-  }, []);
+  // useEffect(() => {
+  //   const fetchCategories = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `${process.env.REACT_APP_API_URL}/api/db/categories`
+  //       );
+  //       setCategories(res.data);
+  //     } catch (err) {
+  //       console.error("Error fetching categories:", err);
+  //     }
+  //   };
+  //   fetchCategories();
+  // }, []);
+useEffect(() => {
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/db/categories`
+      );
+
+      // Only top-level categories (no parent)
+      const topLevelCategories = res.data.filter(
+        (cat) => !cat.parent
+      );
+
+      setCategories(topLevelCategories);
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+    }
+  };
+
+  fetchCategories();
+}, []);
 
   return (
     <div style={{marginBottom: "20px"}}> 
