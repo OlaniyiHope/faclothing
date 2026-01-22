@@ -29,7 +29,7 @@ const bgImage = `url("data:image/svg+xml;utf8,
   </svg>")`;
 const Single2 = () => {
 
-      const { id } = useParams();
+const { slug } = useParams();
   const navigate = useNavigate();
 const [currentImageIndex, setCurrentImageIndex] = useState(0); // <-- add this
 
@@ -70,7 +70,7 @@ useEffect(() => {
     const fetchProduct = async () => {
       try {
         const { data: product } = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/db/product/${id}`
+    `${process.env.REACT_APP_API_URL}/api/db/product/slug/${slug}`
         );
 
         setProduct(product);
@@ -98,14 +98,92 @@ useEffect(() => {
     };
 
     fetchProduct();
-  }, [id]);
+  }, [slug]);
+
+// useEffect(() => {
+//   const fetchCategory = async () => {
+//     try {
+//       // 🔹 Fetch current category
+//       const { data: category } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/category/${id}`
+//       );
+//       console.log("📌 Current category:", category);
+
+//       setName(category.name);
+//       setPreview(category.image || "");
+
+//       // 🔹 Fetch all categories (with nested children)
+//       const { data: allCats } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/categories`
+//       );
+//       console.log("📌 All categories:", allCats);
+
+//       // Get all grandparent-level categories (no parent)
+//       setGrandParents(allCats.filter((cat) => !cat.parent));
+
+//       let grandParentId;
+
+//       if (!category.parent) {
+//         // Current category IS a grandparent
+//         grandParentId = category._id;
+//         console.log("✅ Current category is a GRANDPARENT:", grandParentId);
+//       } else {
+//         // Walk up one level
+//         const { data: parentCat } = await axios.get(
+//           `${process.env.REACT_APP_API_URL}/api/db/category/${category.parent}`
+//         );
+//         console.log("📌 Parent category:", parentCat);
+
+//         if (!parentCat.parent) {
+//           grandParentId = parentCat._id;
+//           console.log("✅ Parent is GRANDPARENT:", grandParentId);
+//         } else {
+//           const { data: grandCat } = await axios.get(
+//             `${process.env.REACT_APP_API_URL}/api/db/category/${parentCat.parent}`
+//           );
+//           console.log("📌 Resolved grandparent category:", grandCat);
+//           grandParentId = grandCat._id;
+//         }
+//       }
+
+//       setSelectedGrandParent(grandParentId);
+//       console.log("🎯 Final grandParentId:", grandParentId);
+
+//       // ✅ Find the grandparent inside allCats (this one has children populated!)
+//       const grandParentCategory = allCats.find(
+//         (cat) => cat._id.toString() === grandParentId.toString()
+//       );
+
+//       // ✅ Use children of grandparent
+//       let resolvedParents = [];
+//       if (grandParentCategory && grandParentCategory.children) {
+//         resolvedParents = grandParentCategory.children.filter(
+//           (child) => !child.price // optional filter: exclude products
+//         );
+//       }
+
+//       console.log(
+//         "📌 Parents to display (from grandparent.children):",
+//         resolvedParents
+//       );
+
+//       setParents(resolvedParents);
+//       setChildren([]);
+//     } catch (err) {
+//       console.error("❌ Failed to fetch category:", err);
+//     }
+//   };
+
+//   fetchCategory();
+// }, [slug]);
+
 
 useEffect(() => {
   const fetchCategory = async () => {
     try {
-      // 🔹 Fetch current category
+      // 🔹 Fetch current category by slug
       const { data: category } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/db/category/${id}`
+        `${process.env.REACT_APP_API_URL}/api/db/category/slug/${slug}`
       );
       console.log("📌 Current category:", category);
 
@@ -175,7 +253,9 @@ useEffect(() => {
   };
 
   fetchCategory();
-}, [id]);
+}, [slug]); // ✅ make sure dependency is slug
+
+
 useEffect(() => {
   if (product?.color?.length > 0) {
     // pick the first color from DB as default

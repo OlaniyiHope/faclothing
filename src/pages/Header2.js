@@ -369,8 +369,7 @@ useEffect(() => {
               {/* DYNAMIC CATEGORY ITEMS */}
               {categories.map((cat) => (
                 <li key={cat._id} className="wt-mr-xs-3">
-                  <a
-                    href={`/shop-category/${cat._id}`}
+                <a href={`/featured/${cat.slug}`}
                     className="wt-btn wt-btn--transparent wt-btn--small"
                    
                   >
@@ -398,8 +397,8 @@ useEffect(() => {
     <ul className="wt-list-unstyled wt-m-xs-0 wt-p-xs-2">
       {categories.map((cat) => (
         <li key={cat._id} className="wt-mb-xs-2">
-          <a
-            href={`/shop-category/${cat._id}`}
+<a href={`/featured/${cat.slug}`}
+
             className="wt-btn wt-btn--transparent wt-btn--small wt-width-full"
           >
             <span className="wt-icon wt-icon--smaller-xs wt-nudge-r-2">

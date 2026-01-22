@@ -21,7 +21,10 @@ import SizeFilter from "./SizeFilter";
 
 const ParentCat = () => {
 
-    const { id } = useParams();
+    // const { id } = useParams();
+const { parentSlug } = useParams();
+
+
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -38,6 +41,8 @@ const [currentPage, setCurrentPage] = useState(1);
   const [selectedParent, setSelectedParent] = useState("");
   const [selectedChild, setSelectedChild] = useState("");
     const [priceFilter, setPriceFilter] = useState(null);
+const [categoryId, setCategoryId] = useState(null);
+const [subCategories, setSubCategories] = useState([]);
 
   const handlePriceChange = (value) => {
     console.log("Selected price filter:", value);
@@ -49,92 +54,190 @@ const [currentPage, setCurrentPage] = useState(1);
     // TODO: Filter your products by country
   };
 
+// useEffect(() => {
+//   const fetchCategory = async () => {
+//     try {
+//       // 🔹 Fetch current category
+//       const { data: category } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/category/slug/${slug}`
+//       );
+//       console.log("📌 Current category:", category);
+
+//       setName(category.name);
+//       setPreview(category.image || "");
+
+//       // 🔹 Fetch all categories (with nested children)
+//       const { data: allCats } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/categories`
+//       );
+//       console.log("📌 All categories:", allCats);
+
+//       // Get all grandparent-level categories (no parent)
+//       setGrandParents(allCats.filter((cat) => !cat.parent));
+
+//       let grandParentId;
+
+//       if (!category.parent) {
+//         // Current category IS a grandparent
+//         grandParentId = category._id;
+//         console.log("✅ Current category is a GRANDPARENT:", grandParentId);
+//       } else {
+//         // Walk up one level
+//         const { data: parentCat } = await axios.get(
+//           `${process.env.REACT_APP_API_URL}/api/db/category/${category.parent}`
+//         );
+//         console.log("📌 Parent category:", parentCat);
+
+//         if (!parentCat.parent) {
+//           grandParentId = parentCat._id;
+//           console.log("✅ Parent is GRANDPARENT:", grandParentId);
+//         } else {
+//           const { data: grandCat } = await axios.get(
+//             `${process.env.REACT_APP_API_URL}/api/db/category/${parentCat.parent}`
+//           );
+//           console.log("📌 Resolved grandparent category:", grandCat);
+//           grandParentId = grandCat._id;
+//         }
+//       }
+
+//       setSelectedGrandParent(grandParentId);
+//       console.log("🎯 Final grandParentId:", grandParentId);
+
+//       // ✅ Find the grandparent inside allCats (this one has children populated!)
+//       const grandParentCategory = allCats.find(
+//         (cat) => cat._id.toString() === grandParentId.toString()
+//       );
+
+//       // ✅ Use children of grandparent
+//       let resolvedParents = [];
+//       if (grandParentCategory && grandParentCategory.children) {
+//         resolvedParents = grandParentCategory.children.filter(
+//           (child) => !child.price // optional filter: exclude products
+//         );
+//       }
+
+//       console.log(
+//         "📌 Parents to display (from grandparent.children):",
+//         resolvedParents
+//       );
+
+//       setParents(resolvedParents);
+//       setChildren([]);
+//     } catch (err) {
+//       console.error("❌ Failed to fetch category:", err);
+//     }
+//   };
+
+//   fetchCategory();
+// }, [slug]);
+
+
 useEffect(() => {
   const fetchCategory = async () => {
     try {
-      // 🔹 Fetch current category
+      // 1️⃣ Fetch category by slug
       const { data: category } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/db/category/${id}`
+        `${process.env.REACT_APP_API_URL}/api/db/category/slug/${parentSlug}`
       );
-      console.log("📌 Current category:", category);
 
       setName(category.name);
       setPreview(category.image || "");
+      setCategoryId(category._id);
 
-      // 🔹 Fetch all categories (with nested children)
+      // 2️⃣ Fetch ALL categories (this contains children)
       const { data: allCats } = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/db/categories`
       );
-      console.log("📌 All categories:", allCats);
 
-      // Get all grandparent-level categories (no parent)
+      // 3️⃣ Find THIS category inside allCats (FIXED)
+      const fullCategory = allCats.find(
+        (cat) => cat._id.toString() === category._id.toString()
+      );
+
+      // 4️⃣ SET SUBCATEGORIES ✅
+      setSubCategories(fullCategory?.children || []);
+
+      // 5️⃣ GRANDPARENTS (top-level)
       setGrandParents(allCats.filter((cat) => !cat.parent));
 
+      // 6️⃣ Resolve grandparent
       let grandParentId;
 
       if (!category.parent) {
-        // Current category IS a grandparent
         grandParentId = category._id;
-        console.log("✅ Current category is a GRANDPARENT:", grandParentId);
       } else {
-        // Walk up one level
         const { data: parentCat } = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/db/category/${category.parent}`
         );
-        console.log("📌 Parent category:", parentCat);
 
         if (!parentCat.parent) {
           grandParentId = parentCat._id;
-          console.log("✅ Parent is GRANDPARENT:", grandParentId);
         } else {
           const { data: grandCat } = await axios.get(
             `${process.env.REACT_APP_API_URL}/api/db/category/${parentCat.parent}`
           );
-          console.log("📌 Resolved grandparent category:", grandCat);
           grandParentId = grandCat._id;
         }
       }
 
       setSelectedGrandParent(grandParentId);
-      console.log("🎯 Final grandParentId:", grandParentId);
 
-      // ✅ Find the grandparent inside allCats (this one has children populated!)
+      // 7️⃣ Parents (siblings under same grandparent)
       const grandParentCategory = allCats.find(
         (cat) => cat._id.toString() === grandParentId.toString()
       );
 
-      // ✅ Use children of grandparent
-      let resolvedParents = [];
-      if (grandParentCategory && grandParentCategory.children) {
-        resolvedParents = grandParentCategory.children.filter(
-          (child) => !child.price // optional filter: exclude products
-        );
-      }
-
-      console.log(
-        "📌 Parents to display (from grandparent.children):",
-        resolvedParents
-      );
-
-      setParents(resolvedParents);
+      setParents(grandParentCategory?.children || []);
       setChildren([]);
+
     } catch (err) {
       console.error("❌ Failed to fetch category:", err);
     }
   };
 
   fetchCategory();
-}, [id]);
+}, [parentSlug]);
 
 
 
+// useEffect(() => {
+//   const fetchProducts = async () => {
+//     try {
+//       const { data } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/products/category/${id}`
+//       );
+//       setProducts(data);
+//     } catch (err) {
+//       console.error("Failed to fetch products:", err);
+//     }
+//   };
 
+//   fetchProducts();
+// }, [id]);
 
+// useEffect(() => {
+//   if (!categoryId) return;
+
+//   const fetchProducts = async () => {
+//     try {
+//       const { data } = await axios.get(
+//         `${process.env.REACT_APP_API_URL}/api/db/products/category/${categoryId}`
+//       );
+//       setProducts(data);
+//     } catch (err) {
+//       console.error("Failed to fetch products:", err);
+//     }
+//   };
+
+//   fetchProducts();
+// }, [categoryId]);
 useEffect(() => {
+  if (!categoryId || subCategories.length > 0) return;
+
   const fetchProducts = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/db/products/category/${id}`
+        `${process.env.REACT_APP_API_URL}/api/db/products/category/${categoryId}`
       );
       setProducts(data);
     } catch (err) {
@@ -143,8 +246,7 @@ useEffect(() => {
   };
 
   fetchProducts();
-}, [id]);
-
+}, [categoryId, subCategories]);
 
  const [brands, setBrands] = useState([]);
 
@@ -222,74 +324,31 @@ const paginatedProducts = products.slice(
     
 </div>
     </div>
-<div className="mobile-padding-wrapper">
-  <ul className="wt-grid wt-list-unstyled">
-{paginatedProducts.map((product) => (
 
-<li
-  key={product._id}
-  className="
-    wt-grid__item-xs-12 
-    wt-grid__item-md-4 
-    wt-grid__item-lg-3
-  "
->
-
-        <div
-          className="js-merch-stash-check-listing v2-listing-card 
-                     wt-mr-xs-0 search-listing-card--desktop listing-card-experimental-style"
-          data-listing-id={product._id}
+{subCategories.length > 0 && (
+  <div className="mobile-padding-wrapper">
+    <ul className="wt-grid wt-list-unstyled">
+      {subCategories.map((cat) => (
+        <li
+          key={cat._id}
+          className="wt-grid__item-xs-12 wt-grid__item-md-4 wt-grid__item-lg-3"
         >
-          <a
-            className="listing-link wt-display-inline-block"
-            href={`/single-product/${product._id}`}
-            title={product.name}
-          >
-            {/* PRODUCT IMAGE */}
-            <div className="v2-listing-card__img wt-position-relative">
-              <div className="placeholder placeholder-square">
-                <div className="placeholder vertically-centered-placeholder placeholder-content placeholder-square">
-            <img
-  loading="lazy"
-  src={
-    product.images?.length > 0
-      ? product.images[0]
-      : "https://via.placeholder.com/300"
-  }
-  alt={product.name}
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    display: "block",
-  }}
-/>
+        <a href={`/featured/${parentSlug}/${cat.slug}`}>
 
-                </div>
-              </div>
-            </div>
-
-            {/* PRODUCT INFO */}
-            <div className="v2-listing-card__info wt-pt-xs-0">
-              <div className="wt-grid wt-align-items-baseline">
-                <div className="wt-grid__item-xs-12 wt-grid__item-xl-8">
-                  <h2 className="wt-text-title-small wt-text-truncate wt-mt-xs-1" style={{fontWeight: "510", fontSize: "14px"}}>
-                    {product.name}
-                  </h2>
-                </div>
-              </div>
-
-              {/* PRICE */}
-              <div className="n-listing-card__price wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-text-title-01">
-                <p className="wt-text-title-01" style={{fontWeight: "800", fontSize: "18px"}}>USD {product.price}</p>
-              </div>
+            <div className="v2-listing-card">
+              <img
+                src={cat.image || "https://via.placeholder.com/300"}
+                alt={cat.name}
+                style={{ width: "100%", height: "250px", objectFit: "cover" }}
+              />
+              <h3 className="wt-text-title-01 wt-text-center">{cat.name}</h3>
             </div>
           </a>
-        </div>
-      </li>
-    ))}
-  </ul>
-</div>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
 
 
 

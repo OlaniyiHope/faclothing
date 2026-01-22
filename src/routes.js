@@ -22,6 +22,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Orders from "./pages/Orders";
 import OrderDetails from "./pages/OrderDetails";
+import ParentCat from "./pages/ParentCat";
 
 
 const routes = [
@@ -37,17 +38,22 @@ const routes = [
     element: <Selling />,
   },
   {
-    path: "/shop-category/:id",
+ path: "/featured/:parentSlug/:childSlug",
     element: <Category />,
+  },
+  {
+    path: "/featured/:parentSlug",
+    element: <ParentCat />,
+  },
+    {
+ path: "/single-product/:slug",
+    element: <Single2 />,
   },
 //   {
 //  path: "/single-product/:id",
 //     element: <Single />,
 //   },
-  {
- path: "/single-product/:id",
-    element: <Single2 />,
-  },
+
   {
  path: "/carts",
     element: <Cart />,
