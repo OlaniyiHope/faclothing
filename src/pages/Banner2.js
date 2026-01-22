@@ -251,7 +251,7 @@ return (
         <div class="shoppable-hero-headline__content wt-p-xs-4 wt-display-flex-xs wt-flex-direction-column-xs wt-flex-gap-xs-1 wt-align-items-center wt-justify-content-center wt-text-center-xs  wt-text-white">
             <p id="shoppable-hero-title" class="wt-text-display">Wear Your Heritage Proudly</p>
         
-            <a href="/shop-category"   type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
+            <a href="/shop-categories"   type="button" class="wt-btn shoppable-hero-headline__content-cta wt-mt-xs-3 wt-btn--primary wt-btn--light ">
                 Shop all products
             </a>
         </div>
@@ -260,7 +260,7 @@ return (
 			
 			 style={{ aspectRatio: "1.25925925926" }} fetchpriority="high" sizes="(max-width: 639px) 100vw, (max-width: 899px) 45vw, (max-width: 1199px) 55vw, 33vw" srcset={d2} />
 
-            <a href="/shop-category" type="button"   class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
+            <a href="/shop-categories" type="button"   class="wt-btn shoppable-hero-headline__image-cta wt-btn--primary wt-btn--light">
                 Shop all products
             </a>
         </div>
@@ -525,7 +525,7 @@ return (
           >
             <div className="height-placeholder">
                 <Link
-                              to={`/single-product/${product._id}`}>
+   to={`/single-product/${product.slug}`}>
               <img
                 className="wt-width-full wt-height-full wt-display-block wt-position-absolute daily-deal-card__placeholder--loud"
                 alt={product.name}
@@ -546,7 +546,7 @@ return (
         <div className="wt-grid wt-align-items-baseline">
           <div className="wt-grid__item-xs-12 wt-grid__item-xl-8 wt-p-xs-0">
              <Link
-                              to={`/single-product/${product._id}`}>
+   to={`/single-product/${product.slug}`}>
             <h3 className="wt-text-caption v2-listing-card__title wt-text-truncate currency-value3" >
               {product.name}
             </h3>
@@ -569,10 +569,10 @@ return (
         <div className="n-listing-card__price wt-display-flex-xs wt-align-items-center wt-width-full wt-flex-wrap wt-text-title-large lc-price daily-deal-card__price">
 
           {/* Current Price */}
-    <p className="wt-text-slime lc-price daily-deal-card__price">
+    <p className="wt-text-slime lc-price daily-deal-card__price" style={{color: "black"}}>
   <span aria-hidden="true" className="price-row">
-    <span className="currency-symbol">₦</span>
-    <span className="currency-value">
+    <span className="currency-symbol"  style={{color: "black"}}>$</span>
+    <span className="currency-value"  style={{color: "black"}}>
       {product.price.toLocaleString()}
     </span>
   </span>
@@ -647,7 +647,7 @@ return (
       >
         <div className="updated-category-module__listing wt-rounded-02 wt-card wt-card--transparent">
           <a
-            href={`/shop-category/${cat._id}`}
+       href={`/featured/${cat.slug}`}
             className="shopping-window-interior"
           >
             <img
@@ -661,7 +661,7 @@ return (
   }}
             />
  <Link
-                  to={`/shop-category/${cat._id}`}>
+                  to={`/featured/${cat.slug}`}>
             <p className="wt-text-title wt-sem-text-primary wt-pt-xs-0 wt-pb-xs-1 wt-pl-xs-1 wt-pr-xs-1">
               {cat.icon} {cat.name}
             </p>
@@ -1236,7 +1236,8 @@ wt-position-relative wt-width-full wt-rounded-02
           <li key={item._id} className="wt-list-unstyled wt-block-grid__item">
             <div className="wt-card wt-card--transparent wt-height-full wt-width-full">
  <Link
-                  to={`/single-product/${product._id}`}>
+   to={`/single-product/${product.slug}`}>
+               
                                   {/* LINK */}
               <a className="wt-card__action-link" >
                 <span className="wt-screen-reader-only">
