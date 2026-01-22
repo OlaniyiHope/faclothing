@@ -17,7 +17,7 @@ const SizeFilter = ({ onChange }) => {
       {/* Trigger Button */}
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        // onClick={() => setOpen(!open)}
         className="wt-btn wt-btn--secondary wt-btn--small selectable-pill wt-mr-xs-2 flex items-center gap-2"
       >
         {selected ? `Size: ${selected}` : "Size"}

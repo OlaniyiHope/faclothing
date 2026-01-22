@@ -39,7 +39,7 @@ const ShipsFromFilter = ({ onChange }) => {
       {/* Trigger Button */}
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        // onClick={() => setOpen(!open)}
         className="wt-btn wt-btn--small wt-btn--secondary wt-no-wrap wt-height-full flex items-center gap-2"
       >
         <span>Ships from</span>
